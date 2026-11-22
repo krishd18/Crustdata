@@ -6,13 +6,6 @@
       "runtimeExecutable": ".venv/Scripts/python.exe",
       "runtimeArgs": ["-m", "uvicorn", "app.main:app", "--port", "8765"],
       "port": 8765
-    },
-    {
-      "name": "secondlook-stub",
-      "runtimeExecutable": ".venv/Scripts/python.exe",
-      "runtimeArgs": ["-m", "uvicorn", "app.main:app", "--port", "8766"],
-      "env": {"SECONDLOOK_DATA": "C:/Users/Aaryan/AppData/Local/Temp/claude/327bc7d7d3a26f58/640d6f47-9e6b-4593-8463-a98975aea544/scratchpad/uidata"},
-      "port": 8766
     }
   ]
 }
