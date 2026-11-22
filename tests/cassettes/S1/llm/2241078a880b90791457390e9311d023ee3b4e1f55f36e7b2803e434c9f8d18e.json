@@ -1,0 +1,8 @@
+{
+ "cache_read_tokens": 0,
+ "model": "claude-sonnet-5",
+ "output_json": "{\"label\":\"b2b\",\"confidence\":\"high\",\"passage\":\"We are evidence-based decision intelligence for hiring. Not another sourcing tool. Not a faster funnel. A system that separates signal from noise and puts judgment on record.\",\"source\":\"crustdata\"}",
+ "request_id": "req_011ChHxJy7Aryb4tSH7KqevZ",
+ "tokens_in": 1233,
+ "tokens_out": 87
+}

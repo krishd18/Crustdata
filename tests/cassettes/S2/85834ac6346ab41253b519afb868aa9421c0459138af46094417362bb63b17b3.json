@@ -1,0 +1,2173 @@
+{
+ "body": {
+  "companies": [
+   {
+    "basic_info": {
+     "name": "Tata Group",
+     "primary_domain": ""
+    },
+    "crustdata_company_id": 7417
+   },
+   {
+    "basic_info": {
+     "name": "Infosys",
+     "primary_domain": "infosys.com"
+    },
+    "crustdata_company_id": 2199
+   },
+   {
+    "basic_info": {
+     "name": "HDFC Bank",
+     "primary_domain": "hdfc.bank.in"
+    },
+    "crustdata_company_id": 1914
+   },
+   {
+    "basic_info": {
+     "name": "ICICI Bank",
+     "primary_domain": "icici.bank.in"
+    },
+    "crustdata_company_id": 2041
+   },
+   {
+    "basic_info": {
+     "name": "State Bank of India",
+     "primary_domain": "sbi.bank.in"
+    },
+    "crustdata_company_id": 4316
+   },
+   {
+    "basic_info": {
+     "name": "Axis Bank",
+     "primary_domain": "axis.bank.in"
+    },
+    "crustdata_company_id": 6035783
+   },
+   {
+    "basic_info": {
+     "name": "Aditya Birla Group",
+     "primary_domain": "adityabirla.com"
+    },
+    "crustdata_company_id": 8264
+   },
+   {
+    "basic_info": {
+     "name": "Bajaj Finserv",
+     "primary_domain": "bajajfinserv.in"
+    },
+    "crustdata_company_id": 519
+   },
+   {
+    "basic_info": {
+     "name": "Life Insurance Corporation of India",
+     "primary_domain": "licindia.in"
+    },
+    "crustdata_company_id": 6440491
+   },
+   {
+    "basic_info": {
+     "name": "HDB Financial Services Ltd.",
+     "primary_domain": "hdbfs.com"
+    },
+    "crustdata_company_id": 609198
+   },
+   {
+    "basic_info": {
+     "name": "Kotak Mahindra Bank",
+     "primary_domain": "kotak.bank.in"
+    },
+    "crustdata_company_id": 2658
+   },
+   {
+    "basic_info": {
+     "name": "IndusInd Bank",
+     "primary_domain": "indusind.bank.in"
+    },
+    "crustdata_company_id": 2186
+   },
+   {
+    "basic_info": {
+     "name": "IDFC FIRST Bank",
+     "primary_domain": "idfcfirst.bank.in"
+    },
+    "crustdata_company_id": 715535
+   },
+   {
+    "basic_info": {
+     "name": "HDFC Life",
+     "primary_domain": "hdfclife.com"
+    },
+    "crustdata_company_id": 52893
+   },
+   {
+    "basic_info": {
+     "name": "Cipla",
+     "primary_domain": "cipla.com"
+    },
+    "crustdata_company_id": 956
+   },
+   {
+    "basic_info": {
+     "name": "YES BANK",
+     "primary_domain": "yes.bank.in"
+    },
+    "crustdata_company_id": 5648
+   },
+   {
+    "basic_info": {
+     "name": "Apollo Hospitals",
+     "primary_domain": "apollohospitals.com"
+    },
+    "crustdata_company_id": 307
+   },
+   {
+    "basic_info": {
+     "name": "Bank of Baroda",
+     "primary_domain": "bankofbaroda.bank.in"
+    },
+    "crustdata_company_id": 555
+   },
+   {
+    "basic_info": {
+     "name": "Hexaware Technologies",
+     "primary_domain": "hexaware.com"
+    },
+    "crustdata_company_id": 1937
+   },
+   {
+    "basic_info": {
+     "name": "Shriram Finance Limited",
+     "primary_domain": "shriramfinance.in"
+    },
+    "crustdata_company_id": 4518
+   },
+   {
+    "basic_info": {
+     "name": "AU SMALL FINANCE BANK",
+     "primary_domain": "au.bank.in"
+    },
+    "crustdata_company_id": 455
+   },
+   {
+    "basic_info": {
+     "name": "The Max Group",
+     "primary_domain": "maxindia.com"
+    },
+    "crustdata_company_id": 6037423
+   },
+   {
+    "basic_info": {
+     "name": "Aditya Birla Capital",
+     "primary_domain": "adityabirlacapital.com"
+    },
+    "crustdata_company_id": 25
+   },
+   {
+    "basic_info": {
+     "name": "ICICI Life Insurance Limited",
+     "primary_domain": "iciciprulife.com"
+    },
+    "crustdata_company_id": 2043
+   },
+   {
+    "basic_info": {
+     "name": "Axis Max Life Insurance Limited",
+     "primary_domain": "axismaxlife.com"
+    },
+    "crustdata_company_id": 11919
+   },
+   {
+    "basic_info": {
+     "name": "Paytm",
+     "primary_domain": "paytm.com"
+    },
+    "crustdata_company_id": 5716
+   },
+   {
+    "basic_info": {
+     "name": "KPMG India",
+     "primary_domain": "social.kpmg"
+    },
+    "crustdata_company_id": 17303
+   },
+   {
+    "basic_info": {
+     "name": "Asian Paints",
+     "primary_domain": "asianpaints.com"
+    },
+    "crustdata_company_id": 414
+   },
+   {
+    "basic_info": {
+     "name": "Ashok Leyland",
+     "primary_domain": "ashokleyland.com"
+    },
+    "crustdata_company_id": 398
+   },
+   {
+    "basic_info": {
+     "name": "Punjab National Bank",
+     "primary_domain": "pnb.bank.in"
+    },
+    "crustdata_company_id": 3699
+   },
+   {
+    "basic_info": {
+     "name": "Cholamandalam Investment and Finance Company Limited",
+     "primary_domain": "cholamandalam.com"
+    },
+    "crustdata_company_id": 6783
+   },
+   {
+    "basic_info": {
+     "name": "Tata Capital",
+     "primary_domain": "tatacapital.com"
+    },
+    "crustdata_company_id": 1088416
+   },
+   {
+    "basic_info": {
+     "name": "Motherson Group",
+     "primary_domain": "motherson.com"
+    },
+    "crustdata_company_id": 1113054
+   },
+   {
+    "basic_info": {
+     "name": "Bandhan Bank",
+     "primary_domain": "bandhan.bank.in"
+    },
+    "crustdata_company_id": 552
+   },
+   {
+    "basic_info": {
+     "name": "SBI Life Insurance Co. Ltd.",
+     "primary_domain": "sbilife.co.in"
+    },
+    "crustdata_company_id": 7342
+   },
+   {
+    "basic_info": {
+     "name": "Firstsource",
+     "primary_domain": "firstsource.com"
+    },
+    "crustdata_company_id": 10068
+   },
+   {
+    "basic_info": {
+     "name": "Canara Bank",
+     "primary_domain": "canarabank.bank.in"
+    },
+    "crustdata_company_id": 822
+   },
+   {
+    "basic_info": {
+     "name": "SBI Card",
+     "primary_domain": "sbicard.com"
+    },
+    "crustdata_company_id": 11191
+   },
+   {
+    "basic_info": {
+     "name": "Bharat Petroleum Corporation Limited",
+     "primary_domain": "bharatpetroleum.in"
+    },
+    "crustdata_company_id": 770
+   },
+   {
+    "basic_info": {
+     "name": "Bajaj Life",
+     "primary_domain": "bajajlifeinsurance.com"
+    },
+    "crustdata_company_id": 1131896
+   },
+   {
+    "basic_info": {
+     "name": "Bajaj Auto Ltd",
+     "primary_domain": "bajajauto.com"
+    },
+    "crustdata_company_id": 515
+   },
+   {
+    "basic_info": {
+     "name": "Bharat Heavy Electricals Limited",
+     "primary_domain": "bhel.com"
+    },
+    "crustdata_company_id": 667
+   },
+   {
+    "basic_info": {
+     "name": "Union Bank of India",
+     "primary_domain": "unionbankofindia.bank.in"
+    },
+    "crustdata_company_id": 5287
+   },
+   {
+    "basic_info": {
+     "name": "Tata AIA Life Insurance",
+     "primary_domain": "tataaia.com"
+    },
+    "crustdata_company_id": 13676
+   },
+   {
+    "basic_info": {
+     "name": "HDFC Bank Limited",
+     "primary_domain": "hdfc.bank.in"
+    },
+    "crustdata_company_id": 6107978
+   },
+   {
+    "basic_info": {
+     "name": "PhonePe",
+     "primary_domain": "phonepe.com"
+    },
+    "crustdata_company_id": 5729
+   },
+   {
+    "basic_info": {
+     "name": "L&T Finance",
+     "primary_domain": "ltfinance.com"
+    },
+    "crustdata_company_id": 1035341
+   },
+   {
+    "basic_info": {
+     "name": "MANKIND PHARMA LTD",
+     "primary_domain": "mankindpharma.com"
+    },
+    "crustdata_company_id": 6149
+   },
+   {
+    "basic_info": {
+     "name": "Muthoot Pappachan Group",
+     "primary_domain": "muthootcap.com"
+    },
+    "crustdata_company_id": 6306678
+   },
+   {
+    "basic_info": {
+     "name": "Kotak Life",
+     "primary_domain": "kotaklife.com"
+    },
+    "crustdata_company_id": 730113
+   },
+   {
+    "basic_info": {
+     "name": "IDBI Bank",
+     "primary_domain": "idbibank.in"
+    },
+    "crustdata_company_id": 686275
+   },
+   {
+    "basic_info": {
+     "name": "Ujjivan Small Finance Bank",
+     "primary_domain": "ujjivansfb.bank.in"
+    },
+    "crustdata_company_id": 6597
+   },
+   {
+    "basic_info": {
+     "name": "Bank of India",
+     "primary_domain": "bankofindia.bank.in"
+    },
+    "crustdata_company_id": 556
+   },
+   {
+    "basic_info": {
+     "name": "Muthoot Fincorp Ltd.",
+     "primary_domain": "muthootfincorp.com"
+    },
+    "crustdata_company_id": 1067416
+   },
+   {
+    "basic_info": {
+     "name": "Aditya Birla Sun Life Insurance",
+     "primary_domain": "adityabirlacapital.com"
+    },
+    "crustdata_company_id": 614219
+   },
+   {
+    "basic_info": {
+     "name": "Indian Bank",
+     "primary_domain": "indianbank.bank.in"
+    },
+    "crustdata_company_id": 2130
+   },
+   {
+    "basic_info": {
+     "name": "ICICI Lombard",
+     "primary_domain": "icicilombard.com"
+    },
+    "crustdata_company_id": 6092968
+   },
+   {
+    "basic_info": {
+     "name": "RBL Bank",
+     "primary_domain": "rbl.bank.in"
+    },
+    "crustdata_company_id": 3990
+   },
+   {
+    "basic_info": {
+     "name": "Star Health and Allied Insurance Co. Ltd",
+     "primary_domain": "starhealth.in"
+    },
+    "crustdata_company_id": 686464
+   },
+   {
+    "basic_info": {
+     "name": "Manappuram Finance Limited",
+     "primary_domain": "manappuram.com"
+    },
+    "crustdata_company_id": 6062190
+   },
+   {
+    "basic_info": {
+     "name": "OYO",
+     "primary_domain": "oyorooms.com"
+    },
+    "crustdata_company_id": 5725
+   },
+   {
+    "basic_info": {
+     "name": "Titan Company Limited",
+     "primary_domain": "titan.co.in"
+    },
+    "crustdata_company_id": 2460086
+   },
+   {
+    "basic_info": {
+     "name": "Motilal Oswal Financial Services Ltd",
+     "primary_domain": "motilaloswal.com"
+    },
+    "crustdata_company_id": 3153
+   },
+   {
+    "basic_info": {
+     "name": "Policybazaar.com",
+     "primary_domain": "policybazaar.com"
+    },
+    "crustdata_company_id": 5741
+   },
+   {
+    "basic_info": {
+     "name": "Aditya Birla Fashion and Retail Ltd.",
+     "primary_domain": "abfrl.in"
+    },
+    "crustdata_company_id": 98
+   },
+   {
+    "basic_info": {
+     "name": "Jana Small Finance Bank",
+     "primary_domain": "jana.bank.in"
+    },
+    "crustdata_company_id": 6216
+   },
+   {
+    "basic_info": {
+     "name": "IIFL (India Infoline Group)",
+     "primary_domain": "iiflrealty.com"
+    },
+    "crustdata_company_id": 1035345
+   },
+   {
+    "basic_info": {
+     "name": "Equitas Small Finance Bank",
+     "primary_domain": "equitas.bank.in"
+    },
+    "crustdata_company_id": 11808
+   },
+   {
+    "basic_info": {
+     "name": "Piramal Finance",
+     "primary_domain": "piramalfinance.com"
+    },
+    "crustdata_company_id": 609249
+   },
+   {
+    "basic_info": {
+     "name": "TATA AIG General Insurance Company Limited",
+     "primary_domain": "tataaig.com"
+    },
+    "crustdata_company_id": 12931
+   },
+   {
+    "basic_info": {
+     "name": "Reliance Nippon Life Insurance",
+     "primary_domain": "indusindnipponlife.com"
+    },
+    "crustdata_company_id": 19287
+   },
+   {
+    "basic_info": {
+     "name": "Federal Bank",
+     "primary_domain": "federal.bank.in"
+    },
+    "crustdata_company_id": 1468
+   },
+   {
+    "basic_info": {
+     "name": "TVS Credit Services Ltd.",
+     "primary_domain": "tvscredit.com"
+    },
+    "crustdata_company_id": 10844
+   },
+   {
+    "basic_info": {
+     "name": "HDFC ERGO General Insurance",
+     "primary_domain": "hdfcergo.com"
+    },
+    "crustdata_company_id": 11233
+   },
+   {
+    "basic_info": {
+     "name": "Utkarsh Small Finance Bank",
+     "primary_domain": "utkarsh.bank.in"
+    },
+    "crustdata_company_id": 609227
+   },
+   {
+    "basic_info": {
+     "name": "Mahindra Finance",
+     "primary_domain": "mahindrafinance.com"
+    },
+    "crustdata_company_id": 6723
+   },
+   {
+    "basic_info": {
+     "name": "The Muthoot Group",
+     "primary_domain": "muthootfinance.com"
+    },
+    "crustdata_company_id": 3207
+   },
+   {
+    "basic_info": {
+     "name": "Ambuja Cements Limited",
+     "primary_domain": "ambujacement.com"
+    },
+    "crustdata_company_id": 232
+   },
+   {
+    "basic_info": {
+     "name": "HDFC Limited",
+     "primary_domain": "hdfc.com"
+    },
+    "crustdata_company_id": 1912
+   },
+   {
+    "basic_info": {
+     "name": "Bajaj General Insurance",
+     "primary_domain": "bajajgeneralinsurance.com"
+    },
+    "crustdata_company_id": 614751
+   },
+   {
+    "basic_info": {
+     "name": "Biocon",
+     "primary_domain": "biocon.com"
+    },
+    "crustdata_company_id": 696
+   },
+   {
+    "basic_info": {
+     "name": "Angel One",
+     "primary_domain": "angelone.in"
+    },
+    "crustdata_company_id": 686137
+   },
+   {
+    "basic_info": {
+     "name": "Central Bank of India",
+     "primary_domain": "centralbank.bank.in"
+    },
+    "crustdata_company_id": 868
+   },
+   {
+    "basic_info": {
+     "name": "Thermax Limited",
+     "primary_domain": "thermaxglobal.com"
+    },
+    "crustdata_company_id": 5110
+   },
+   {
+    "basic_info": {
+     "name": "Blue Dart",
+     "primary_domain": "bluedart.com"
+    },
+    "crustdata_company_id": 736
+   },
+   {
+    "basic_info": {
+     "name": "DCB Bank",
+     "primary_domain": "dcb.bank.in"
+    },
+    "crustdata_company_id": 1125
+   },
+   {
+    "basic_info": {
+     "name": "ACC Limited",
+     "primary_domain": "acchelp.in"
+    },
+    "crustdata_company_id": 48
+   },
+   {
+    "basic_info": {
+     "name": "Britannia Industries Limited",
+     "primary_domain": "britannia.co.in"
+    },
+    "crustdata_company_id": 787
+   },
+   {
+    "basic_info": {
+     "name": "Essar",
+     "primary_domain": "essar.com"
+    },
+    "crustdata_company_id": 1131733
+   },
+   {
+    "basic_info": {
+     "name": "Indiabulls Group",
+     "primary_domain": "indiabulls.com"
+    },
+    "crustdata_company_id": 9154
+   },
+   {
+    "basic_info": {
+     "name": "Home Credit India",
+     "primary_domain": "homecredit.co.in"
+    },
+    "crustdata_company_id": 6219
+   },
+   {
+    "basic_info": {
+     "name": "Bharat Financial Inclusion Limited (100% subsidiary of IndusInd Bank Ltd.)",
+     "primary_domain": "bfil.co.in"
+    },
+    "crustdata_company_id": 1132184
+   },
+   {
+    "basic_info": {
+     "name": "CMS Info Systems",
+     "primary_domain": "cms.com"
+    },
+    "crustdata_company_id": 11352
+   },
+   {
+    "basic_info": {
+     "name": "Citi India",
+     "primary_domain": "citi.com"
+    },
+    "crustdata_company_id": 6067939
+   },
+   {
+    "basic_info": {
+     "name": "Indian Institute of Technology, Madras",
+     "primary_domain": "iitm.ac.in"
+    },
+    "crustdata_company_id": 1386808
+   },
+   {
+    "basic_info": {
+     "name": "The Institute of Chartered Accountants of India",
+     "primary_domain": "icai.org"
+    },
+    "crustdata_company_id": 6066345
+   },
+   {
+    "basic_info": {
+     "name": "Grant Thornton Bharat LLP",
+     "primary_domain": "grantthornton.in"
+    },
+    "crustdata_company_id": 6055849
+   },
+   {
+    "basic_info": {
+     "name": "Niva Bupa Health Insurance",
+     "primary_domain": "nivabupa.com"
+    },
+    "crustdata_company_id": 712083
+   },
+   {
+    "basic_info": {
+     "name": "Hero FinCorp",
+     "primary_domain": "herofincorp.com"
+    },
+    "crustdata_company_id": 5986
+   },
+   {
+    "basic_info": {
+     "name": "HDFC Sales Private Limited",
+     "primary_domain": "hdfcsales.com"
+    },
+    "crustdata_company_id": 620325
+   },
+   {
+    "basic_info": {
+     "name": "SBI General Insurance",
+     "primary_domain": "sbigeneral.in"
+    },
+    "crustdata_company_id": 20931
+   },
+   {
+    "basic_info": {
+     "name": "Societe Generale Global Solution Centre",
+     "primary_domain": "societegenerale.in"
+    },
+    "crustdata_company_id": 1097923
+   },
+   {
+    "basic_info": {
+     "name": "Axis Bank Limited",
+     "primary_domain": "axis.bank.in"
+    },
+    "crustdata_company_id": 492
+   },
+   {
+    "basic_info": {
+     "name": "Poonawalla Fincorp",
+     "primary_domain": "poonawallafincorp.com"
+    },
+    "crustdata_company_id": 4543960
+   },
+   {
+    "basic_info": {
+     "name": "Intellect Design Arena Ltd",
+     "primary_domain": "intellectdesign.com"
+    },
+    "crustdata_company_id": 2237
+   },
+   {
+    "basic_info": {
+     "name": "New India Assurance",
+     "primary_domain": "newindia.co.in"
+    },
+    "crustdata_company_id": 3326
+   },
+   {
+    "basic_info": {
+     "name": "Life Insurance Corporation of India - LIC",
+     "primary_domain": ""
+    },
+    "crustdata_company_id": 1501236
+   },
+   {
+    "basic_info": {
+     "name": "3i Infotech Ltd.",
+     "primary_domain": "3i-infotech.com"
+    },
+    "crustdata_company_id": 5691
+   },
+   {
+    "basic_info": {
+     "name": "LIC india",
+     "primary_domain": ""
+    },
+    "crustdata_company_id": 29631641
+   },
+   {
+    "basic_info": {
+     "name": "Reserve Bank of India (RBI)",
+     "primary_domain": "rbi.org.in"
+    },
+    "crustdata_company_id": 7018
+   },
+   {
+    "basic_info": {
+     "name": "INDIAN OVERSEAS BANK",
+     "primary_domain": "iob.bank.in"
+    },
+    "crustdata_company_id": 2265
+   },
+   {
+    "basic_info": {
+     "name": "Kotak Neo",
+     "primary_domain": "kotakneo.com"
+    },
+    "crustdata_company_id": 10420
+   },
+   {
+    "basic_info": {
+     "name": "PNB MetLife India Insurance Co. Ltd",
+     "primary_domain": "pnbmetlife.com"
+    },
+    "crustdata_company_id": 2018752
+   },
+   {
+    "basic_info": {
+     "name": "Sammaan Capital Limited",
+     "primary_domain": "sammaancapital.com"
+    },
+    "crustdata_company_id": 2124
+   },
+   {
+    "basic_info": {
+     "name": "SBI Securities",
+     "primary_domain": "sbisecurities.in"
+    },
+    "crustdata_company_id": 1951292
+   },
+   {
+    "basic_info": {
+     "name": "MakeMyTrip",
+     "primary_domain": "makemytrip.com"
+    },
+    "crustdata_company_id": 5738
+   },
+   {
+    "basic_info": {
+     "name": "PNB Housing Finance Limited",
+     "primary_domain": "pnbhousing.com"
+    },
+    "crustdata_company_id": 3701
+   },
+   {
+    "basic_info": {
+     "name": "ICICI Securities",
+     "primary_domain": "icicidirect.com"
+    },
+    "crustdata_company_id": 1132680
+   },
+   {
+    "basic_info": {
+     "name": "Bank of Maharashtra",
+     "primary_domain": "bankofmaharashtra.bank.in"
+    },
+    "crustdata_company_id": 558
+   },
+   {
+    "basic_info": {
+     "name": "Muthoot Finance Ltd. - India",
+     "primary_domain": "muthootfinance.com"
+    },
+    "crustdata_company_id": 1131866
+   },
+   {
+    "basic_info": {
+     "name": "Airtel Payments Bank",
+     "primary_domain": "airtelpayments.bank.in"
+    },
+    "crustdata_company_id": 1131730
+   },
+   {
+    "basic_info": {
+     "name": "Reliance General Insurance",
+     "primary_domain": "reliancegeneral.co.in"
+    },
+    "crustdata_company_id": 14199
+   },
+   {
+    "basic_info": {
+     "name": "ORACLE FINANCIAL SERVICES SOFTWARE LIMITED",
+     "primary_domain": "oracle.com"
+    },
+    "crustdata_company_id": 3480
+   },
+   {
+    "basic_info": {
+     "name": "Crisil",
+     "primary_domain": "crisil.com"
+    },
+    "crustdata_company_id": 1073
+   },
+   {
+    "basic_info": {
+     "name": "UCO Bank",
+     "primary_domain": "uco.bank.in"
+    },
+    "crustdata_company_id": 5264
+   },
+   {
+    "basic_info": {
+     "name": "Sahara India",
+     "primary_domain": "sahara.in"
+    },
+    "crustdata_company_id": 9092
+   },
+   {
+    "basic_info": {
+     "name": "South Indian Bank",
+     "primary_domain": "southindianbank.bank.in"
+    },
+    "crustdata_company_id": 4663
+   },
+   {
+    "basic_info": {
+     "name": "SK Finance Ltd",
+     "primary_domain": "skfin.in"
+    },
+    "crustdata_company_id": 6450
+   },
+   {
+    "basic_info": {
+     "name": "Bajaj Housing Finance Limited",
+     "primary_domain": "bajajhousingfinance.in"
+    },
+    "crustdata_company_id": 1032650
+   },
+   {
+    "basic_info": {
+     "name": "City Union Bank Ltd.",
+     "primary_domain": "cityunionbank.bank.in"
+    },
+    "crustdata_company_id": 965
+   },
+   {
+    "basic_info": {
+     "name": "Mirae Asset Sharekhan",
+     "primary_domain": "sharekhan.com"
+    },
+    "crustdata_company_id": 1132649
+   },
+   {
+    "basic_info": {
+     "name": "IDFC FIRST Bharat Ltd",
+     "primary_domain": "idfcfirstbharat.com"
+    },
+    "crustdata_company_id": 1133975
+   },
+   {
+    "basic_info": {
+     "name": "Bharti AXA Life Insurance",
+     "primary_domain": "bhartiaxa.com"
+    },
+    "crustdata_company_id": 2068357
+   },
+   {
+    "basic_info": {
+     "name": "Aavas Financiers Ltd",
+     "primary_domain": "aavas.in"
+    },
+    "crustdata_company_id": 52495
+   },
+   {
+    "basic_info": {
+     "name": "Shriram City Union Finance Limited",
+     "primary_domain": "shriramcity.in"
+    },
+    "crustdata_company_id": 4514
+   },
+   {
+    "basic_info": {
+     "name": "Capri Global Capital Ltd.",
+     "primary_domain": "capriloans.in"
+    },
+    "crustdata_company_id": 832
+   },
+   {
+    "basic_info": {
+     "name": "Fino Payments Bank Ltd",
+     "primary_domain": "fino.bank.in"
+    },
+    "crustdata_company_id": 10949
+   },
+   {
+    "basic_info": {
+     "name": "Pine Labs",
+     "primary_domain": "pinelabs.com"
+    },
+    "crustdata_company_id": 7196
+   },
+   {
+    "basic_info": {
+     "name": "Canara HSBC Life Insurance",
+     "primary_domain": "canarahsbclife.com"
+    },
+    "crustdata_company_id": 1131898
+   },
+   {
+    "basic_info": {
+     "name": "CSB Bank",
+     "primary_domain": "csb.bank.in"
+    },
+    "crustdata_company_id": 7101
+   },
+   {
+    "basic_info": {
+     "name": "IFFCO Tokio General Insurance Co. Ltd.",
+     "primary_domain": "iffcotokio.co.in"
+    },
+    "crustdata_company_id": 613157
+   },
+   {
+    "basic_info": {
+     "name": "ICICI Securities",
+     "primary_domain": "icicisecurities.com"
+    },
+    "crustdata_company_id": 2044
+   },
+   {
+    "basic_info": {
+     "name": "ESAF Bank",
+     "primary_domain": "esaf.bank.in"
+    },
+    "crustdata_company_id": 1132829
+   },
+   {
+    "basic_info": {
+     "name": "Shriram Life Insurance",
+     "primary_domain": "shriramlife.com"
+    },
+    "crustdata_company_id": 1132288
+   },
+   {
+    "basic_info": {
+     "name": "Bajaj Capital Ltd",
+     "primary_domain": "bajajcapital.com"
+    },
+    "crustdata_company_id": 18650
+   },
+   {
+    "basic_info": {
+     "name": "Aadhar Housing Finance Ltd.",
+     "primary_domain": "aadharhousing.com"
+    },
+    "crustdata_company_id": 17049
+   },
+   {
+    "basic_info": {
+     "name": "Hinduja Leyland Finance",
+     "primary_domain": "hindujaleylandfinance.com"
+    },
+    "crustdata_company_id": 621121
+   },
+   {
+    "basic_info": {
+     "name": "NSE India",
+     "primary_domain": "nseindia.com"
+    },
+    "crustdata_company_id": 917010
+   },
+   {
+    "basic_info": {
+     "name": "Exide Life Insurance",
+     "primary_domain": "exidelife.in"
+    },
+    "crustdata_company_id": 12936
+   },
+   {
+    "basic_info": {
+     "name": "Fullerton India Credit Company Ltd.",
+     "primary_domain": "fullertonindia.com"
+    },
+    "crustdata_company_id": 11929
+   },
+   {
+    "basic_info": {
+     "name": "Aditya Birla Health Insurance Company Limited",
+     "primary_domain": "adityabirlahealth.com"
+    },
+    "crustdata_company_id": 713684
+   },
+   {
+    "basic_info": {
+     "name": "Axis Direct",
+     "primary_domain": "axisdirect.in"
+    },
+    "crustdata_company_id": 1132677
+   },
+   {
+    "basic_info": {
+     "name": "IIFL Samasta Finance Limited",
+     "primary_domain": "iiflsamasta.com"
+    },
+    "crustdata_company_id": 1132181
+   },
+   {
+    "basic_info": {
+     "name": "Cholamandalam MS General Insurance Co. Ltd.",
+     "primary_domain": "cholainsurance.com"
+    },
+    "crustdata_company_id": 17635
+   },
+   {
+    "basic_info": {
+     "name": "Syndicate Bank",
+     "primary_domain": "canarabank.bank.in"
+    },
+    "crustdata_company_id": 4980
+   },
+   {
+    "basic_info": {
+     "name": "Newgen Software",
+     "primary_domain": "newgensoft.com"
+    },
+    "crustdata_company_id": 3330
+   },
+   {
+    "basic_info": {
+     "name": "Customs & Central Excise Department, Ministry of Finance, Government of India",
+     "primary_domain": "cbec.gov.in"
+    },
+    "crustdata_company_id": 1283500
+   },
+   {
+    "basic_info": {
+     "name": "IndusInd Bank Limited",
+     "primary_domain": "indusind.com"
+    },
+    "crustdata_company_id": 6066378
+   },
+   {
+    "basic_info": {
+     "name": "Hotal",
+     "primary_domain": ""
+    },
+    "crustdata_company_id": 3229332
+   },
+   {
+    "basic_info": {
+     "name": "Aarti Industries Ltd.",
+     "primary_domain": "aarti-industries.com"
+    },
+    "crustdata_company_id": 17
+   },
+   {
+    "basic_info": {
+     "name": "IndiaFirst Life",
+     "primary_domain": "indiafirstlife.com"
+    },
+    "crustdata_company_id": 6982
+   },
+   {
+    "basic_info": {
+     "name": "Karur Vysya Bank(KVB)",
+     "primary_domain": "kvb.bank.in"
+    },
+    "crustdata_company_id": 2525
+   },
+   {
+    "basic_info": {
+     "name": "One97 Communications Limited",
+     "primary_domain": "one97.com"
+    },
+    "crustdata_company_id": 5864
+   },
+   {
+    "basic_info": {
+     "name": "KFin Technologies Ltd.",
+     "primary_domain": "kfintech.com"
+    },
+    "crustdata_company_id": 1133937
+   },
+   {
+    "basic_info": {
+     "name": "Generali Central Insurance",
+     "primary_domain": "generalicentralinsurance.com"
+    },
+    "crustdata_company_id": 11316
+   },
+   {
+    "basic_info": {
+     "name": "ICICI Prudential AMC Ltd",
+     "primary_domain": "icicipruamc.com"
+    },
+    "crustdata_company_id": 11108
+   },
+   {
+    "basic_info": {
+     "name": "HDFC securities",
+     "primary_domain": "hdfcsec.com"
+    },
+    "crustdata_company_id": 1131881
+   },
+   {
+    "basic_info": {
+     "name": "Spandana Sphoorty Financial Limited",
+     "primary_domain": "spandanasphoorty.com"
+    },
+    "crustdata_company_id": 925802
+   },
+   {
+    "basic_info": {
+     "name": "Muthoot Microfin",
+     "primary_domain": "muthootmicrofin.com"
+    },
+    "crustdata_company_id": 7670
+   },
+   {
+    "basic_info": {
+     "name": "Star Union Dai-ichi Life Insurance Company Limited",
+     "primary_domain": "sudlife.in"
+    },
+    "crustdata_company_id": 18768
+   },
+   {
+    "basic_info": {
+     "name": "ICICI Bank Limited",
+     "primary_domain": "icicibank.com"
+    },
+    "crustdata_company_id": 6258943
+   },
+   {
+    "basic_info": {
+     "name": "Annapurna Finance Pvt. Ltd.",
+     "primary_domain": "annapurnafinance.in"
+    },
+    "crustdata_company_id": 712433
+   },
+   {
+    "basic_info": {
+     "name": "ICICI Home Finance Company Limited",
+     "primary_domain": "icicihfc.com"
+    },
+    "crustdata_company_id": 15267
+   },
+   {
+    "basic_info": {
+     "name": "Urban Money",
+     "primary_domain": "urbanmoney.com"
+    },
+    "crustdata_company_id": 9950
+   },
+   {
+    "basic_info": {
+     "name": "Aye Finance Ltd",
+     "primary_domain": "ayefin.com"
+    },
+    "crustdata_company_id": 5782
+   },
+   {
+    "basic_info": {
+     "name": "SHRIRAM GENERAL INSURANCE CO. LTD.",
+     "primary_domain": "shriramgi.com"
+    },
+    "crustdata_company_id": 17840
+   },
+   {
+    "basic_info": {
+     "name": "Satin Creditcare Network Limited",
+     "primary_domain": "satincreditcare.com"
+    },
+    "crustdata_company_id": 4297
+   },
+   {
+    "basic_info": {
+     "name": "Bajaj Auto Finance",
+     "primary_domain": "bajajautofinance.com"
+    },
+    "crustdata_company_id": 10426
+   },
+   {
+    "basic_info": {
+     "name": "First American (India)",
+     "primary_domain": "firstam.co.in"
+    },
+    "crustdata_company_id": 1158185
+   },
+   {
+    "basic_info": {
+     "name": "Andromeda Sales & Distribution Pvt Ltd",
+     "primary_domain": "andromedaloans.com"
+    },
+    "crustdata_company_id": 892870
+   },
+   {
+    "basic_info": {
+     "name": "Sundaram Finance",
+     "primary_domain": "sundaramfinance.in"
+    },
+    "crustdata_company_id": 4856
+   },
+   {
+    "basic_info": {
+     "name": "Edelweiss Financial Services Limited",
+     "primary_domain": "edelweissfin.com"
+    },
+    "crustdata_company_id": 1304
+   },
+   {
+    "basic_info": {
+     "name": "The Oriental Insurance Company Ltd.",
+     "primary_domain": "orientalinsurance.org.in"
+    },
+    "crustdata_company_id": 618825
+   },
+   {
+    "basic_info": {
+     "name": "Tata Motors Finance",
+     "primary_domain": "tmf.co.in"
+    },
+    "crustdata_company_id": 1132527
+   },
+   {
+    "basic_info": {
+     "name": "Suryoday Small Finance Bank Ltd",
+     "primary_domain": "suryoday.bank.in"
+    },
+    "crustdata_company_id": 6753
+   },
+   {
+    "basic_info": {
+     "name": "Kotak Mahindra Prime Limited",
+     "primary_domain": "kotak.com"
+    },
+    "crustdata_company_id": 6198877
+   },
+   {
+    "basic_info": {
+     "name": "BharatPe",
+     "primary_domain": "bharatpe.com"
+    },
+    "crustdata_company_id": 5728
+   },
+   {
+    "basic_info": {
+     "name": "Edelweiss Life Insurance",
+     "primary_domain": "edelweisslife.in"
+    },
+    "crustdata_company_id": 12571
+   },
+   {
+    "basic_info": {
+     "name": "MAHINDRA AND MAHINDRA FINANCIAL SERVICES LIMITED",
+     "primary_domain": ""
+    },
+    "crustdata_company_id": 6156263
+   },
+   {
+    "basic_info": {
+     "name": "Paisabazaar",
+     "primary_domain": "paisabazaar.com"
+    },
+    "crustdata_company_id": 8574
+   },
+   {
+    "basic_info": {
+     "name": "Saraswat Bank",
+     "primary_domain": "saraswatbank.com"
+    },
+    "crustdata_company_id": 618470
+   },
+   {
+    "basic_info": {
+     "name": "JM Financial Ltd",
+     "primary_domain": "jmfl.com"
+    },
+    "crustdata_company_id": 2408
+   },
+   {
+    "basic_info": {
+     "name": "Razorpay",
+     "primary_domain": "razorpay.com"
+    },
+    "crustdata_company_id": 897127
+   },
+   {
+    "basic_info": {
+     "name": "ICICI Lombard General Insurance Company Limited",
+     "primary_domain": "onlinecareer360.com"
+    },
+    "crustdata_company_id": 1132229
+   },
+   {
+    "basic_info": {
+     "name": "Polaris Consulting & Services Ltd",
+     "primary_domain": "virtusapolaris.com"
+    },
+    "crustdata_company_id": 53306
+   },
+   {
+    "basic_info": {
+     "name": "Fincare Small Finance Bank",
+     "primary_domain": "fincarebank.com"
+    },
+    "crustdata_company_id": 609293
+   },
+   {
+    "basic_info": {
+     "name": "Mahindra Home Finance",
+     "primary_domain": "mahindrahomefinance.com"
+    },
+    "crustdata_company_id": 20399
+   },
+   {
+    "basic_info": {
+     "name": "Paytm Payments Bank",
+     "primary_domain": "paytm.bank.in"
+    },
+    "crustdata_company_id": 6354
+   },
+   {
+    "basic_info": {
+     "name": "SLK",
+     "primary_domain": "slksoftware.com"
+    },
+    "crustdata_company_id": 613237
+   },
+   {
+    "basic_info": {
+     "name": "Anand Rathi Share and Stock Brokers Ltd",
+     "primary_domain": "anandrathi.com"
+    },
+    "crustdata_company_id": 1132967
+   },
+   {
+    "basic_info": {
+     "name": "Aditya Birla Finance Limited",
+     "primary_domain": "adityabirlacapital.com"
+    },
+    "crustdata_company_id": 1131780
+   },
+   {
+    "basic_info": {
+     "name": "Unity Small Finance Bank",
+     "primary_domain": "theunitybank.com"
+    },
+    "crustdata_company_id": 1132902
+   },
+   {
+    "basic_info": {
+     "name": "Principal Global Services",
+     "primary_domain": "principal.com"
+    },
+    "crustdata_company_id": 1152120
+   },
+   {
+    "basic_info": {
+     "name": "Karnataka Bank",
+     "primary_domain": "karnatakabank.com"
+    },
+    "crustdata_company_id": 2518
+   },
+   {
+    "basic_info": {
+     "name": "Hinduja Housing Finance",
+     "primary_domain": "hindujahousingfinance.com"
+    },
+    "crustdata_company_id": 1132186
+   },
+   {
+    "basic_info": {
+     "name": "LIC Housing Finance Limited",
+     "primary_domain": "lichousing.com"
+    },
+    "crustdata_company_id": 2769
+   },
+   {
+    "basic_info": {
+     "name": "Lloyds Technology Centre India",
+     "primary_domain": "lloydstechnologycentre.com"
+    },
+    "crustdata_company_id": 1050429
+   },
+   {
+    "basic_info": {
+     "name": "Employee State Insurance Corporation( ESIC )",
+     "primary_domain": "esic.gov.in"
+    },
+    "crustdata_company_id": 1286750
+   },
+   {
+    "basic_info": {
+     "name": "GOVERNMENT OF RAJASTHAN",
+     "primary_domain": ""
+    },
+    "crustdata_company_id": 8900899
+   },
+   {
+    "basic_info": {
+     "name": "Religare",
+     "primary_domain": "religare.com"
+    },
+    "crustdata_company_id": 7793
+   },
+   {
+    "basic_info": {
+     "name": "LIC",
+     "primary_domain": ""
+    },
+    "crustdata_company_id": 2097252
+   },
+   {
+    "basic_info": {
+     "name": "Motorista",
+     "primary_domain": "motoristasolutions.com"
+    },
+    "crustdata_company_id": 1286928
+   },
+   {
+    "basic_info": {
+     "name": "CA Firm",
+     "primary_domain": "svtandassociates.in"
+    },
+    "crustdata_company_id": 1287022
+   },
+   {
+    "basic_info": {
+     "name": "Truhome Finance Limited",
+     "primary_domain": "truhomefinance.in"
+    },
+    "crustdata_company_id": 3705718
+   },
+   {
+    "basic_info": {
+     "name": "NABARD - National Bank for Agriculture and Rural Development",
+     "primary_domain": "nabard.org"
+    },
+    "crustdata_company_id": 1078817
+   },
+   {
+    "basic_info": {
+     "name": "National Insurance Co. Ltd",
+     "primary_domain": "nationalinsuranceindia.com"
+    },
+    "crustdata_company_id": 25873
+   },
+   {
+    "basic_info": {
+     "name": "Generali Central Life Insurance",
+     "primary_domain": "generalicentrallife.com"
+    },
+    "crustdata_company_id": 1132539
+   },
+   {
+    "basic_info": {
+     "name": "SBI MUTUAL FUND",
+     "primary_domain": "sbimf.com"
+    },
+    "crustdata_company_id": 14198
+   },
+   {
+    "basic_info": {
+     "name": "Navi",
+     "primary_domain": "navi.com"
+    },
+    "crustdata_company_id": 5708
+   },
+   {
+    "basic_info": {
+     "name": "Fincare Small Finance Bank erode",
+     "primary_domain": "fincaresmallfinancebank.net"
+    },
+    "crustdata_company_id": 16675471
+   },
+   {
+    "basic_info": {
+     "name": "Svatantra Microfin Limited",
+     "primary_domain": "svatantramicrofin.com"
+    },
+    "crustdata_company_id": 13863
+   },
+   {
+    "basic_info": {
+     "name": "PUNJAB & SIND BANK",
+     "primary_domain": "aviatorindiaofficial.com"
+    },
+    "crustdata_company_id": 6405743
+   },
+   {
+    "basic_info": {
+     "name": "DHFL",
+     "primary_domain": "piramalfinance.com"
+    },
+    "crustdata_company_id": 6097699
+   },
+   {
+    "basic_info": {
+     "name": "Ocwen Financial Solutions Pvt. Ltd. - APAC",
+     "primary_domain": "onitygroup.com"
+    },
+    "crustdata_company_id": 1248959
+   },
+   {
+    "basic_info": {
+     "name": "SBFC Finance Limited",
+     "primary_domain": "sbfc.com"
+    },
+    "crustdata_company_id": 1132568
+   },
+   {
+    "basic_info": {
+     "name": "IIFL Home Loans",
+     "primary_domain": "iiflhomeloans.com"
+    },
+    "crustdata_company_id": 714863
+   },
+   {
+    "basic_info": {
+     "name": "Shubham Housing Development Finance Company",
+     "primary_domain": "shubham.co"
+    },
+    "crustdata_company_id": 6678
+   },
+   {
+    "basic_info": {
+     "name": "RELIGARE HEALTH INSURANCE (RHI)",
+     "primary_domain": "religarehealthinsurance.com"
+    },
+    "crustdata_company_id": 12070
+   },
+   {
+    "basic_info": {
+     "name": "MDIndia Health Insurance TPA Pvt. Ltd.",
+     "primary_domain": "mdindiaonline.com"
+    },
+    "crustdata_company_id": 614069
+   },
+   {
+    "basic_info": {
+     "name": "KOGTA FINANCIAL (INDIA) LIMITED",
+     "primary_domain": "kogta.in"
+    },
+    "crustdata_company_id": 6823
+   },
+   {
+    "basic_info": {
+     "name": "Arohan Financial Services Limited",
+     "primary_domain": "arohan.in"
+    },
+    "crustdata_company_id": 7228
+   },
+   {
+    "basic_info": {
+     "name": "Arena Animation",
+     "primary_domain": "arena-multimedia.com"
+    },
+    "crustdata_company_id": 1287833
+   },
+   {
+    "basic_info": {
+     "name": "Groww",
+     "primary_domain": "groww.in"
+    },
+    "crustdata_company_id": 5894
+   },
+   {
+    "basic_info": {
+     "name": "Digit Insurance",
+     "primary_domain": "godigit.com"
+    },
+    "crustdata_company_id": 7095
+   },
+   {
+    "basic_info": {
+     "name": "Confederation of Indian Industry",
+     "primary_domain": "cii.in"
+    },
+    "crustdata_company_id": 1383066
+   },
+   {
+    "basic_info": {
+     "name": "AGS Transact Technologies Ltd",
+     "primary_domain": "agsindia.com"
+    },
+    "crustdata_company_id": 6771
+   },
+   {
+    "basic_info": {
+     "name": "FSS",
+     "primary_domain": "fsstech.com"
+    },
+    "crustdata_company_id": 1132721
+   },
+   {
+    "basic_info": {
+     "name": "Reliance Capital | Reliance Group",
+     "primary_domain": "reliancecapital.co.in"
+    },
+    "crustdata_company_id": 4019
+   },
+   {
+    "basic_info": {
+     "name": "LIC",
+     "primary_domain": "licindia.in"
+    },
+    "crustdata_company_id": 14207918
+   },
+   {
+    "basic_info": {
+     "name": "NJ Group",
+     "primary_domain": "njinsure.in"
+    },
+    "crustdata_company_id": 6150863
+   },
+   {
+    "basic_info": {
+     "name": "Andhra Pradesh Grameena Vikas Bank (APGVB)",
+     "primary_domain": "apgvb.com"
+    },
+    "crustdata_company_id": 1286890
+   },
+   {
+    "basic_info": {
+     "name": "Royal Sundaram General Insurance Co. Limited",
+     "primary_domain": "royalsundaram.in"
+    },
+    "crustdata_company_id": 7015
+   },
+   {
+    "basic_info": {
+     "name": "United Breweries Ltd.",
+     "primary_domain": "unitedbreweries.com"
+    },
+    "crustdata_company_id": 12274
+   },
+   {
+    "basic_info": {
+     "name": "Airtel Business",
+     "primary_domain": "airtel.in"
+    },
+    "crustdata_company_id": 1131731
+   },
+   {
+    "basic_info": {
+     "name": "Novac Technology Solutions",
+     "primary_domain": "novactech.in"
+    },
+    "crustdata_company_id": 27056
+   },
+   {
+    "basic_info": {
+     "name": "ABC - Aditya Birla Housing Finance Limited",
+     "primary_domain": "adityabirlacapital.com"
+    },
+    "crustdata_company_id": 1132053
+   },
+   {
+    "basic_info": {
+     "name": "EdgeVerve",
+     "primary_domain": "edgeverve.com"
+    },
+    "crustdata_company_id": 9413
+   },
+   {
+    "basic_info": {
+     "name": "Care Insurance",
+     "primary_domain": "careinsurance.com"
+    },
+    "crustdata_company_id": 1132230
+   },
+   {
+    "basic_info": {
+     "name": "Belstar Microfinance Limited",
+     "primary_domain": "belstar.in"
+    },
+    "crustdata_company_id": 1132185
+   },
+   {
+    "basic_info": {
+     "name": "HDFC Mutual Fund",
+     "primary_domain": "hdfcfund.com"
+    },
+    "crustdata_company_id": 9431
+   },
+   {
+    "basic_info": {
+     "name": "Aurionpro",
+     "primary_domain": "aurionpro.com"
+    },
+    "crustdata_company_id": 1044814
+   },
+   {
+    "basic_info": {
+     "name": "Nucleus Software",
+     "primary_domain": "nucleussoftware.com"
+    },
+    "crustdata_company_id": 3416
+   },
+   {
+    "basic_info": {
+     "name": "SMC Group",
+     "primary_domain": "smctradeonline.com"
+    },
+    "crustdata_company_id": 1134400
+   },
+   {
+    "basic_info": {
+     "name": "India Shelter Finance Corporation Ltd",
+     "primary_domain": "indiashelter.in"
+    },
+    "crustdata_company_id": 11753
+   },
+   {
+    "basic_info": {
+     "name": "Ahluwalia Contracts (India) Ltd.",
+     "primary_domain": "acilnet.com"
+    },
+    "crustdata_company_id": 139
+   },
+   {
+    "basic_info": {
+     "name": "Zerodha",
+     "primary_domain": "zerodha.com"
+    },
+    "crustdata_company_id": 7275
+   },
+   {
+    "basic_info": {
+     "name": "Hitachi Payment Services Pvt. Ltd.",
+     "primary_domain": "hitachi-payments.com"
+    },
+    "crustdata_company_id": 7917
+   },
+   {
+    "basic_info": {
+     "name": "Khaitan & Co",
+     "primary_domain": "khaitanco.com"
+    },
+    "crustdata_company_id": 18657
+   },
+   {
+    "basic_info": {
+     "name": "Capital First Limited",
+     "primary_domain": "capitalfirst.com"
+    },
+    "crustdata_company_id": 827
+   },
+   {
+    "basic_info": {
+     "name": "Ing Vysya Bank is now Kotak Mahindra Bank",
+     "primary_domain": "kotak.com"
+    },
+    "crustdata_company_id": 1137847
+   },
+   {
+    "basic_info": {
+     "name": "Technotask Business Solutions Pvt Ltd",
+     "primary_domain": "technotaskglobal.com"
+    },
+    "crustdata_company_id": 1109503
+   },
+   {
+    "basic_info": {
+     "name": "Religare Broking Ltd",
+     "primary_domain": "religareonline.com"
+    },
+    "crustdata_company_id": 1227772
+   },
+   {
+    "basic_info": {
+     "name": "Maveric Systems Limited",
+     "primary_domain": "maveric-systems.com"
+    },
+    "crustdata_company_id": 13460
+   },
+   {
+    "basic_info": {
+     "name": "Janalakshmi Financial Services",
+     "primary_domain": "jana.bank.in"
+    },
+    "crustdata_company_id": 1137211
+   },
+   {
+    "basic_info": {
+     "name": "Fedbank Financial Services Ltd - Fedfina",
+     "primary_domain": "fedfina.com"
+    },
+    "crustdata_company_id": 23045
+   },
+   {
+    "basic_info": {
+     "name": "Dhani",
+     "primary_domain": "dhani.com"
+    },
+    "crustdata_company_id": 621828
+   },
+   {
+    "basic_info": {
+     "name": "Muthoot Capital Services Ltd - India",
+     "primary_domain": "muthootcap.com"
+    },
+    "crustdata_company_id": 16536
+   },
+   {
+    "basic_info": {
+     "name": "TUV India Pvt. Ltd.",
+     "primary_domain": "tuv-nord.com"
+    },
+    "crustdata_company_id": 6570445
+   },
+   {
+    "basic_info": {
+     "name": "Indiabulls Consumer Finance Limited",
+     "primary_domain": "indiabullsconsumerfinance.com"
+    },
+    "crustdata_company_id": 19537
+   },
+   {
+    "basic_info": {
+     "name": "Vastu Housing Finance Corporation Ltd.",
+     "primary_domain": "vastuhfc.com"
+    },
+    "crustdata_company_id": 11978
+   },
+   {
+    "basic_info": {
+     "name": "Fusion Finance Ltd",
+     "primary_domain": "fusionfin.com"
+    },
+    "crustdata_company_id": 1933320
+   },
+   {
+    "basic_info": {
+     "name": "Turtlemint",
+     "primary_domain": "turtlemintinsurance.com"
+    },
+    "crustdata_company_id": 5912
+   },
+   {
+    "basic_info": {
+     "name": "India Post Payments Bank",
+     "primary_domain": "ippbonline.bank.in"
+    },
+    "crustdata_company_id": 1287469
+   },
+   {
+    "basic_info": {
+     "name": "State Street HCL Services Pvt Ltd",
+     "primary_domain": "statestreet.com"
+    },
+    "crustdata_company_id": 1217563
+   },
+   {
+    "basic_info": {
+     "name": "CarDekho Group",
+     "primary_domain": "cardekho.com"
+    },
+    "crustdata_company_id": 5873
+   },
+   {
+    "basic_info": {
+     "name": "NetAmbit",
+     "primary_domain": "netambit.com"
+    },
+    "crustdata_company_id": 7031
+   },
+   {
+    "basic_info": {
+     "name": "Grihum Housing Finance",
+     "primary_domain": "grihumhousing.com"
+    },
+    "crustdata_company_id": 1132326
+   },
+   {
+    "basic_info": {
+     "name": "National Payments Corporation Of India (NPCI)",
+     "primary_domain": "npci.org.in"
+    },
+    "crustdata_company_id": 1034629
+   },
+   {
+    "basic_info": {
+     "name": "Godrej Capital",
+     "primary_domain": "godrejcapital.com"
+    },
+    "crustdata_company_id": 1132380
+   },
+   {
+    "basic_info": {
+     "name": "Income Tax Department Of India",
+     "primary_domain": "onlinecareer360.com"
+    },
+    "crustdata_company_id": 1938033
+   },
+   {
+    "basic_info": {
+     "name": "LIC OF INDIA",
+     "primary_domain": "licindia.in"
+    },
+    "crustdata_company_id": 21216742
+   },
+   {
+    "basic_info": {
+     "name": "Home First Finance Company (HFFC)",
+     "primary_domain": "homefirstindia.com"
+    },
+    "crustdata_company_id": 10941
+   },
+   {
+    "basic_info": {
+     "name": "Veritas Finance Limited",
+     "primary_domain": "veritasfin.in"
+    },
+    "crustdata_company_id": 5905
+   },
+   {
+    "basic_info": {
+     "name": "Neeyamo",
+     "primary_domain": "neeyamo.com"
+    },
+    "crustdata_company_id": 9653
+   },
+   {
+    "basic_info": {
+     "name": "InsuranceDekho",
+     "primary_domain": "insurancedekho.com"
+    },
+    "crustdata_company_id": 609323
+   },
+   {
+    "basic_info": {
+     "name": "slice",
+     "primary_domain": "slice.bank.in"
+    },
+    "crustdata_company_id": 7554
+   },
+   {
+    "basic_info": {
+     "name": "InCred Financial Services",
+     "primary_domain": "incred.com"
+    },
+    "crustdata_company_id": 1313462
+   },
+   {
+    "basic_info": {
+     "name": "Mswipe Technologies Pvt. Ltd.",
+     "primary_domain": "mswipe.com"
+    },
+    "crustdata_company_id": 5903
+   },
+   {
+    "basic_info": {
+     "name": "Kissht",
+     "primary_domain": "kissht.com"
+    },
+    "crustdata_company_id": 5852
+   },
+   {
+    "basic_info": {
+     "name": "Nuvama Wealth",
+     "primary_domain": "nuvamawealth.com"
+    },
+    "crustdata_company_id": 1041738
+   },
+   {
+    "basic_info": {
+     "name": "CreditAccess Grameen Limited",
+     "primary_domain": "creditaccessgrameen.in"
+    },
+    "crustdata_company_id": 1065
+   },
+   {
+    "basic_info": {
+     "name": "Punjab National Bank (PNB)",
+     "primary_domain": "pnb.bank.in"
+    },
+    "crustdata_company_id": 6374495
+   },
+   {
+    "basic_info": {
+     "name": "ManipalCigna Health Insurance Company Ltd.",
+     "primary_domain": "manipalcigna.com"
+    },
+    "crustdata_company_id": 1135116
+   },
+   {
+    "basic_info": {
+     "name": "Ebix India",
+     "primary_domain": "ebix.com"
+    },
+    "crustdata_company_id": 6424
+   },
+   {
+    "basic_info": {
+     "name": "XL Dynamics India Pvt. Ltd.",
+     "primary_domain": "xldynamics.com"
+    },
+    "crustdata_company_id": 1132080
+   },
+   {
+    "basic_info": {
+     "name": "AXA Global Business Services (AXA GBS)",
+     "primary_domain": "axagbs.com"
+    },
+    "crustdata_company_id": 1510820
+   },
+   {
+    "basic_info": {
+     "name": "UGRO Capital",
+     "primary_domain": "ugrocapital.com"
+    },
+    "crustdata_company_id": 686499
+   },
+   {
+    "basic_info": {
+     "name": "Nippon India Mutual Fund",
+     "primary_domain": "nipponindiaim.com"
+    },
+    "crustdata_company_id": 653854
+   },
+   {
+    "basic_info": {
+     "name": "Aviva India",
+     "primary_domain": "avivaindia.com"
+    },
+    "crustdata_company_id": 1287582
+   },
+   {
+    "basic_info": {
+     "name": "Vistaar Financial Services Pvt Ltd",
+     "primary_domain": "vistaarfinance.com"
+    },
+    "crustdata_company_id": 13626
+   }
+  ],
+  "next_cursor": "H4sIAAAAAAAA_xTJMarDMAwA0KsYzR4s6VtScpVPCUpsk6HUNHGGUnr30vm94XnV47Xsfu4wBxBiE5sa-oTFNRdJG3szxoakQibY-E8zqlWunNZWqnq2hCKp6goxwNmPAXP4J2aJAVlIbjHA6MPvy9avx0-NlOzzDQAA___bpiMHfwAAAA==",
+  "total_count": 82728
+ },
+ "endpoint": "company_search",
+ "headers": {
+  "content-type": "application/json",
+  "x-credits-used": "39"
+ },
+ "request_body": {
+  "fields": [
+   "crustdata_company_id",
+   "basic_info.name",
+   "basic_info.primary_domain"
+  ],
+  "filters": {
+   "conditions": [
+    {
+     "field": "locations.country",
+     "type": "in",
+     "value": [
+      "IND"
+     ]
+    },
+    {
+     "conditions": [
+      {
+       "field": "taxonomy.categories",
+       "type": "in",
+       "value": [
+        "Finance",
+        "FinTech",
+        "Personal Finance",
+        "Decentralized Finance (DeFi)",
+        "Payments",
+        "Mobile Payments",
+        "Lending",
+        "Commercial Lending",
+        "Banking & Lending",
+        "Consumer Lending",
+        "Micro Lending",
+        "InsurTech",
+        "Wealth Management",
+        "Banking"
+       ]
+      },
+      {
+       "field": "taxonomy.professional_network_industry",
+       "type": "in",
+       "value": [
+        "Financial Services"
+       ]
+      }
+     ],
+     "op": "or"
+    }
+   ],
+   "op": "and"
+  },
+  "limit": 300,
+  "sorts": [
+   {
+    "field": "headcount.total",
+    "order": "desc"
+   }
+  ]
+ },
+ "status": 200,
+ "url": "https://api.crustdata.com/company/search"
+}

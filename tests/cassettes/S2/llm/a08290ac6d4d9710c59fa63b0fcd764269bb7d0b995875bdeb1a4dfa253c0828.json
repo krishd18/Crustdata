@@ -1,0 +1,8 @@
+{
+ "cache_read_tokens": 0,
+ "model": "claude-sonnet-5",
+ "output_json": "{\"label\":\"fintech\",\"confidence\":\"high\",\"passage\":\"offer a single platform to streamline all investment and purchase decisions, automate repetitive tasks and simplify payments. From corporate cards with smart controls to accounts payable and AI native treasury (KodoNorth)\",\"source\":\"crustdata.company_enrich.basic_info.description\"}",
+ "request_id": "req_011ChHxmiAzpcobLZnSyj4va",
+ "tokens_in": 1179,
+ "tokens_out": 113
+}

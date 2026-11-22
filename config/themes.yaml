@@ -1,0 +1,24 @@
+# Hiring themes for Inference Strength (STANDARDS §2.4). Title or quote-locked description must match.
+version: TH-2026.11.22-1
+fintech:
+  credit_on_upi:      {label: "credit lines on UPI", keywords: ["credit on upi", "upi credit", "credit line", "rupay credit"]}
+  lending:            {label: "lending / credit products", keywords: ["lending", "loan", "underwriting", "credit risk", "collections", "bnpl"]}
+  cards:              {label: "card issuing / co-branded cards", keywords: ["card issuing", "issuer processing", "credit card", "prepaid card", "co-brand"]}
+  payments_infra:     {label: "payments infrastructure", keywords: ["payment gateway", "upi", "acquiring", "settlement", "reconciliation", "pos"]}
+  wealth:             {label: "wealth / brokerage", keywords: ["brokerage", "trading platform", "mutual fund", "wealth", "portfolio", "demat"]}
+  insurtech:          {label: "insurance products", keywords: ["insurance", "claims platform", "policy admin", "insurtech"]}
+  cross_border:       {label: "cross-border payments", keywords: ["cross-border", "remittance", "fx", "forex", "international payments"]}
+  regtech_risk:       {label: "fraud / risk / compliance tooling", keywords: ["fraud", "aml", "kyc", "risk engine", "compliance"]}
+  ai_ml:              {label: "AI/ML-driven products", keywords: ["machine learning", "ml engineer", "llm", "genai", "data scientist"]}
+logistics:
+  wms:                {label: "warehouse management software", keywords: ["wms", "warehouse management"]}
+  tms_routing:        {label: "transport management / route optimisation", keywords: ["tms", "route optimisation", "routing", "fleet management"]}
+  telematics_iot:     {label: "telematics / IoT", keywords: ["telematics", "iot", "gps", "sensor"]}
+  cold_chain:         {label: "cold-chain operations", keywords: ["cold chain", "reefer", "temperature-controlled"]}
+generic_titles_excluded: ["software engineer", "sde", "developer", "backend engineer", "frontend engineer", "full stack engineer"]
+# Description matches count only inside role text (not the company blurb or the benefits list) — STANDARDS §2.4.
+description_rules:
+  skip_first_chars: 0
+  context_window: 120
+  require_any: ["you will", "you'll", "build", "develop", "design", "own ", "work on", "responsib", "architect", "implement", "scale"]
+  exclude_any: ["medical", "health insurance", "benefit", "perks", "salary", "leave", "about us", "we are", "founded in", "our products", "our offerings", "offerings include"]

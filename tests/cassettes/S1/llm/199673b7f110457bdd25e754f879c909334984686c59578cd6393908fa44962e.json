@@ -1,0 +1,8 @@
+{
+ "cache_read_tokens": 0,
+ "model": "claude-sonnet-5",
+ "output_json": "{\"label\":\"b2b\",\"confidence\":\"medium\",\"passage\":\"Identify, Assess & Mitigate your risks and bridge the compliance gaps.\",\"source\":\"crustdata.company_enrich.basic_info.description\"}",
+ "request_id": "req_011ChHxJSxDBD1XJ2d7z43yr",
+ "tokens_in": 787,
+ "tokens_out": 73
+}

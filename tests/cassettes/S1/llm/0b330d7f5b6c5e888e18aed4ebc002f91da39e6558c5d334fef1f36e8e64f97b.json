@@ -1,0 +1,8 @@
+{
+ "cache_read_tokens": 0,
+ "model": "claude-sonnet-5",
+ "output_json": "{\"label\":\"b2b\",\"confidence\":\"high\",\"passage\":\"Digitechzo is a full-service technology partner specializing in web, mobile app, and custom software development, as well as AI solutions, blockchain development, and digital marketing. We help startups, businesses, and enterprises scale with smart, scalable, and secure digital solutions tailored to real-world goals.\",\"source\":\"crustdata.company_enrich.basic_info.description\"}",
+ "request_id": "req_011ChHxHufmsXN5ZtEhJPKv2",
+ "tokens_in": 1280,
+ "tokens_out": 140
+}

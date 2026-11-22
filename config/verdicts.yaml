@@ -1,0 +1,38 @@
+version: V-2026.11.22-3
+classes:
+  VERIFIED:           {badge: "✅", credit: [1.0, 1.0], codes: [V1, V2, V3, V4, V5]}
+  PARTIALLY_VERIFIED: {badge: "🟢", credit: [0.75, 0.75], codes: [P1, P2, P3, P4, P5]}
+  UNVERIFIED:         {badge: "🟡", credit: [0.5, 0.5], codes: [U1, U2, U3]}
+  OUTDATED:           {badge: "⏳", credit: [0.5, 0.5], codes: [O1, O2]}
+  NOT_VERIFIABLE:     {badge: "⚪", credit: [0.0, 1.0], codes: [N1, N2, N3, N4, N5, N6, N7]}
+  FALSE:              {badge: "❌", credit: [0.0, 0.0], codes: [F1, F2, F3, F4], noncritical_penalty_points: 1}
+  NOT_CHECKED:        {badge: "⚫", credit: null, codes: [X1, X2, X3]}
+procedure: [not_checked, entity_unresolved, sources_conflict, contradicted, verified, partially_verified, outdated, unverified, not_verifiable]
+safety:
+  false_requires: [entity_resolved_ge_0_85, quote_locked_contradiction, higher_authority_source]
+  false_never_from: [T2_counts, single_media_report, absence_from_list]
+no_public_source_types: [arr, contract_renewal, iot_inventory, order_book]   # private-company facts with no public record → N1, not U2
+tolerances: {money_pct: 2.0, count_pct: 5.0, since_year: 1, name_normalisation: true}
+freshness_days: {registry: 90, financial_statements_after_fy_end: 548, crustdata: 60, media_event: 730, media_adverse: 1825, market_report: 730}
+rules:   # R-01…R-21 (ARCHITECTURE §11); implemented in datadesigner/agents/a07_verdict.py
+  - {id: R-01, when: t1_field_matches,                 cls: VERIFIED,           code: V1}
+  - {id: R-02, when: t1_field_contradicts,             cls: FALSE,              code: F1}
+  - {id: R-03, when: t1_lower_bound_ge_claim,          cls: VERIFIED,           code: V4}
+  - {id: R-04, when: t2_lower_bound_ge_claim,          cls: PARTIALLY_VERIFIED, code: P1}
+  - {id: R-05, when: lower_bound_below_claim,          cls: UNVERIFIED,         code: U3}
+  - {id: R-06, when: within_estimate_band,             cls: PARTIALLY_VERIFIED, code: P2}
+  - {id: R-07, when: compound_partly_verified,         cls: PARTIALLY_VERIFIED, code: P3}
+  - {id: R-08, when: since_year_earliest_evidence_ok,  cls: VERIFIED,           code: V3}
+  - {id: R-09, when: matches_filed_financials,         cls: VERIFIED,           code: V2}
+  - {id: R-10, when: own_higher_authority_contradicts, cls: FALSE,              code: F2}
+  - {id: R-11, when: past_freshness_or_superseded,     cls: OUTDATED,           code: [O1, O2]}
+  - {id: R-12, when: only_t3_t4_support,               cls: UNVERIFIED,         code: [U1, U2]}
+  - {id: R-13, when: independent_sources_conflict,     cls: NOT_VERIFIABLE,     code: N3}
+  - {id: R-14, when: nothing_settles,                  cls: NOT_VERIFIABLE,     code: [N1, N2, N4, N5, N6]}
+  - {id: R-15, when: projection_opinion_out_of_scope,  cls: NOT_CHECKED,        code: [X1, X2, X3]}
+  - {id: R-16, when: premise_contradicted_or_unknown,  cls: [FALSE, NOT_VERIFIABLE], code: [F3, N7]}
+  - {id: R-17, when: reliable_media_own_reporting,     cls: VERIFIED,           code: V5}
+  - {id: R-18, when: reliable_media_company_sourced,   cls: PARTIALLY_VERIFIED, code: P4}
+  - {id: R-19, when: consistent_with_own_profile,      cls: PARTIALLY_VERIFIED, code: P5}
+  - {id: R-20, when: reliable_media_contradicts_x2,    cls: FALSE,              code: F4}
+  - {id: R-21, when: press_release_or_sponsored,       cls: UNVERIFIED,         code: U2}

@@ -1,0 +1,9 @@
+# Output schema (memo JSON). Adapt `organiser_output_map` to the kickoff-kit output format at first run (Phase 1A).
+version: SC-2026.11.22-1
+memo_common: [memo_id, type, status, as_of, config_version, rubric_version, rubric_sha256, cost, sources]
+research_memo: [answer, status, confidence, interpretation_card, rows, inferences, near_misses, premise_checks, r3, method, caveats]
+market_im: [suggestion, interpretation_card, market_view, funnel, shortlist, excluded_on_estimates]
+company_im: [suggestion, gates, scorecard, requirements, leadership, regions, financials, claims, people, technology, risks, next_steps, decision]
+row_attribute: {value: any, class: str, code: str, evidence_ids: list, missing: str|null}
+organiser_output_map: {}   # fill from docs/KICKOFF_NOTES.md (e.g. {"result": "answer", "items": "rows"})
+extra_fields: []            # requirement-change hook: add fields here (live fix)

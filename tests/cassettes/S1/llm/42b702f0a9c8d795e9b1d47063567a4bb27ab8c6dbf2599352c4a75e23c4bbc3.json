@@ -1,0 +1,8 @@
+{
+ "cache_read_tokens": 0,
+ "model": "claude-sonnet-5",
+ "output_json": "{\"label\":\"ambiguous\",\"confidence\":\"low\",\"passage\":\"Innovation Hacks is an AI-powered innovation ecosystem focused on hackathons, internships, student builders, developer communities, and real-world problem solving.\",\"source\":\"crustdata.company_enrich.basic_info.description\"}",
+ "request_id": "req_011ChHxJBy4EyRy28B76aU5f",
+ "tokens_in": 885,
+ "tokens_out": 98
+}

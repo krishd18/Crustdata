@@ -1,0 +1,8 @@
+{
+ "cache_read_tokens": 0,
+ "model": "claude-sonnet-5",
+ "output_json": "{\"label\":\"not_fintech\",\"confidence\":\"medium\",\"passage\":\"Schwab India, located in Hyderabad, provides solutions that fuel Charles Schwab\u2019s growth, bringing together talented people and technology to drive innovation, scale, and efficiency.\",\"source\":\"crustdata\"}",
+ "request_id": "req_011ChHxn3phJWbuQJKdbWTqo",
+ "tokens_in": 986,
+ "tokens_out": 96
+}

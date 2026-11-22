@@ -1,0 +1,33 @@
+{
+ "body": {
+  "suggestions": [
+   {
+    "value": "Lending"
+   },
+   {
+    "value": "Commercial Lending"
+   },
+   {
+    "value": "Banking & Lending"
+   },
+   {
+    "value": "Consumer Lending"
+   },
+   {
+    "value": "Micro Lending"
+   }
+  ]
+ },
+ "endpoint": "company_autocomplete",
+ "headers": {
+  "content-type": "application/json",
+  "x-credits-used": "0"
+ },
+ "request_body": {
+  "field": "taxonomy.categories",
+  "limit": 50,
+  "query": "lend"
+ },
+ "status": 200,
+ "url": "https://api.crustdata.com/company/search/autocomplete"
+}

@@ -1,0 +1,23 @@
+# Constraint catalogue (ARCHITECTURE §5.1) — field mappings, tiers and evaluation rules.
+version: MA-2026.11.22-2
+evaluation: {pass: evidence_satisfies, fail: T1_or_T3_breaks, likely_fail: only_T2_estimate_breaks, unknown: no_evidence_or_straddles}
+constraints:
+  industry:        {sources: [{tier: T1, field: cin.nic}, {tier: T2, field: taxonomy.professional_network_industry}]}
+  location:        {basis: [operates, primary_ops, hq], operates_rule: "gst_state_code OR >=2 of [site_address, staff_ge_10, openings_ge_3_90d]",
+                    sources: [{tier: T1, field: gst_by_pan.state_codes}, {tier: T1, field: mca.registered_office}, {tier: T2, field: locations.all_office_addresses}]}
+  revenue_inr_cr:  {sources: [{tier: T1, field: aoc4.revenue}, {tier: T3, field: provided_fs.revenue}, {tier: T2, field: revenue.estimated, fx: config_dated}]}
+  arr_inr_cr:      {sources: [{tier: T3, field: arr_schedule}, {tier: T4, field: deck}], note: "no public source for private firms → unknown at Step 1"}
+  ebitda_margin:   {sources: [{tier: T1, field: aoc4}, {tier: T3, field: provided_fs}]}
+  headcount:       {sources: [{tier: T1, field: epfo.members, lower_bound: true}, {tier: T2, field: headcount.total, lower_bound: true}]}
+  headcount_growth: {sources: [{tier: T2, field: headcount.growth_percent}]}
+  tech_stack:      {sources: [{tier: T2, field: technographics}, {tier: T2, field: job_search.description}, {tier: T4, field: website}]}
+  years_operating: {sources: [{tier: T1, field: mca.incorporation_date}, {tier: T2, field: basic_info.year_founded}]}
+  funding_ownership: {sources: [{tier: T1, field: cin.type}, {tier: T2, field: funding}]}
+bundles:
+  AQ:
+    AQ-01: {desc: private limited or LLP, role: hard, field: cin.type|llpin}
+    AQ-02: {desc: not acquired and not a subsidiary, role: hard, fields: [revenue.acquisition_status, mgt7.holding]}
+    AQ-03: {desc: active and not insolvent, role: hard, fields: [mca.status, ibbi]}
+    AQ-04: {desc: revenue within buyer capacity, role: soft, weight: 3, default: "<= 0.5 * client_revenue"}
+    AQ-05: {desc: founder-led, role: soft, weight: 2, fields: [mca.directors, people.founders]}
+    AQ-06: {desc: no institutional round in 24 months, role: soft, weight: 1, field: funding.last_fundraise_date}

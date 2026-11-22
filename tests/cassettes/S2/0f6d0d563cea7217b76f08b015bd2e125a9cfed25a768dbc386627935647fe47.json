@@ -1,0 +1,27 @@
+{
+ "body": {
+  "suggestions": [
+   {
+    "value": "Banking"
+   },
+   {
+    "value": "Banking & Lending"
+   },
+   {
+    "value": "Banks & Building Society"
+   }
+  ]
+ },
+ "endpoint": "company_autocomplete",
+ "headers": {
+  "content-type": "application/json",
+  "x-credits-used": "0"
+ },
+ "request_body": {
+  "field": "taxonomy.categories",
+  "limit": 50,
+  "query": "bank"
+ },
+ "status": 200,
+ "url": "https://api.crustdata.com/company/search/autocomplete"
+}

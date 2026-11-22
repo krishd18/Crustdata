@@ -1,0 +1,16 @@
+# Unsettled claim → document to request (ordered by points it could add, STANDARDS §6.5)
+version: AS-2026.11.22-1
+asks:
+  headcount: "EPFO ECR/challans for the last 3 months"
+  warehouses: "Lease deeds + GST additional places of business"
+  fleet: "Vehicle RC copies (sampled on VAHAN) + e-way-bill summary by origin state"
+  revenue: "Audited financial statements + GSTR-3B summary"
+  arr: "Contract schedule / invoicing extract supporting ARR"
+  customers: "Customer reference contact or contract extract"
+  contract_renewal: "Signed renewal / contract extract"
+  funding: "Share allotment (PAS-3) and MGT-7"
+  litigation: "Litigation declaration"
+  gst_registrations: "Written reconciliation of GST registrations by state"
+  tech_integrations: "Integration listings, API docs access, or device/vendor invoices"
+  leadership_gap: "Plan or candidate for the missing leadership role"
+  receivables: "Receivables ageing schedule > 90 days"

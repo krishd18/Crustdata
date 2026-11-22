@@ -1,0 +1,267 @@
+%%{init: {"theme": "base", "flowchart": {"curve": "basis", "nodeSpacing": 28, "rankSpacing": 38, "wrappingWidth": 280}, "themeVariables": {"fontSize": "15px", "primaryColor": "#ffffff", "primaryBorderColor": "#5b6573", "primaryTextColor": "#1f2733", "lineColor": "#5b6573", "clusterBkg": "#fafbfc", "clusterBorder": "#c9d1db"}}}%%
+%% Data Designer — end-to-end system flowchart (v6) · standards in STANDARDS.md · agents in AGENTS.md
+%% Render: GitHub ```mermaid block, mermaid.live, or `mmdc -i architecture.mmd -o architecture.svg`
+%% Legend: purple = LLM step · green = deterministic rule/code · orange = person in the loop · blue = store · grey = live source · red = stop/negative
+flowchart TB
+
+  %% ───────────── Inputs ─────────────
+  subgraph S0["Inputs"]
+    direction LR
+    I3["Query or mandate form<br/>e.g. acquirable logistic companies in maharashtra<br/>industry · location · revenue · ARR · tech · headcount · growth"]
+    I1["Named company (optional)<br/>vendor · banker intro"]
+    I2["Counterparty pack (optional)<br/>vendor: arrives with the request"]
+  end
+
+  %% ───────────── STEP 1 · Scout and finalise ─────────────
+  subgraph S1["STEP 1 · Scout and finalise · always first"]
+    M1["M1 · A1 Query Reasoner · Claude (Sonnet) + term library<br/>word → intent → parameters → metrics → thresholds<br/>acquirable = can be bought AQ-01..06 + worth buying:<br/>strong ratios · sound tech · fit team · clean governance"]
+    CONF{"You confirm the reasoning card<br/>windows · proxies · guards · location basis"}
+    FAM{"Request family?"}
+    MODE{"Company named?"}
+    FIT["Fit-check mode<br/>resolve the named company"]
+    FS["Discovery mode<br/>fan out 7 input streams"]
+    SA["A · Company search<br/>HQ in state + compiled filters"]
+    SB["B · Reliable news<br/>allow-listed outlets only<br/>press releases set aside"]
+    SC["C · Job search<br/>openings in the state's cities"]
+    SG2["G · People in state<br/>geo radius around state cities<br/>grouped by employer"]
+    SD["D · MCA new registrations"]
+    SE["E · Discovery watcher"]
+    SF["F · Client lists"]
+    DD["Merge · dedup by id, domain, CIN · lookalike guard"]
+    EN["Enrich within budget, via source gateway<br/>headcount · people · funding · hiring · revenue band<br/>competitors · news · traffic · technographics"]
+    CG{"Constraint gate<br/>hard constraints · location basis<br/>AQ bundle · GST state code check"}
+    EXC["Excluded list<br/>fail on T1 or T3 · reason + source"]
+    EXE["Excluded on estimates<br/>T2 band only · one click to restore"]
+    SG["Signals: employee mix · leadership · growth · competition<br/>market size · PMF · regions of operation · tech · risk flags"]
+    R1["R1 · Scouting rubric · fixed and versioned<br/>S1-S9 incl. leadership, regional fit, quality<br/>floor-ceiling + coverage · requirement caps"]
+    LBL["Label by fixed rule<br/>Recommend · Consider · Not recommended"]
+    SL["Shortlist · scorecard shown before the label"]
+    MIM[["Market IM<br/>market view · funnel · shortlist · why each"]]
+
+    M1 --> CONF --> FAM
+    FAM -->|ACQUIRE| MODE
+    MODE -->|no · discovery| FS
+    MODE -->|yes · fit-check| FIT
+    FS --> SA & SB & SC & SD & SE & SF & SG2
+    SA & SB & SC & SD & SE & SF & SG2 --> DD
+    DD --> EN
+    FIT --> EN
+    EN --> CG
+    CG -->|fail| EXC
+    CG -->|likely fail| EXE
+    CG -->|pass or unknown| SG --> R1 --> LBL --> SL --> MIM
+  end
+
+  I3 --> M1
+  I1 --> M1
+  I2 --> M1
+
+  PK{"Person finalises?"}
+  ARC(["Not pursued · archived with reason"])
+  MIM --> PK
+  PK -->|no| ARC
+
+  %% ───────────── STEP 3 · Check (verification core) ─────────────
+  subgraph S3["STEP 3 · Check · verification core"]
+    M3{"M3 · Entity resolved?<br/>match score ≥ 0.85"}
+    PA{"Counterparty pack on hand?"}
+    M4["M4 · Deck intake + claim extraction · Claude (Sonnet)<br/>slide-by-slide claims · bios · tech claims<br/>exact page spans"]
+    M5["M5 · Evidence planner · critical claims first"]
+    BG{"Budget and deadline left?"}
+
+    subgraph GW["Source gateway"]
+      G1["Per-endpoint rate limiter<br/>Crustdata 30 / 15 / 10 RPM"]
+      G2["Retry · exponential backoff · jitter<br/>honour Retry-After, X-RateLimit-Reset"]
+      G3["Circuit breaker + fallback chain"]
+      G4["NOT VERIFIABLE · source unavailable"]
+      L2[("Evidence cache · TTL")]
+      L3[("Cost ledger<br/>X-Credits-Used + Claude tokens · ₹ per run")]
+      G1 --> G2 --> G3
+      G2 -.-> L2
+      G2 -.-> L3
+    end
+
+    subgraph EXT["Live sources"]
+      direction LR
+      X1["Crustdata<br/>company identify, enrich, search<br/>person search, enrich · job search<br/>web search, fetch · watchers"]
+      X2["T1 registries<br/>MCA · GST by PAN · EPFO · VAHAN · BSE / NSE"]
+      X3["Screening lists<br/>OpenSanctions · SEBI · IBBI"]
+      X4["Reliable media · T1-M<br/>allow-list · own-reporting test<br/>web · Wayback"]
+      X5["Operator-uploaded extracts<br/>captcha-gated pages"]
+    end
+
+    M6{"M6 · Quote lock<br/>passage or field present verbatim?"}
+    DROP["Drop passage · log it"]
+    L1[("Evidence ledger<br/>passage · field · record date · sha256 · tier")]
+    M7["M7 · Verdict engine · rules R-01..R-21 · 7 classes<br/>VERIFIED · PARTIALLY VERIFIED · UNVERIFIED · OUTDATED<br/>NOT VERIFIABLE · FALSE · NOT CHECKED · each with reason code"]
+
+    M3 -->|yes| PA
+    PA -->|yes · vendor pack, or target pack received| M4
+    M4 --> M5 --> BG
+    BG -->|yes| G1
+    G3 --> X1 & X2 & X3 & X4 & X5
+    X1 & X2 & X3 & X4 & X5 --> M6
+    M6 -->|yes| L1 --> M7
+    M6 -->|no| DROP --> M7
+    G3 -->|all sources fail| G4 --> M7
+    BG -->|no · NOT VERIFIABLE, budget| M7
+  end
+
+  PK -->|yes · finalised| M3
+  FAM -->|VENDOR or DECK check| M3
+
+
+  %% ───────────── RESEARCH path (FIND_LIST / RESEARCH_QA) ─────────────
+  subgraph SR["RESEARCH · list and question answers · M15 / A11"]
+    RS1["Research plan<br/>criteria · attributes · windows · premises"]
+    RS2["Search streams<br/>company search · job search group-by · people"]
+    RS3["Per-row checks via M5-M7<br/>every criterion and attribute classed<br/>B2B / fintech classifiers with quoted passages"]
+    RS4["Rank · dedup postings · never pad<br/>near-misses with binding criterion"]
+    RS5["Inference Strength<br/>theme n · share · corroboration<br/>STRONG / MODERATE / WEAK"]
+    RS6{"R3 answer rubric<br/>COMPLETE · PARTIAL · CANNOT ANSWER"}
+    RM[["Research Memo<br/>answer box · table · inferences · sources · cost"]]
+    RS1 --> RS2 --> RS3 --> RS4 --> RS5 --> RS6 --> RM
+  end
+  FAM -->|FIND_LIST or RESEARCH_QA| RS1
+  RS2 -.->|via source gateway| G1
+  RM --> CON
+
+  %% ───────────── STEP 2 · Screen and reach out ─────────────
+  subgraph S2["STEP 2 · Screen and reach out · target with no pack yet"]
+    SCR["Public-data screen<br/>signals · light people check · red flags"]
+    OUT["Outreach: intro and teaser request<br/>run waits in AWAITING_PACK"]
+    SCR --> OUT
+  end
+
+  PA -->|no · target| SCR
+
+  %% ───────────── Analysis ─────────────
+  subgraph S4["STEP 3 · Analysis"]
+    M8["M8 · Financial statement verification<br/>integrity · registry cross-checks · red flags · FSV-01..25"]
+    M9["M9 · Financial research engine<br/>standard ratios · Altman Z'' · Beneish M · Piotroski F<br/>pillar bands · A-E grade · drill-down"]
+    M10["M10 · People check + leadership fit<br/>identity · bios fact-checked · directorships · sanctions<br/>LF-01..07: roles · domain · scale · track record · stability<br/>strategy fit → FIT / WITH GAPS / WEAK / NOT FIT"]
+    NS{"Same person?<br/>namesake clearing"}
+    M8 --> M9
+    M10 --> NS
+  end
+
+  M7 --> M8
+  M7 --> M10
+
+  %% ───────────── STEP 4 · Decide ─────────────
+  subgraph S5["STEP 4 · Decide · M11"]
+    GT{"Gates G1-G8<br/>first that fires wins<br/>G8 false leadership credential → Hold"}
+    R2["R2 · Decision rubric · fixed and versioned<br/>C1-C11 · incl. leadership fit, regional fit, tech<br/>0-4 bands · weights by profile"]
+    SCO["Floor and ceiling score + coverage"]
+    RULE{"Fixed threshold rule<br/>ceiling below 50 → PASS or REJECT<br/>floor ≥ 75 → PURSUE or CLEAR<br/>floor ≥ 50 → with conditions<br/>otherwise → HOLD<br/>then unmet query requirement → cap"}
+    CL["PURSUE / CLEAR"]
+    CC["PURSUE / CLEAR<br/>WITH CONDITIONS"]
+    HO["HOLD · more evidence needed"]
+    RJ["PASS / REJECT · suggestion only"]
+    ASK["Ask-them-for-this list<br/>ordered by points each ask could add"]
+    EXP["Explanation · fixed template<br/>gates · scorecard · rule applied<br/>drivers · what would change it"]
+    RPT[["Company IM<br/>suggestion box · scorecard · market · financials<br/>claims by class · people · risks · sources · cost"]]
+    GT -->|all pass| R2 --> SCO --> RULE
+    GT -->|Hold gate| HO
+    GT -->|Reject gate| RJ
+    RULE --> CL & CC & HO & RJ
+    CC --> ASK
+    HO --> ASK
+    CL & CC & HO & RJ --> EXP
+    ASK --> EXP
+    EXP --> RPT
+  end
+
+  M9 --> GT
+  NS -->|resolved| GT
+  NS -->|undetermined| HO
+  M3 -->|unsure 0.60-0.85| HO
+
+  %% ───────────── Mail drafting ─────────────
+  subgraph S7A["M13a · Mail drafting"]
+    DR["Drafter · templates bound to verified facts<br/>tone polish under fact lock"]
+    PG["Policy guard<br/>business email only · test inbox · caps · opt-out"]
+    DR --> PG
+  end
+
+  RPT --> DR
+  OUT --> DR
+
+  %% ───────────── Person in the loop ─────────────
+  subgraph S6["M12 · Approval console · person in the loop"]
+    CON["Fixed order on screen<br/>1 gates → 2 scorecard → 3 result<br/>4 suggested decision → 5 your decision"]
+    HD{"Your decision<br/>accept, or override + reason"}
+    CON --> HD
+  end
+
+  PG --> CON
+  RPT --> CON
+  HD -->|edit draft| DR
+
+  %% ───────────── STEP 5 · Act ─────────────
+  subgraph S7B["STEP 5 · Act · M13b exactly-once executor"]
+    L4[("Action journal · append-only")]
+    J1["Journal SEND_INTENT<br/>action_id + deterministic Message-ID"]
+    PR["Provider adapter<br/>Gmail SMTP 587 STARTTLS · app password<br/>Mailpit for tests"]
+    RC{"After restart · IMAP:<br/>Message-ID in [Gmail]/Sent Mail?"}
+    J2["Journal SENT · provider id"]
+    TI["TEST_INBOX (MAIL_MODE=test)<br/>or recipient (live)"]
+    J1 --> PR
+    PR -->|sent| J2 --> TI
+    PR -->|killed or timed out| RC
+    RC -->|yes| J2
+    RC -->|no · resend same key| PR
+    J1 -.-> L4
+    J2 -.-> L4
+  end
+
+  HD -->|approve email| J1
+  HD -->|decision or override + reason| L4
+
+  %% ───────────── STEP 6 · Re-check ─────────────
+  INB{"Reply received<br/>run state?"}
+  TI -.->|counterparty replies| INB
+  INB -->|AWAITING_PACK · start CHECK| M4
+
+  subgraph S8["STEP 6 · Re-check · M14"]
+    W0["Scheduled before next meeting"]
+    W1["Crustdata watcher webhook<br/>company or CXO change"]
+    W2["Extra documents after decision"]
+    SN["Snapshot at decision"]
+    RR["Re-run M5-M11 on changed or stale evidence<br/>re-score R2 with the same rubric version"]
+    DF["Diff since last meeting · score movement"]
+    W0 --> SN
+    W1 --> SN
+    W2 --> SN
+    SN --> RR --> DF
+  end
+
+  INB -->|after decision| W2
+  DF --> CON
+
+  %% ───────────── Shared config ─────────────
+  subgraph CFG["Read by every stage"]
+    direction LR
+    CF[/"Config YAML · hot reload · mirrors STANDARDS.md<br/>media allow-list · terms · roles · verdicts · metrics<br/>mandate · rubric · IM templates · limits"/]
+    L5[("Run checkpoints · resume after kill")]
+    LG[/"Structured logs · PII redacted"/]
+  end
+
+  %% ───────────── Styles ─────────────
+  classDef llm fill:#efe9ff,stroke:#6b4fd8,color:#2a1a66
+  classDef rule fill:#e7f6ec,stroke:#2f8f4e,color:#123d20
+  classDef human fill:#fff2dd,stroke:#d4881a,color:#4a2e00
+  classDef ext fill:#eef1f5,stroke:#7a8699,color:#1f2733
+  classDef store fill:#e6f0fb,stroke:#3a73b8,color:#0f2c4d
+  classDef stop fill:#fde8e8,stroke:#c43c3c,color:#5c1111
+  classDef ok fill:#dff5e3,stroke:#2f8f4e,color:#123d20
+
+  class M4,SB,DR llm
+  class M1,CONF,FAM,RS1,RS2,RS3,RS4,RS5,RS6,MODE,FIT,CG,R1,LBL,M3,PA,M6,M7,M8,M9,M10,NS,GT,R2,SCO,RULE,EXP,BG,G1,G2,G3,PG,J1,J2,RC,SCR,OUT,INB rule
+  class I3,PK,CON,HD,HO,CONF human
+  classDef memo fill:#fff8e6,stroke:#b8860b,color:#3d2b00,stroke-width:2px
+  class MIM,RPT,RM memo
+  class X1,X2,X3,X4,X5 ext
+  class L1,L2,L3,L4,L5,CF,LG store
+  class RJ,G4,DROP,EXC,EXE stop
+  class CL,CC ok

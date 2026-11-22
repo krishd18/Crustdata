@@ -1,0 +1,8 @@
+{
+ "cache_read_tokens": 0,
+ "model": "claude-sonnet-5",
+ "output_json": "{\"label\":\"b2b\",\"confidence\":\"high\",\"passage\":\"We specialize in web applications, mobile apps, SaaS platforms, and scalable cloud-based systems...we focus on delivering reliable, secure, and scalable software solutions that help businesses grow faster in the digital world.\",\"source\":\"crustdata.company_enrich.basic_info.description\"}",
+ "request_id": "req_011ChHxHeZvh5Crt46E3jJRJ",
+ "tokens_in": 1002,
+ "tokens_out": 116
+}

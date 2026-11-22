@@ -1,0 +1,8 @@
+{
+ "cache_read_tokens": 0,
+ "model": "claude-sonnet-5",
+ "output_json": "{\"label\":\"b2c\",\"confidence\":\"high\",\"passage\":\"TechPanda Academy is a software training institute in Chennai helping freshers, graduates, career switchers, and working professionals build practical IT skills for career growth.\",\"source\":\"crustdata\"}",
+ "request_id": "req_011ChHxJkhoACyPcrJ3kVmRS",
+ "tokens_in": 1195,
+ "tokens_out": 82
+}

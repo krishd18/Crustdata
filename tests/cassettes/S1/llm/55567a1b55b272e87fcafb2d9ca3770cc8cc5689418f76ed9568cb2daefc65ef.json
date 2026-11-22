@@ -1,0 +1,8 @@
+{
+ "cache_read_tokens": 0,
+ "model": "claude-sonnet-5",
+ "output_json": "{\"label\":\"b2b\",\"confidence\":\"high\",\"passage\":\"PGSN Soft Tech is a product engineering company building enterprise software for the AI era.We're not a services shop. We build our own platforms, own them end to end, and ship them to companies who need real systems rather than another set of disconnected tools.\",\"source\":\"crustdata.company_enrich.basic_info.description\"}",
+ "request_id": "req_011ChHxHofNHE46R9FDW1w3B",
+ "tokens_in": 1212,
+ "tokens_out": 120
+}

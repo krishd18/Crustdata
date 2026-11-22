@@ -1,0 +1,29 @@
+{
+ "body": {
+  "metadata": {
+   "empty_pages": [],
+   "failed_pages": [],
+   "total_results": 0
+  },
+  "query": "site:ptinews.com Razorpay fraud / risk / compliance tooling",
+  "results": [],
+  "success": true,
+  "timestamp": 1795350344443
+ },
+ "endpoint": "web_search",
+ "headers": {
+  "content-type": "application/json",
+  "x-credits-used": "0"
+ },
+ "request_body": {
+  "page": 1,
+  "query": "Razorpay fraud / risk / compliance tooling",
+  "site": "ptinews.com",
+  "sources": [
+   "news"
+  ],
+  "start_date": 1763769600
+ },
+ "status": 200,
+ "url": "https://api.crustdata.com/web/search/live"
+}

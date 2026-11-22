@@ -1,0 +1,8 @@
+{
+ "cache_read_tokens": 0,
+ "model": "claude-sonnet-5",
+ "output_json": "{\"label\":\"fintech\",\"confidence\":\"medium\",\"passage\":\"Vanguard India is a strategic extension of our global mission\u2014bringing together exceptional technologists, data scientists, engineers, and designers to build the platforms and tools that will serve the next generation of investors.\",\"source\":\"crustdata\"}",
+ "request_id": "req_011ChHxjx6MKAuReh4uwofm9",
+ "tokens_in": 1003,
+ "tokens_out": 96
+}

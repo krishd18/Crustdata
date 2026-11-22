@@ -1,0 +1,8 @@
+{
+ "cache_read_tokens": 0,
+ "model": "claude-sonnet-5",
+ "output_json": "{\"label\":\"b2b\",\"confidence\":\"high\",\"passage\":\"We are looking for forward-thinking bridge engineers, consultants, EPC teams, and infrastructure leaders to help shape the future of this domain alongside us.\",\"source\":\"crustdata.company_enrich.basic_info.description\"}",
+ "request_id": "req_011ChHxJbB54qF346bFeQv7w",
+ "tokens_in": 1216,
+ "tokens_out": 96
+}

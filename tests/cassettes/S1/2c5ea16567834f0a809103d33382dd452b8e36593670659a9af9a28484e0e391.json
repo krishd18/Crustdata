@@ -1,0 +1,39 @@
+{
+ "body": {
+  "suggestions": [
+   {
+    "value": "Software Development"
+   },
+   {
+    "value": "IT System Custom Software Development"
+   },
+   {
+    "value": "Mobile Computing Software Products"
+   },
+   {
+    "value": "Embedded Software Products"
+   },
+   {
+    "value": "Desktop Computing Software Products"
+   },
+   {
+    "value": "Data Security Software Products"
+   },
+   {
+    "value": "Computer Software"
+   }
+  ]
+ },
+ "endpoint": "company_autocomplete",
+ "headers": {
+  "content-type": "application/json",
+  "x-credits-used": "0"
+ },
+ "request_body": {
+  "field": "taxonomy.professional_network_industry",
+  "limit": 20,
+  "query": "software"
+ },
+ "status": 200,
+ "url": "https://api.crustdata.com/company/search/autocomplete"
+}

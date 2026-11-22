@@ -1,0 +1,8 @@
+{
+ "cache_read_tokens": 0,
+ "model": "claude-sonnet-5",
+ "output_json": "{\"label\":\"fintech\",\"confidence\":\"medium\",\"passage\":\"{\\\"industry\\\": \\\"Software Development\\\", \\\"categories\\\": [\\\"Banking\\\", \\\"Cloud Data Services\\\", \\\"FinTech\\\", \\\"Finance\\\", \\\"Financial Services\\\", \\\"Information Technology\\\", \\\"Robotic Process Automation (RPA)\\\", \\\"SaaS\\\", \\\"Software\\\", \\\"Enterprise Software & Network Solutions\\\"]}\",\"source\":\"crustdata.taxonomy\"}",
+ "request_id": "req_011ChHxnHeeT34NhY3Nur4JH",
+ "tokens_in": 1120,
+ "tokens_out": 164
+}

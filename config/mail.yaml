@@ -1,0 +1,27 @@
+# Mail engine (A14). Secrets come from .env; everything else is here.
+provider_env: MAIL_PROVIDER          # gmail | mailpit
+mode_env: MAIL_MODE                  # test | live
+providers:
+  gmail:
+    smtp: {host: smtp.gmail.com, port: 587, security: starttls}     # 465 + SSL also works
+    imap: {host: imap.gmail.com, port: 993, sent_folder: "[Gmail]/Sent Mail"}
+    auth: app_password               # requires 2-Step Verification on the Google account
+    reconcile_search: ['X-GM-RAW "rfc822msgid:{message_id}"', 'HEADER X-DD-Action-Id {action_id}']
+  mailpit:
+    smtp: {host: localhost, port: 1025, security: none}
+    api: http://localhost:8025/api/v1
+test_mode:
+  redirect_to_env: TEST_INBOX
+  subject_prefix: "[TEST] "
+  original_to_header: X-DD-Original-To
+message_id: "<{action_id}@datadesigner.local>"
+headers: {action: X-DD-Action-Id, run: X-DD-Run-Id}
+limits:
+  daily_cap_env: MAIL_DAILY_CAP      # default 50; Gmail consumer accounts allow about 500 a day
+  per_counterparty_per_day: 2
+reconcile: {confirm_timeout_s: 60, poll_every_s: 5, on_imap_unavailable: hold_unconfirmed}
+policy:
+  business_email_only: true
+  approved_templates: [teaser_request, doc_request, clarification, intro, decline]
+  require_human_approval: true
+  opt_out_line: "If you'd rather not hear from us, reply 'stop' and we won't write again."

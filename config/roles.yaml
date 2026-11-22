@@ -1,0 +1,17 @@
+# Required leadership roles by model/stage (LF-01). Distinct people required.
+version: RO-2026.11.22-1
+base_required: [ceo, cfo_or_finance_head, coo_or_ops_head, sales_or_bd_head]
+add_when:
+  tech_led_claimed: [tech_head]
+  cold_chain_current_service: [cold_chain_or_quality_head]
+  nbfc_or_lending: [compliance_head]
+  revenue_below_inr_cr_10: {drop: [sales_or_bd_head]}   # very small firms
+title_synonyms:
+  ceo: [ceo, chief executive, managing director, founder & ceo]
+  cfo_or_finance_head: [cfo, chief financial, head of finance, vp finance, finance controller]
+  coo_or_ops_head: [coo, chief operating, head of operations, vp operations]
+  sales_or_bd_head: [cbo, head of sales, vp sales, business development head, chief revenue]
+  tech_head: [cto, chief technology, vp engineering, head of engineering, chief product & technology]
+  cold_chain_or_quality_head: [head of quality, cold chain head, qa head]
+  compliance_head: [chief compliance, head of compliance, compliance officer]
+fairness_excluded_inputs: [age, gender, religion, caste, region_of_origin, family, institution_prestige, career_breaks]

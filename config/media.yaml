@@ -1,0 +1,33 @@
+# Reliable-media allow-list — OWNED BY THE CLIENT'S COMPLIANCE TEAM. Edit freely (versioned).
+version: M-2026.11.22-2
+tiers:
+  A:   # one own report verifies an event (V5)
+    - {name: Press Trust of India, domains: [ptinews.com]}
+    - {name: Reuters, domains: [reuters.com]}
+    - {name: Bloomberg, domains: [bloomberg.com]}
+    - {name: The Economic Times, domains: [economictimes.indiatimes.com]}
+    - {name: Business Standard, domains: [business-standard.com]}
+    - {name: Mint, domains: [livemint.com]}
+    - {name: The Hindu BusinessLine, domains: [thehindubusinessline.com]}
+    - {name: Financial Express, domains: [financialexpress.com]}
+  B:   # two independent own reports verify an event
+    - {name: The Hindu, domains: [thehindu.com]}
+    - {name: The Indian Express, domains: [indianexpress.com]}
+    - {name: Hindustan Times, domains: [hindustantimes.com]}
+    - {name: Moneycontrol, domains: [moneycontrol.com]}
+    - {name: Inc42, domains: [inc42.com]}
+    - {name: Entrackr, domains: [entrackr.com]}
+    # add recognised logistics / fintech trade publications here after compliance review
+  D_self_published_domains:   # always treated as T4 (self-published) wherever they appear
+    - prnewswire.com
+    - businesswire.com
+    - globenewswire.com
+own_reporting_test:
+  require_byline: true
+  reject_labels: ["press release", "sponsored", "brand connect", "partner content", "advertorial", "promoted", "in association with", "paid post"]
+  near_duplicate: {shingle_size: 5, max_overlap: 0.70, same_text_sites: 3, window_hours: 48}
+  quote_only_fact: P4
+independence: {not_near_duplicates: true, not_same_single_source: true}
+use_latest_version: true
+adverse_media_confirmed_requires: [T1, T1-M]
+unlisted_outlets: context_only   # tier C: leads, never evidence

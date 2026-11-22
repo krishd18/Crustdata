@@ -1,0 +1,8 @@
+{
+ "cache_read_tokens": 0,
+ "model": "claude-sonnet-5",
+ "output_json": "{\"label\":\"b2b\",\"confidence\":\"high\",\"passage\":\"Mind Merge Soft Tech Pvt Ltd is a technology-driven company empowering businesses, startups, institutions, and enterprises with innovative, scalable, and result-oriented digital solutions.\",\"source\":\"crustdata.company_enrich.basic_info.description\"}",
+ "request_id": "req_011ChHxJrqQ5Nrp94iYFYsVm",
+ "tokens_in": 1630,
+ "tokens_out": 112
+}

@@ -1,0 +1,74 @@
+# Machine version of RUBRIC.md / STANDARDS §6. datadesigner/rubric must equal tools/rubric_check.py (V7).
+version: R-2026.11.22-3
+scoring: {contribution: "weight * points / 4", floor_missing: 0, ceiling_missing: 4, composites: floor_to_0.5, rounding: 2}
+R1:
+  gate: hard_constraints
+  risk_flags_block: [RECOMMEND]
+  criteria:
+    S1: {weight: 15, metric: VI-04, of: soft_constraints}
+    S2: {weight: 15, metric: GR-02}
+    S3: {weight: 10, metric: scale_fit, map: {middle_50pct: 4, inside: 3, within_25pct_outside: 2, within_50pct_outside: 1, else: 0}}
+    S4: {weight: 15, composite_of: [LF-01, LF-02, LF-06]}
+    S5: {weight: 5,  metric: OR-03}
+    S6: {weight: 10, metric: MK-C}
+    S7: {weight: 10, metric: PM-01}
+    S8: {weight: 10, metric: RG-C}
+    S9: {weight: 10, composite_of: [health_grade_points_if_filed, TC-C_public]}
+  labels: [{if: "floor >= 60 and not risk_flag", label: RECOMMEND}, {if: "ceiling >= 60", label: CONSIDER}, {else: NOT RECOMMENDED}]
+R2:
+  gates:
+    - {id: G1, check: entity_score_ge_0_85, fail: HOLD}
+    - {id: G2, check: legal_status_active, fail: {struck_off_or_cancelled: REJECT, source_down: HOLD}}
+    - {id: G3, check: sanctions_debarment, fail: {confirmed: REJECT, possible: HOLD}}
+    - {id: G4, check: no_critical_false_T1_or_T1M, fail: REJECT}
+    - {id: G5, check: hard_mandate_met_verified, fail: REJECT}
+    - {id: G6, check: statements_consistent_FSV_01_03, fail: HOLD}
+    - {id: G7, check: coverage_ge_60, fail: HOLD}
+    - {id: G8, check: no_false_kmp_credential, fail: HOLD}
+  weights:
+    target: {C1: 20, C2: 20, C3: 10, C4: 10, C5: 5, C6: 5, C7: 5, C8: 0, C9: 15, C10: 5, C11: 5}
+    vendor: {C1: 20, C2: 15, C3: 5, C4: 0, C5: 10, C6: 10, C7: 5, C8: 15, C9: 5, C10: 10, C11: 5}
+  criteria:
+    C1: {metric: VI-01, of: critical_claims, noncritical_false_penalty: 1}
+    C2: {metric: health_grade, map: {A: 4, B: 3, C: 2, D: 1, E: 0}}
+    C3: {metric: GR-01, fallback: GR-02}
+    C4: {metric: MK-C}
+    C5: {start: 4, minus_per_flag: [auditor_not_unmodified, late_mca_filings, related_party_gt_10pct_revenue, contingent_liab_gt_25pct_networth, auditor_change_2y]}
+    C6: {metric: RP-01, confirmed_only: true}
+    C7: {metric: VI-04}
+    C8: {metric: VI-03}
+    C9: {metric: LF-C}
+    C10: {metric: RG-C}
+    C11: {metric: TC-C}
+decision_rule:
+  - {if: gate_fired, then: gate_outcome}
+  - {if: "ceiling < 50", then: negative}
+  - {if: "floor >= 75", then: positive}
+  - {if: "floor >= 50", then: positive_with_conditions}
+  - {else: hold}
+  - {post: unmet_requirement_caps_one_level}
+wording:
+  target: {positive: PURSUE, positive_with_conditions: PURSUE WITH CONDITIONS, hold: "HOLD — MORE EVIDENCE NEEDED", negative: PASS}
+  vendor: {positive: CLEAR, positive_with_conditions: CLEAR WITH CONDITIONS, hold: HOLD FOR A PERSON, negative: REJECT}
+requirements: {met: "floor >= min", unmet: "ceiling < min", open: otherwise}
+what_would_change: {objective: smallest_set_crossing_next_threshold, tiebreak: closes_open_requirement}
+R3:
+  checks:
+    Q1: {name: criteria_compliance, required: 1.0}
+    Q2a: {name: honest_coverage, required: 1.0}
+    Q2b: {name: support, report: true}
+    Q3: {name: completeness, report: true, never_pad: true}
+    Q4: {name: source_strength_T1_T1M, report: true}
+    Q5: {name: inference_labelling, required: 1.0}
+    Q6: {name: premise_check, required: all}
+  status: [{if: "Q1==1 and Q2a==1 and Q3==1 and Q5==1 and no_false_premise", status: COMPLETE},
+           {if: "false_premise or zero_rows or required_source_unavailable", status: CANNOT ANSWER},
+           {else: PARTIAL}]
+  confidence: [{if: "Q2b >= 0.90 and Q4 >= 0.30", level: HIGH}, {if: "Q2b >= 0.75", level: MEDIUM}, {else: LOW}]
+  ranking_ties: [share, name]
+IS:
+  STRONG:   {n_ge: 5, share_ge: 0.25, corroborated: true}
+  MODERATE: {any_of: [{n_ge: 3, share_ge: 0.10}, {n_ge: 5, share_ge: 0.25, corroborated: false}]}
+  WEAK:     {n_ge: 1, only_if_no_moderate_plus: true, max_per_company: 1}
+  label: "INFERENCE — not a verified fact"
+  caveat: "Job postings indicate intent to hire, not hires made."

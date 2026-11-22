@@ -1,0 +1,56 @@
+# Metric dictionary (STANDARDS §4). bands = thresholds for points [4,3,2,1]; below last → 0.
+# dir: up = higher is better (value >= edge), down = lower is better (value <= edge). Edge → better band.
+version: MD-2026.11.22-3
+composite_rounding: floor_to_0.5
+metrics:
+  GR-01: {name: Revenue 3-yr CAGR, unit: pct, dir: up,   bands: [25, 15, 8, 0]}
+  GR-02: {name: Headcount YoY, unit: pct, dir: up,       bands: [30, 15, 5, 0]}
+  PR-01: {name: EBITDA margin, unit: pct, dir: up,       bands: [15, 10, 6, 3]}
+  PR-02: {name: PAT margin, unit: pct, dir: up,          bands: [8, 5, 2, 0]}
+  PR-03: {name: ROCE, unit: pct, dir: up,                bands: [20, 15, 10, 5]}
+  PR-04: {name: ROE, unit: pct, dir: up,                 bands: [18, 12, 8, 0]}
+  LQ-01: {name: Current ratio, unit: x, dir: up,         bands: [1.75, 1.5, 1.2, 1.0]}
+  LQ-02: {name: Quick ratio, unit: x, dir: up,           bands: [1.25, 1.0, 0.8, 0.6]}
+  SV-01: {name: Debt to equity, unit: x, dir: down,      bands: [0.3, 0.6, 1.0, 2.0]}
+  SV-02: {name: Net debt to EBITDA, unit: x, dir: down,  bands: [1, 2, 3, 4], net_cash_points: 4}
+  SV-03: {name: Interest coverage, unit: x, dir: up,     bands: [6, 4, 2.5, 1.5]}
+  SV-04: {name: DSCR, unit: x, dir: up,                  bands: [2.0, 1.5, 1.25, 1.0]}
+  WC-01: {name: DSO days, unit: days, dir: down,         bands: [45, 60, 90, 120]}
+  WC-02: {name: Cash conversion cycle, unit: days, dir: down, bands: [30, 45, 75, 100]}
+  CQ-01: {name: CFO to EBITDA, unit: pct, dir: up,       bands: [90, 75, 60, 40]}
+  CQ-02: {name: FCF margin, unit: pct, dir: up,          bands: [6, 3, 0, -3]}
+  EQ-01: {name: Altman Z'' (non-mfg), unit: score, dir: up, points_map: [{gt: 2.6, points: 4}, {ge: 1.1, points: 2}, {else: 0}]}
+  EQ-02: {name: Beneish M-score, unit: score, dir: down, points_map: [{le: -2.22, points: 4}, {le: -1.78, points: 2}, {else: 0}]}
+  EQ-03: {name: Piotroski F-score, unit: score, dir: up, bands: [8, 6, 4, 2]}
+  AL-01: {name: Asset intensity, unit: x, dir: down,     bands: [0.15, 0.25, 0.4, 0.6]}
+  FP-02: {name: State footprint share, unit: pct, dir: up, bands: [60, 40, 25, 10]}
+  RG-02: {name: Target-region share, unit: pct, dir: up, bands: [60, 40, 25, 10]}
+  RG-03-target: {name: Network complementarity, unit: pct, dir: up, bands: [50, 30, 15, 5]}
+  RG-03-vendor: {name: Lane coverage, unit: pct, dir: up, bands: [90, 75, 50, 25]}
+  TC-01: {name: Tech-claim verification, unit: pct, dir: up, bands: [90, 75, 60, 40]}
+  TC-02: {name: Engineering depth, unit: pct, dir: up,   bands: [12, 8, 5, 2]}
+  LF-01: {name: Role coverage, unit: pct, dir: up,       bands: [100, 80, 60, 40]}
+  LF-02: {name: Domain experience median, unit: years, dir: up, bands: [15, 10, 6, 3]}
+  LF-03: {name: Scale experience, unit: pct, dir: up,    bands: [75, 50, 25, 0.0001]}
+  LF-04: {name: Track record clean, unit: pct, dir: up,  bands: [100, 90, 75, 50]}
+  LF-05: {name: Bio integrity, unit: pct, dir: up,       bands: [90, 75, 60, 40], any_false: 0}
+  LF-06: {name: CXO churn 24m, unit: pct, dir: down_strict, bands: [10, 20, 30, 40]}   # <10 →4 … >=40 →0
+  LF-07: {name: Strategy-capability alignment, unit: pct, dir: up, bands: [100, 75, 50, 25]}
+  OR-03: {name: Function-mix distance, unit: pp, dir: down, bands: [0, 5, 10, 15]}
+  OR-04: {name: Employee rating, unit: score, dir: up,   bands: [4.2, 3.8, 3.4, 3.0]}
+  VI-01: {name: Claim integrity, unit: pct, dir: up,     bands: [90, 75, 60, 40]}
+  VI-03: {name: Operational verification, unit: pct, dir: up, bands: [90, 75, 60, 40]}
+  VI-04: {name: Mandate fit verified, unit: pct, dir: up, bands: [90, 75, 50, 25]}
+composites:
+  LF-C: {mean_of: [LF-01, LF-02, LF-03, LF-04, LF-05, LF-06, LF-07], min_measurable: 4,
+         verdicts: [{ge: 3.5, label: FIT}, {ge: 2.5, label: FIT WITH GAPS}, {ge: 1.5, label: WEAK FIT}, {else: NOT FIT}]}
+  RG-C: {mean_of: [RG-02, RG-03]}
+  TC-C: {tech_led: {mean_of: [TC-01, TC-02]}, otherwise: TC-01}
+  MK-C: {segment_cagr_parts: [{ge: 15, parts: 2}, {ge: 8, parts: 1}, {else: 0}], relative_growth_parts: [{ge: 10, parts: 2}, {gt: -10, parts: 1}, {else: 0}]}
+  PM-01: {count_of: [openings_growth_gt_0, traffic_yoy_gt_0, rating_ge_3_8, verified_customers_ge_2]}
+health_grade:
+  pillars: {growth: [GR-01], profitability: [PR-01, PR-02, PR-03, PR-04], liquidity: [LQ-01, LQ-02], solvency: [SV-01, SV-02, SV-03, SV-04], working_capital: [WC-01, WC-02], cash_quality: [CQ-01, CQ-02], earnings_quality: [EQ-01, EQ-02, EQ-03]}
+  pillar: median_of_points
+  zero_caps_pillar_at: 1
+  grade: [{ge: 3.5, grade: A}, {ge: 2.75, grade: B}, {ge: 2.0, grade: C}, {ge: 1.25, grade: D}, {else: E}]
+  distress_cap: C

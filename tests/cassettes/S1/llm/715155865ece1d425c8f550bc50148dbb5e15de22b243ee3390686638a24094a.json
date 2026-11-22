@@ -1,0 +1,8 @@
+{
+ "cache_read_tokens": 0,
+ "model": "claude-sonnet-5",
+ "output_json": "{\"label\":\"b2b\",\"confidence\":\"high\",\"passage\":\"We work with engineering teams to design and implement execution-safe AI systems in production environments.\",\"source\":\"crustdata.company_enrich.basic_info.description\"}",
+ "request_id": "req_011ChHxHW6hQBpUPb2XesAWA",
+ "tokens_in": 1023,
+ "tokens_out": 71
+}

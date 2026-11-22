@@ -1,0 +1,33 @@
+# Live account limits (GET /account/endpoints, 22 Nov 2026): effective 5 RPM on search/enrich/identify/jobs.
+# Source registry: tier, rate limit (RPM), list-price estimate (credits), cache TTL, fallback.
+# Real prices come from GET /account/endpoints at startup (runtime.lock.json); actual cost from X-Credits-Used.
+crustdata:
+  base_url_env: CRUSTDATA_BASE_URL
+  api_version: "2025-11-01"
+  endpoints:
+    company_identify:     {path: /company/identify,            rpm: 5,  est_credits: {per_matched_identifier: 0.2}, ttl_s: 604800, max_batch: 25}
+    company_autocomplete: {path: /company/search/autocomplete, rpm: 300, est_credits: {per_call: 0},                 ttl_s: 604800}
+    company_search:       {path: /company/search,              rpm: 5,  est_credits: {per_result: 0.03, headcount_group: 0.2, taxonomy_group: 0.1}, ttl_s: 259200, max_limit: 1000}
+    company_enrich:       {path: /company/enrich,              rpm: 5,  est_credits: {per_record: 2, technographics: 2}, ttl_s: 259200, max_batch: 25}
+    person_search:        {path: /person/search,               rpm: 5,  est_credits: {per_result: 0.03, experience_group: 0.1}, ttl_s: 259200}
+    person_enrich:        {path: /person/enrich,               rpm: 5,  est_credits: {per_record: 1}, ttl_s: 259200, max_batch: 25}
+    person_enrich_live:   {path: /person/professional_network/enrich/live, rpm: 10, est_credits: {per_record: 1}, ttl_s: 86400}
+    contact_enrich:       {path: /person/contact/enrich,       rpm: 15,  est_credits: {business_email: 1}, policy: business_email_only}
+    job_search:           {path: /job/search,                  rpm: 5,  est_credits: {per_result: 0.03}, ttl_s: 86400, max_limit: 1000}
+    web_search:           {path: /web/search/live,             rpm: 10,  est_credits: {per_query_page: 1}, ttl_s: 86400}
+    web_fetch:            {path: /web/enrich/live,             rpm: 10,  est_credits: {per_page: 1}, ttl_s: 86400, max_batch: 10}
+    account_endpoints:    {path: /account/endpoints,           rpm: 300, est_credits: {per_call: 0}}
+    usage_events:         {path: /account/usage/events,        rpm: 60,  est_credits: {per_call: 0}}
+  retry: {max: 4, backoff: exponential_jitter, honour: [Retry-After, X-RateLimit-Reset], retry_on: [429, 500, 502, 503, 504]}
+  breaker: {failures_to_open: 5, half_open_after_s: 60}
+registries:   # captcha-gated: no bypass. Operator-uploaded extracts are T1 (operator) with hash + date.
+  mca_master_data: {tier: T1, mode: operator_extract, fallback: [crustdata_web_fetch, not_verifiable_N6]}
+  gst_search:      {tier: T1, mode: operator_extract, fallback: [licensed_gsp_api_if_configured, not_verifiable_N6]}
+  epfo_search:     {tier: T1, mode: operator_extract, fallback: [counterparty_ecr_T3, not_verifiable_N6]}
+  vahan:           {tier: T1, mode: operator_extract_sample, fallback: [rc_copies_T3]}
+  opensanctions:   {tier: T1, mode: api_if_licensed, enabled: false, fallback: [official_list_files]}
+  wayback_cdx:     {tier: T1, mode: http, url: "https://web.archive.org/cdx/search/cdx", enabled: true}
+media:
+  search_via: crustdata.web_search   # sources: [news], restricted to media.yaml allow-list
+  fetch_via: crustdata.web_fetch
+inr_per_credit: 2.0   # planning rate for ₹ cost; replace with the organisers' figure

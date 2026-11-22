@@ -1,0 +1,10 @@
+Subject: Introduction — {{ client.name }}
+
+Dear {{ recipient.name | default("team") }},
+
+{{ client.name }} works with logistics partners across {{ client.regions | join(", ") }}. {{ fact("why_relevant") }} Would a short call in the coming weeks suit you?
+
+Regards,
+{{ approver.name }}, {{ client.name }}
+—
+Prepared with automated research and reviewed by {{ approver.name }}. Reply "stop" to opt out.

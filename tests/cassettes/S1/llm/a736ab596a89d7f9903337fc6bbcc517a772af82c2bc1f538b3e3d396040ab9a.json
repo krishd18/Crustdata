@@ -1,0 +1,8 @@
+{
+ "cache_read_tokens": 0,
+ "model": "claude-sonnet-5",
+ "output_json": "{\"label\":\"b2b\",\"confidence\":\"high\",\"passage\":\"FusionevalX is an Enterprise Intelligence company building the technology infrastructure that powers modern organizations.We create connected platforms that enable businesses to discover talent, verify trust, automate workforce operations, and accelerate digital transformation through one intelligent ecosystem.\",\"source\":\"crustdata.company_enrich.basic_info.description\"}",
+ "request_id": "req_011ChHxHAgeTKF4wkBCVm1o9",
+ "tokens_in": 1247,
+ "tokens_out": 135
+}

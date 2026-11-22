@@ -1,0 +1,22 @@
+# Claim type → ordered collectors (critical claims first; budget checked before each call)
+version: CO-2026.11.22-1
+by_claim_type:
+  identity:          [registry.mca, crustdata.company_identify, crustdata.company_enrich.basic_info]
+  incorporation:     [registry.mca, crustdata.company_enrich.basic_info, wayback]
+  operating_since:   [registry.mca, wayback, media]
+  registered_address: [registry.mca, registry.gst]
+  gst_status:        [registry.gst]
+  footprint:         [registry.gst_by_pan, crustdata.company_enrich.locations, crustdata.person_search.geo, crustdata.job_search.city, media]
+  headcount:         [registry.epfo, crustdata.company_enrich.headcount]
+  headcount_growth:  [crustdata.company_enrich.headcount]
+  revenue:           [registry.aoc4, docs.financial_statements, media_citing_filings, crustdata.company_enrich.revenue]
+  funding:           [registry.mca_allotment, media, crustdata.company_enrich.funding]
+  customer:          [media, customer_announcement, docs.contracts]
+  contract_win:      [media, customer_announcement, docs.contracts]
+  facility:          [registry.gst_by_pan, media, docs.lease_deeds]
+  fleet:             [docs.rc_copies, registry.vahan_sample, docs.eway_bill_summary]
+  certification:     [issuer_register, docs.certificates]
+  leadership_bio:    [registry.mca_directors, media, prior_employer_site, crustdata.person_enrich]
+  tech:              [app_store_listing, partner_integration_page, crustdata.company_enrich.technographics, crustdata.job_search, docs.demo]
+  market_size:       [media, research_publisher_page]
+  premise:           [registry, media, crustdata]

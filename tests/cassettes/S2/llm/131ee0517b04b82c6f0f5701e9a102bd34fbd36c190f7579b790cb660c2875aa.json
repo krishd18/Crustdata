@@ -1,0 +1,8 @@
+{
+ "cache_read_tokens": 0,
+ "model": "claude-sonnet-5",
+ "output_json": "{\"label\":\"not_fintech\",\"confidence\":\"high\",\"passage\":\"global technology and business process services company\",\"source\":\"crustdata\"}",
+ "request_id": "req_011ChHxk6B32tU4VaKTtRL9z",
+ "tokens_in": 1151,
+ "tokens_out": 41
+}

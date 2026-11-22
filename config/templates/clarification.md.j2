@@ -1,0 +1,9 @@
+Subject: A clarification request — {{ company.name }}
+
+Dear {{ recipient.name | default("team") }},
+
+While reviewing public records we found the following, which may differ from your materials. We would value your explanation before drawing any conclusion:
+{% for item in items %}- Your materials: "{{ item.claim_text }}". Public record: "{{ item.passage }}" ({{ item.source }}, {{ item.record_date }}).
+{% endfor %}
+Regards,
+{{ approver.name }}, {{ client.name }}

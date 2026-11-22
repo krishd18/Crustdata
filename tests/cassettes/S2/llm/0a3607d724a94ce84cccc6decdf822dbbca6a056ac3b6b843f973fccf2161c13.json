@@ -1,0 +1,8 @@
+{
+ "cache_read_tokens": 0,
+ "model": "claude-sonnet-5",
+ "output_json": "{\"label\":\"not_fintech\",\"confidence\":\"high\",\"passage\":\"we\u2019re the 2nd largest life insurer in the US, and with $1.6 trillion in assets under management*, we\u2019re the 9th largest institutional global asset manager.\",\"source\":\"crustdata\"}",
+ "request_id": "req_011ChHxkhVnvVrNNnxU893Nd",
+ "tokens_in": 1345,
+ "tokens_out": 86
+}

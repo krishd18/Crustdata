@@ -1,0 +1,84 @@
+# Term library for query reasoning (STANDARDS §5). The LLM maps phrases ONLY to these entries;
+# anything else is shown as "proposed — confirm". crustdata_values are filled by `make smoke` (autocomplete).
+version: T-2026.11.22-3
+roles_of_parameters: [search_filter, hard, soft, min_band, attribute, output, window, metric, inference]
+terms:
+  acquirable:
+    intent: "can be bought (feasibility) AND worth buying (quality)"
+    family_hint: ACQUIRE
+    hard: [AQ-01, AQ-02, AQ-03]
+    soft: {AQ-04: 3, AQ-05: 2, AQ-06: 1}
+    min_band:
+      C2: 3            # health grade >= B  ("strong financial ratios")
+      solvency_pillar: 3
+      cash_quality_pillar: 2
+      earnings_quality_flag: none
+      C11: 2           # tech soundness ("sound tech claims")
+      C9: 2.5          # leadership fit >= FIT WITH GAPS
+      C5: 3            # governance <= 1 flag
+  logistic:
+    synonyms: [logistics, 3pl, warehousing, freight, supply chain]
+    intent: sector
+    values: [3PL, warehousing, freight_forwarding, road_transport, cold_chain, last_mile, courier]
+    nic_divisions: ["49", "52", "53"]
+    crustdata_values: {taxonomy.professional_network_industry: []}   # filled at smoke
+    role: [search_filter, hard]
+  in_state:
+    pattern: "in <state|zone>"
+    intent: geography
+    location_basis_default: operates          # operates | primary_ops | hq  (ask to confirm)
+    primary_ops_threshold: 0.40
+    scored: RG-C
+    gst_state_codes: {Maharashtra: "27", Delhi: "07", Gujarat: "24", Karnataka: "29", Tamil Nadu: "33", Telangana: "36", Uttar Pradesh: "09", West Bengal: "19", Haryana: "06", Rajasthan: "08"}
+  indian:
+    intent: HQ country
+    filters: {company: {field: locations.country, op: in, value: [IND]}, job: {field: company.locations.country, op: "=", value: IND}}
+  b2b_software:
+    intent: "software sold to businesses"
+    industry_values_seed: ["Software Development"]
+    optional_industry_values: ["IT Services and IT Consulting"]
+    classifier: b2b
+    ambiguous: exclude_and_list
+  fintech:
+    intent: "technology-first company offering financial products or infrastructure (payments, lending, wealth, insurtech, neobank, regtech)"
+    category_queries: [fin, pay, lend, insur, wealth, bank]
+    industry_values_seed: ["Financial Services"]
+    classifier: fintech
+    exclude: "traditional banks, NBFCs and insurers unless technology-first; IT-services/consulting vendors to banks; global capability/captive centres of foreign financial firms; asset managers and brokers without a consumer or B2B tech product of their own"
+  founded_since:
+    pattern: "founded (since|after|in or after) <YEAR>"
+    filter: {field: basic_info.year_founded, op: "=>"}
+    cross_checks: [cin_year, wayback_first_capture]
+    conflict: exclude_with_reason
+  team_grew:
+    pattern: "team|headcount grew by <X> in the last <N> months"
+    filter: {field: "headcount.growth_percent.{N}m", op: "=>"}
+    word_values: {half: 50, double: 100, doubled: 100, "a third": 33}
+    allowed_N: [1, 3, 6, 12]
+    guard: {field: headcount.total, op: "=>", value: 10, origin: proposed_confirm}
+  this_quarter:
+    window: calendar_quarter_containing_now
+    timezone: Asia/Kolkata
+    also_label: indian_fy_quarter
+  last_n_months: {window: now_minus_n_months}
+  hiring_the_most:
+    metric: deduped_job_postings
+    proxy_note: "Job postings indicate intent to hire, not hires made."
+    engineers: {field: job_details.category, op: "=", value: Engineering, title_fallback_regex: "(engineer|developer|sde|devops|sre|data scientist|ml engineer|architect)"}
+    dedup: {keys: [company_id, normalised_title, city], window_days: 14}
+  launch_next:
+    kind: inference
+    rubric: IS
+    themes: themes.yaml
+  who_founded: {attribute: founders, sources: [crustdata.people.founders, mca_directors]}
+  what_before: {attribute: prior_roles, source: person_enrich.experience.employment_details.past, take: 2, default_class: P5}
+  profitable: {min_band: {PR-01: 2, PR-02: 1}}
+  growing: {min_band: {GR-01: 2}}
+  fast_growing: {min_band: {GR-01: 3, GR-02: 3}}
+  tech_enabled: {min_band: {C11: 2}}
+  tech_led: {min_band: {C11: 3}, adds_role: tech_head, enables: TC-02}
+  asset_light: {soft: {AL-01_max: 0.25}}
+  debt_free: {min_band: {SV-02: 4}}
+  cold_chain: {intent: sub-sector, adds_role: cold_chain_quality_head_if_current_service}
+  reliable_vendor: {min_band: {C6: 3, C5: 3}, gates: [G2, G3, G4]}
+  top_n: {pattern: "(ten|five|top <N>|<N>)", output_size: true, never_pad: true}

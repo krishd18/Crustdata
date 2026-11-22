@@ -1,0 +1,12 @@
+Subject: Exploring a strategic conversation — {{ client.name }} × {{ company.name }}
+
+Dear {{ recipient.name | default("team") }},
+
+{{ client.name }} runs third-party logistics across {{ client.regions | join(", ") }} and is looking to deepen its network in {{ mandate.region }}. {{ fact("operations_summary") }}
+
+Would you be open to an introductory call, and to sharing a teaser or recent financial summary under NDA?
+
+Regards,
+{{ approver.name }}, {{ client.name }}
+—
+Prepared with automated research and reviewed by {{ approver.name }}. Reply "stop" to opt out.

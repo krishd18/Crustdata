@@ -1,0 +1,1513 @@
+{
+ "body": [
+  {
+   "match_type": "crustdata_company_id",
+   "matched_on": "2199",
+   "matches": [
+    {
+     "company_data": {
+      "basic_info": {
+       "all_domains": [
+        "infosys.com",
+        "infy.com"
+       ],
+       "company_type": "Public Company",
+       "crustdata_company_id": 2199,
+       "description": "Infosys is a global leader in next-generation digital services and consulting. We enable clients in more than 50 countries to navigate their digital transformation. With over three decades of experience in managing the systems and workings of global enterprises, we expertly steer our clients through their digital journey. We do it by enabling the enterprise with an AI-powered core that helps prioritize the execution of change. We also empower the business with agile digital at scale to deliver unprecedented levels of performance and customer delight. Our always-on learning agenda drives their continuous improvement through building and transferring digital skills, expertise, and ideas from our innovation ecosystem.Visit www.infosys.com to see how Infosys (NYSE: INFY) can help your enterprise navigate your next.",
+       "employee_count_range": "10001+",
+       "logo_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/90026645acac7ae47b542367e368a6533bc49a7f7e98c0a62774a433a4d49b05.jpg",
+       "markets": [
+        "NYSE"
+       ],
+       "name": "Infosys",
+       "primary_domain": "infosys.com",
+       "professional_network_id": "1283",
+       "professional_network_url": "https://www.linkedin.com/company/infosys",
+       "profile_name": "Infosys",
+       "status": "active",
+       "website": "https://www.infosys.com",
+       "year_founded": 1981
+      },
+      "crustdata_company_id": 2199,
+      "taxonomy": {
+       "categories": [
+        "Analytics",
+        "Artificial Intelligence (AI)",
+        "Consulting",
+        "E-Commerce",
+        "Finance",
+        "Financial Services",
+        "IT Management",
+        "Information Services",
+        "Information Technology",
+        "Internet",
+        "Software",
+        "Venture Capital",
+        "Information Technology Support Services"
+       ],
+       "primary_naics_detail": null,
+       "professional_network_industries": [
+        "IT Services and IT Consulting",
+        "Professional Services"
+       ],
+       "professional_network_industry": "IT Services and IT Consulting",
+       "professional_network_specialities": [
+        "IT Solutions and Services",
+        "Consulting",
+        "Business Process Outsourcing",
+        "Products and Platforms",
+        "Engineering Services",
+        "Cloud Services",
+        "Artificial Intelligence",
+        "Digital",
+        "Big Data"
+       ],
+       "sic_detail_list": []
+      }
+     },
+     "confidence_score": 1.0
+    }
+   ]
+  },
+  {
+   "match_type": "crustdata_company_id",
+   "matched_on": "1097923",
+   "matches": [
+    {
+     "company_data": {
+      "basic_info": {
+       "all_domains": [
+        "societegenerale.in"
+       ],
+       "company_type": "Privately Held",
+       "crustdata_company_id": 1097923,
+       "description": "Societe Generale is one of the leading European financial services groups. Based on a diversified and integrated banking model, the Group combines financial strength and proven expertise in innovation with a strategy of sustainable growth, aiming to be the trusted partner for its clients, committedto the positive transformations of society and the economy. Set up in 2000, Societe Generale Global Solution Centre (SG GSC), a 100% owned subsidiary of Societe Generale has over 11000 employees across its Bangalore and Chennai facilities in India. The subsidiary is focused on Application Development and Maintenance, Infrastructure Management, Business Process Management and Knowledge Process Management, to Societe Generale’s business lines across the world with focus on an outcome based business approach.Societe Generale is committed towards anticipating and serving the fast-changing customer demands. The organisation integrates all the potential avenues offered by digital, accelerating the adoption of emerging technologies in a spirit of open collaboration, in order to provide new client experiences, and process efficiencies. The global talent pool, provides access to a large network of skills and resources that can be deployed both locally Societe Generale Global Solution Centre (SG GSC) is a fully owned subsidiary of the European banking major, Societe Generale. Societe Generale Global Solution Centre has over 25 years of experience in sustainable delivery across information technology and banking operations. We are an employee focused organisation, known for the extensive opportunities we provide for career progression and development.We are committed to creating a diverse environment and are proud to be an equal opportunity employer. All qualified applicants receive consideration for employment without regard to race, color, religion, gender, gender identity or expression, sexual orientation, national origin, genetics, disability, age, or veteran status.",
+       "employee_count_range": "10001+",
+       "logo_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/169caaa2936806c81b52ec88684420dbfdc30be476d8cbbd05aaba0c1264d9b5.jpg",
+       "markets": [
+        "PRIVATE"
+       ],
+       "name": "Societe Generale Global Solution Centre",
+       "primary_domain": "societegenerale.in",
+       "professional_network_id": "9371944",
+       "professional_network_url": "https://www.linkedin.com/company/societe_generale_global_solution_centre",
+       "profile_name": "Societe Generale Global Solution Centre",
+       "status": "active",
+       "website": "https://globalsolutioncenter.societegenerale.in/en/",
+       "year_founded": 2000
+      },
+      "crustdata_company_id": 1097923,
+      "taxonomy": {
+       "categories": [
+        "Banking",
+        "Financial Services"
+       ],
+       "primary_naics_detail": null,
+       "professional_network_industries": [
+        "Financial Services"
+       ],
+       "professional_network_industry": "Financial Services",
+       "professional_network_specialities": [
+        "Banking Technology",
+        "Equity Research and Analytics.",
+        "Infrastructure Services",
+        "Banking Operations"
+       ],
+       "sic_detail_list": []
+      }
+     },
+     "confidence_score": 1.0
+    }
+   ]
+  },
+  {
+   "match_type": "crustdata_company_id",
+   "matched_on": "519",
+   "matches": [
+    {
+     "company_data": {
+      "basic_info": {
+       "all_domains": [
+        "bajajfinserv.in"
+       ],
+       "company_type": "Public Company",
+       "crustdata_company_id": 519,
+       "description": "Founded in April 2007, Bajaj Finserv is the financial arm of the Bajaj group. We believe in a simple philosophy to never settle for good and go for great. This reflects in our extensive product portfolio that spans across 3 broad categories- lending, insurance and wealth advisory. With 24 products spread across 12 product lines, we're one of the fastest growing and most diversified NBFCs in India. Our footprint spans the length and breadth of India.",
+       "employee_count_range": "10001+",
+       "logo_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/aeab6777f2e249a6ee4c72207c3e4a001a63bfbffd625fce9b9041b9f83a7e9a.jpg",
+       "markets": [
+        "NSE"
+       ],
+       "name": "Bajaj Finserv",
+       "primary_domain": "bajajfinserv.in",
+       "professional_network_id": "1092003",
+       "professional_network_url": "https://www.linkedin.com/company/bajaj-finserv-lending",
+       "profile_name": "Bajaj Finserv",
+       "status": "active",
+       "website": "http://www.bajajfinserv.in",
+       "year_founded": 2007
+      },
+      "crustdata_company_id": 519,
+      "taxonomy": {
+       "categories": [
+        "Accounting",
+        "Angel Investment",
+        "Architecture",
+        "Artificial Intelligence (AI)",
+        "Auto Insurance",
+        "B2C",
+        "Banking",
+        "Biotechnology",
+        "Bookkeeping and Payroll",
+        "Building Material",
+        "Business Process Automation (BPA)",
+        "Children",
+        "Civil Engineering",
+        "Commercial Insurance",
+        "Construction",
+        "Consulting",
+        "Credit Cards",
+        "Domain Registrar",
+        "E-Commerce",
+        "Education",
+        "Employee Benefits",
+        "Energy Efficiency",
+        "Environmental Consulting",
+        "Fashion",
+        "Finance",
+        "Financial Services",
+        "Food and Beverage",
+        "Health Insurance",
+        "Higher Education",
+        "Home Improvement",
+        "Home Renovation",
+        "Insurance",
+        "Interior Design",
+        "Language Learning",
+        "Legal",
+        "Lending",
+        "Life Insurance",
+        "Manufacturing",
+        "Pharmaceutical",
+        "Presentations",
+        "Primary Education",
+        "Property Development",
+        "Property Management",
+        "Real Estate",
+        "Religion",
+        "Risk Management",
+        "Secondary Education",
+        "Software",
+        "Tax Consulting",
+        "Tax Preparation",
+        "Web Development",
+        "Web Hosting",
+        "Wholesale",
+        "Banking & Lending"
+       ],
+       "primary_naics_detail": null,
+       "professional_network_industries": [
+        "Financial Services"
+       ],
+       "professional_network_industry": "Financial Services",
+       "professional_network_specialities": [
+        "Lending",
+        "Wealth Management",
+        "Insurance",
+        "Deposits"
+       ],
+       "sic_detail_list": []
+      }
+     },
+     "confidence_score": 1.0
+    }
+   ]
+  },
+  {
+   "match_type": "crustdata_company_id",
+   "matched_on": "5729",
+   "matches": [
+    {
+     "company_data": {
+      "basic_info": {
+       "all_domains": [
+        "phonepe.com"
+       ],
+       "company_type": "Privately Held",
+       "crustdata_company_id": 5729,
+       "description": "PhonePe Limited (Formerly PhonePe Private Limited) is a technology company that builds digital platforms for Payments, Digital Distribution Services and Financial Services. Headquartered in India, the PhonePe digital payments app was launched in 2016. As of October 2026, PhonePe has 73.5+ Crore life-till-date registered users and a digital payments acceptance network spread across over 5 Crore merchants.PhonePe’s products and services include Consumer Payments (including Digital Distribution Services), Merchant Payments, Lending and Insurance Distribution services, and New Platforms, which comprise PhonePe Invest (stock broking and mutual funds distribution platform), and PhonePe Appstore (Android-based mobile app marketplace).",
+       "employee_count_range": "5001-10000",
+       "logo_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/c89bac587afb0b9ecae4e22676a47626ce9670777e65408a379cb1806abc4943.jpg",
+       "markets": [
+        "PRIVATE"
+       ],
+       "name": "PhonePe",
+       "primary_domain": "phonepe.com",
+       "professional_network_id": "10479149",
+       "professional_network_url": "https://www.linkedin.com/company/phonepe-internet",
+       "profile_name": "PhonePe",
+       "status": "active",
+       "website": "https://www.phonepe.com",
+       "year_founded": 2015
+      },
+      "crustdata_company_id": 5729,
+      "taxonomy": {
+       "categories": [
+        "Customer Service",
+        "FinTech",
+        "Financial Services",
+        "Internet",
+        "Mobile Apps",
+        "Mobile Payments",
+        "Payments",
+        "Internet & Web Services",
+        "Information Technology"
+       ],
+       "primary_naics_detail": null,
+       "professional_network_industries": [
+        "Financial Services"
+       ],
+       "professional_network_industry": "Financial Services",
+       "professional_network_specialities": [
+        "Digital Payments",
+        "Mobile Payments",
+        "P2P Payments"
+       ],
+       "sic_detail_list": []
+      }
+     },
+     "confidence_score": 1.0
+    }
+   ]
+  },
+  {
+   "match_type": "crustdata_company_id",
+   "matched_on": "17073090",
+   "matches": [
+    {
+     "company_data": {
+      "basic_info": {
+       "all_domains": [
+        "vanguard.in"
+       ],
+       "company_type": "Privately Held",
+       "crustdata_company_id": 17073090,
+       "description": "Vanguard India is a strategic extension of our global mission—bringing together exceptional technologists, data scientists, engineers, and designers to build the platforms and tools that will serve the next generation of investors. Rooted in our core values of integrity, stewardship, and focus, our Hyderabad-based teams collaborate deeply with global teams in achieving our mission to empower our investors to achieve their financial well-being. We’re inviting mission-driven people to join us—those who want to build boldly, grow meaningfully with continuous learning, mentorship, and global exposure, and contribute to something that truly matters; take the leap with us—seize this opportunity to disrupt how the world invests, together! Support our technology operations by connecting with us at Vanguard.in",
+       "employee_count_range": "501-1000",
+       "logo_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/52641c443c48c46790f464ead1d1210c40ce432e976e68a12913fe5d00b8d1bc.jpg",
+       "markets": [],
+       "name": "Vanguard India",
+       "primary_domain": "vanguard.in",
+       "professional_network_id": "108291840",
+       "professional_network_url": "https://www.linkedin.com/company/vanguard-india",
+       "profile_name": "Vanguard India",
+       "status": "active",
+       "website": "https://vanguard.in/",
+       "year_founded": 1975
+      },
+      "crustdata_company_id": 17073090,
+      "taxonomy": {
+       "categories": [],
+       "primary_naics_detail": null,
+       "professional_network_industries": [
+        "Financial Services"
+       ],
+       "professional_network_industry": "Financial Services",
+       "professional_network_specialities": [],
+       "sic_detail_list": []
+      }
+     },
+     "confidence_score": 1.0
+    }
+   ]
+  },
+  {
+   "match_type": "crustdata_company_id",
+   "matched_on": "1937",
+   "matches": [
+    {
+     "company_data": {
+      "basic_info": {
+       "all_domains": [
+        "hexaware.com"
+       ],
+       "company_type": "Public Company",
+       "crustdata_company_id": 1937,
+       "description": "At Hexaware, we're not just a global technology and business process services company; we're a community of 31,600+ Hexawarians dedicated to one singular purpose: creating smiles through the power of great people and technology. With a presence in 58 offices across 28 countries, we empower enterprises worldwide to embark on their digital transformation journey with unparalleled scale and speed. As an employer, we're more than just a workplace. We put our people first, foster diversity and inclusivity, and prioritize their growth through robust learning and development programs. Our culture is a canvas for innovation as we work toward our shared vision of becoming the world’s most loved digital transformation partner.Exciting, isn’t it? Visit www.hexaware.com to join us in embracing the magic of technology, as we passionately advocate for its potential to transform lives today and shape a brighter future. Together, we'll make the digital world a better place.",
+       "employee_count_range": "10001+",
+       "logo_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/94f597605ae79795a7fd534cd4d6d51d454c8a83c171ae1b8c91d1b5b341f906.jpg",
+       "markets": [
+        "NSE"
+       ],
+       "name": "Hexaware Technologies",
+       "primary_domain": "hexaware.com",
+       "professional_network_id": "164182",
+       "professional_network_url": "https://www.linkedin.com/company/hexaware-technologies",
+       "profile_name": "Hexaware Technologies",
+       "status": "active",
+       "website": "http://www.hexaware.com",
+       "year_founded": 1990
+      },
+      "crustdata_company_id": 1937,
+      "taxonomy": {
+       "categories": [
+        "Banking",
+        "Consulting",
+        "Consumer",
+        "Information Technology",
+        "Infrastructure",
+        "InsurTech",
+        "Insurance",
+        "Outsourcing",
+        "Software",
+        "Travel",
+        "Information Technology Support Services"
+       ],
+       "primary_naics_detail": null,
+       "professional_network_industries": [
+        "IT Services and IT Consulting",
+        "Professional Services"
+       ],
+       "professional_network_industry": "IT Services and IT Consulting",
+       "professional_network_specialities": [
+        "Banking",
+        "Financial Services",
+        "Healthcare",
+        "Insurance",
+        "Travel",
+        "Transportation",
+        "Manufacturing & Consumer",
+        "Application Transformation",
+        "Enterprise Solutions",
+        "BI & Analytics",
+        "Digital Assurance",
+        "Infrastructure Management Services",
+        "Business Process Services.",
+        "Professional Services",
+        "Automation",
+        "Cloud",
+        "Customer experience"
+       ],
+       "sic_detail_list": []
+      }
+     },
+     "confidence_score": 1.0
+    }
+   ]
+  },
+  {
+   "match_type": "crustdata_company_id",
+   "matched_on": "715535",
+   "matches": [
+    {
+     "company_data": {
+      "basic_info": {
+       "all_domains": [
+        "idfcfirst.bank.in",
+        "idfcfirstbank.com"
+       ],
+       "company_type": "Public Company",
+       "crustdata_company_id": 715535,
+       "description": "IDFC FIRST Bank is building a world-class Bank in India, founded on the principles of Ethical, Digital and Social Good Banking. It is one of India’s fast-growing private banks, combining modern banking with fintech-grade technology.As of September 30, 2026, the Bank serves over 40 million customers, with a customer business of ₹6,88,328 crore, including deposits of ₹3,41,415 crore and loan assets of ₹3,46,913 crore. Deposits grew 26.9% YoY and loan assets 30.1% YoY. The Bank reaches over 60,000 cities, towns and villages through approximately 1,200 branches and digital channels.As a universal Bank, it offers services across Retail, MSME, Rural, Startups, Corporate Banking, Cash Management, Credit Cards, Wealth Management, Deposits, Government Banking, Working Capital, Trade Finance and Treasury.Ethical Banking: The Bank believes in doing right by its customers, even when no one is watching. Its cloud-native, API-led and microservices-based technology, powered by data, analytics and AI, enables seamless experiences across digital and physical channels.Social Good: The Bank has impacted over 40 million lives, including 3.6 million women entrepreneurs. Its initiatives include 7.5 million lifestyle improvement loans, 2 million livelihood loans, 2.7 lakh water, sanitation and hygiene loans, 2.5 lakh electric two- and three-wheelers, and support for over 300,000 SMEs.With a customer-first approach, the Bank has waived fees on 36 essential savings account services commonly charged in the market, becoming the first and only bank in India to do so. It also offers premium investment research to customers with balances as low as ₹5,000.The Bank upholds high standards of corporate governance, adheres to regulatory guidelines in letter and spirit, and works with regulators to drive positive change. It is committed to building a well-diversified, resilient and sustainable Bank for the future.",
+       "employee_count_range": "10001+",
+       "logo_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/3c6c0fefb1e947fc68267ff2f8461e59ddf8a7b3856a354328a03c72123e7970.jpg",
+       "markets": [
+        "NSE"
+       ],
+       "name": "IDFC FIRST Bank",
+       "primary_domain": "idfcfirst.bank.in",
+       "professional_network_id": "21175",
+       "professional_network_url": "https://www.linkedin.com/company/idfcfirstbank",
+       "profile_name": "IDFC FIRST Bank",
+       "status": "active",
+       "website": "http://www.idfcfirst.bank.in/",
+       "year_founded": 2015
+      },
+      "crustdata_company_id": 715535,
+      "taxonomy": {
+       "categories": [
+        "Banking",
+        "Credit Cards",
+        "FinTech",
+        "Financial Services",
+        "Health Insurance"
+       ],
+       "primary_naics_detail": null,
+       "professional_network_industries": [
+        "Banking",
+        "Credit Intermediation",
+        "Financial Services"
+       ],
+       "professional_network_industry": "Banking",
+       "professional_network_specialities": [
+        "Commercial & Wholesale Banking",
+        "Consumer financing",
+        "Banking Services",
+        "Retail Banking",
+        "Investment Banking",
+        "Project Financing"
+       ],
+       "sic_detail_list": []
+      }
+     },
+     "confidence_score": 1.0
+    }
+   ]
+  },
+  {
+   "match_type": "crustdata_company_id",
+   "matched_on": "28775005",
+   "matches": [
+    {
+     "company_data": {
+      "basic_info": {
+       "all_domains": [
+        "talent500.com"
+       ],
+       "company_type": "Public Company",
+       "crustdata_company_id": 28775005,
+       "description": "CIBC is a leading North American bank with over 150 years of history, dedicated to helping clients achieve their ambitions. Our new technology and operations hub in Hyderabad, CIBC India, marks a significant step in our global innovation journey. Drawn by the city’s exceptional talent, energy, and ambition, we are accelerating progress to deliver more for our clients and communities.At CIBC India, we harness the power of technology and local expertise to advance our platforms, streamline critical operations, and drive meaningful change. Our technologists use tools like Python, FastAPI, and Azure Cloud, while our operations professionals support capital markets trading, client onboarding, and payment processing. By leveraging automation, CI/CD pipelines, and agentic AI, we deliver integrated solutions that boost efficiency and reliability.We are committed to fostering a culture of growth, inclusion, and collaboration. CIBC India offers genuine opportunities for professional development, access to advanced resources, and a welcoming environment where your ideas matter. Join us to build the future of banking—together.----------------------------------------------------------------------------------------------------------------------CIBC India Private Limited is a subsidiary of CIBC, and is referred to as “CIBC India”. CIBC India Private Limited and CIBC do not provide financial services in India.  The CIBC logo is a registered trademark of CIBC, used under license by CIBC India Private Limited.CIBC (Canadian Imperial Bank of Commerce) was formed in 1961 from the merger of two major national Canadian banks, The Canadian Bank of Commerce and the Imperial Bank of Canada. The founding date of The Canadian Bank of Commerce in 1867 is used as CIBC’s official founding date.",
+       "employee_count_range": "10001+",
+       "logo_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/ee80a7c13da68edd6afd2124482b5e44f32f03ac5407de816786ebbe2222f8d7.jpg",
+       "markets": [],
+       "name": "CIBC India",
+       "primary_domain": "talent500.com",
+       "professional_network_id": "111524963",
+       "professional_network_url": "https://www.linkedin.com/company/cibc-india",
+       "profile_name": "CIBC India",
+       "status": "active",
+       "website": "https://talent500.com/cibcindia/",
+       "year_founded": null
+      },
+      "crustdata_company_id": 28775005,
+      "taxonomy": {
+       "categories": [],
+       "primary_naics_detail": null,
+       "professional_network_industries": [
+        "Financial Services"
+       ],
+       "professional_network_industry": "Financial Services",
+       "professional_network_specialities": [
+        "Operations Excellence",
+        "Capital Markets Support",
+        "Client Onboarding",
+        "Payment Processing",
+        "Cloud Solutions (Azure)",
+        "Automation",
+        "CI/CD Pipelines",
+        "Generative AI",
+        "Full Stack Development",
+        "Python Development",
+        "FastAPI Integration",
+        "Employee Development & Training",
+        "Inclusion & Belonging",
+        "Community Impact",
+        "Global Collaboration",
+        "Financial Technology (FinTech)",
+        "Workplace Wellbeing",
+        "Recognition & Rewards Programs",
+        "Career Advancement",
+        "Digital Banking",
+        "Technology Innovation"
+       ],
+       "sic_detail_list": []
+      }
+     },
+     "confidence_score": 1.0
+    }
+   ]
+  },
+  {
+   "match_type": "crustdata_company_id",
+   "matched_on": "10068",
+   "matches": [
+    {
+     "company_data": {
+      "basic_info": {
+       "all_domains": [
+        "rpsg.in",
+        "firstsource.com"
+       ],
+       "company_type": "Public Company",
+       "crustdata_company_id": 10068,
+       "description": "Firstsource Solutions Limited, an RP-Sanjiv Goenka Group company, is a global intelligence partner to enterprises across healthcare, banking and financial services, communications, media, technology, retail, and utilities.We combine more than 25 years of domain expertise with an agent-first delivery model to design, build, and operate intelligent enterprise operations.Our inch-wide, mile-deep practitioners work collaboratively to reimagine business process management. This is our Intelligence That Operates promise, powered by Kairos, the operating system that makes it real.We unify consulting, implementation, and operations into a single full-stack engagement and underwrite outcomes, not effort, turning deep domain intelligence into a compounding operational advantage for the world's most regulated industries.Our Firstsourcers are driven to Make It Happen for more than 200 leading global brands, including several Fortune 500 and FTSE 100 companies, across operations in the US, UK, India, Philippines, Mexico, Romania, Trinidad & Tobago, South Africa, and Australia.",
+       "employee_count_range": "10001+",
+       "logo_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/c2a81583b373844c7b3f3918f668e04eccd8cfd75848e792bab4d4f361c57ec0.jpg",
+       "markets": [
+        "PRIVATE"
+       ],
+       "name": "Firstsource",
+       "primary_domain": "firstsource.com",
+       "professional_network_id": "243914",
+       "professional_network_url": "https://www.linkedin.com/company/firstsource-solutions-limited",
+       "profile_name": "Firstsource",
+       "status": "active",
+       "website": "http://www.firstsource.com",
+       "year_founded": 2001
+      },
+      "crustdata_company_id": 10068,
+      "taxonomy": {
+       "categories": [
+        "Banking",
+        "Customer Service",
+        "Enterprise Software",
+        "Financial Services",
+        "Health Care",
+        "Insurance",
+        "Outsourcing",
+        "Telecommunications",
+        "Information Technology Support Services",
+        "Information Technology"
+       ],
+       "primary_naics_detail": null,
+       "professional_network_industries": [
+        "Business Consulting and Services",
+        "Professional Services"
+       ],
+       "professional_network_industry": "Business Consulting and Services",
+       "professional_network_specialities": [
+        "Collections Management",
+        "Business Transformation",
+        "Robotic Process Automation",
+        "Digitilization",
+        "Customer Experience",
+        "Data Processing",
+        "Data Analytics",
+        "GenAI",
+        "Technology",
+        "Digital Transformation",
+        "Healthcare",
+        "Mortgage",
+        "Communication",
+        "Media",
+        "Trust&Safety",
+        "BFS",
+        "HPHS",
+        "Business Process Services"
+       ],
+       "sic_detail_list": []
+      }
+     },
+     "confidence_score": 1.0
+    }
+   ]
+  },
+  {
+   "match_type": "crustdata_company_id",
+   "matched_on": "2658",
+   "matches": [
+    {
+     "company_data": {
+      "basic_info": {
+       "all_domains": [
+        "kotak.bank.in",
+        "kmil.co.in",
+        "kotak.com",
+        "kotakjifi.com"
+       ],
+       "company_type": "Public Company",
+       "crustdata_company_id": 2658,
+       "description": "About Kotak Mahindra Group:Established in 1985, the Kotak Mahindra Group is one of India’s leading financial services conglomerates. In February 2003, Kotak Mahindra Finance Ltd. (KMFL), the Group’s flagship company, received a banking license from the Reserve Bank of India (RBI). With this, KMFL became the first non-banking finance company in India to become a bank – Kotak Mahindra Bank Limited.The consolidated balance sheet of Kotak Mahindra Group is over 1 lakh crore and the consolidated net worth of the Group stands at 13,943 crore (approx US$ 2.6 billion) as on September 30, 2012. The Group offers a wide range of financial services that encompass every sphere of life. From commercial banking, to stock broking, mutual funds, life insurance and investment banking, the Group caters to the diverse financial needs of individuals and the corporate sector. The Group has a wide distribution network through branches and franchisees across India, and international offices in London, New York, California, Dubai, Abu Dhabi, Bahrain, Mauritius and Singapore. For more information, please visit the company’s website at https://www.kotak.bank.in/en/home.htmlNote: Our new toll-free number is 18004100. SEBI registration details - https://www.kotak.bank.in/content/dam/Kotak/others/sebi-registration-details.pdf",
+       "employee_count_range": "10001+",
+       "logo_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/285dbd480ee4481ce2e6cc2ea8b918b6dc754da02add817c5e39d21e27bb7ad4.jpg",
+       "markets": [
+        "BSE"
+       ],
+       "name": "Kotak Mahindra Bank",
+       "primary_domain": "kotak.bank.in",
+       "professional_network_id": "5632",
+       "professional_network_url": "https://www.linkedin.com/company/kotak-mahindra-bank",
+       "profile_name": "Kotak Mahindra Bank",
+       "status": "active",
+       "website": "https://www.kotak.bank.in/en/home.html",
+       "year_founded": 1985
+      },
+      "crustdata_company_id": 2658,
+      "taxonomy": {
+       "categories": [
+        "Banking",
+        "Finance",
+        "Financial Services",
+        "Banking & Lending"
+       ],
+       "primary_naics_detail": null,
+       "professional_network_industries": [
+        "Banking",
+        "Credit Intermediation",
+        "Financial Services"
+       ],
+       "professional_network_industry": "Banking",
+       "professional_network_specialities": [
+        "Banking",
+        "Capital Markets",
+        "Stock Broking",
+        "Mutual Funds",
+        "Life Insurance",
+        "Investment Banking"
+       ],
+       "sic_detail_list": []
+      }
+     },
+     "confidence_score": 1.0
+    }
+   ]
+  },
+  {
+   "match_type": "crustdata_company_id",
+   "matched_on": "897127",
+   "matches": [
+    {
+     "company_data": {
+      "basic_info": {
+       "all_domains": [
+        "razorpay.com",
+        "bitly.com"
+       ],
+       "company_type": "Privately Held",
+       "crustdata_company_id": 897127,
+       "description": "Power your finance, grow your business.Razorpay is India’s first full-stack financial solutions company. We are on a mission to enhance the payment experience of over 300 million end consumers. And in doing so, we aim to enable Indian businesses - big and small - accept payments digitally with minimal effort and maximum ease. Razorpay has grown from being a payment gateway provider to a solutions-driven organization boasting of an extensive products suite to accept and disburse payments as well as raise capital and park money. In a nutshell, we fit into every nook and corner where your business touches money. #OutgrowOrdinaryWe identify ourselves as disruptors in the digital payments space and our vision is to power the financial ecosystem for other disruptors. Like attracts like and Razorpay actively looks to partner with established companies and startups that have either broken the glass ceiling in their industry or are set to. The Razorpay Product Suite today comprises verticals, along with Payment Gateway, like Payment Links, Payment Pages, Subscriptions, Smart Collect, Route, Razorpay Capital, RazorpayX, Payroll and Thirdwatch.Razorpay was started in 2014 by two IIT Roorkee alumni, Harshil Mathur and Shashank Kumar. Just a short few years later, Razorpay has evolved into a 800-odd strong organization with some of the best talents in the country helping some of the best companies manage their money movement seamlessly.Certified coolWe are a bunch of spirited, ambitious and fun folks. And no, we’re not saying this ourselves--leading institutions have recognized Razorpay for the high trust and high-performance culture that we maintain. Our strength lies in the people we are and we go to great lengths to nurture a family of coders, designers, sellers, marketers, analysts, writers, runners, photographers, gamers, tinkerers, and above all, people who are dreamers and doers at the same time. Be a part of our exciting journey.",
+       "employee_count_range": "1001-5000",
+       "logo_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/0d2f613efbc6acb3f49e7c3cb2208b8759318114858da64712f095f4308d1989.jpg",
+       "markets": [
+        "PRIVATE"
+       ],
+       "name": "Razorpay",
+       "primary_domain": "razorpay.com",
+       "professional_network_id": "3788927",
+       "professional_network_url": "https://www.linkedin.com/company/razorpay",
+       "profile_name": "Razorpay",
+       "status": "active",
+       "website": "https://bit.ly/razorpay_learnmore",
+       "year_founded": 2014
+      },
+      "crustdata_company_id": 897127,
+      "taxonomy": {
+       "categories": [
+        "Apps",
+        "FinTech",
+        "Finance",
+        "Financial Services",
+        "Information Technology",
+        "Mobile",
+        "Mobile Apps",
+        "Payments",
+        "Point of Sale",
+        "Software",
+        "Financial Transaction Processing"
+       ],
+       "primary_naics_detail": null,
+       "professional_network_industries": [
+        "Software Development",
+        "Technology, Information and Internet",
+        "Technology, Information and Media"
+       ],
+       "professional_network_industry": "Software Development",
+       "professional_network_specialities": [
+        "Financial products",
+        "Payment processing",
+        "Payout processing",
+        "Banking services",
+        "Neobanking",
+        "Working Capital Loans",
+        "E-commerce Fraud Detection",
+        "Payroll processing"
+       ],
+       "sic_detail_list": []
+      }
+     },
+     "confidence_score": 1.0
+    }
+   ]
+  },
+  {
+   "match_type": "crustdata_company_id",
+   "matched_on": "32490825",
+   "matches": [
+    {
+     "company_data": {
+      "basic_info": {
+       "all_domains": [
+        "pfi.com"
+       ],
+       "company_type": "Public Company",
+       "crustdata_company_id": 32490825,
+       "description": "At PFI Innovation Centre India we're building a future that helps people live better lives longer — and we’re looking for bold thinkers and team players to help us do it.Here, you'll tackle complex challenges, collaborate with brilliant minds across the globe, and grow your career while helping millions achieve financial security.A PURPOSE DRIVEN COMPANY – 150 YEARSWhile the PFI brand is new to India, you’ll be part of Prudential Financial, Inc. (PFI) a Fortune 500 company with a 150 year history. Founded in 1875 in Newark, New Jersey, we serve 50 million customers across more than 50 countries in Asia, Europe, North America and South America. We’re the 2nd largest life insurer in the US, and with $1.6 trillion in assets under management*, we’re the 9th largest institutional global asset manager.At PFI Innovation Centre India, you’ll find a high-performance culture that’s flexible, collaborative and grounded in respect. We engage with candor, take calibrated risks, and hold ourselves accountable — always focused on delivering for our customers. It’s the standard we choose every day as we grow, perform, and win as one team.We offer valuable leadership, mentoring and learning opportunities, paired with the flexibility and support to help you thrive. Whether you're just starting out or ready to take your next step, we’ll help you grow with purpose and do the best work of your career.*Assets under management as of 12/31/2025Prudential Financial, Inc. (PFI) of the United States is not affiliated in any manner with Prudential plc, an international group incorporated in the United Kingdom, or the Prudential Assurance Company, a subsidiary of M&G plc, a company incorporated in the United Kingdom.",
+       "employee_count_range": "10001+",
+       "logo_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/ef42e12991bb544d46d926ef3d1d3d26946dbe52b961aee5d46295fea65b323e.jpg",
+       "markets": [],
+       "name": "PFI Innovation Centre India",
+       "primary_domain": "pfi.com",
+       "professional_network_id": "112363992",
+       "professional_network_url": "https://www.linkedin.com/company/pfi-innovation-centre-india",
+       "profile_name": "PFI Innovation Centre India",
+       "status": "active",
+       "website": "http://www.pfi.com",
+       "year_founded": null
+      },
+      "crustdata_company_id": 32490825,
+      "taxonomy": {
+       "categories": [],
+       "primary_naics_detail": null,
+       "professional_network_industries": [
+        "Financial Services"
+       ],
+       "professional_network_industry": "Financial Services",
+       "professional_network_specialities": [
+        "Financial Services",
+        "Investment Management",
+        "Life Insurance",
+        "Retirement Benefits",
+        "Group Benefits",
+        "Annuities",
+        "Mutual Funds",
+        "Technology",
+        "Financial Wellness",
+        "Inclusive Culture",
+        "Purpose Driven Organization"
+       ],
+       "sic_detail_list": []
+      }
+     },
+     "confidence_score": 1.0
+    }
+   ]
+  },
+  {
+   "match_type": "crustdata_company_id",
+   "matched_on": "920699",
+   "matches": [
+    {
+     "company_data": {
+      "basic_info": {
+       "all_domains": [
+        "deshawindia.com"
+       ],
+       "company_type": "Privately Held",
+       "crustdata_company_id": 920699,
+       "description": "D. E. Shaw India Private Limited (D. E. Shaw India) is a part of the D. E. Shaw group, a global investment and technology development firm. Established in 1996 as a technological development center, D. E. Shaw India has expanded its business into a broad range of software and financial activities. Its staff collaborates with colleagues around the world not only to build cutting-edge proprietary software systems that form an important part of the D. E. Shaw group’s investment activities but also to provide research and operations support to the firm’s systematic, discretionary, and hybrid strategies.An entrepreneurial spirit has always been a part of D. E. Shaw India’s culture. When external platforms don’t meet our needs, we build our own. We created one of the first NoSQL databases in our industry, built a powerful data analysis library for Python before pandas existed, and built a modern web engineering framework tailored to the firm’s needs.This profile and any links posted through this profile (together, the “Content”) are provided for your information only and do not convey investment advice or an offer of any type with respect to any securities or other financial products. The D. E. Shaw group does not endorse any information or beliefs discussed in any links posted through this profile and makes no representation as to the accuracy or adequacy of the Content. The Content has not been updated for any information that may have changed since publication. No assurances can be given that any aims, assumptions, or expectations expressed or implied in the Content were or will be realized, or that the activities described have continued or will continue at all or in the same manner as described.",
+       "employee_count_range": "1001-5000",
+       "logo_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/6d975c40a835a6f27a800122c4f53bb0edf88a2de68b22f19fe34009ca6b0772.jpg",
+       "markets": [
+        "PRIVATE"
+       ],
+       "name": "D. E. Shaw India Private Limited",
+       "primary_domain": "deshawindia.com",
+       "professional_network_id": "2408262",
+       "professional_network_url": "https://www.linkedin.com/company/d.-e.-shaw-india-private-limited",
+       "profile_name": "D. E. Shaw India Private Limited",
+       "status": "active",
+       "website": "http://www.deshawindia.com/",
+       "year_founded": 1996
+      },
+      "crustdata_company_id": 920699,
+      "taxonomy": {
+       "categories": [
+        "Financial Services",
+        "Investment & Asset Management",
+        "Finance"
+       ],
+       "primary_naics_detail": null,
+       "professional_network_industries": [
+        "Financial Services"
+       ],
+       "professional_network_industry": "Financial Services",
+       "professional_network_specialities": [],
+       "sic_detail_list": []
+      }
+     },
+     "confidence_score": 1.0
+    }
+   ]
+  },
+  {
+   "match_type": "crustdata_company_id",
+   "matched_on": "7554",
+   "matches": [
+    {
+     "company_data": {
+      "basic_info": {
+       "all_domains": [
+        "slicebank.com",
+        "slice.bank.in"
+       ],
+       "company_type": "Privately Held",
+       "crustdata_company_id": 7554,
+       "description": "slice’s purpose is to make the world better at using money and time, with a major focus on building the best consumer experience for your money. We’ve all felt how slow, confusing, and complicated banking can be. So, we’re reimagining it. We’re building every product from scratch to be fast, transparent, and feel good, because we believe that the best products transcend demographics, like how great music touches most of us.Our cornerstone products and services: slice savings account, slice UPI credit card, slice UPI, slice UPI ATMs, slice fixed deposits, slice borrow, and UPI-powered bank branch are designed to be simple, rewarding, and completely in your control. At slice, you’ll get to build things you’d use yourself and shape the future of banking in India. We tailor our working experience with the belief that the present moment is the only real thing in life. And we have harmony in the present the most when we feel happy and successful together.We’re backed by some of the world’s leading investors, including Tiger Global, Insight Partners, Advent International, Blume Ventures, and Gunosy Capital.",
+       "employee_count_range": "1001-5000",
+       "logo_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/3c10c917600186c9a1e27cddab41f3aeea72e863e6318a18555ad07b28bec8b0.jpg",
+       "markets": [
+        "PRIVATE"
+       ],
+       "name": "slice",
+       "primary_domain": "slice.bank.in",
+       "professional_network_id": "30246063",
+       "professional_network_url": "https://www.linkedin.com/company/sliceit",
+       "profile_name": "slice",
+       "status": "active",
+       "website": "https://www.slicebank.com/",
+       "year_founded": 2016
+      },
+      "crustdata_company_id": 7554,
+      "taxonomy": {
+       "categories": [
+        "Banking",
+        "Consumer",
+        "Consumer Lending",
+        "Coupons",
+        "Credit Cards",
+        "FinTech",
+        "Financial Services",
+        "Food Delivery",
+        "Food and Beverage",
+        "Internet",
+        "Lending",
+        "Mobile Apps",
+        "Mobile Payments",
+        "Payments",
+        "Restaurants",
+        "SaaS",
+        "Service Industry",
+        "Banking & Lending",
+        "Finance"
+       ],
+       "primary_naics_detail": null,
+       "professional_network_industries": [
+        "Banking",
+        "Credit Intermediation",
+        "Financial Services"
+       ],
+       "professional_network_industry": "Banking",
+       "professional_network_specialities": [],
+       "sic_detail_list": []
+      }
+     },
+     "confidence_score": 1.0
+    }
+   ]
+  },
+  {
+   "match_type": "crustdata_company_id",
+   "matched_on": "6270709",
+   "matches": [
+    {
+     "company_data": {
+      "basic_info": {
+       "all_domains": [
+        "empower.com"
+       ],
+       "company_type": "Privately Held",
+       "crustdata_company_id": 6270709,
+       "description": "Our mission is to empower financial freedom for all.Based out of the Embassy TechVillage in Bangalore, Empower India serves our customers around the clock by providing reliable technology support and living our core set of company values every dayDisclosures: https://www.empower.com/social-media/.",
+       "employee_count_range": "1001-5000",
+       "logo_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/125960f68e6662fbef7644a22260d23dfc22ced0f10e4457d829b2464878b8e8.jpg",
+       "markets": [],
+       "name": "Empower India",
+       "primary_domain": "empower.com",
+       "professional_network_id": "13605589",
+       "professional_network_url": "https://www.linkedin.com/company/empower-india",
+       "profile_name": "Empower India",
+       "status": "active",
+       "website": "https://www.empower.com/",
+       "year_founded": 2015
+      },
+      "crustdata_company_id": 6270709,
+      "taxonomy": {
+       "categories": [],
+       "primary_naics_detail": null,
+       "professional_network_industries": [
+        "Financial Services"
+       ],
+       "professional_network_industry": "Financial Services",
+       "professional_network_specialities": [],
+       "sic_detail_list": []
+      }
+     },
+     "confidence_score": 1.0
+    }
+   ]
+  },
+  {
+   "match_type": "crustdata_company_id",
+   "matched_on": "26086772",
+   "matches": [
+    {
+     "company_data": {
+      "basic_info": {
+       "all_domains": [
+        "lplfinancial.in"
+       ],
+       "company_type": "Public Company",
+       "crustdata_company_id": 26086772,
+       "description": "LPL Financial is proud to open our Global Capability Center in Hyderabad with a team of ambitious, forward-thinking professionals who are ready to shape the future of financial services. At LPL, you'll find a collaborative culture where your voice matters, integrity guides every decision, and technology fuels progress. Your skills, talents, and ideas will redefine what's possible. LPL’s success reflects our exceptional employees, who together pursue one noble mission: ensuring the success of our clients every step of the way.Disclosure: \"LPL\" and \"LPL Financial\" are the brand names used by LPL Financial Holdings Inc. and its affiliated firms to provide services. Each entity is separately constituted and regulated under applicable local laws. Use of the names is descriptive only and does not imply any agency, partnership, or global entity relationship among them.",
+       "employee_count_range": "5001-10000",
+       "logo_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/5eb08dbf01b1f3e0c68a62b3fbf481c6d62e1646a296e3a1d976be98d72587e2.jpg",
+       "markets": [],
+       "name": "LPL Financial Global Capability Center",
+       "primary_domain": "lplfinancial.in",
+       "professional_network_id": "110269034",
+       "professional_network_url": "https://www.linkedin.com/company/lpl-global-capability-center",
+       "profile_name": "LPL Financial Global Capability Center",
+       "status": "active",
+       "website": "https://careers.lplfinancial.in/in/en",
+       "year_founded": 1989
+      },
+      "crustdata_company_id": 26086772,
+      "taxonomy": {
+       "categories": [],
+       "primary_naics_detail": null,
+       "professional_network_industries": [
+        "Financial Services"
+       ],
+       "professional_network_industry": "Financial Services",
+       "professional_network_specialities": [
+        "Fintech"
+       ],
+       "sic_detail_list": []
+      }
+     },
+     "confidence_score": 1.0
+    }
+   ]
+  },
+  {
+   "match_type": "crustdata_company_id",
+   "matched_on": "7196",
+   "matches": [
+    {
+     "company_data": {
+      "basic_info": {
+       "all_domains": [
+        "pinelabs.com"
+       ],
+       "company_type": "Privately Held",
+       "crustdata_company_id": 7196,
+       "description": "Built for those who mean business.Enriching commerce across the globe, the Pine Labs platform powers multichannel businesses offline, in-store and beyond.To learn more, visit www.pinelabs.com",
+       "employee_count_range": "1001-5000",
+       "logo_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/f7db593b8b8430ccbbc46f108fec9d991b4862e3f2f3910d81af7b2e267571b2.jpg",
+       "markets": [
+        "NSE"
+       ],
+       "name": "Pine Labs",
+       "primary_domain": "pinelabs.com",
+       "professional_network_id": "554421",
+       "professional_network_url": "https://www.linkedin.com/company/pinelabs",
+       "profile_name": "Pine Labs",
+       "status": "active",
+       "website": "https://www.pinelabs.com",
+       "year_founded": 1998
+      },
+      "crustdata_company_id": 7196,
+      "taxonomy": {
+       "categories": [
+        "Billing",
+        "Consumer Lending",
+        "Credit",
+        "E-Commerce",
+        "FinTech",
+        "Financial Services",
+        "Information Technology",
+        "Mobile",
+        "Payments",
+        "Point of Sale",
+        "Prepaid Cards",
+        "Software",
+        "Internet & Web Services"
+       ],
+       "primary_naics_detail": null,
+       "professional_network_industries": [
+        "Technology, Information and Internet",
+        "Technology, Information and Media"
+       ],
+       "professional_network_industry": "Technology, Information and Internet",
+       "professional_network_specialities": [
+        "Payment Solutions",
+        "Card Swipe Machine (GPRS, Wifi, NFC,DGPRS)",
+        "EMI at POS",
+        "Business Loan at POS",
+        "Mobile Wallet Acceptance at POS",
+        "POS Integration with Billing System",
+        "Card Points Redemption at POS",
+        "POS Integration with Billing System"
+       ],
+       "sic_detail_list": []
+      }
+     },
+     "confidence_score": 1.0
+    }
+   ]
+  },
+  {
+   "match_type": "crustdata_company_id",
+   "matched_on": "6063938",
+   "matches": [
+    {
+     "company_data": {
+      "basic_info": {
+       "all_domains": [
+        "crowe.com"
+       ],
+       "company_type": "Public Company",
+       "crustdata_company_id": 6063938,
+       "description": "Crowe Capabilities Center – India (formerly known as Crowe Horwath IT Services LLP), is located in New Delhi and Hyderabad, offering advisory, consultancy, and support services for Crowe Advisory LLC on matters pertaining to finance, tax, accounting, audit, technical, or nontechnical support services.",
+       "employee_count_range": "501-1000",
+       "logo_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/d40ca0529213300d9b7f78342c393c9b39fd7cd33c707f76ada0df65ec952a79.jpg",
+       "markets": [],
+       "name": "Crowe Capabilities Center – India",
+       "primary_domain": "crowe.com",
+       "professional_network_id": "29065298",
+       "professional_network_url": "https://www.linkedin.com/company/crowe-capabilities-center",
+       "profile_name": "Crowe Capabilities Center – India",
+       "status": "active",
+       "website": "http://www.crowe.com",
+       "year_founded": null
+      },
+      "crustdata_company_id": 6063938,
+      "taxonomy": {
+       "categories": [],
+       "primary_naics_detail": null,
+       "professional_network_industries": [
+        "Financial Services"
+       ],
+       "professional_network_industry": "Financial Services",
+       "professional_network_specialities": [],
+       "sic_detail_list": []
+      }
+     },
+     "confidence_score": 1.0
+    }
+   ]
+  },
+  {
+   "match_type": "crustdata_company_id",
+   "matched_on": "1510820",
+   "matches": [
+    {
+     "company_data": {
+      "basic_info": {
+       "all_domains": [
+        "axagbs.com"
+       ],
+       "company_type": "Public Company",
+       "crustdata_company_id": 1510820,
+       "description": "At AXA Global Business Services, we believe in the power of partnerships, leveraging our expertise in business services and technology to support AXA entities in their core insurance operations, support functions, and digitization processes. We are committed to developing fresh and innovative approaches that surpass expectations and address unique challenges. Our passionate team is dedicated to driving innovation and pushing boundaries further, leveraging unparalleled technical expertise to deliver top-notch solutions that add outstanding value to AXA entities.With a strong focus on sustainability, corporate social responsibility, and DEI, we take pride in crafting solutions that not only drive business success but also contribute to a more sustainable and inclusive future.",
+       "employee_count_range": "1001-5000",
+       "logo_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/1a3a96609c16435b3fb4948c8eed58cc60b8a405d41bca0f67795e812e576178.jpg",
+       "markets": [
+        "PRIVATE"
+       ],
+       "name": "AXA Global Business Services (AXA GBS)",
+       "primary_domain": "axagbs.com",
+       "professional_network_id": "104751225",
+       "professional_network_url": "https://www.linkedin.com/company/axa-global-business-services-axa-gbs",
+       "profile_name": "AXA Global Business Services (AXA GBS)",
+       "status": "active",
+       "website": "https://axagbs.com/",
+       "year_founded": 2005
+      },
+      "crustdata_company_id": 1510820,
+      "taxonomy": {
+       "categories": [
+        "Accounting",
+        "Artificial Intelligence (AI)",
+        "Business Intelligence",
+        "Cyber Security",
+        "Data Management",
+        "Human Resources",
+        "Information Technology",
+        "Insurance",
+        "Outsourcing",
+        "Robotic Process Automation (RPA)",
+        "Insurance Carriers"
+       ],
+       "primary_naics_detail": null,
+       "professional_network_industries": [
+        "Insurance",
+        "Financial Services"
+       ],
+       "professional_network_industry": "Insurance",
+       "professional_network_specialities": [],
+       "sic_detail_list": []
+      }
+     },
+     "confidence_score": 1.0
+    }
+   ]
+  },
+  {
+   "match_type": "crustdata_company_id",
+   "matched_on": "6039298",
+   "matches": [
+    {
+     "company_data": {
+      "basic_info": {
+       "all_domains": [
+        "kodo.com"
+       ],
+       "company_type": "Privately Held",
+       "crustdata_company_id": 6039298,
+       "description": "At Kodo, we believe managing a fast growing company’s finances & operations shouldn’t feel like a juggling act. That’s why we offer a single platform to streamline all investment and purchase decisions, automate repetitive tasks and simplify payments. From corporate cards with smart controls to accounts payable and AI native treasury (KodoNorth), Kodo equips fast-growing businesses with everything they need to save time, cut costs, and scale easily.Trusted by 2,000+ companies like Cars24, Mensa Brands, and Zetwerk, Kodo transforms financial chaos into clarity. These teams are empowered with flexible corporate cards, automated vendor payments and reimbursements, and streamlined procurement processes—all this while integrating effortlessly with their ERPs for real-time insights.Backed by Y Combinator, Brex, and other global investors, we’re on a mission to simplify the CFO stack for fast-growing businesses. With Kodo, smarter spending isn’t just a goal—it’s a new reality.",
+       "employee_count_range": "51-200",
+       "logo_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/389631cb3219326d673266ebd78d59ce5b74d653ebec257db3c7a70ed557a162.jpg",
+       "markets": [
+        "PRIVATE"
+       ],
+       "name": "Kodo",
+       "primary_domain": "kodo.com",
+       "professional_network_id": "28718046",
+       "professional_network_url": "https://www.linkedin.com/company/kodohq",
+       "profile_name": "Kodo",
+       "status": "active",
+       "website": "http://www.kodo.com",
+       "year_founded": 2019
+      },
+      "crustdata_company_id": 6039298,
+      "taxonomy": {
+       "categories": [
+        "B2B",
+        "Credit Cards",
+        "FinTech",
+        "Financial Services",
+        "Online Portals",
+        "Small and Medium Businesses",
+        "Financial Transaction Processing",
+        "Finance"
+       ],
+       "primary_naics_detail": null,
+       "professional_network_industries": [
+        "Financial Services"
+       ],
+       "professional_network_industry": "Financial Services",
+       "professional_network_specialities": [],
+       "sic_detail_list": []
+      }
+     },
+     "confidence_score": 1.0
+    }
+   ]
+  },
+  {
+   "match_type": "crustdata_company_id",
+   "matched_on": "13460",
+   "matches": [
+    {
+     "company_data": {
+      "basic_info": {
+       "all_domains": [
+        "maveric-systems.com"
+       ],
+       "company_type": "Privately Held",
+       "crustdata_company_id": 13460,
+       "description": "Maveric Systems is a banking-exclusive technology specialist with over 25 years of domain depth, partnering with global financial institutions to engineer trust in AI-first banking. While others apply AI at the periphery, we embed it at the core, in operations and technology areas across retail & corporate banking, wealth management, and capital markets. Our banking domain expertise combined with a pragmatic and outcome-driven delivery model, and proprietary AI frameworks, ensures every AI initiative is rooted in contextual relevance and precision.Backed by dedicated AI Centers of Excellence, powerful ecosystem of technology platforms and recognised by leading industry bodies, we are the trusted engineering partner for the AI era.",
+       "employee_count_range": "1001-5000",
+       "logo_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/87070ee6cdc59355411c34675032146bec3f3a5c28cdf1d3351868f2825ce64a.jpg",
+       "markets": [
+        "PRIVATE"
+       ],
+       "name": "Maveric Systems Limited",
+       "primary_domain": "maveric-systems.com",
+       "professional_network_id": "207140",
+       "professional_network_url": "https://www.linkedin.com/company/maveric-systems-limited",
+       "profile_name": "Maveric Systems Limited",
+       "status": "active",
+       "website": "http://www.maveric-systems.com",
+       "year_founded": 2000
+      },
+      "crustdata_company_id": 13460,
+      "taxonomy": {
+       "categories": [
+        "Banking",
+        "CRM",
+        "Information Technology",
+        "Software",
+        "Web Development",
+        "Information Technology Support Services"
+       ],
+       "primary_naics_detail": null,
+       "professional_network_industries": [
+        "Information Technology & Services"
+       ],
+       "professional_network_industry": "Information Technology & Services",
+       "professional_network_specialities": [
+        "Digital Development",
+        "Digital Transformation",
+        "Omni Channel Platform Implementation",
+        "Agile",
+        "DevOps",
+        "AML",
+        "T24 Maintenance & Support",
+        "T24 Implementation and Customization",
+        "Quality Engineering",
+        "Wealth Management",
+        "Retail Banking",
+        "Corporate Banking",
+        "Regulatory Compliance",
+        "Core Transformation",
+        "Microservices & API",
+        "AI powered AMS",
+        "AI powered SDLC",
+        "AI CoE establishment",
+        "Data technologies",
+        "Data for AI",
+        "Agentic AI",
+        "Responsible AI",
+        "Explainable AI",
+        "AI for BFS",
+        "AI in Fraud Detection",
+        "AI in customer onboarding for banks",
+        "AI in wealth management",
+        "GenAI For Banks",
+        "AI in AML Fraud",
+        "AI in Quality Engineering"
+       ],
+       "sic_detail_list": []
+      }
+     },
+     "confidence_score": 1.0
+    }
+   ]
+  },
+  {
+   "match_type": "crustdata_company_id",
+   "matched_on": "1041959",
+   "matches": [
+    {
+     "company_data": {
+      "basic_info": {
+       "all_domains": [
+        "super.money"
+       ],
+       "company_type": "Privately Held",
+       "crustdata_company_id": 1041959,
+       "description": "Why is super.money India's most rewarding UPI platform?super.money isn’t just another UPI app : it’s your daily money hack. Whether you’re booking a flight, grabbing coffee, or splitting bills with friends, you get rewarded every time you spend. Think instant cashback, flight rewards, and credit that actually works for you. It’s built for speed, packed with perks, and made for the way Gen Z moves - fast, smart, and always on. Basically, if you’re not using super.money, you’re leaving money on the table.Playstore link:https://play.google.com/store/apps/details?id=money.super.paymentsiOS link:https://apps.apple.com/app/super-money/id6502597504",
+       "employee_count_range": "51-200",
+       "logo_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/3ac97b75705609d6dde30c499e227cf587d78edbf7fdf70e0a332cdf7f346567.jpg",
+       "markets": [
+        "PRIVATE"
+       ],
+       "name": "super.money",
+       "primary_domain": "super.money",
+       "professional_network_id": "99154856",
+       "professional_network_url": "https://www.linkedin.com/company/getsupermoney",
+       "profile_name": "super.money",
+       "status": "active",
+       "website": "https://super.money/",
+       "year_founded": 2023
+      },
+      "crustdata_company_id": 1041959,
+      "taxonomy": {
+       "categories": [
+        "Credit Cards",
+        "Financial Services"
+       ],
+       "primary_naics_detail": null,
+       "professional_network_industries": [
+        "Financial Services"
+       ],
+       "professional_network_industry": "Financial Services",
+       "professional_network_specialities": [],
+       "sic_detail_list": []
+      }
+     },
+     "confidence_score": 1.0
+    }
+   ]
+  },
+  {
+   "match_type": "crustdata_company_id",
+   "matched_on": "32596696",
+   "matches": [
+    {
+     "company_data": {
+      "basic_info": {
+       "all_domains": [
+        "schwabjobs.com"
+       ],
+       "company_type": "Public Company",
+       "crustdata_company_id": 32596696,
+       "description": "Schwab India, located in Hyderabad, provides solutions that fuel Charles Schwab’s growth, bringing together talented people and technology to drive innovation, scale, and efficiency. At Schwab India, you will collaborate with teams whose work supports solutions used by millions of clients of our American parent company, Schwab US, each day. As part of Schwab India’s early growth journey, you will help shape something new, while benefiting from the strength, stability, and 50+ years of financial services experience that come from Schwab India’s connection to Schwab US. Here, your impact begins on day one, and your contributions help move our global future forward.",
+       "employee_count_range": "501-1000",
+       "logo_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/356d1b650fd8d206c9d035d9979d80ba9da23199f55f95091705f940bbb71e31.jpg",
+       "markets": [],
+       "name": "Charles Schwab India",
+       "primary_domain": "schwabjobs.com",
+       "professional_network_id": "116454037",
+       "professional_network_url": "https://www.linkedin.com/company/schwab-india",
+       "profile_name": "Charles Schwab India",
+       "status": "active",
+       "website": "https://www.schwabjobs.com/India",
+       "year_founded": 1973
+      },
+      "crustdata_company_id": 32596696,
+      "taxonomy": {
+       "categories": [
+        "Investment & Asset Management",
+        "Finance"
+       ],
+       "primary_naics_detail": null,
+       "professional_network_industries": [
+        "Financial Services"
+       ],
+       "professional_network_industry": "Financial Services",
+       "professional_network_specialities": [],
+       "sic_detail_list": []
+      }
+     },
+     "confidence_score": 1.0
+    }
+   ]
+  },
+  {
+   "match_type": "crustdata_company_id",
+   "matched_on": "1073",
+   "matches": [
+    {
+     "company_data": {
+      "basic_info": {
+       "all_domains": [
+        "crisil.com"
+       ],
+       "company_type": "Public Company",
+       "crustdata_company_id": 1073,
+       "description": "Crisil is a global, insights-driven analytics company. Our extraordinary domain expertise and analytical rigour help clients make mission-critical decisions with confidence.Large and highly respected firms partner with us for the most reliable opinions on risk in India, and for uncovering powerful insights and turning risks into opportunities globally. We are integral to multiplying their opportunities and success.Headquartered in India, Crisil is majority owned by S&P Global.Founded in 1987 as India’s first credit rating agency, our expertise today extends across businesses: Crisil Ratings, Crisil Intelligence, Crisil Coalition Greenwich and Crisil Integral IQ.Our globally diverse workforce operates in the Americas, Asia-Pacific, Europe, Australia and the Middle East, setting the standards by which industries are measured.Crisil Limited is a SEBI Registered Research Analyst (Reg.  no.INH000007854) for its regulated research services.",
+       "employee_count_range": "1001-5000",
+       "logo_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/69b74dcd7a40d18187db308616e4d51a8a103a9cad0a211323468fa3b98e9a09.jpg",
+       "markets": [
+        "NSE"
+       ],
+       "name": "Crisil",
+       "primary_domain": "crisil.com",
+       "professional_network_id": "163261",
+       "professional_network_url": "https://www.linkedin.com/company/crisil",
+       "profile_name": "Crisil",
+       "status": "active",
+       "website": "https://www.crisil.com/",
+       "year_founded": 1987
+      },
+      "crustdata_company_id": 1073,
+      "taxonomy": {
+       "categories": [
+        "Analytics",
+        "Finance",
+        "Financial Services",
+        "Research and development",
+        "Management and consulting"
+       ],
+       "primary_naics_detail": null,
+       "professional_network_industries": [
+        "Financial Services"
+       ],
+       "professional_network_industry": "Financial Services",
+       "professional_network_specialities": [
+        "Ratings",
+        "Research",
+        "Infrastructure Advisory",
+        "Risk Solutions",
+        "Global Research & Analytics",
+        "Capital Markets",
+        "Executive Training"
+       ],
+       "sic_detail_list": []
+      }
+     },
+     "confidence_score": 1.0
+    }
+   ]
+  },
+  {
+   "match_type": "crustdata_company_id",
+   "matched_on": "9413",
+   "matches": [
+    {
+     "company_data": {
+      "basic_info": {
+       "all_domains": [
+        "edgeverve.com"
+       ],
+       "company_type": "Privately Held",
+       "crustdata_company_id": 9413,
+       "description": "Possibilities UnlimitedInspire enterprises with the power of digital platforms.We reimagine the way enterprises work for the better. Enabling our clients to innovate on business models and drive game-changing efficiency with best-of-breed digital platforms.Our digital platforms help clients capitalize on the inherent power of a connected enterprise. We do this by amplifying the human potential, crafting connected customer journeys, and exploiting the power of value networks.Powered by native AI and automation capabilities, with security and scalability at the core, our digital platforms help enterprises discover & automate processes, digitize & structure unstructured data and unlock the power of the network by integrating enterprises. We drive digital transformation by delivering actionable intelligence and fulfilling our client's vision of building a connected enterprise.",
+       "employee_count_range": "5001-10000",
+       "logo_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/453121641a3fea93d3f28784f0140db9463d1b0641384f3ec0339645ddcbe018.jpg",
+       "markets": [
+        "PRIVATE"
+       ],
+       "name": "EdgeVerve",
+       "primary_domain": "edgeverve.com",
+       "professional_network_id": "3790570",
+       "professional_network_url": "https://www.linkedin.com/company/edgeverve",
+       "profile_name": "EdgeVerve",
+       "status": "active",
+       "website": "https://www.edgeverve.com/",
+       "year_founded": 2014
+      },
+      "crustdata_company_id": 9413,
+      "taxonomy": {
+       "categories": [
+        "Banking",
+        "Cloud Data Services",
+        "FinTech",
+        "Finance",
+        "Financial Services",
+        "Information Technology",
+        "Robotic Process Automation (RPA)",
+        "SaaS",
+        "Software",
+        "Enterprise Software & Network Solutions"
+       ],
+       "primary_naics_detail": null,
+       "professional_network_industries": [
+        "Software Development",
+        "Technology, Information and Internet",
+        "Technology, Information and Media"
+       ],
+       "professional_network_industry": "Software Development",
+       "professional_network_specialities": [],
+       "sic_detail_list": []
+      }
+     },
+     "confidence_score": 1.0
+    }
+   ]
+  }
+ ],
+ "endpoint": "company_enrich",
+ "headers": {
+  "content-type": "application/json",
+  "x-credits-used": "50"
+ },
+ "request_body": {
+  "crustdata_company_ids": [
+   2199,
+   1097923,
+   519,
+   5729,
+   17073090,
+   1937,
+   715535,
+   28775005,
+   10068,
+   2658,
+   897127,
+   32490825,
+   920699,
+   7554,
+   6270709,
+   26086772,
+   7196,
+   6063938,
+   1510820,
+   6039298,
+   13460,
+   1041959,
+   32596696,
+   1073,
+   9413
+  ],
+  "fields": [
+   "basic_info",
+   "taxonomy"
+  ]
+ },
+ "status": 200,
+ "url": "https://api.crustdata.com/company/enrich"
+}

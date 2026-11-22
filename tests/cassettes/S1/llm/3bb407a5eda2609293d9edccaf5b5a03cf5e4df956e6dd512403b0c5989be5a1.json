@@ -1,0 +1,8 @@
+{
+ "cache_read_tokens": 0,
+ "model": "claude-sonnet-5",
+ "output_json": "{\"label\":\"ambiguous\",\"confidence\":\"low\",\"passage\":\"Operating as a Global Capability Center (GCC) in Pune, India, Fluidra Technologies supports global operations across technology, engineering, digital transformation, and business services\",\"source\":\"crustdata.company_enrich.basic_info.description\"}",
+ "request_id": "req_011ChHxJKCdXdK5WNyg3PgdN",
+ "tokens_in": 994,
+ "tokens_out": 104
+}

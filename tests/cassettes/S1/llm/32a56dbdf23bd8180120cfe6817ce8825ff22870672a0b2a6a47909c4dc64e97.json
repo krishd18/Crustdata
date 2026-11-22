@@ -1,0 +1,8 @@
+{
+ "cache_read_tokens": 0,
+ "model": "claude-sonnet-5",
+ "output_json": "{\"label\":\"b2b\",\"confidence\":\"high\",\"passage\":\"Efficieno helps enterprises become autonomous \u2014 companies that never sleep, never forget, and never wait for Monday \u2014 starting with the systems they actually run on: Oracle E-Business Suite and Fusion.\",\"source\":\"crustdata.company_enrich.basic_info.description\"}",
+ "request_id": "req_011ChHxJ55KNxqh3K6NW1Ysu",
+ "tokens_in": 1358,
+ "tokens_out": 111
+}

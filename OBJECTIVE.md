@@ -1,4 +1,4 @@
-# Vouch — Objective & Architecture
+# Data Designer — Objective & Architecture
 
 > Every claim a counterparty makes, checked before you sign.
 > ContextCon 05 · BITS Pilani · "Services, Replaced"
@@ -10,7 +10,7 @@ diligence firms and M&A advisors to decide whom to trust: new carriers and wareh
 subcontractors, JV partners, and acquisition targets. Analysts spend days per counterparty
 checking claims by hand.
 
-**What Vouch does.** It takes the pack a counterparty sends the client (teaser, capability deck,
+**What Data Designer does.** It takes the pack a counterparty sends the client (teaser, capability deck,
 onboarding form, or its public website) and does the whole job:
 
 1. **Find** (optional) — shortlist acquisition targets from live company data.

@@ -1,0 +1,13 @@
+# Per-run limits (the client can cut them mid-run: PATCH /runs/{id}/limits). Stop non-critical work at 80%.
+defaults: {max_credits: 300, max_llm_tokens: 400000, deadline_s: 900, stop_noncritical_at: 0.8}
+by_family:
+  FIND_LIST:    {max_credits: 200, deadline_s: 600}
+  RESEARCH_QA:  {max_credits: 200, deadline_s: 600}
+  ACQUIRE:      {max_credits: 450, deadline_s: 1200}
+  VENDOR_CHECK: {max_credits: 120, deadline_s: 600}
+  DECK_CHECK:   {max_credits: 180, deadline_s: 900}
+  RECHECK:      {max_credits: 40,  deadline_s: 300}
+record_mode_caps: {per_case_credits: 150}
+research_qa_search_limit: 300   # sector company search (largest first); the job-side industry aggregation is a free second stream
+research_qa_classify_top: 25
+research_qa_listing_limit: 500

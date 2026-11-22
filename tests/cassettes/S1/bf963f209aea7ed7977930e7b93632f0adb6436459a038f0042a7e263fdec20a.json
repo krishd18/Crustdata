@@ -1,0 +1,1323 @@
+{
+ "body": {
+  "companies": [
+   {
+    "basic_info": {
+     "name": "Knovista Technologies Pvt. Ltd.",
+     "primary_domain": "knovista.in",
+     "year_founded": 2025
+    },
+    "crustdata_company_id": 10443430,
+    "headcount": {
+     "growth_percent": {
+      "12m": 102.32558139534885,
+      "1m": 6.967213114754098,
+      "3m": 38.82978723404255,
+      "6m": 62.11180124223602
+     },
+     "total": 261
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Infopark-Kochi, Kerala, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "SDE Jobs and Internships",
+     "primary_domain": "",
+     "year_founded": 2023
+    },
+    "crustdata_company_id": 11315340,
+    "headcount": {
+     "growth_percent": {
+      "12m": 177.77777777777777,
+      "1m": 21.951219512195124,
+      "3m": 37.61467889908257,
+      "6m": 92.3076923076923
+     },
+     "total": 150
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Koramangala VI Bk, Karnātaka, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "ParvaM",
+     "primary_domain": "parvamm.com",
+     "year_founded": 2023
+    },
+    "crustdata_company_id": 3859285,
+    "headcount": {
+     "growth_percent": {
+      "12m": 100.0,
+      "1m": 3.389830508474576,
+      "3m": 121.81818181818183,
+      "6m": 110.34482758620689
+     },
+     "total": 122
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Tarabanahalli, Chikkabanavara, Silvepura, Karnātaka, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "MindBrain",
+     "primary_domain": "mindbrain.co.in",
+     "year_founded": 2023
+    },
+    "crustdata_company_id": 6269476,
+    "headcount": {
+     "growth_percent": {
+      "12m": 107.14285714285714,
+      "1m": 4.504504504504505,
+      "3m": 4.504504504504505,
+      "6m": 84.12698412698413
+     },
+     "total": 116
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Patia Gds, K I I T, Kalarahanga, Odisha, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "Jinarth Infotech",
+     "primary_domain": "jinarthinfotech.com",
+     "year_founded": 2024
+    },
+    "crustdata_company_id": 3585028,
+    "headcount": {
+     "growth_percent": {
+      "12m": 642.8571428571429,
+      "1m": 0.9708737864077669,
+      "3m": 18.181818181818183,
+      "6m": 225.0
+     },
+     "total": 104
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Vallabh  Vidyanagar, Gujarat, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "SkillManthan Technologies Pvt Ltd",
+     "primary_domain": "theskillmanthan.com",
+     "year_founded": 2025
+    },
+    "crustdata_company_id": 17078874,
+    "headcount": {
+     "growth_percent": {
+      "12m": 1314.2857142857142,
+      "1m": -7.476635514018691,
+      "3m": 209.375,
+      "6m": 229.99999999999997
+     },
+     "total": 99
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Sec-B Indira Nagar, Sarvoday Nagar, Ghazipur (Lucknow), Indiranagar Sec-21, Hal (Lucknow), Sec-d Indiranagar, Indiranagar Sec-18, Indiranagar Sec-14, Narain Nagar, Indira Nagar (Lucknow), Uttar Pradesh, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "Fluidra Technologies Private Limited",
+     "primary_domain": "fluidra.com",
+     "year_founded": 2026
+    },
+    "crustdata_company_id": 32616104,
+    "headcount": {
+     "growth_percent": {
+      "12m": 1416.6666666666665,
+      "1m": 4.597701149425287,
+      "3m": 7.0588235294117645,
+      "6m": 378.9473684210526
+     },
+     "total": 91
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Pune Cantt East, Sachapir Street, N.W. College, Dr.B.A. Chowk, Pune New Bazar, Ghorpuri Bazar, Pune H.O, C D A (O), Maharashtra, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "Blue Machines AI",
+     "primary_domain": "bluemachines.ai",
+     "year_founded": 2025
+    },
+    "crustdata_company_id": 16986012,
+    "headcount": {
+     "growth_percent": {
+      "12m": 323.8095238095238,
+      "1m": 0.0,
+      "3m": 34.84848484848485,
+      "6m": 74.50980392156863
+     },
+     "total": 89
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Bengaluru, Karnataka, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "NavaNala Technologies Private Limited",
+     "primary_domain": "navanalatech.com",
+     "year_founded": 2026
+    },
+    "crustdata_company_id": 32583501,
+    "headcount": {
+     "growth_percent": {
+      "12m": 616.6666666666667,
+      "1m": 2.380952380952381,
+      "3m": 32.30769230769231,
+      "6m": 145.7142857142857
+     },
+     "total": 86
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Erode, Tamil Nadu, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "Altruisty",
+     "primary_domain": "altruisty.in",
+     "year_founded": 2024
+    },
+    "crustdata_company_id": 3674282,
+    "headcount": {
+     "growth_percent": {
+      "12m": 186.20689655172413,
+      "1m": 7.792207792207792,
+      "3m": 33.87096774193548,
+      "6m": 219.23076923076925
+     },
+     "total": 83
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Rajaji Bhavan, Besantnagar, Tamil Nādu, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "SRM Insider Community",
+     "primary_domain": "srminsider.in",
+     "year_founded": 2024
+    },
+    "crustdata_company_id": 9104912,
+    "headcount": {
+     "growth_percent": {
+      "12m": 290.0,
+      "1m": 27.86885245901639,
+      "3m": 212.0,
+      "6m": 212.0
+     },
+     "total": 78
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Ninnakarai, Kattankolathur, Kavanur, Tamil Nādu, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "Techpanda Academy",
+     "primary_domain": "itechpanda.com",
+     "year_founded": 2025
+    },
+    "crustdata_company_id": 18101679,
+    "headcount": {
+     "growth_percent": {
+      "12m": 755.5555555555555,
+      "1m": 126.47058823529412,
+      "3m": 185.1851851851852,
+      "6m": 327.77777777777777
+     },
+     "total": 77
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Hindi Prachar Sabha, Thygarayanagar North ND, Thygarayanagar South NDS.O, Thygarayanagar H.O, Tamil Nadu, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "Chatbot.team",
+     "primary_domain": "chatbot.team",
+     "year_founded": 2023
+    },
+    "crustdata_company_id": 2575854,
+    "headcount": {
+     "growth_percent": {
+      "12m": 121.875,
+      "1m": 29.09090909090909,
+      "3m": 26.785714285714285,
+      "6m": 65.11627906976744
+     },
+     "total": 71
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Basai Road, Shivaji Nagar (Gurgaon), Gurgaon Kty., Urban Estate (Gurgaon), Khandsa Road, Gurgaon Sector 17, Mini Sectt., New Colony (Gurgaon), Arjun Nagar, Gurgaon South City I, Gurgaon H.O, Haryana, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "Cogentix Systems",
+     "primary_domain": "cogentixsystems.co.in",
+     "year_founded": 2023
+    },
+    "crustdata_company_id": 5996377,
+    "headcount": {
+     "growth_percent": {
+      "12m": 72.5,
+      "1m": -1.4285714285714286,
+      "3m": 30.18867924528302,
+      "6m": 56.81818181818182
+     },
+     "total": 69
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Nepz Post Office, Nagla Charandas, Uttar Pradesh, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "Revspot",
+     "primary_domain": "revspot.ai",
+     "year_founded": 2024
+    },
+    "crustdata_company_id": 2309545,
+    "headcount": {
+     "growth_percent": {
+      "12m": 162.5,
+      "1m": -3.076923076923077,
+      "3m": 0.0,
+      "6m": 70.27027027027027
+     },
+     "total": 63
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Adugodi, Karnataka, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "Efficieno AI",
+     "primary_domain": "efficieno.ai",
+     "year_founded": 2024
+    },
+    "crustdata_company_id": 11908588,
+    "headcount": {
+     "growth_percent": {
+      "12m": 600.0,
+      "1m": 21.73913043478261,
+      "3m": 600.0,
+      "6m": 600.0
+     },
+     "total": 56
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "N.I.A., Baner, Mahārāshtra, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "Horizon Labs",
+     "primary_domain": "",
+     "year_founded": 2025
+    },
+    "crustdata_company_id": 66366252,
+    "headcount": {
+     "growth_percent": {
+      "12m": 0.0,
+      "1m": 14.285714285714285,
+      "3m": 45.45454545454545,
+      "6m": 2300.0
+     },
+     "total": 48
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Bengluru, Karnataka, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "G3 Cyberspace",
+     "primary_domain": "g3cyberspace.com",
+     "year_founded": 2024
+    },
+    "crustdata_company_id": 12194542,
+    "headcount": {
+     "growth_percent": {
+      "12m": 666.6666666666667,
+      "1m": 109.09090909090908,
+      "3m": 100.0,
+      "6m": 109.09090909090908
+     },
+     "total": 46
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Chennai, Tamil Nadu, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "InnovalQ Technologies",
+     "primary_domain": "",
+     "year_founded": 2026
+    },
+    "crustdata_company_id": 32549893,
+    "headcount": {
+     "growth_percent": {
+      "12m": 0.0,
+      "1m": 76.0,
+      "3m": 120.0,
+      "6m": 193.33333333333334
+     },
+     "total": 44
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Vilankurichi, Saravanampatti, Keeranatham, Tamil Nādu, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "AAAMT",
+     "primary_domain": "aaamt.in",
+     "year_founded": 2024
+    },
+    "crustdata_company_id": 8646426,
+    "headcount": {
+     "growth_percent": {
+      "12m": 61.53846153846154,
+      "1m": 23.52941176470588,
+      "3m": 44.827586206896555,
+      "6m": 75.0
+     },
+     "total": 42
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Madhapur, Cyberabad, Telangana, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "QClairvoyance Quantum Labs Pvt. Ltd.",
+     "primary_domain": "qclairvoyance.com",
+     "year_founded": 2024
+    },
+    "crustdata_company_id": 6700902,
+    "headcount": {
+     "growth_percent": {
+      "12m": 215.3846153846154,
+      "1m": 41.37931034482759,
+      "3m": 105.0,
+      "6m": 127.77777777777777
+     },
+     "total": 41
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Sainikpuri, Telangana, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "approtechr&dsolutionspvtltd",
+     "primary_domain": "approtechsolutions.in",
+     "year_founded": 2025
+    },
+    "crustdata_company_id": 14151209,
+    "headcount": {
+     "growth_percent": {
+      "12m": 310.0,
+      "1m": 10.81081081081081,
+      "3m": 141.1764705882353,
+      "6m": 156.25
+     },
+     "total": 41
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Tambaram West, MEPZ Tambaram, Tambaram H.O, Irumbuliyur, Kasthuribainagar, Tamil Nadu, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "Innovation Hacks",
+     "primary_domain": "innovationhacks.in",
+     "year_founded": 2026
+    },
+    "crustdata_company_id": 63819230,
+    "headcount": {
+     "growth_percent": {
+      "12m": 0.0,
+      "1m": -32.78688524590164,
+      "3m": 583.3333333333333,
+      "6m": 583.3333333333333
+     },
+     "total": 41
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Coimbatore, Tamil Nadu, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "GameGenesis",
+     "primary_domain": "gamegenesis.studio",
+     "year_founded": 2024
+    },
+    "crustdata_company_id": 17615156,
+    "headcount": {
+     "growth_percent": {
+      "12m": 457.1428571428571,
+      "1m": 18.181818181818183,
+      "3m": 178.57142857142858,
+      "6m": 333.33333333333337
+     },
+     "total": 39
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "I I M, Jodhpur Char Rasta, Manekbag, Polytechnic (Ahmedabad), Azad Society, S A C, Gujarat, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "OSEN",
+     "primary_domain": "osen.live",
+     "year_founded": 2025
+    },
+    "crustdata_company_id": 17560012,
+    "headcount": {
+     "growth_percent": {
+      "12m": 3500.0,
+      "1m": 38.46153846153847,
+      "3m": 44.0,
+      "6m": 260.0
+     },
+     "total": 36
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "online, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "KINETREXA SOFTWARE PRIVATE LIMITED",
+     "primary_domain": "kinetrexa.com",
+     "year_founded": 2026
+    },
+    "crustdata_company_id": 30044991,
+    "headcount": {
+     "growth_percent": {
+      "12m": 0.0,
+      "1m": 20.689655172413794,
+      "3m": 400.0,
+      "6m": 1650.0
+     },
+     "total": 35
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Gorakhpur Kutchery, Golghar, Dharamshala, Alinagar, Daudpur, Ilahibagh, Betia Hata, Kazipur Kalan, Buxipur, Gorakhpur H.O, Civil Court (Gorakhpur), Jafra Bazar, Labour Camp, Allahadadpur, Bank Road (Gorakhpur), Uttar Pradesh, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "FusionEvalX",
+     "primary_domain": "fusionevalx.ai",
+     "year_founded": 2024
+    },
+    "crustdata_company_id": 22335454,
+    "headcount": {
+     "growth_percent": {
+      "12m": 0.0,
+      "1m": 3.0303030303030303,
+      "3m": 100.0,
+      "6m": 3300.0
+     },
+     "total": 34
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Jubilee Hills, Dr.B R Ambedkar O.U, Telangana, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "AiVONIC Technology PVT LTD",
+     "primary_domain": "aivonic.com",
+     "year_founded": 2024
+    },
+    "crustdata_company_id": 12304996,
+    "headcount": {
+     "growth_percent": {
+      "12m": 120.0,
+      "1m": 0.0,
+      "3m": 120.0,
+      "6m": 135.71428571428572
+     },
+     "total": 33
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "L B Colony, M.V.P.Colony, Andhra Pradesh, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "Trao",
+     "primary_domain": "trao.ai",
+     "year_founded": 2025
+    },
+    "crustdata_company_id": 13097562,
+    "headcount": {
+     "growth_percent": {
+      "12m": 220.00000000000003,
+      "1m": 28.000000000000004,
+      "3m": 68.42105263157895,
+      "6m": 100.0
+     },
+     "total": 32
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Kailash Colony, Greater Kailash, Masjid Moth, National Capital Territory of Delhi, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "Logiq Gen",
+     "primary_domain": "logiqgen.com",
+     "year_founded": 2025
+    },
+    "crustdata_company_id": 18308238,
+    "headcount": {
+     "growth_percent": {
+      "12m": 77.77777777777779,
+      "1m": 33.33333333333333,
+      "3m": 33.33333333333333,
+      "6m": 60.0
+     },
+     "total": 32
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Vivekanandanagar Colony, Kukatpally, Telangana, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "Dataspan Technologies",
+     "primary_domain": "dataspantechnologies.com",
+     "year_founded": 2025
+    },
+    "crustdata_company_id": 15729453,
+    "headcount": {
+     "growth_percent": {
+      "12m": 158.33333333333331,
+      "1m": 3.3333333333333335,
+      "3m": 158.33333333333331,
+      "6m": 158.33333333333331
+     },
+     "total": 31
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Jeevan Prakash, Gole Colony, Mahārāshtra, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "Willovate Private Limited",
+     "primary_domain": "willovate.in",
+     "year_founded": 2025
+    },
+    "crustdata_company_id": 18199408,
+    "headcount": {
+     "growth_percent": {
+      "12m": 416.6666666666667,
+      "1m": 55.00000000000001,
+      "3m": 72.22222222222221,
+      "6m": 93.75
+     },
+     "total": 31
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Bagadganj, Mahārāshtra, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "Stack AI Solutions",
+     "primary_domain": "stackaisolutions.com",
+     "year_founded": 2024
+    },
+    "crustdata_company_id": 2655676,
+    "headcount": {
+     "growth_percent": {
+      "12m": 200.0,
+      "1m": 30.434782608695656,
+      "3m": 50.0,
+      "6m": 233.33333333333334
+     },
+     "total": 30
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Manikonda, Mancherevula, Narsingi, Telangana, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "BOTSEDGE TECHNOLOGY PRIVATE LIMITED",
+     "primary_domain": "botsedge.ai",
+     "year_founded": 2023
+    },
+    "crustdata_company_id": 14643336,
+    "headcount": {
+     "growth_percent": {
+      "12m": 57.89473684210527,
+      "1m": 11.11111111111111,
+      "3m": 42.857142857142854,
+      "6m": 66.66666666666666
+     },
+     "total": 30
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Keelakattalai, Old Pallavaram, Tamil Nādu, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "CoE AI Skills Lab cum Technical Club",
+     "primary_domain": "",
+     "year_founded": 2025
+    },
+    "crustdata_company_id": 32080745,
+    "headcount": {
+     "growth_percent": {
+      "12m": 0.0,
+      "1m": 76.47058823529412,
+      "3m": 100.0,
+      "6m": 114.28571428571428
+     },
+     "total": 30
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Shahpur, Kakra, Nekpur, Kanauja, Murad Nagar Bazar, Duhai, Jalalabad, Sultanpur, Kumhera, Bhikanpur, Bhadoli, Surana, Murad Nagar Town, Abupur, Murad Nagar (Ghaziabad), Noorpur, Didoli, Raoli Kalan, Dosa Banjarpur, Jalalpur Dhindar, Khimawati, Basantpur Sainthli, Uttar Pradesh, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "InfoTechiezz",
+     "primary_domain": "infotechiezz.com",
+     "year_founded": 2025
+    },
+    "crustdata_company_id": 98957875,
+    "headcount": {
+     "growth_percent": {
+      "12m": 0.0,
+      "1m": 328.57142857142856,
+      "3m": 2900.0,
+      "6m": 2900.0
+     },
+     "total": 30
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Bangalore, Karnataka, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "Heartiest Mind Technologies Private Limited",
+     "primary_domain": "heartiestmind.com",
+     "year_founded": 2025
+    },
+    "crustdata_company_id": 14390148,
+    "headcount": {
+     "growth_percent": {
+      "12m": 2800.0,
+      "1m": 0.0,
+      "3m": 70.58823529411765,
+      "6m": 222.22222222222223
+     },
+     "total": 29
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "nan, Pennsylvania, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "SPOG.AI",
+     "primary_domain": "spog.ai",
+     "year_founded": 2024
+    },
+    "crustdata_company_id": 9158400,
+    "headcount": {
+     "growth_percent": {
+      "12m": 459.99999999999994,
+      "1m": 0.0,
+      "3m": 366.66666666666663,
+      "6m": 366.66666666666663
+     },
+     "total": 28
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Noida Sector 27, Noida Sector 16, Noida H.O, Noida Sector 12, Uttar Pradesh, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "Tryovate",
+     "primary_domain": "tryovate.com",
+     "year_founded": 2024
+    },
+    "crustdata_company_id": 17047761,
+    "headcount": {
+     "growth_percent": {
+      "12m": 154.54545454545453,
+      "1m": 64.70588235294117,
+      "3m": 133.33333333333331,
+      "6m": 154.54545454545453
+     },
+     "total": 28
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Chitrapuri Colony, Telangana, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "PGSN Soft Tech",
+     "primary_domain": "pgsnsofttech.com",
+     "year_founded": 2024
+    },
+    "crustdata_company_id": 32627169,
+    "headcount": {
+     "growth_percent": {
+      "12m": 833.3333333333334,
+      "1m": -3.4482758620689653,
+      "3m": 0.0,
+      "6m": 833.3333333333334
+     },
+     "total": 28
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Madhapur, Cyberabad, Telangana, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "Globenix Solutions India Private Limited",
+     "primary_domain": "",
+     "year_founded": 2025
+    },
+    "crustdata_company_id": 17286934,
+    "headcount": {
+     "growth_percent": {
+      "12m": 80.0,
+      "1m": 22.727272727272727,
+      "3m": 22.727272727272727,
+      "6m": 68.75
+     },
+     "total": 27
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Velacheri, Tamil Nadu, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "Aeos Games",
+     "primary_domain": "unleashtheavatargame.com",
+     "year_founded": 2024
+    },
+    "crustdata_company_id": 25792229,
+    "headcount": {
+     "growth_percent": {
+      "12m": 285.7142857142857,
+      "1m": 42.10526315789473,
+      "3m": 42.10526315789473,
+      "6m": 58.82352941176471
+     },
+     "total": 27
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Bangalore, Karnataka, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "Cow Paradise Games",
+     "primary_domain": "cowparadisegames.com",
+     "year_founded": 2026
+    },
+    "crustdata_company_id": 3403604,
+    "headcount": {
+     "growth_percent": {
+      "12m": 766.6666666666667,
+      "1m": 13.043478260869565,
+      "3m": 766.6666666666667,
+      "6m": 766.6666666666667
+     },
+     "total": 26
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Thirumullavaram, Kerala, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "DealConverter - The Revenue Booster CRM",
+     "primary_domain": "dealconverter.com",
+     "year_founded": 2024
+    },
+    "crustdata_company_id": 7599881,
+    "headcount": {
+     "growth_percent": {
+      "12m": 225.0,
+      "1m": 0.0,
+      "3m": 30.0,
+      "6m": 116.66666666666667
+     },
+     "total": 26
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Perungudi, Tamil Nadu, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "GGSIPU EDC ACM STUDENT CHAPTER",
+     "primary_domain": "acm.org",
+     "year_founded": 2024
+    },
+    "crustdata_company_id": 8032885,
+    "headcount": {
+     "growth_percent": {
+      "12m": 188.88888888888889,
+      "1m": 18.181818181818183,
+      "3m": 18.181818181818183,
+      "6m": 136.36363636363635
+     },
+     "total": 26
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Babarpur (North East Delhi), Vishwas Nagar, Telewara, Shahdara Mandi, Rohtash Nagar, Distt. Court (KKD), Balbir Nagar, Goverdhan Bihari Colony, Bhola Nath Nagar, Shivaji Park (East Delhi), Shahdara, Man Sarovar Park, Loni Road, Delhi, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "Ratch AI",
+     "primary_domain": "ratch.ai",
+     "year_founded": 2026
+    },
+    "crustdata_company_id": 18080471,
+    "headcount": {
+     "growth_percent": {
+      "12m": 2500.0,
+      "1m": 100.0,
+      "3m": 271.42857142857144,
+      "6m": 271.42857142857144
+     },
+     "total": 26
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Bengaluru South, Karnataka, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "Tanvox Technologies",
+     "primary_domain": "tanvox.in",
+     "year_founded": 2025
+    },
+    "crustdata_company_id": 28608257,
+    "headcount": {
+     "growth_percent": {
+      "12m": 2500.0,
+      "1m": 52.94117647058824,
+      "3m": 188.88888888888889,
+      "6m": 188.88888888888889
+     },
+     "total": 26
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Gachibowli, Manuu, Telangana, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "Aagento.AI",
+     "primary_domain": "aagento.com",
+     "year_founded": 2026
+    },
+    "crustdata_company_id": 66662812,
+    "headcount": {
+     "growth_percent": {
+      "12m": 0.0,
+      "1m": 36.84210526315789,
+      "3m": 36.84210526315789,
+      "6m": 333.33333333333337
+     },
+     "total": 26
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Knowledge Park-I, Alpha Greater Noida, Tugalpur, Ghori, Sakipur, Uttar Pradesh, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "Znole Technology Private Limited",
+     "primary_domain": "znole.com",
+     "year_founded": 2025
+    },
+    "crustdata_company_id": 68250006,
+    "headcount": {
+     "growth_percent": {
+      "12m": 420.0,
+      "1m": 13.043478260869565,
+      "3m": 44.44444444444444,
+      "6m": 188.88888888888889
+     },
+     "total": 26
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Mirzapur, Uttar Pradesh, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "D Soft Solutions  Pvt Ltd",
+     "primary_domain": "d-softsolutions.com",
+     "year_founded": 2023
+    },
+    "crustdata_company_id": 14173068,
+    "headcount": {
+     "growth_percent": {
+      "12m": 150.0,
+      "1m": 56.25,
+      "3m": 56.25,
+      "6m": 108.33333333333333
+     },
+     "total": 25
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Kadavanthara, Kerala, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "Mind Merge Soft Tech Private Limited",
+     "primary_domain": "mmstinfo.com",
+     "year_founded": 2023
+    },
+    "crustdata_company_id": 14443280,
+    "headcount": {
+     "growth_percent": {
+      "12m": 150.0,
+      "1m": -10.714285714285714,
+      "3m": 316.66666666666663,
+      "6m": 316.66666666666663
+     },
+     "total": 25
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Madhapur, Cyberabad, Telangana, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "Robot ArtWorks",
+     "primary_domain": "robotartworks.com",
+     "year_founded": 2024
+    },
+    "crustdata_company_id": 15912719,
+    "headcount": {
+     "growth_percent": {
+      "12m": 56.25,
+      "1m": 4.166666666666666,
+      "3m": 47.05882352941176,
+      "6m": 66.66666666666666
+     },
+     "total": 25
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Chhotapara, Vivekanand Ashram, Ravigram, Rajendra Nagar (Raipur), Raipur Kutchery, Raipur H.O, Purani Basti (Raipur), Dayanand Nagar, Byron Bazar, Kalibadi, Chhattisgarh, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "TrueGradient",
+     "primary_domain": "truegradient.ai",
+     "year_founded": 2023
+    },
+    "crustdata_company_id": 1988724,
+    "headcount": {
+     "growth_percent": {
+      "12m": 41.17647058823529,
+      "1m": 4.3478260869565215,
+      "3m": 9.090909090909092,
+      "6m": 50.0
+     },
+     "total": 24
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Bengaluru, Karnataka, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "MOHSoftTech Private Limited",
+     "primary_domain": "mohsofttech.com",
+     "year_founded": 2025
+    },
+    "crustdata_company_id": 5754348,
+    "headcount": {
+     "growth_percent": {
+      "12m": 166.66666666666669,
+      "1m": 0.0,
+      "3m": 9.090909090909092,
+      "6m": 166.66666666666669
+     },
+     "total": 24
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Hyderabad, Telangana, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "aptapace",
+     "primary_domain": "aptapace.com",
+     "year_founded": 2023
+    },
+    "crustdata_company_id": 6055636,
+    "headcount": {
+     "growth_percent": {
+      "12m": 50.0,
+      "1m": 4.3478260869565215,
+      "3m": 20.0,
+      "6m": 50.0
+     },
+     "total": 24
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Kothaguda (K.V.Rangareddy), Kondapur, Telangana, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "Digitechzo",
+     "primary_domain": "digitechzo.com",
+     "year_founded": 2024
+    },
+    "crustdata_company_id": 12330721,
+    "headcount": {
+     "growth_percent": {
+      "12m": 700.0,
+      "1m": 50.0,
+      "3m": 700.0,
+      "6m": 700.0
+     },
+     "total": 24
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Villapuram, Avanivapuram, Tamil Nadu, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "BashCraft Club",
+     "primary_domain": "",
+     "year_founded": 2024
+    },
+    "crustdata_company_id": 1974815,
+    "headcount": {
+     "growth_percent": {
+      "12m": -25.806451612903224,
+      "1m": -8.0,
+      "3m": -20.689655172413794,
+      "6m": 91.66666666666666
+     },
+     "total": 23
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Lasudiakhas, Kotri (Sehore), Borkheda, Gavakheda, Chupadiya, Bedakhedi, Molukhedi, Nipaniakalan, Madhya Pradesh, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "Zeto Studio",
+     "primary_domain": "zeto.studio",
+     "year_founded": 2023
+    },
+    "crustdata_company_id": 6510526,
+    "headcount": {
+     "growth_percent": {
+      "12m": 283.33333333333337,
+      "1m": -25.806451612903224,
+      "3m": 155.55555555555557,
+      "6m": 228.57142857142856
+     },
+     "total": 23
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Madhapur, Cyberabad, Telangana, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "Innowaft",
+     "primary_domain": "innowaft.com",
+     "year_founded": 2024
+    },
+    "crustdata_company_id": 13206642,
+    "headcount": {
+     "growth_percent": {
+      "12m": 228.57142857142856,
+      "1m": 4.545454545454546,
+      "3m": 91.66666666666666,
+      "6m": 91.66666666666666
+     },
+     "total": 23
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Venkatanagaram, Government College (East Godavari), Trunk Road Junction, Sriramnagar(Rajahmundry), Sarangadarametta, Kateru, Weavers Colony, Andhra Pradesh, India"
+    }
+   },
+   {
+    "basic_info": {
+     "name": "Digontom Pvt. Ltd.",
+     "primary_domain": "digontom.com",
+     "year_founded": 2024
+    },
+    "crustdata_company_id": 5743770,
+    "headcount": {
+     "growth_percent": {
+      "12m": 450.0,
+      "1m": 10.0,
+      "3m": 15.789473684210526,
+      "6m": 100.0
+     },
+     "total": 22
+    },
+    "locations": {
+     "country": "IND",
+     "headquarters": "Khilkapur, Noapara (North 24 Parganas), Kadambagachi, Kamdevpur, Kazipara, Noapara Madhavpur, Mirhati, West Bengal, India"
+    }
+   }
+  ],
+  "next_cursor": "H4sIAAAAAAAA_xTJSwrCMBAA0KuEWXeR3_x6FZGSZFq6EINtuhDx7uL6feB1rcd72cu5w-zAVHM00yY-1LwRrZiQI6KwBhOrNSHSppK0EKfSSAtFkszNUw4eJgdnPwbM7hbj5JBzYvb3ycHoozyW1q_nXwOSfH8BAAD__3fVEKh-AAAA",
+  "total_count": 1568
+ },
+ "endpoint": "company_search",
+ "headers": {
+  "content-type": "application/json",
+  "x-credits-used": "31.8"
+ },
+ "request_body": {
+  "fields": [
+   "crustdata_company_id",
+   "basic_info.name",
+   "basic_info.primary_domain",
+   "basic_info.year_founded",
+   "headcount.total",
+   "headcount.growth_percent",
+   "locations.headquarters",
+   "locations.country"
+  ],
+  "filters": {
+   "conditions": [
+    {
+     "field": "locations.country",
+     "type": "in",
+     "value": [
+      "IND"
+     ]
+    },
+    {
+     "field": "taxonomy.professional_network_industry",
+     "type": "in",
+     "value": [
+      "Software Development"
+     ]
+    },
+    {
+     "field": "basic_info.year_founded",
+     "type": "=>",
+     "value": 2023
+    },
+    {
+     "field": "headcount.growth_percent.6m",
+     "type": "=>",
+     "value": 50.0
+    }
+   ],
+   "op": "and"
+  },
+  "limit": 60,
+  "sorts": [
+   {
+    "field": "headcount.total",
+    "order": "desc"
+   }
+  ]
+ },
+ "status": 200,
+ "url": "https://api.crustdata.com/company/search"
+}

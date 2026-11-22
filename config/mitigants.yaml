@@ -1,0 +1,11 @@
+# Criterion at <= 1 point, open requirement or red flag → standard mitigant (Company IM §9)
+version: MI-2026.11.22-1
+mitigants:
+  C1: "Independent confirmation of the unverified critical claims before any term sheet"
+  C2: "Quality-of-earnings review; price protection via working-capital peg"
+  C5: "Governance covenants; auditor discussion"
+  C9: "Hiring plan / retention for key roles; key-person cover"
+  C10: "Network integration plan for low-overlap states"
+  C11: "Technical due diligence (code, uptime, integrations)"
+  WC-01: "Receivables ageing review; working-capital adjustment"
+  FALSE_claim: "Written explanation from the counterparty; credibility review"

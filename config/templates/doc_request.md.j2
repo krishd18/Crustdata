@@ -1,0 +1,11 @@
+Subject: Documents to complete our review — {{ company.name }}
+
+Dear {{ recipient.name | default("team") }},
+
+Thank you for sharing your materials. To complete our review, could you please share:
+{% for ask in asks %}- {{ ask.document }} — to confirm: "{{ ask.claim_text }}"
+{% endfor %}
+Regards,
+{{ approver.name }}, {{ client.name }}
+—
+Prepared with automated research and reviewed by {{ approver.name }}. Reply "stop" to opt out.

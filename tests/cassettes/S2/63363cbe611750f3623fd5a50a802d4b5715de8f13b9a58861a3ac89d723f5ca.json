@@ -1,0 +1,39 @@
+{
+ "body": {
+  "suggestions": [
+   {
+    "value": "Financial Services"
+   },
+   {
+    "value": "Finance"
+   },
+   {
+    "value": "FinTech"
+   },
+   {
+    "value": "Personal Finance"
+   },
+   {
+    "value": "Financial Exchanges"
+   },
+   {
+    "value": "Decentralized Finance (DeFi)"
+   },
+   {
+    "value": "Financial Transaction Processing"
+   }
+  ]
+ },
+ "endpoint": "company_autocomplete",
+ "headers": {
+  "content-type": "application/json",
+  "x-credits-used": "0"
+ },
+ "request_body": {
+  "field": "taxonomy.categories",
+  "limit": 50,
+  "query": "fin"
+ },
+ "status": 200,
+ "url": "https://api.crustdata.com/company/search/autocomplete"
+}

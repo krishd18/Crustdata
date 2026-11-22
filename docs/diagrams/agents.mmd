@@ -1,0 +1,68 @@
+%%{init: {"theme": "base", "flowchart": {"curve": "basis", "nodeSpacing": 26, "rankSpacing": 40, "wrappingWidth": 260}, "themeVariables": {"fontSize": "15px", "primaryColor": "#ffffff", "primaryBorderColor": "#5b6573", "primaryTextColor": "#1f2733", "lineColor": "#5b6573", "clusterBkg": "#fafbfc", "clusterBorder": "#c9d1db"}}}%%
+%% Data Designer — runtime agents (A0–A15) and verification agents (V1–V8)
+flowchart TB
+  subgraph RT["Runtime agents"]
+    direction TB
+    A0["A0 Orchestrator<br/>state machine · checkpoints · resume"]
+    A1["A1 Query Reasoner<br/>Claude Sonnet + term library"]
+    A2["A2 Scout<br/>Crustdata streams A–G"]
+    A3["A3 Entity Resolver"]
+    A4["A4 Deck Intake + Claim Extractor<br/>Claude Sonnet"]
+    A5["A5 Evidence Collector<br/>Crustdata · reliable media · registries"]
+    A6["A6 Quote-Lock Verifier"]
+    A7["A7 Verdict Engine<br/>7 classes · R-01..R-21"]
+    A8["A8 Financial Analyst<br/>FSV · metrics · grade"]
+    A9["A9 People + Leadership<br/>LF-01..07"]
+    A10["A10 Market + Region<br/>MK · RG"]
+    A11["A11 Research Analyst<br/>criteria · ranking · IS"]
+    A12["A12 Decision Engine<br/>gates · R1 R2 R3"]
+    A13["A13 Memo Composer<br/>number lock"]
+    A14["A14 Outreach + Mail<br/>Gmail · exactly once"]
+    A15["A15 Monitor / Re-check"]
+    A0 --> A1 --> A2
+    A2 --> A11
+    A2 --> A3 --> A4 --> A5 --> A6 --> A7
+    A7 --> A8 & A9 & A10 & A11
+    A8 & A9 & A10 & A11 --> A12 --> A13 --> A14
+    A15 --> A5
+  end
+  subgraph VT["Verification agents (back-tests)"]
+    direction LR
+    V1["V1 Contract"]
+    V2["V2 Golden replay"]
+    V3["V3 Adversarial generator"]
+    V4["V4 Citation auditor"]
+    V5["V5 Chaos · kill · faults"]
+    V6["V6 Cost + latency"]
+    V7["V7 Rubric parity + determinism"]
+    V8["V8 Memo judge · advisory"]
+  end
+  subgraph DEV["Claude Code dev sub-agents"]
+    direction LR
+    D1["backtest-auditor"]
+    D2["citation-auditor"]
+    D3["chaos-tester"]
+    D4["rubric-auditor"]
+    D5["spec-guardian"]
+    D6["ui-theme-reviewer"]
+  end
+  V1 -.-> A1 & A2 & A4 & A11
+  V2 -.-> A7 & A11 & A12
+  V3 -.-> A4 & A7 & A9
+  V4 -.-> A6 & A13
+  V5 -.-> A0 & A14
+  V6 -.-> A2 & A5
+  V7 -.-> A12
+  V8 -.-> A13
+  D1 -.-> V1 & V2 & V3
+  D2 -.-> V4
+  D3 -.-> V5
+  D4 -.-> V7
+  classDef llm fill:#efe9ff,stroke:#6b4fd8,color:#2a1a66
+  classDef rule fill:#e7f6ec,stroke:#2f8f4e,color:#123d20
+  classDef ver fill:#fff2dd,stroke:#d4881a,color:#4a2e00
+  classDef dev fill:#e6f0fb,stroke:#3a73b8,color:#0f2c4d
+  class A1,A4 llm
+  class A0,A2,A3,A5,A6,A7,A8,A9,A10,A11,A12,A13,A14,A15 rule
+  class V1,V2,V3,V4,V5,V6,V7,V8 ver
+  class D1,D2,D3,D4,D5,D6 dev

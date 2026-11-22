@@ -1,0 +1,41 @@
+%%{init: {"theme": "base", "flowchart": {"curve": "basis", "wrappingWidth": 260}, "themeVariables": {"fontSize": "15px", "primaryColor": "#ffffff", "primaryBorderColor": "#5b6573", "lineColor": "#5b6573"}}}%%
+%% Data Designer — build workflow for Claude Code (IMPLEMENTATION_PLAN: first run + 3 phases)
+flowchart TB
+  S0["FIRST RUN · secrets intake<br/>/setup-secrets asks for the Claude key, Gmail address,<br/>app password, test inbox → .env (gitignored)<br/>verify: /v1/models · SMTP login · test email"]
+  S0 --> P1
+
+  subgraph P1["PHASE 1 · Foundation & agents"]
+    direction TB
+    P1a["1A setup · make smoke<br/>Crustdata · Claude models + structured output · Gmail SMTP + IMAP"]
+    P1b["1B–1C core platform<br/>config · stores · gateway · cassettes<br/>Claude client · mail providers · quote lock · budget"]
+    P1c["1D agents A1–A15, one at a time<br/>CLI + unit + contract tests, replay"]
+    P1a --> P1b --> P1c
+  end
+
+  subgraph P2["PHASE 2 · Verify & integrate"]
+    direction TB
+    P2a{"2A V1–V8 back-tests<br/>all thresholds green?"}
+    P2b["2B wire orchestrator · API · CLI<br/>5 request families, resume"]
+    P2c["2C memos · number lock · V4 100%"]
+    P2d["2D UI ported from ui/prototype<br/>dark Crustdata-style theme"]
+    P2e["2E Gmail engine<br/>approve → intent → send → IMAP reconcile"]
+    P2a -->|yes| P2b --> P2c --> P2d --> P2e
+  end
+
+  subgraph P3["PHASE 3 · Prove, harden & deliver"]
+    direction TB
+    P3a{"3A–3B E2E ≥ 90% · 0 wrong VERIFIED/FALSE<br/>replay ×3 identical · live ×2"}
+    P3b["3C drills: kill 50/50 · Crustdata + Claude faults<br/>mail failures · budget cut · live fix ≤ 5 min"]
+    P3c["3D README · diagrams · cost per job<br/>demo video · submission"]
+    P3a -->|pass| P3b --> P3c
+  end
+
+  P1c --> P2a
+  P2a -->|no: red threshold| P1c
+  P2e --> P3a
+  P3a -->|failing case| P1c
+
+  classDef gate fill:#fff7e6,stroke:#b26b00,color:#5a3a00
+  classDef first fill:#efe9ff,stroke:#5644ED,color:#1e1660
+  class P2a,P3a gate
+  class S0 first
