@@ -1,0 +1,6 @@
+# Never convert line endings inside documents and images (a PDF's byte offsets would break).
+*.pdf  binary
+*.pptx binary
+*.jpg  binary
+*.png  binary
+*.webp binary
