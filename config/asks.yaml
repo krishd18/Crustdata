@@ -14,3 +14,16 @@ asks:
   tech_integrations: "Integration listings, API docs access, or device/vendor invoices"
   leadership_gap: "Plan or candidate for the missing leadership role"
   receivables: "Receivables ageing schedule > 90 days"
+type_to_ask:   # claim type → ask key above (A12 builds conditions / what-would-change from these)
+  headcount: headcount
+  warehouse_area: warehouses
+  locations: gst_registrations
+  fleet_size: fleet
+  revenue: revenue
+  arr: arr
+  customer: customers
+  contract_renewal: contract_renewal
+  funding: funding
+  tech_integration: tech_integrations
+  iot_inventory: tech_integrations
+  gst_status: gst_registrations

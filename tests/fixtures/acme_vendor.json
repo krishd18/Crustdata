@@ -1,0 +1,565 @@
+{
+ "id": "V1",
+ "company": {
+  "name": "ACME Freight Carriers (sample)",
+  "cin": "U60231MH2009PTC000000",
+  "hq": "Mumbai",
+  "domain": "acme-freight.example"
+ },
+ "profile": "vendor",
+ "pages": [
+  {
+   "doc_id": "acme_vendor_pack",
+   "page": 3,
+   "slide": 3,
+   "text": "Incorporated in 2009 \nRegistered office in Mumbai \nGSTIN active in Maharashtra \nOperates in Maharashtra, Gujarat and Karnataka \nWarehouse in Bhiwandi \nHeadcount above 300 \nRevenue ₹62 cr in FY26 \nNo pending insolvency"
+  },
+  {
+   "doc_id": "acme_vendor_pack",
+   "page": 4,
+   "slide": 4,
+   "text": "Serves a national FMCG brand \nOwn fleet of 120 trucks \nISO 39001 road-safety certified \nContract with an auto OEM renewed to 2028"
+  },
+  {
+   "doc_id": "acme_vendor_pack",
+   "page": 6,
+   "slide": 6,
+   "text": "GPS on every truck \nDriver app \nProof-of-delivery photos \nRoute planning tool"
+  }
+ ],
+ "claims": [
+  {
+   "claim_id": "C-001",
+   "type": "incorporation_date",
+   "kind": "business",
+   "text": "Incorporated in 2009",
+   "critical": true,
+   "value": null,
+   "operational": false,
+   "span": {
+    "doc_id": "acme_vendor_pack",
+    "page": 3,
+    "start": 0,
+    "end": 0
+   },
+   "slide": 3
+  },
+  {
+   "claim_id": "C-002",
+   "type": "registered_address",
+   "kind": "business",
+   "text": "Registered office in Mumbai",
+   "critical": true,
+   "value": null,
+   "operational": false,
+   "span": {
+    "doc_id": "acme_vendor_pack",
+    "page": 3,
+    "start": 0,
+    "end": 0
+   },
+   "slide": 3
+  },
+  {
+   "claim_id": "C-003",
+   "type": "gst_status",
+   "kind": "business",
+   "text": "GSTIN active in Maharashtra",
+   "critical": true,
+   "value": null,
+   "operational": false,
+   "span": {
+    "doc_id": "acme_vendor_pack",
+    "page": 3,
+    "start": 0,
+    "end": 0
+   },
+   "slide": 3
+  },
+  {
+   "claim_id": "C-004",
+   "type": "locations",
+   "kind": "business",
+   "text": "Operates in Maharashtra, Gujarat and Karnataka",
+   "critical": true,
+   "value": null,
+   "operational": true,
+   "span": {
+    "doc_id": "acme_vendor_pack",
+    "page": 3,
+    "start": 0,
+    "end": 0
+   },
+   "slide": 3
+  },
+  {
+   "claim_id": "C-005",
+   "type": "facility",
+   "kind": "business",
+   "text": "Warehouse in Bhiwandi",
+   "critical": true,
+   "value": null,
+   "operational": true,
+   "span": {
+    "doc_id": "acme_vendor_pack",
+    "page": 3,
+    "start": 0,
+    "end": 0
+   },
+   "slide": 3
+  },
+  {
+   "claim_id": "C-006",
+   "type": "headcount_band",
+   "kind": "business",
+   "text": "Headcount above 300",
+   "critical": true,
+   "value": null,
+   "operational": true,
+   "span": {
+    "doc_id": "acme_vendor_pack",
+    "page": 3,
+    "start": 0,
+    "end": 0
+   },
+   "slide": 3
+  },
+  {
+   "claim_id": "C-007",
+   "type": "revenue_band",
+   "kind": "business",
+   "text": "Revenue ₹62 cr in FY26",
+   "critical": true,
+   "value": null,
+   "operational": false,
+   "span": {
+    "doc_id": "acme_vendor_pack",
+    "page": 3,
+    "start": 0,
+    "end": 0
+   },
+   "slide": 3
+  },
+  {
+   "claim_id": "C-008",
+   "type": "legal_status",
+   "kind": "business",
+   "text": "No pending insolvency",
+   "critical": true,
+   "value": null,
+   "operational": false,
+   "span": {
+    "doc_id": "acme_vendor_pack",
+    "page": 3,
+    "start": 0,
+    "end": 0
+   },
+   "slide": 3
+  },
+  {
+   "claim_id": "C-009",
+   "type": "customer",
+   "kind": "business",
+   "text": "Serves a national FMCG brand",
+   "critical": true,
+   "value": null,
+   "operational": false,
+   "span": {
+    "doc_id": "acme_vendor_pack",
+    "page": 4,
+    "start": 0,
+    "end": 0
+   },
+   "slide": 4
+  },
+  {
+   "claim_id": "C-010",
+   "type": "fleet_size",
+   "kind": "business",
+   "text": "Own fleet of 120 trucks",
+   "critical": true,
+   "value": 120,
+   "operational": true,
+   "span": {
+    "doc_id": "acme_vendor_pack",
+    "page": 4,
+    "start": 0,
+    "end": 0
+   },
+   "slide": 4
+  },
+  {
+   "claim_id": "C-011",
+   "type": "certification",
+   "kind": "business",
+   "text": "ISO 39001 road-safety certified",
+   "critical": true,
+   "value": null,
+   "operational": true,
+   "span": {
+    "doc_id": "acme_vendor_pack",
+    "page": 4,
+    "start": 0,
+    "end": 0
+   },
+   "slide": 4
+  },
+  {
+   "claim_id": "C-012",
+   "type": "contract_renewal",
+   "kind": "business",
+   "text": "Contract with an auto OEM renewed to 2028",
+   "critical": true,
+   "value": null,
+   "operational": false,
+   "span": {
+    "doc_id": "acme_vendor_pack",
+    "page": 4,
+    "start": 0,
+    "end": 0
+   },
+   "slide": 4
+  },
+  {
+   "claim_id": "C-013",
+   "type": "tech",
+   "kind": "tech",
+   "text": "GPS on every truck",
+   "critical": false,
+   "value": null,
+   "operational": false,
+   "span": {
+    "doc_id": "acme_vendor_pack",
+    "page": 6,
+    "start": 0,
+    "end": 0
+   },
+   "slide": 6
+  },
+  {
+   "claim_id": "C-014",
+   "type": "tech",
+   "kind": "tech",
+   "text": "Driver app",
+   "critical": false,
+   "value": null,
+   "operational": false,
+   "span": {
+    "doc_id": "acme_vendor_pack",
+    "page": 6,
+    "start": 0,
+    "end": 0
+   },
+   "slide": 6
+  },
+  {
+   "claim_id": "C-015",
+   "type": "tech",
+   "kind": "tech",
+   "text": "Proof-of-delivery photos",
+   "critical": false,
+   "value": null,
+   "operational": false,
+   "span": {
+    "doc_id": "acme_vendor_pack",
+    "page": 6,
+    "start": 0,
+    "end": 0
+   },
+   "slide": 6
+  },
+  {
+   "claim_id": "C-016",
+   "type": "tech",
+   "kind": "tech",
+   "text": "Route planning tool",
+   "critical": false,
+   "value": null,
+   "operational": false,
+   "span": {
+    "doc_id": "acme_vendor_pack",
+    "page": 6,
+    "start": 0,
+    "end": 0
+   },
+   "slide": 6
+  }
+ ],
+ "extracts": [
+  {
+   "claim_id": "C-001",
+   "tier": "T1",
+   "raw": "Registry extract: Incorporated in 2009",
+   "passage": "Incorporated in 2009",
+   "relation": "supports",
+   "kind": "field",
+   "value": null,
+   "media_tier": null,
+   "source": "registry.mca",
+   "record_date": "2026-10-15",
+   "company_quote": false
+  },
+  {
+   "claim_id": "C-002",
+   "tier": "T1",
+   "raw": "Registry extract: Registered office in Mumbai",
+   "passage": "Registered office in Mumbai",
+   "relation": "supports",
+   "kind": "field",
+   "value": null,
+   "media_tier": null,
+   "source": "registry.mca",
+   "record_date": "2026-10-15",
+   "company_quote": false
+  },
+  {
+   "claim_id": "C-003",
+   "tier": "T1",
+   "raw": "Registry extract: GSTIN active in Maharashtra",
+   "passage": "GSTIN active in Maharashtra",
+   "relation": "supports",
+   "kind": "field",
+   "value": null,
+   "media_tier": null,
+   "source": "registry.mca",
+   "record_date": "2026-10-15",
+   "company_quote": false
+  },
+  {
+   "claim_id": "C-004",
+   "tier": "T1",
+   "raw": "Registry extract: Operates in Maharashtra, Gujarat and Karnataka",
+   "passage": "Operates in Maharashtra, Gujarat and Karnataka",
+   "relation": "supports",
+   "kind": "field",
+   "value": null,
+   "media_tier": null,
+   "source": "registry.mca",
+   "record_date": "2026-10-15",
+   "company_quote": false
+  },
+  {
+   "claim_id": "C-005",
+   "tier": "T1",
+   "raw": "Registry extract: Warehouse in Bhiwandi",
+   "passage": "Warehouse in Bhiwandi",
+   "relation": "supports",
+   "kind": "field",
+   "value": null,
+   "media_tier": null,
+   "source": "registry.mca",
+   "record_date": "2026-10-15",
+   "company_quote": false
+  },
+  {
+   "claim_id": "C-006",
+   "tier": "T1",
+   "raw": "Registry extract: Headcount above 300",
+   "passage": "Headcount above 300",
+   "relation": "supports",
+   "kind": "field",
+   "value": null,
+   "media_tier": null,
+   "source": "registry.mca",
+   "record_date": "2026-10-15",
+   "company_quote": false
+  },
+  {
+   "claim_id": "C-007",
+   "tier": "T1",
+   "raw": "Registry extract: Revenue ₹62 cr in FY26",
+   "passage": "Revenue ₹62 cr in FY26",
+   "relation": "supports",
+   "kind": "field",
+   "value": null,
+   "media_tier": null,
+   "source": "registry.mca",
+   "record_date": "2026-10-15",
+   "company_quote": false
+  },
+  {
+   "claim_id": "C-008",
+   "tier": "T1",
+   "raw": "Registry extract: No pending insolvency",
+   "passage": "No pending insolvency",
+   "relation": "supports",
+   "kind": "field",
+   "value": null,
+   "media_tier": null,
+   "source": "registry.mca",
+   "record_date": "2026-10-15",
+   "company_quote": false
+  },
+  {
+   "claim_id": "C-009",
+   "tier": "T2",
+   "raw": "Job post: FMCG account manager — ACME",
+   "passage": "FMCG account manager",
+   "relation": "supports",
+   "kind": "band",
+   "value": null,
+   "media_tier": null,
+   "source": "crustdata.company_enrich",
+   "record_date": "2026-10-15",
+   "company_quote": false
+  },
+  {
+   "claim_id": "C-010",
+   "tier": "T3",
+   "raw": "Fleet register (provided): 120 vehicles",
+   "passage": "120 vehicles",
+   "relation": "supports",
+   "kind": "field",
+   "value": 120,
+   "media_tier": null,
+   "source": "docs.fleet_register",
+   "record_date": "2026-10-15",
+   "company_quote": false
+  },
+  {
+   "claim_id": "C-013",
+   "tier": "T1",
+   "raw": "Telematics vendor listing: ACME fleet",
+   "passage": "ACME fleet",
+   "relation": "supports",
+   "kind": "field",
+   "value": null,
+   "media_tier": null,
+   "source": "registry.mca",
+   "record_date": "2026-10-15",
+   "company_quote": false
+  },
+  {
+   "claim_id": "C-014",
+   "tier": "T1",
+   "raw": "App store: ACME Driver",
+   "passage": "ACME Driver",
+   "relation": "supports",
+   "kind": "field",
+   "value": null,
+   "media_tier": null,
+   "source": "registry.mca",
+   "record_date": "2026-10-15",
+   "company_quote": false
+  },
+  {
+   "claim_id": "C-015",
+   "tier": "T2",
+   "raw": "Job post: POD app developer",
+   "passage": "POD app developer",
+   "relation": "supports",
+   "kind": "field",
+   "value": null,
+   "media_tier": null,
+   "source": "crustdata.company_enrich",
+   "record_date": "2026-10-15",
+   "company_quote": false
+  },
+  {
+   "claim_id": "C-016",
+   "tier": "T2",
+   "raw": "Job post: route planning analyst",
+   "passage": "route planning analyst",
+   "relation": "supports",
+   "kind": "field",
+   "value": null,
+   "media_tier": null,
+   "source": "crustdata.company_enrich",
+   "record_date": "2026-10-15",
+   "company_quote": false
+  }
+ ],
+ "financial": {
+  "metric_values": {
+   "GR-01": 21,
+   "PR-01": 9.4,
+   "PR-02": 3.1,
+   "PR-03": 16,
+   "PR-04": 14,
+   "LQ-01": 1.42,
+   "LQ-02": 1.05,
+   "SV-01": 0.55,
+   "SV-02": 1.0,
+   "SV-03": 4.8,
+   "SV-04": 1.6,
+   "WC-01": 78,
+   "WC-02": 52,
+   "CQ-01": 78,
+   "CQ-02": 1.8,
+   "EQ-01": 3.1,
+   "EQ-02": -2.41,
+   "EQ-03": 6
+  }
+ },
+ "people": {
+  "people": [
+   {
+    "name": "MD (sample)",
+    "role": "Managing Director",
+    "domain_years": 15,
+    "senior_at_larger": true,
+    "clean": true
+   },
+   {
+    "name": "Finance (sample)",
+    "role": "Head of Finance",
+    "domain_years": 8,
+    "senior_at_larger": false,
+    "clean": true
+   },
+   {
+    "name": "Ops (sample)",
+    "role": "Head of Operations",
+    "domain_years": 12,
+    "senior_at_larger": true,
+    "clean": true
+   }
+  ],
+  "churn_pct": 12,
+  "pillars_with_leader": [
+   3,
+   4
+  ]
+ },
+ "market": {
+  "states": {
+   "Maharashtra": {
+    "gst_active": true
+   },
+   "Gujarat": {
+    "gst_active": true
+   },
+   "Karnataka": {
+    "gst_active": true
+   },
+   "Tamil Nadu": {
+    "gst_active": true
+   }
+  },
+  "client_states": {
+   "Maharashtra": "required",
+   "Gujarat": "required",
+   "Karnataka": "required",
+   "Tamil Nadu": "required",
+   "Telangana": "required"
+  },
+  "profile": "vendor"
+ },
+ "decision": {
+  "mandate_fit_pct": 70,
+  "governance_flags": [
+   "late MCA filing"
+  ],
+  "growth_metric": {
+   "GR-01": 18
+  },
+  "requirements": {}
+ },
+ "recipient": "ops@acme-freight.example",
+ "expect": {
+  "floor": 72.5,
+  "ceiling": 87.5,
+  "label": "CLEAR WITH CONDITIONS",
+  "wwc_floor": 76.25
+ }
+}

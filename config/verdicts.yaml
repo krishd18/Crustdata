@@ -5,7 +5,7 @@ classes:
   UNVERIFIED:         {badge: "🟡", credit: [0.5, 0.5], codes: [U1, U2, U3]}
   OUTDATED:           {badge: "⏳", credit: [0.5, 0.5], codes: [O1, O2]}
   NOT_VERIFIABLE:     {badge: "⚪", credit: [0.0, 1.0], codes: [N1, N2, N3, N4, N5, N6, N7]}
-  FALSE:              {badge: "❌", credit: [0.0, 0.0], codes: [F1, F2, F3, F4], noncritical_penalty_points: 1}
+  "FALSE":              {badge: "❌", credit: [0.0, 0.0], codes: [F1, F2, F3, F4], noncritical_penalty_points: 1}
   NOT_CHECKED:        {badge: "⚫", credit: null, codes: [X1, X2, X3]}
 procedure: [not_checked, entity_unresolved, sources_conflict, contradicted, verified, partially_verified, outdated, unverified, not_verifiable]
 safety:

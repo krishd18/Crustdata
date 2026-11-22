@@ -23,7 +23,7 @@ class Evidence(BaseModel):
     tier: Tier
     media_tier: str | None = None
     relation: Literal["supports", "contradicts", "context"] = "supports"
-    kind: Literal["field", "passage", "lower_bound", "band", "earliest", "profile", "self"] = "field"
+    kind: Literal["field", "passage", "lower_bound", "band", "earliest", "profile", "self", "superseded"] = "field"
     attributed_to_company_quote: bool = False
     offset: int | None = None
 

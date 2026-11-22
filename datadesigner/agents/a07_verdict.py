@@ -126,6 +126,10 @@ class VerdictEngine(BaseAgent[VerdictInput, ClaimVerdicts]):
             return V("FALSE", "F3" if c.kind == "premise" else "F4", "R-20", [e.evidence_id for e in mc])
         if mc:   # single media contradiction → never FALSE
             return V("NOT_VERIFIABLE", "N3", "R-20", [e.evidence_id for e in mc], missing="a second independent report or a T1 record")
+        # expired certificate / superseded figure → O2 (STANDARDS §2.1)
+        sup_all = [e for e in evs if rel[e.evidence_id] == "supports"]
+        if sup_all and all(e.kind == "superseded" for e in sup_all):
+            return V("OUTDATED", "O2", "R-11", [e.evidence_id for e in sup_all], note="superseded or expired")
         # 5 · verified
         fresh = lambda e: self._fresh(e, c, cfg, today)
         if t1s:
