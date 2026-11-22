@@ -137,3 +137,8 @@ A failed or stopped run never replaces the last good result. Every step shows it
 ## Cost
 
 Each run records `X-Credits-Used` from every Crustdata call, plus LLM tokens, and shows the total on the dossier (**Sources & cost** tab). Set `CRUSTDATA_CREDIT_USD` and `USD_INR` to get a rupee figure. Set the per-dossier price from that measured cost. Analyst or advisor rates should only be quoted from a cited source.
+
+## Team
+
+- Rohan
+- Aaryan Nagda
