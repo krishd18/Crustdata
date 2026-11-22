@@ -3,4 +3,9 @@ uvicorn[standard]
 httpx
 anthropic
 python-dotenv
+python-multipart
+pypdf
+pdfplumber
+python-pptx
 pytest
+reportlab

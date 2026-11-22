@@ -9,7 +9,7 @@ SAMPLE = json.load(open("samples/stockarea.json", encoding="utf-8"))
 
 
 class StubCrust:
-    def __init__(self, token):
+    def __init__(self, token, cancel=None):
         self.calls = []
         self.company = fixture_record().company
         self.company["basic_info"].update({"name": "Stockarea", "primary_domain": "stockarea.io",

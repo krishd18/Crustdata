@@ -33,7 +33,28 @@ CREATE TABLE IF NOT EXISTS outbox (
 CREATE TABLE IF NOT EXISTS watches (
   dossier_id TEXT PRIMARY KEY, watch_id INTEGER, created_at TEXT, people TEXT
 );
+CREATE TABLE IF NOT EXISTS searches (
+  id TEXT PRIMARY KEY, thesis TEXT, created_at TEXT, result TEXT, credits REAL
+);
 """
+
+# Columns added after the first release; ALTER is a no-op if they exist.
+MIGRATIONS = [
+    "ALTER TABLE runs ADD COLUMN mode TEXT DEFAULT 'check'",          # screen | check
+    "ALTER TABLE dossiers ADD COLUMN deck_meta TEXT",                 # parser output (kind, pages, warnings)
+    "ALTER TABLE dossiers ADD COLUMN search_id TEXT",                 # which FIND search it came from
+    "ALTER TABLE dossiers ADD COLUMN signals TEXT",                   # FIND signals snapshot
+    "ALTER TABLE outbox ADD COLUMN kind TEXT DEFAULT 'request'",      # intro | request
+    "ALTER TABLE outbox ADD COLUMN from_name TEXT",                   # display name when MAIL_FROM has none
+    "ALTER TABLE outbox ADD COLUMN inflight INTEGER DEFAULT 0",       # 1 = an attempt may have reached the provider
+    "ALTER TABLE outbox ADD COLUMN last_attempt_at TEXT",
+    "ALTER TABLE outbox ADD COLUMN transport TEXT",                   # file | resend | smtp
+    "ALTER TABLE outbox ADD COLUMN provider_id TEXT",                 # Resend email id / SMTP Message-ID
+    "ALTER TABLE outbox ADD COLUMN last_error TEXT",
+    "ALTER TABLE dossiers ADD COLUMN flushed_at TEXT",                # set by "Flush pipeline" (hidden, restorable)
+    "ALTER TABLE searches ADD COLUMN flushed_at TEXT",
+    "ALTER TABLE dossiers ADD COLUMN deleted_at TEXT",                # one target deleted from the pipeline (undoable)
+]
 
 
 def connect() -> sqlite3.Connection:
@@ -47,6 +68,12 @@ def connect() -> sqlite3.Connection:
 def init():
     with connect() as con:
         con.executescript(SCHEMA)
+        for sql in MIGRATIONS:
+            try:
+                con.execute(sql)
+            except sqlite3.OperationalError as e:
+                if "duplicate column" not in str(e):
+                    raise
 
 
 def q(sql: str, args=(), one=False):

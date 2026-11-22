@@ -41,7 +41,7 @@ def run(code: str, env: dict) -> subprocess.CompletedProcess:
 
 def main() -> int:
     data = tempfile.mkdtemp(prefix="secondlook-kill-")
-    base = {**os.environ, "SECONDLOOK_DATA": data, "PYTHONPATH": str(ROOT)}
+    base = {**os.environ, "SECONDLOOK_DATA": data, "PYTHONPATH": str(ROOT), "MAIL_TRANSPORT": "file"}
     ok = True
     for point in ["after_journal", "after_transport", None]:
         tag = uuid.uuid4().hex[:6]

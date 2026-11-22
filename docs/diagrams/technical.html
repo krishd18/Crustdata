@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SecondLook technical architecture</title>
+<link rel="stylesheet" href="diagram.css">
+</head>
+<body>
+<div class="canvas" id="cv" style="height:1225px">
+  <div class="title">
+    <h1><b>SecondLook</b> · Technical architecture</h1>
+    <p>Components, data flow, and where the data calls, approvals, retries and the cost ledger sit</p>
+  </div>
+  <div class="legend"><span class="lbl">Legend</span>
+    <span class="chip c-call">Data call</span><span class="chip c-appr">Approval</span>
+    <span class="chip c-retry">Retry / fallback</span><span class="chip c-cost">Cost ledger</span></div>
+
+  <!-- clients -->
+  <div class="zone" style="left:40px;top:140px;width:300px;height:500px"><span class="zt">Clients</span></div>
+  <div class="box" id="ui" style="left:60px;top:170px;width:260px;height:170px">
+    <h3>Web UI</h3><p>static/index.html</p>
+    <ul><li>Six-step tracker per target</li><li>Stop on every step</li><li>Approve sends</li></ul>
+    <div class="chips"><span class="chip c-appr">Approval</span></div></div>
+  <div class="box" id="api" style="left:60px;top:365px;width:260px;height:135px">
+    <h3>Kickoff-kit API</h3><p><code>POST /api/check</code></p><p>JSON, batch or file upload; returns the register as JSON</p></div>
+  <div class="box" id="cli" style="left:60px;top:525px;width:260px;height:95px">
+    <h3>CLI</h3><p><code>python -m app.cli deck.pdf</code></p></div>
+
+  <!-- local state -->
+  <div class="zone" style="left:40px;top:680px;width:300px;height:325px"><span class="zt">Local state</span></div>
+  <div class="box store" id="db" style="left:60px;top:710px;width:260px;height:200px">
+    <h3>SQLite</h3><p style="font-size:12.5px">synchronous=FULL (survives a kill)</p>
+    <ul><li>dossiers, searches</li><li>runs: dated snapshots + <b>result.cost</b></li><li>outbox: send journal</li><li>watches</li></ul>
+    <div class="chips"><span class="chip c-cost">Cost ledger</span></div></div>
+  <div class="box store" id="mbox" style="left:60px;top:925px;width:260px;height:62px">
+    <h3 style="font-size:15px">data/mailbox</h3><p style="font-size:12.5px">demo transport + delivery ledger</p></div>
+
+  <!-- server -->
+  <div class="zone" style="left:390px;top:140px;width:1100px;height:865px"><span class="zt">SecondLook server · FastAPI</span></div>
+  <div class="box accent" id="routes" style="left:410px;top:168px;width:1060px;height:108px">
+    <h3>HTTP API <span class="f">app/main.py</span></h3>
+    <p>Find · dossiers · deck upload · runs · outbox · watch · flush &nbsp;|&nbsp; job ids for Stop (<code>x-job-id</code>) · plain-language errors · startup recovery</p>
+    <div class="chips"><span class="chip c-retry">Retry: recover sends at startup, mark interrupted runs</span></div></div>
+  <div class="box" id="pipe" style="left:410px;top:292px;width:500px;height:128px">
+    <h3>Workflow <span class="f">pipeline.py</span></h3>
+    <p>Dossiers and the six steps; start / stop runs; synchronous kickoff-kit check; flush, delete, restore</p>
+    <div class="chips"><span class="chip c-appr">Approval: ambiguous company held for a person</span></div></div>
+  <div class="box dark" id="engine" style="left:940px;top:292px;width:530px;height:128px">
+    <h3>Run engine <span class="f" style="color:#a5a9ff">engine.py</span></h3>
+    <p>resolve → pull records in parallel → extract claims → check → compare sources → diff vs last snapshot</p>
+    <div class="chips"><span class="chip c-cost" style="background:#e6f7f0">Writes result.cost</span></div></div>
+
+  <div class="box" id="read" style="left:410px;top:455px;width:250px;height:300px">
+    <h3>Read documents</h3>
+    <ul><li><b>ingest.py</b>: PDF, PPTX, URL, text, JSON request</li>
+      <li><b>ocr.py</b>: image-only pages read by a vision model</li>
+      <li><b>extract.py</b>: typed claims; every quote and figure checked in code</li></ul>
+    <div class="chips"><span class="chip c-call">Data call</span><span class="chip c-retry">Claude → Bedrock → short prompt → rules</span></div></div>
+  <div class="box" id="evid" style="left:680px;top:455px;width:260px;height:300px">
+    <h3>Evidence</h3>
+    <ul><li><b>find.py + thesis_ai.py</b>: thesis → Crustdata filters → shortlist</li>
+      <li><b>public.py</b>: news, registry (CIN), public documents</li>
+      <li><b>news_ai.py</b>: per-article analysis, quotes verified</li></ul>
+    <div class="chips"><span class="chip c-call">Data call</span><span class="chip c-retry">Provider chain; rules fallback</span></div></div>
+  <div class="box" id="judge" style="left:960px;top:455px;width:240px;height:300px">
+    <h3>Judgement</h3>
+    <ul><li><b>checkers.py</b>: deterministic verdicts for 11 claim types; "contradicted" only with a contrary record</li>
+      <li><b>inconsistency.py</b>: same figure across sources</li>
+      <li><b>doc_table.py</b>: the document to ask for</li></ul></div>
+  <div class="box accent" id="act" style="left:1220px;top:455px;width:250px;height:300px">
+    <h3>Irreversible actions</h3>
+    <p><b>outbox.py + emailer.py</b></p>
+    <ul><li>Named approver required</li><li>Journal written before any I/O</li><li>Idempotency key per send</li>
+      <li><code>recover()</code> at startup; "uncertain" sends go to a person</li></ul>
+    <div class="chips"><span class="chip c-appr">Approval</span><span class="chip c-retry">Recover</span></div></div>
+
+  <div class="box guard" id="crust" style="left:410px;top:790px;width:780px;height:190px">
+    <h3>Guarded Crustdata client <span class="f">crust.py</span> — every Crustdata call passes here</h3>
+    <ul style="columns:2;column-gap:28px">
+      <li>Pacing per endpoint, process-wide (enrich 15/min)</li>
+      <li>429: wait Retry-After / X-RateLimit-Reset, else 5–30 s, cap 75 s</li>
+      <li>5xx: 2 retries · per-run cache (never pay twice)</li>
+      <li>FIND enriches its shortlist in one batched call</li>
+      <li><b>CallRecord</b>: path, <b>X-Credits-Used</b>, retrieved_at</li>
+      <li>Every verdict cites the field and retrieval date</li></ul>
+    <div class="chips"><span class="chip c-call">Data call</span><span class="chip c-retry">Retry</span><span class="chip c-cost">Cost ledger</span></div></div>
+  <div class="box guard" id="cancel" style="left:1210px;top:790px;width:260px;height:190px">
+    <h3>Stop <span class="f">cancel.py</span></h3>
+    <ul><li>Flag checked before every Crustdata and model call</li><li>In-flight answers dropped</li><li><code>settle()</code> still counts their credits</li></ul>
+    <div class="chips"><span class="chip c-cost">Counted</span></div></div>
+
+  <!-- external -->
+  <div class="zone" style="left:1540px;top:140px;width:420px;height:865px"><span class="zt">External services</span></div>
+  <div class="box ext" id="mail" style="left:1560px;top:170px;width:380px;height:100px">
+    <h3>Email: Resend or SMTP</h3><p>Only after approval; Resend dedupes the key for 23 h</p>
+    <div class="chips"><span class="chip c-call">Data call</span></div></div>
+  <div class="box ext" id="mantle" style="left:1560px;top:295px;width:380px;height:150px">
+    <h3>Amazon Bedrock Mantle</h3><p>Qwen3-VL (vision + text)</p>
+    <ul><li>deck claims · news analysis · thesis · OCR</li><li>tokens recorded per run</li></ul>
+    <div class="chips"><span class="chip c-call">Data call</span><span class="chip c-cost">Tokens</span></div></div>
+  <div class="box ext" id="fallback" style="left:1560px;top:475px;width:380px;height:105px">
+    <h3>Fallback models</h3><p>Bedrock Converse · NVIDIA Kimi · Claude (if a key is set)</p>
+    <div class="chips"><span class="chip c-retry">Fallback</span></div></div>
+  <div class="box ext" id="cd" style="left:1560px;top:610px;width:380px;height:265px">
+    <h3>Crustdata API</h3>
+    <ul style="font-family:Consolas,monospace;font-size:13px">
+      <li>/company/identify · /company/enrich</li><li>/company/search · /job/search</li>
+      <li>/person/enrich · /watch/person</li><li>/web/search/live · /web/enrich/live</li></ul>
+    <p style="margin-top:6px">Each response carries <b>X-Credits-Used</b></p>
+    <div class="chips"><span class="chip c-call">Data call</span><span class="chip c-cost">Credits</span><span class="chip c-appr">Watch: price, then confirm</span></div></div>
+  <div class="box ext" id="web" style="left:1560px;top:900px;width:380px;height:85px">
+    <h3>Public web</h3><p>Internet Archive (first snapshot) · public PDFs, size-capped</p></div>
+
+  <!-- where they sit -->
+  <div class="strip" style="left:40px;top:1035px;width:1920px;grid-template-columns:repeat(4,1fr)">
+    <div class="col"><h4><span class="chip c-call">Data calls</span></h4><ul>
+      <li>All Crustdata calls go through <b>crust.py</b>, about 13 credits per Screen and 19 per Check</li>
+      <li>Models: deck claims, news, thesis, OCR (Bedrock Mantle)</li>
+      <li>Archive and public PDFs; email only after approval</li></ul></div>
+    <div class="col"><h4><span class="chip c-appr">Approvals</span></h4><ul>
+      <li>Intro (step 3) and document request (step 5): named approver</li>
+      <li>"Uncertain" send: a person checks Sent, then resends or marks sent</li>
+      <li>Ambiguous company; person watch (price first); flush / delete</li></ul></div>
+    <div class="col"><h4><span class="chip c-retry">Retries & fallbacks</span></h4><ul>
+      <li>Crustdata: pacing, 429 backoff (cap 75 s), 5xx retry, cache</li>
+      <li>Models: Mantle → Converse → NVIDIA; deck short prompt → rules</li>
+      <li>Sends: journal-first + <code>recover()</code>; crash test passes</li></ul></div>
+    <div class="col"><h4><span class="chip c-cost">Cost ledger</span></h4><ul>
+      <li>X-Credits-Used → CallRecord → <code>engine._cost</code></li>
+      <li>runs.result.cost: credits by endpoint, tokens, USD / ₹</li>
+      <li>searches.credits for FIND; Stop keeps in-flight credits</li></ul></div>
+  </div>
+  <div class="foot">The model reads; code decides. No contact data is requested, and PII is scrubbed from stored data, logs and model input. Secrets live only in .env.</div>
+</div>
+
+<svg class="wires" id="wires" width="2000" height="1225">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7393"/></marker>
+    <marker id="ah-call" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/></marker>
+    <marker id="ah-appr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c2410c"/></marker>
+    <marker id="ah-retry" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/></marker>
+  </defs>
+</svg>
+<script src="wires.js"></script>
+<script>
+wire({from:["ui","r",.5], to:["routes","l",.35]});
+wire({from:["api","r",.5], to:["routes","l",.7], label:"JSON in, register out", lx:330, ly:300});
+wire({from:["cli","r",.5], via:[[365,572],[365,400]], to:["pipe","l",.8]});
+wire({from:["routes","b",.24], to:["pipe","t",.5]});
+wire({from:["pipe","r",.5], to:["engine","l",.5]});
+wire({from:["engine","b",.1], to:["read","t",.6]});
+wire({from:["engine","b",.25], to:["evid","t",.6]});
+wire({from:["engine","b",.4], to:["judge","t",.5]});
+wire({from:["read","b",.5], to:["crust","t",.15]});
+wire({from:["evid","b",.5], to:["crust","t",.48]});
+wire({from:["judge","b",.5], to:["crust","t",.79], label:"claim look-ups", lx:1012, ly:778});
+wire({from:["routes","r",.75], via:[[1482,239],[1482,600]], to:["act","r",.5], kind:"appr", label:"approve", lx:1418, ly:283});
+wire({from:["act","r",.85], via:[[1503,710],[1503,225]], to:["mail","l",.55], kind:"call", label:"sent once", lx:1506, ly:290});
+wire({from:["engine","r",.3], to:["mantle","l",.4], kind:"call", label:"model calls", lx:1488, ly:345, curve:true});
+wire({from:["mantle","b",.5], to:["fallback","t",.5], kind:"retry", dash:true, label:"if it fails", lx:1760, ly:466});
+wire({from:["crust","b",.92], via:[[1128,994],[1515,994],[1515,858]], to:["cd","l",.95], kind:"call", label:"HTTPS · X-Credits-Used per call", lx:1218, ly:989});
+wire({from:["engine","r",.75], via:[[1525,388],[1525,942]], to:["web","l",.5], kind:"call", label:"archive · PDFs", lx:1529, ly:890});
+wire({from:["pipe","l",.3], via:[[372,330],[372,780]], to:["db","r",.35], label:"runs · cost · journal", lx:196, ly:668});
+</script>
+</body>
+</html>

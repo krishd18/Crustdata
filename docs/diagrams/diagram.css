@@ -1,0 +1,59 @@
+/* Shared styles for the architecture diagrams (rendered to JPEG by scripts/render_diagrams.py) */
+:root{
+  --ink:#0f172a; --ink2:#334155; --muted:#64748b; --line:#cbd5e1; --panel:#ffffff; --bg:#f6f7fb;
+  --indigo:#4f46e5; --indigo-bg:#eef0ff; --indigo-line:#c7cbfb;
+  --call:#2563eb; --call-bg:#e8f0ff;
+  --appr:#c2410c; --appr-bg:#fff1e6;
+  --retry:#7c3aed; --retry-bg:#f3ecff;
+  --cost:#047857; --cost-bg:#e6f7f0;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:15px/1.4 "Segoe UI",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.canvas{position:relative;width:2000px;overflow:hidden;background:
+  radial-gradient(900px 380px at 85% -5%,rgba(79,70,229,.08),transparent 60%),var(--bg)}
+.title{position:absolute;left:40px;top:28px}
+.title h1{margin:0;font-size:34px;letter-spacing:-.02em;font-weight:700}
+.title h1 b{color:var(--indigo)}
+.title p{margin:4px 0 0;color:var(--muted);font-size:16px}
+.legend{position:absolute;right:40px;top:36px;display:flex;gap:10px;align-items:center}
+.legend span.lbl{color:var(--muted);font-size:13px;margin-right:2px;text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+
+.zone{position:absolute;border:1.5px dashed #b6bdd0;border-radius:18px;background:rgba(255,255,255,.55)}
+.zone>.zt{position:absolute;top:-13px;left:18px;background:var(--bg);padding:0 8px;font-size:13px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--indigo)}
+.box{position:absolute;background:var(--panel);border:1.5px solid var(--line);border-radius:14px;padding:12px 14px;
+  box-shadow:0 2px 0 rgba(15,23,42,.03),0 8px 24px rgba(15,23,42,.06)}
+.box h3{margin:0 0 4px;font-size:17px;font-weight:700;letter-spacing:-.01em}
+.box h3 .f{font-family:Consolas,monospace;font-size:13px;font-weight:400;color:var(--muted);margin-left:6px}
+.box p{margin:2px 0;color:var(--ink2);font-size:14px}
+.box ul{margin:4px 0 0;padding-left:18px;color:var(--ink2);font-size:14px}
+.box li{margin:1px 0}
+.box.accent{border-color:var(--indigo-line);background:linear-gradient(180deg,#fbfbff,#f3f4ff)}
+.box.ext{border-color:#bfd0f5;background:linear-gradient(180deg,#ffffff,#f4f8ff)}
+.box.store{border-color:#a7dcc6;background:linear-gradient(180deg,#ffffff,#f1fbf6)}
+.box.guard{border-color:#d4c2fb;background:linear-gradient(180deg,#ffffff,#f8f4ff)}
+.box.dark{background:linear-gradient(180deg,#1e1b4b,#272274);border-color:#3b35a5;color:#fff}
+.box.dark p,.box.dark ul{color:#d9dbff}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:7px}
+.chip{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;padding:3px 9px;border-radius:99px;border:1.5px solid}
+.chip::before{content:"";width:7px;height:7px;border-radius:99px;background:currentColor}
+.c-call{color:var(--call);background:var(--call-bg);border-color:#b9cdfb}
+.c-appr{color:var(--appr);background:var(--appr-bg);border-color:#f7c6a3}
+.c-retry{color:var(--retry);background:var(--retry-bg);border-color:#d6c3fb}
+.c-cost{color:var(--cost);background:var(--cost-bg);border-color:#a7dcc6}
+code{font-family:Consolas,monospace;font-size:13px;color:#3730a3;background:#eef0ff;padding:0 4px;border-radius:4px}
+
+svg.wires{position:absolute;left:0;top:0;pointer-events:none;overflow:visible}
+.wl{fill:none;stroke:#6b7393;stroke-width:2.2}
+.wl.call{stroke:var(--call)} .wl.appr{stroke:var(--appr)} .wl.dash{stroke-dasharray:7 6}
+.wlabel{font:600 12.5px "Segoe UI",sans-serif;fill:#334155;paint-order:stroke;stroke:#f6f7fb;stroke-width:5px}
+.wlabel.call{fill:var(--call)} .wlabel.appr{fill:var(--appr)}
+
+.strip{position:absolute;display:grid;gap:14px}
+.col{background:var(--panel);border:1.5px solid var(--line);border-radius:14px;padding:12px 14px}
+.col h4{margin:0 0 6px;display:flex;align-items:center;gap:8px;font-size:14px;text-transform:uppercase;letter-spacing:.1em}
+.col ul{margin:0;padding-left:18px;font-size:13.5px;color:var(--ink2)}
+.col li{margin:2px 0}
+.foot{position:absolute;left:40px;bottom:16px;color:var(--muted);font-size:12.5px}

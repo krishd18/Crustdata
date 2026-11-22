@@ -13,6 +13,32 @@ from . import extract
 log = logging.getLogger("secondlook.email")
 
 
+def compose_intro(company: str, sender_org: str, purpose: str, why: str | None = None) -> tuple[str, str]:
+    """Step 3: first contact, asking for a teaser or capability deck.
+
+    Plain template on purpose: it states who we are and what we want, and
+    makes no claims about the company beyond what the sender typed in `why`.
+    """
+    subject = f"{sender_org} and {company}: {purpose}"
+    p = purpose.strip().rstrip(".")
+    p = p[:1].lower() + p[1:]  # "Exploring X in South India" -> "exploring X in South India"
+    lines = [
+        f"Hello {company} team,",
+        "",
+        f"I'm writing from {sender_org}. We're {p}, and {company} is on our shortlist"
+        + (f" because {why.strip().rstrip('.')}." if why else "."),
+        "",
+        "Could you share a short teaser or capability deck: what you do, where you operate, scale, and the "
+        "customers you work with? If it's a fit, we'd like to set up a 30-minute call.",
+        "",
+        "Happy to sign an NDA first if you'd prefer.",
+        "",
+        "Best regards,",
+        sender_org,
+    ]
+    return subject, "\n".join(lines)
+
+
 def compose(result: dict, sender_org: str = "our team") -> tuple[str, str, dict]:
     company = result["company"]["name"]
     reqs = result.get("requests", [])

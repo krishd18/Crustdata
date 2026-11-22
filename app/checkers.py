@@ -82,6 +82,22 @@ class Record:
     archive_first: str | None = None      # YYYYMMDDhhmmss
     archive_at: str | None = None
     crust: object | None = None           # Crust, for on-demand web searches
+    registry: dict | None = None          # primary legal entity from public.Public.registry()
+    documents: list = field(default_factory=list)  # third-party public documents (invoices, e-way bills...)
+
+    def docs_in(self, place: str | None = None, since: datetime | None = None) -> list[dict]:
+        """Third-party documents that place the company somewhere (optionally in `place`, after `since`)."""
+        out = []
+        st = state_of(place) if place else None
+        for d in self.documents:
+            ps = d.get("places") or []
+            hit = [p for p in ps if not place or mentions(p, place) or (st and state_of(p) == st)]
+            if not hit:
+                continue
+            if since and not (d.get("date") and d["date"] >= since.strftime("%Y-%m-%d")):
+                continue
+            out.append({**d, "hit": hit})
+        return out
     today: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
 
     # -- convenience accessors
@@ -139,17 +155,44 @@ def check(claim: Claim, r: Record) -> Finding:
     return fn(claim, r)
 
 
+def _registry_ev(r: Record, what: str) -> Evidence | None:
+    reg = r.registry
+    if not reg or not (reg.get("cin") or reg.get("legal_name")):
+        return None
+    src = (reg.get("sources") or [{}])[0]
+    label = f"{reg.get('legal_name') or ''} CIN {reg.get('cin') or '?'}".strip()
+    return Evidence(source=f"Company registry listing ({host(src.get('url')) if src.get('fetchable') else 'via web search'})",
+                    field=f"CIN / {what}", value=f"{label}: {what} {reg.get(what) or ''}".strip(),
+                    retrieved_at=src.get("retrieved_at") or r.retrieved_at, url=src.get("url"))
+
+
 def check_identity(c: Claim, r: Record) -> Finding:
+    reg = r.registry or {}
     if c.metric == "founded_year" or (c.year and not c.place):
         rec_year = r.g("basic_info.year_founded")
+        reg_year = reg.get("year")
         claimed = int(c.year or c.number or 0)
-        if not rec_year:
-            return _pending(c, "cannot verify", "No founding year on record.", checked=[f"{ENRICH} basic_info.year_founded"])
-        ev = [r.ev("basic_info.year_founded")]
-        if int(rec_year) == claimed:
-            return Finding(c, "verified", f"Record shows founded {rec_year}.", ev)
-        return Finding(c, "contradicted", f"Claim says {claimed}; record shows founded {rec_year}.", ev,
-                       request=request_for(c)[0])
+        ev = ([r.ev("basic_info.year_founded")] if rec_year else []) + [x for x in [_registry_ev(r, "incorporated")] if x]
+        if ev and reg_year and not reg.get("incorporated"):
+            ev[-1].value = f"{reg.get('legal_name') or ''} CIN {reg['cin']} (the CIN encodes incorporation year {reg_year})".strip()
+        if not rec_year and not reg_year:
+            return _pending(c, "cannot verify", "No founding or incorporation year on record.",
+                            checked=[f"{ENRICH} basic_info.year_founded", "company registry search"])
+        if claimed in {int(y) for y in (rec_year, reg_year) if y}:
+            both = rec_year and reg_year and int(rec_year) == int(reg_year) == claimed
+            return Finding(c, "verified", f"{'Profile and registry both show' if both else 'Record shows'} {claimed}.", ev)
+        shown = " and ".join(x for x in [f"profile says founded {rec_year}" if rec_year else "",
+                                          f"registry says incorporated {reg_year}" if reg_year else ""] if x)
+        return Finding(c, "contradicted", f"Claim says {claimed}; {shown}.", ev, request=request_for(c)[0])
+    if c.place and reg.get("registered_state") and state_of(c.place):
+        rev = _registry_ev(r, "registered_state")
+        if reg.get("registered_office") and mentions(reg["registered_office"], c.place):
+            return Finding(c, "verified", f"Registered office is in {c.place}.", [x for x in [_registry_ev(r, "registered_office")] if x])
+        if state_of(reg["registered_state"]) == state_of(c.place):
+            return _pending(c, "consistent", f"Registered in {reg['registered_state']} (from the CIN); the registry snippet doesn't name the city.",
+                            [x for x in [rev] if x])
+        return Finding(c, "contradicted", f"Claim says {c.place}; the company is registered in {reg['registered_state']}.",
+                       [x for x in [rev] if x], request=request_for(c)[0])
     if c.place:
         hq = " ".join(str(x) for x in [r.g("locations.headquarters"), r.g("locations.city"), r.g("locations.state")] if x)
         ev = [r.ev("locations.headquarters", hq or None)]
@@ -210,12 +253,14 @@ def check_footprint(c: Claim, r: Record) -> Finding:
         cities = {norm(j.get("location", {}).get("city")) for j in r.jobs if j.get("location", {}).get("city")}
         addrs = r.g("locations.all_office_addresses") or []
         cities |= {norm(k) for k in CITY_STATE if any(mentions(a, k) for a in addrs)}
-        cities = {CANON.get(x, x) for x in cities} - {""}
+        doc_cities = {norm(p) for d in r.docs_in() for p in d["hit"]}
+        cities = {CANON.get(x, x) for x in cities | doc_cities} - {""}
         ev = [r.ev("locations.all_office_addresses", f"{len(cities)} distinct cities: " + ", ".join(sorted(cities)[:12]))]
+        ev += _doc_ev(r, r.docs_in())
         if n is None:
             return _pending(c, "cannot verify", "No count to compare.", ev)
         if len(cities) >= n:
-            return Finding(c, "verified", f"{len(cities)} distinct cities across addresses and job posts.", ev)
+            return Finding(c, "verified", f"{len(cities)} distinct cities across addresses, job posts and public documents.", ev)
         if cities:
             return _pending(c, "partial", f"Found {len(cities)} of {n} cities on record.", ev)
         return _pending(c, "cannot verify", "No city-level footprint on record.", ev)
@@ -229,8 +274,10 @@ def check_footprint(c: Claim, r: Record) -> Finding:
         ev.append(Evidence(ENRICH, "locations.all_office_addresses", _short(matched), r.retrieved_at))
     if job_hits:
         ev.append(Evidence(JOBS, "location.raw", _short(sorted({j['location']['raw'] for j in job_hits})), r.jobs_at or r.retrieved_at))
+    docs = r.docs_in(c.place)
+    ev += _doc_ev(r, docs)  # supporting evidence; the site count stays address-based
     checked = [f"{ENRICH} locations.all_office_addresses ({len(r.g('locations.all_office_addresses') or [])} addresses)",
-               f"{JOBS} ({len(r.jobs)} recent posts)"]
+               f"{JOBS} ({len(r.jobs)} recent posts)", f"public documents ({len(r.documents)} found)"]
     if n is None:
         return _pending(c, "cannot verify" if not matched else "partial", f"{len(matched)} addresses on record{where}.", ev, checked)
     if len(matched) >= n:
@@ -239,6 +286,15 @@ def check_footprint(c: Claim, r: Record) -> Finding:
         return _pending(c, "partial", f"{len(matched)} of {n} sites found on record{where}"
                         + (f"; {len(job_hits)} job posts there" if job_hits else "") + ".", ev, checked)
     return _pending(c, "cannot verify", f"No addresses or job posts on record{where}.", ev, checked)
+
+
+def _doc_ev(r: Record, docs: list[dict]) -> list[Evidence]:
+    if not docs:
+        return []
+    items = [f"{', '.join(d['hit'])}: “{d.get('title')}”{' (' + d['date'] + ')' if d.get('date') else ''}"
+             f"{' [' + d['publisher'] + ']' if d.get('publisher') else ''}" for d in docs[:6]]
+    return [Evidence("Public documents (invoices, e-way bills; via web search)", None, "; ".join(items),
+                     docs[0].get("retrieved_at") or r.retrieved_at, docs[0].get("url"))]
 
 
 SOCIAL = ("linkedin.com", "facebook.com", "x.com", "twitter.com", "instagram.com", "youtube.com", "medium.com")
@@ -369,6 +425,20 @@ def _history(p: dict) -> list[dict]:
 def check_people(c: Claim, r: Record) -> Finding:
     target = c.entity
     people = r.people
+    if not target:  # "Manish Singh, Co-Founder & CEO": is this person among the leaders on record?
+        names = ", ".join((p.get("basic_profile") or {}).get("name", "?") for p in people) or "none"
+        if c.number is not None or re.search(r"\bexit|sold|acquired|raised|revenue|figures?\b", c.text, re.I):
+            # "7 figures exit": a past result, which no profile record shows
+            return _pending(c, "cannot verify", "A leader's past exits or results aren't in the records checked.",
+                            checked=[f"{ENRICH} people.founders/cxos"])
+        hit = [p for p in people if c.person and mentions((p.get("basic_profile") or {}).get("name"), c.person)]
+        if hit:
+            bp = hit[0].get("basic_profile") or {}
+            return Finding(c, "verified", f"{bp.get('name')} is on record as {bp.get('current_title') or 'a leader'} here.",
+                           [Evidence(ENRICH, "people.founders / people.cxos",
+                                     f"{bp.get('name')}: {bp.get('current_title') or ''}", r.retrieved_at)])
+        return _pending(c, "cannot verify", f"{c.person or 'This person'} is not among the founders/CXOs on record ({names}).",
+                        checked=[f"{ENRICH} people.founders/cxos"])
     if c.person:
         people = [p for p in people if mentions((p.get("basic_profile") or {}).get("name"), c.person)] or []
         if not people:
@@ -430,6 +500,10 @@ def check_dates(c: Claim, r: Record) -> Finding:
     ev = []
     if founded:
         ev.append(r.ev("basic_info.year_founded"))
+    reg_year = (r.registry or {}).get("year")
+    if reg_year:
+        ev.append(_registry_ev(r, "incorporated") or Evidence("Company registry listing", "CIN", str(reg_year), r.retrieved_at))
+        founded = min(int(founded), int(reg_year)) if founded else reg_year  # the earliest legal existence counts
     if arch:
         ev.append(Evidence(ARCHIVE, None, f"{r.domain} first archived {r.archive_first[:4]}-{r.archive_first[4:6]}-{r.archive_first[6:8]}",
                            r.archive_at or r.retrieved_at, f"https://web.archive.org/web/{r.archive_first}/{r.domain}"))
@@ -510,10 +584,17 @@ def check_premise(c: Claim, r: Record) -> Finding:
         ev.append(Evidence(ENRICH, "locations.all_office_addresses", _short(addrs), r.retrieved_at))
     if region_hits:
         ev.append(Evidence(ENRICH, "headcount.by_region_absolute", _short([f"{k}: {v}" for k, v in region_hits.items()]), r.retrieved_at))
-    if recent_jobs:
+    # dated third-party paperwork (invoices, e-way bills) naming that city is activity too
+    recent_docs = [d for d in r.docs_in(place, since=cutoff) if any(mentions(p, place) for p in d["hit"])]
+    ev += _doc_ev(r, recent_docs)
+    if recent_jobs or recent_docs:
+        parts = []
+        if recent_jobs:
+            parts.append(f"{len(recent_jobs)} job post{'s' if len(recent_jobs) != 1 else ''} (latest {recent_jobs[0][0]:%d %b %Y})")
+        if recent_docs:
+            parts.append(f"{len(recent_docs)} dated document{'s' if len(recent_docs) != 1 else ''} naming it")
         return Finding(c, "false premise",
-                       f"{len(recent_jobs)} job post{'s' if len(recent_jobs) != 1 else ''} in {place} in the last 120 days"
-                       f" (latest {recent_jobs[0][0]:%d %b %Y}); the company is still active there.", ev,
+                       f"{' and '.join(parts)} in {place} in the last 120 days; the company is still active there.", ev,
                        request=request_for(c)[0])
     if addrs or region_hits:
         return _pending(c, "unsupported premise", f"{place} is still on record and nothing shows a closure.", ev)

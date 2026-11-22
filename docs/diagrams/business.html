@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SecondLook business architecture</title>
+<link rel="stylesheet" href="diagram.css">
+<style>
+  .step{position:absolute;top:370px;width:300px;height:330px;background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:14px 16px;
+    box-shadow:0 8px 24px rgba(15,23,42,.06)}
+  .step .num{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:9px;background:var(--indigo);color:#fff;font-weight:700;font-size:15px;margin-right:8px}
+  .step h3{display:flex;align-items:center;margin:0 0 10px;font-size:19px;letter-spacing:.02em}
+  .step .k{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+  .step .v{font-size:14px;color:var(--ink2);margin-top:2px}
+  .step .chips{position:absolute;left:16px;right:16px;bottom:14px}
+  .step.gate{border-color:#f7c6a3;background:linear-gradient(180deg,#fff,#fff7f0)}
+  .actor{position:absolute;top:150px;height:150px;border-radius:16px;padding:14px 18px;border:1.5px solid}
+  .actor h3{margin:0 0 4px;font-size:18px} .actor p{margin:2px 0;font-size:14px}
+  .actor .role{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px}
+  .a-an{background:linear-gradient(180deg,#fff,#f3f4ff);border-color:var(--indigo-line)} .a-an .role{color:var(--indigo)}
+  .a-ap{background:linear-gradient(180deg,#fff,#fff4ea);border-color:#f7c6a3} .a-ap .role{color:var(--appr)}
+  .a-out{background:linear-gradient(180deg,#1e1b4b,#272274);border-color:#3b35a5;color:#fff} .a-out .role{color:#a5a9ff} .a-out p{color:#d9dbff}
+  .cp{position:absolute;left:364px;top:745px;width:1272px;height:78px;border-radius:14px;border:1.5px solid #bfd0f5;
+    background:linear-gradient(90deg,#f4f8ff,#ffffff);display:flex;align-items:center;gap:18px;padding:0 22px}
+  .cp .role{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--call)}
+  .cp h3{margin:0;font-size:18px}
+  .panel{position:absolute;top:860px;height:290px;background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:14px 18px}
+  .panel>h4{margin:0 0 10px;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--indigo)}
+  .tiles{display:grid;gap:10px}
+  .tile{border:1px solid #e2e6f0;border-radius:11px;padding:8px 11px;background:#fafbff}
+  .tile b{display:block;font-size:14.5px} .tile span{font-size:13px;color:var(--ink2)}
+  .cap{display:grid;grid-template-columns:120px 1fr;gap:6px 12px;align-items:start;font-size:13.5px}
+  .cap .g{font-weight:700;color:var(--ink);padding:5px 0;border-top:1px solid #edf0f6}
+  .cap .i{color:var(--ink2);padding:5px 0;border-top:1px solid #edf0f6}
+  .big{font-size:34px;font-weight:800;color:var(--indigo);letter-spacing:-.02em;line-height:1}
+  .rules{position:absolute;left:40px;top:1198px;width:1920px;display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+  .rule{background:#fff;border:1.5px solid var(--line);border-radius:13px;padding:11px 13px}
+  .rule b{display:block;font-size:14.5px;margin-bottom:3px} .rule span{font-size:12.5px;color:var(--muted)}
+  .sec{position:absolute;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--indigo)}
+</style>
+</head>
+<body>
+<div class="canvas" id="cv" style="height:1320px">
+  <div class="title">
+    <h1><b>SecondLook</b> · Business architecture</h1>
+    <p>Who uses it, the six-step workflow, what goes in and what comes out, what it costs, and the guardrails</p>
+  </div>
+  <div class="legend"><span class="lbl">Legend</span>
+    <span class="chip c-call">Data call</span><span class="chip c-appr">Approval</span>
+    <span class="chip c-retry">Retry / fallback</span><span class="chip c-cost">Cost</span></div>
+
+  <!-- actors -->
+  <div class="actor a-an" id="an" style="left:40px;width:624px">
+    <div class="role">Analyst</div><h3>Runs the diligence</h3>
+    <p>VC and angels · PE / corp dev / M&amp;A · credit · procurement · BD · research</p>
+    <p style="color:var(--muted)">Describes the thesis, screens targets, uploads decks, reads the register</p></div>
+  <div class="actor a-ap" id="ap" style="left:688px;width:948px">
+    <div class="role">Approver</div><h3>A named person on the deal team</h3>
+    <p>Approves every outgoing email (steps 3 and 5) · picks the right company when the name is ambiguous ·
+      arms a founder watch after seeing its price · confirms an "uncertain" send</p></div>
+  <div class="actor a-out" id="dec" style="left:1660px;width:300px">
+    <div class="role">Outcome</div><h3>Meeting 2 / IC</h3>
+    <p>Go, no-go, or ask for more. Evidence in, a person decides.</p></div>
+
+  <div class="sec" style="left:40px;top:752px;width:300px;line-height:1.5">Six-step workflow<br><span style="color:var(--muted);font-weight:600;letter-spacing:.06em">one dossier per target · steps can be skipped</span></div>
+
+  <!-- six steps -->
+  <div class="step" id="s1" style="left:40px">
+    <h3><span class="num">1</span>FIND</h3>
+    <div class="k">In</div><div class="v">A thesis in plain words ("acquirable logistics in MH, $5M+ revenue")</div>
+    <div class="k">Out</div><div class="v">Ranked shortlist; every signal cites its field and date; filters shown, unsupported criteria listed</div>
+    <div class="chips"><span class="chip c-call">Search + enrich</span><span class="chip c-cost">11–19 credits</span></div></div>
+  <div class="step" id="s2" style="left:364px">
+    <h3><span class="num">2</span>SCREEN</h3>
+    <div class="k">In</div><div class="v">The company (name or domain)</div>
+    <div class="k">Out</div><div class="v">Early red flags from its public claims; registry entities (CIN, status); news analysis; public documents</div>
+    <div class="chips"><span class="chip c-call">Web + news</span><span class="chip c-cost">≈13 credits</span></div></div>
+  <div class="step gate" id="s3" style="left:688px">
+    <h3><span class="num">3</span>REACH OUT</h3>
+    <div class="k">In</div><div class="v">Recipient you were given, your team, the purpose</div>
+    <div class="k">Out</div><div class="v">An intro asking for a teaser or deck, sent exactly once</div>
+    <div class="chips"><span class="chip c-appr">Approval</span><span class="chip c-cost">0 credits</span></div></div>
+  <div class="step" id="s4" style="left:1012px">
+    <h3><span class="num">4</span>CHECK</h3>
+    <div class="k">In</div><div class="v">Their deck: PDF, scanned PDF (OCR), PPTX, link, text or JSON request</div>
+    <div class="k">Out</div><div class="v">Claims register: verdict, one-line reason, source, value, date; inconsistencies across sources</div>
+    <div class="chips"><span class="chip c-call">Records + models</span><span class="chip c-cost">≈19 credits</span></div></div>
+  <div class="step gate" id="s5" style="left:1336px">
+    <h3><span class="num">5</span>REQUEST</h3>
+    <div class="k">In</div><div class="v">Every claim the records couldn't settle</div>
+    <div class="k">Out</div><div class="v">"Ask them for this": one document per claim (EPFO, GST, leases, contracts), sent exactly once</div>
+    <div class="chips"><span class="chip c-appr">Approval</span><span class="chip c-cost">0 credits</span></div></div>
+  <div class="step" id="s6" style="left:1660px">
+    <h3><span class="num">6</span>RE-CHECK</h3>
+    <div class="k">In</div><div class="v">The step 4 snapshot</div>
+    <div class="k">Out</div><div class="v">What changed: verdicts, records, headcount, job posts, each leader's own profile; optional founder watch</div>
+    <div class="chips"><span class="chip c-cost">≈19 credits</span><span class="chip c-appr">Watch: price first</span></div></div>
+
+  <div class="cp" id="cp">
+    <div><div class="role">Counterparty</div><h3>The target company</h3></div>
+    <div style="color:var(--ink2);font-size:14px">Receives the intro (3) and the document request (5), each approved and sent once ·
+      sends back its deck or teaser (4) and the documents asked for</div></div>
+
+  <!-- use cases -->
+  <div class="panel" style="left:40px;width:624px">
+    <h4>Who it's for</h4>
+    <div class="tiles" style="grid-template-columns:1fr 1fr">
+      <div class="tile"><b>VC and angel investors</b><span>Check a pitch deck before meeting 2</span></div>
+      <div class="tile"><b>PE, corp dev, M&amp;A</b><span>Source acquirable targets; registry and insolvency flags</span></div>
+      <div class="tile"><b>Lenders and credit</b><span>Borrower claims, adverse news, GST / EPFO asks</span></div>
+      <div class="tile"><b>Procurement</b><span>Supplier sites, cities and customers, vs. records</span></div>
+      <div class="tile"><b>BD and partnerships</b><span>A partner's reach, clients and team</span></div>
+      <div class="tile"><b>Research analysts</b><span>Thesis to sourced shortlist; news analysis</span></div>
+    </div></div>
+
+  <!-- capability map -->
+  <div class="panel" style="left:688px;width:624px">
+    <h4>Capability map</h4>
+    <div class="cap">
+      <div class="g">Sourcing</div><div class="i">Thesis → Crustdata filters · shortlist with sourced signals</div>
+      <div class="g">Verification</div><div class="i">Read any deck (incl. OCR) · quote-checked claims · 11 deterministic checks · cross-source inconsistencies</div>
+      <div class="g">Public context</div><div class="i">Registry entities (CIN, state, year, status) · news analysis · invoices and e-way bills</div>
+      <div class="g">Action</div><div class="i">"Ask them for this" list · exactly-once outreach · re-check and founder watch</div>
+      <div class="g">Governance</div><div class="i">Approvals · cost ledger and Stop · PII minimisation · dated snapshots</div>
+    </div></div>
+
+  <!-- economics -->
+  <div class="panel" style="left:1336px;width:624px">
+    <h4>Value and unit economics</h4>
+    <div style="display:flex;gap:22px;align-items:flex-end;margin-bottom:12px">
+      <div><div class="big">≈50</div><div style="font-size:12.5px;color:var(--muted)">Crustdata credits per dossier<br>(Screen + Check + Re-check)</div></div>
+      <div><div class="big">11</div><div style="font-size:12.5px;color:var(--muted)">claim types, each checked<br>by code, not the model</div></div>
+      <div><div class="big">1×</div><div style="font-size:12.5px;color:var(--muted)">every approved email,<br>even through a crash</div></div></div>
+    <ul style="margin:0;padding-left:18px;font-size:13.5px;color:var(--ink2)">
+      <li>Credits and model tokens recorded per run, so the price per dossier is set from measured cost (₹ via <code>USD_INR</code>)</li>
+      <li>Hours of manual checking become minutes, ending in a document request ready to send</li>
+      <li>Spend control: pacing, cache, batching, Stop on every step</li></ul></div>
+
+  <div class="sec" style="left:40px;top:1172px">Guardrails the system enforces</div>
+  <div class="rules">
+    <div class="rule"><b>Never "false" without evidence</b><span>"Contradicted" needs a contrary record; flags become requests</span></div>
+    <div class="rule"><b>Professional data only</b><span>No contact fields; PII scrubbed from storage, logs and model input</span></div>
+    <div class="rule"><b>A named person sends</b><span>Nothing leaves without an approver</span></div>
+    <div class="rule"><b>Exactly once</b><span>Journal first, idempotency key, recovery at startup, kill test</span></div>
+    <div class="rule"><b>Spend is visible</b><span>Cost per run, Stop everywhere, watches priced before arming</span></div>
+    <div class="rule"><b>The model reads, code decides</b><span>Quotes and figures verified; verdicts are deterministic</span></div>
+  </div>
+</div>
+
+<svg class="wires" id="wires" width="2000" height="1320">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7393"/></marker>
+    <marker id="ah-call" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/></marker>
+    <marker id="ah-appr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c2410c"/></marker>
+    <marker id="ah-retry" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/></marker>
+  </defs>
+</svg>
+<script src="wires.js"></script>
+<script>
+for (const [a, b] of [["s1","s2"],["s2","s3"],["s3","s4"],["s4","s5"],["s5","s6"]]) wire({from:[a,"r",.5], to:[b,"l",.5]});
+wire({from:["an","b",.25], to:["s1","t",.5]});
+wire({from:["an","b",.77], to:["s2","t",.5]});
+wire({from:["ap","b",.16], to:["s3","t",.5], kind:"appr", label:"approves send", lx:846, ly:335});
+wire({from:["ap","b",.84], to:["s5","t",.5], kind:"appr", label:"approves send", lx:1494, ly:335});
+wire({from:["s6","t",.5], to:["dec","b",.5], label:"what changed", lx:1820, ly:335});
+wire({from:["s3","b",.5], to:["cp","t",.37], kind:"call", label:"intro, sent once", lx:846, ly:728});
+wire({from:["cp","t",.62], to:["s4","b",.5], kind:"call", label:"their deck", lx:1170, ly:728});
+wire({from:["s5","b",.5], to:["cp","t",.88], kind:"call", label:"document request, sent once", lx:1494, ly:728});
+</script>
+</body>
+</html>

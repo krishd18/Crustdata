@@ -3,358 +3,919 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <title>SecondLook</title>
 <style>
+/* SecondLook: dark diligence console (navy panels, indigo actions, tinted verdicts) */
 :root{
-  --bg:#f6f5f2; --panel:#ffffff; --ink:#1c1b19; --muted:#6b6862; --line:#e4e1da; --soft:#efede8;
-  --accent:#2f4fd8; --accent-ink:#fff;
-  --ok:#1f7a4d; --ok-bg:#e3f3ea; --warn:#8a5a00; --warn-bg:#fbf0d9; --bad:#b42318; --bad-bg:#fdecea;
-  --na:#55524c; --na-bg:#ecebe7; --info:#2846b8; --info-bg:#e6ebfb;
-  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --bg:#080a17; --bg2:#0b0e1f; --panel:#0f1226; --panel2:#13173000; --raise:#151a36;
+  --ink:#e7e9f7; --ink2:#c3c7e2; --muted:#7f86ad; --faint:#5a6089;
+  --line:#1e2346; --line2:#2a3060; --soft:#161b38;
+  --accent:#6c63ff; --accent2:#8b84ff; --accent-ink:#ffffff; --accent-soft:rgba(108,99,255,.14);
+  --label:#7d86ff; --cyan:#3fd0e6; --cyan-soft:rgba(63,208,230,.12);
+  --ok:#4ade9b; --ok-bg:rgba(74,222,155,.10); --ok-line:rgba(74,222,155,.35);
+  --warn:#f6c453; --warn-bg:rgba(246,196,83,.10); --warn-line:rgba(246,196,83,.35);
+  --bad:#ff7a7a; --bad-bg:rgba(255,122,122,.10); --bad-line:rgba(255,122,122,.35);
+  --na:#b9bdd6; --na-bg:rgba(185,189,214,.08); --na-line:rgba(185,189,214,.25);
+  --info:#9aa2ff; --info-bg:rgba(108,99,255,.10); --info-line:rgba(125,134,255,.35);
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --r:14px; --r-sm:8px;
+  color-scheme:dark;
 }
-@media (prefers-color-scheme: dark){:root{
-  --bg:#141413; --panel:#1d1c1a; --ink:#ecebe7; --muted:#a19d95; --line:#33312d; --soft:#262522;
-  --accent:#7d93ff; --accent-ink:#0d1020;
-  --ok:#6fd3a0; --ok-bg:#16342a; --warn:#f0c062; --warn-bg:#3a2e12; --bad:#ff8a80; --bad-bg:#3d1a17;
-  --na:#c8c4bb; --na-bg:#2c2b28; --info:#9fb0ff; --info-bg:#1e2547;
-}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-header{display:flex;align-items:center;gap:16px;padding:14px 24px;border-bottom:1px solid var(--line);background:var(--panel)}
-header h1{font-size:18px;margin:0;letter-spacing:-.01em}
-header .tag{color:var(--muted)}
-header .pills{margin-left:auto;display:flex;gap:8px}
-.pill{font-size:12px;padding:2px 8px;border-radius:99px;background:var(--soft);color:var(--muted)}
-.pill.on{background:var(--ok-bg);color:var(--ok)}
-.wrap{display:grid;grid-template-columns:360px 1fr;gap:20px;padding:20px 24px;max-width:1500px;margin:0 auto}
-@media (max-width:900px){.wrap{grid-template-columns:1fr;padding:16px}}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px}
-label{display:block;font-size:12px;color:var(--muted);margin:10px 0 4px}
-input,textarea{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:7px;background:var(--bg);color:var(--ink);font:inherit}
-textarea{min-height:260px;font-family:var(--mono);font-size:12.5px;resize:vertical}
-.row{display:flex;gap:8px}
-.row>*{flex:1}
-button{font:inherit;border:1px solid var(--line);background:var(--soft);color:var(--ink);padding:7px 12px;border-radius:7px;cursor:pointer}
-button.primary{background:var(--accent);color:var(--accent-ink);border-color:transparent;font-weight:600}
-button:disabled{opacity:.5;cursor:default}
-.muted{color:var(--muted)}
-.small{font-size:12px}
-.list a{display:block;padding:6px 0;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
-.list a:hover{color:var(--accent)}
-h2{font-size:15px;margin:0 0 8px}
-.co{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start}
-.co .name{font-size:20px;font-weight:650}
-.facts{display:flex;flex-wrap:wrap;gap:18px;margin-top:6px}
-.facts div span{display:block;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
-.cost{margin-left:auto;text-align:right;min-width:200px}
-.cost .big{font-size:20px;font-weight:650}
-.summary{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 4px}
-.chip{display:inline-block;font-size:12px;font-weight:600;padding:2px 8px;border-radius:99px;white-space:nowrap}
-.v-ok{background:var(--ok-bg);color:var(--ok)} .v-warn{background:var(--warn-bg);color:var(--warn)}
-.v-bad{background:var(--bad-bg);color:var(--bad)} .v-na{background:var(--na-bg);color:var(--na)} .v-info{background:var(--info-bg);color:var(--info)}
-.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin:16px 0 0;overflow-x:auto}
-.tabs button{border:none;background:none;border-bottom:2px solid transparent;border-radius:0;padding:9px 12px;color:var(--muted);white-space:nowrap}
-.tabs button.on{color:var(--ink);border-bottom-color:var(--accent);font-weight:600}
-.pane{padding-top:14px}
-table{width:100%;border-collapse:collapse}
-th{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);text-align:left;padding:6px 8px;border-bottom:1px solid var(--line)}
-td{padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:top}
-tr.claim{cursor:pointer} tr.claim:hover td{background:var(--soft)}
-tr.detail td{background:var(--soft);padding:12px 16px}
-.type{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
-.ev{border-left:3px solid var(--line);padding:4px 10px;margin:6px 0;font-size:13px}
-.ev code{font-family:var(--mono);font-size:12px;background:var(--panel);padding:1px 5px;border-radius:4px}
-.ev .val{font-family:var(--mono);font-size:12px;white-space:pre-wrap;word-break:break-word}
-.ask{background:var(--warn-bg);color:var(--warn);border-radius:7px;padding:8px 10px;margin-top:8px;font-size:13px}
-ol.req li{margin:0 0 12px}
-ol.req .doc{font-weight:600}
-.steps{list-style:none;padding:0;margin:0}
-.steps li{padding:4px 0}
-.steps li::before{content:"✓ ";color:var(--ok)}
-.steps li:last-child::before{content:"… ";color:var(--accent)}
-.steps.done li:last-child::before{content:"✓ ";color:var(--ok)}
-pre.mail{white-space:pre-wrap;background:var(--bg);border:1px solid var(--line);padding:12px;border-radius:8px;font-size:12.5px;font-family:var(--mono)}
-.empty{padding:40px;text-align:center;color:var(--muted)}
-.conf{border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin:0 0 10px}
-.err{color:var(--bad)}
-a{color:var(--accent)}
+html{background:var(--bg)}
+body{margin:0;min-height:100vh;color:var(--ink);font:13.5px/1.55 var(--sans);
+  background:radial-gradient(1200px 500px at 70% -10%,rgba(108,99,255,.10),transparent 60%),var(--bg);
+  -webkit-font-smoothing:antialiased}
+::selection{background:rgba(108,99,255,.35)}
+a{color:var(--accent2);text-decoration:none} a:hover{text-decoration:underline}
+
+/* ---- floating top bar ---- */
+header{position:sticky;top:12px;z-index:20;max-width:1240px;margin:12px auto 0;display:flex;align-items:center;gap:18px;
+  padding:10px 14px 10px 18px;border:1px solid var(--line);border-radius:16px;
+  background:rgba(13,16,36,.82);backdrop-filter:blur(14px);box-shadow:0 10px 40px rgba(0,0,0,.35)}
+header .brand{display:flex;align-items:center;gap:9px;font-weight:650;font-size:16px;letter-spacing:-.01em;color:var(--ink)}
+header .brand svg{width:22px;height:22px}
+header h1{font-size:16px;margin:0;font-weight:650;letter-spacing:-.01em}
+header .tag{color:var(--muted);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+header nav{display:flex;gap:4px}
+header nav a,header nav button{background:none;border:none;color:var(--ink2);font-size:13px;padding:6px 10px;border-radius:8px}
+header nav a:hover,header nav button:hover{background:var(--soft);color:var(--ink);text-decoration:none}
+header .pills{margin-left:auto;display:flex;gap:6px;align-items:center}
+header #go-find{margin-left:6px}
+@media (max-width:980px){header .tag{display:none}}
+@media (max-width:760px){header{position:relative;flex-wrap:wrap;top:0;margin:0;border-radius:0;gap:10px}header nav{order:3;width:100%}header .pills{flex-wrap:wrap}}
+.pill{font-size:11px;padding:3px 9px;border-radius:99px;background:transparent;border:1px solid var(--line2);color:var(--muted);white-space:nowrap}
+.pill.on{color:var(--ok);border-color:var(--ok-line);background:var(--ok-bg)}
+.pill.on::before{content:"";display:inline-block;width:6px;height:6px;border-radius:99px;background:var(--ok);margin-right:6px;vertical-align:1px}
+
+/* ---- layout ---- */
+.wrap{display:grid;grid-template-columns:1fr 300px;grid-template-areas:"main side";gap:20px;padding:26px 24px 60px;max-width:1240px;margin:0 auto}
+.wrap>aside{grid-area:side;display:flex;flex-direction:column;gap:16px;min-width:0}
+.wrap>main{grid-area:main;align-self:start}
+@media (max-width:980px){.wrap{display:flex;flex-direction:column;padding:16px}.wrap>aside{display:contents}.wrap>aside .nav{order:1}.wrap>main{order:2;min-width:0;width:100%}.wrap>aside .card:not(.nav){order:3}}
+.card{background:linear-gradient(180deg,rgba(255,255,255,.018),transparent 120px),var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:20px}
+main.card{min-width:0;overflow-x:auto;padding:24px 26px}
+aside .card{padding:16px 16px 12px}
+.sig{overflow-wrap:anywhere}
+
+/* ---- type ---- */
+h2{font-size:22px;font-weight:650;letter-spacing:-.02em;margin:0 0 10px;color:var(--ink)}
+aside h2{font-size:13px;font-weight:650;letter-spacing:0;margin:0 0 10px;color:var(--ink)}
+h3{font-size:10.5px;font-weight:650;text-transform:uppercase;letter-spacing:.12em;color:var(--label);margin:22px 0 10px}
+.muted{color:var(--muted)} .small{font-size:12px} .err{color:var(--bad)}
+p{margin:8px 0}
+code,.type{font-family:var(--mono)}
+
+/* ---- forms ---- */
+label{display:block;font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:12px 0 6px;font-weight:600}
+input,textarea,select{width:100%;padding:9px 12px;border:1px solid var(--line2);border-radius:var(--r-sm);background:var(--bg2);color:var(--ink);font:inherit;outline:none;transition:border-color .15s,box-shadow .15s}
+input:focus,textarea:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+input[type=checkbox]{accent-color:var(--accent)}
+textarea{min-height:160px;font-family:var(--mono);font-size:12px;resize:vertical}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.row>*{flex:1;min-width:140px}
+
+/* ---- buttons ---- */
+button{font:inherit;font-size:13px;border:1px solid var(--line2);background:var(--raise);color:var(--ink);padding:7px 14px;border-radius:var(--r-sm);cursor:pointer;transition:background .15s,border-color .15s,transform .05s}
+button:hover{border-color:#3a4180;background:#1a2042}
+button:active{transform:translateY(1px)}
+button.primary{background:linear-gradient(180deg,#7a72ff,#5b52f0);color:#fff;border-color:rgba(255,255,255,.08);font-weight:600;box-shadow:0 4px 18px rgba(108,99,255,.30)}
+button.primary:hover{background:linear-gradient(180deg,#867fff,#655cf5)}
+button:disabled{opacity:.45;cursor:default;transform:none}
+button.link{background:none;border:none;color:var(--accent2);padding:0;box-shadow:none}
+button.link:hover{text-decoration:underline;background:none}
+button.stop{background:var(--bad-bg);color:var(--bad);border-color:var(--bad-line);font-weight:600}
+button.stop:hover{background:rgba(255,122,122,.18)}
+.wait{display:flex;gap:12px;align-items:center;margin:10px 0;padding:10px 12px;border:1px dashed var(--line2);border-radius:var(--r-sm)}
+.wait::before{content:"";width:12px;height:12px;border-radius:99px;border:2px solid var(--accent);border-right-color:transparent;animation:spin .8s linear infinite;flex:0 0 auto}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---- sidebar lists ---- */
+.nav button.big{width:100%;text-align:left;margin-bottom:8px}
+.deal{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:8px 10px;border-radius:9px;color:var(--ink2);text-decoration:none;cursor:pointer;border:1px solid transparent;background:none;width:100%;text-align:left;font-size:12.5px;box-shadow:none}
+.deal:hover{background:var(--soft);border-color:transparent;color:var(--ink)}
+.deal.on{background:var(--accent-soft);border-color:rgba(108,99,255,.35);color:var(--ink)}
+.deal .st{flex:0 0 auto;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.dealrow{position:relative}
+.dealrow .deal{padding-right:30px}
+.dealrow .del{position:absolute;right:4px;top:6px;padding:0 7px;border:none;background:none;color:var(--muted);font-size:15px;line-height:22px;opacity:0;box-shadow:none}
+.dealrow:hover .del,.dealrow .del:focus{opacity:1}
+.dealrow .del:hover{color:var(--bad);background:var(--bad-bg)}
+@media (hover:none){.dealrow .del{opacity:.6}}
+#searches .deal{font-size:12px;color:var(--muted);line-height:1.45}
+#searches .deal .st{font-family:var(--mono);text-transform:none;letter-spacing:0}
+
+/* ---- verdict chips ---- */
+.chip{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:650;letter-spacing:.06em;text-transform:uppercase;padding:2px 9px;border-radius:6px;white-space:nowrap;border:1px solid transparent;font-family:var(--mono)}
+.chip::before{content:"";width:6px;height:6px;border-radius:99px;background:currentColor;opacity:.9}
+.v-ok{background:var(--ok-bg);color:var(--ok);border-color:var(--ok-line)}
+.v-warn{background:var(--warn-bg);color:var(--warn);border-color:var(--warn-line)}
+.v-bad{background:var(--bad-bg);color:var(--bad);border-color:var(--bad-line)}
+.v-na{background:var(--na-bg);color:var(--na);border-color:var(--na-line)}
+.v-info{background:var(--info-bg);color:var(--info);border-color:var(--info-line)}
+.summary{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}
+.summary .chip{text-transform:none;letter-spacing:0;font-family:var(--sans);font-size:11.5px;font-weight:550;padding:3px 10px}
+.summary .chip::before{display:none}
+
+/* ---- the six-step stepper, as a tab strip ---- */
+.stepper{display:flex;gap:4px;margin:18px 0 4px;padding:4px;border:1px solid var(--line);border-radius:12px;background:var(--bg2);overflow:hidden}
+.stepper button{flex:1;border:1px solid transparent;border-radius:9px;background:none;padding:8px 10px;text-align:left;min-width:0;box-shadow:none}
+.stepper button:hover{background:var(--soft)}
+.stepper .n{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:6px;background:var(--soft);color:var(--muted);font-size:10.5px;font-weight:700;margin-right:7px;font-family:var(--mono)}
+.stepper .done .n{background:var(--ok-bg);color:var(--ok)}
+.stepper .cur{background:var(--accent-soft);border-color:rgba(108,99,255,.45)}
+.stepper .cur .n{background:var(--accent);color:#fff}
+.stepper .lbl{font-weight:600;font-size:12.5px;color:var(--ink)}
+.stepper .det{display:block;font-size:10.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+@media (max-width:760px){.stepper{flex-wrap:wrap}.stepper button{flex:1 1 30%}}
+.pane{padding-top:16px}
+
+/* ---- tables ---- */
+table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--bg2)}
+th{font-size:10px;font-weight:650;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.015)}
+td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink2)}
+tr:last-child td{border-bottom:none}
+td b{color:var(--ink)}
+tr.claim{cursor:pointer} tr.claim:hover td{background:rgba(108,99,255,.06)}
+tr.detail td{background:var(--panel);padding:14px 18px}
+.type{font-size:11px;color:var(--muted)}
+
+/* ---- evidence, notes, flags ---- */
+.ev{border-left:2px solid var(--accent);padding:6px 12px;margin:8px 0;font-size:12.5px;background:rgba(108,99,255,.04);border-radius:0 8px 8px 0}
+.ev code{font-family:var(--mono);font-size:11.5px;background:var(--soft);color:var(--cyan);padding:1px 6px;border-radius:5px}
+.ev .val{font-family:var(--mono);font-size:11.5px;white-space:pre-wrap;word-break:break-word;color:var(--ink2)}
+.note,.ask,.flag{border-radius:10px;padding:10px 14px;font-size:12.5px;margin:10px 0;border:1px solid}
+.note{background:var(--info-bg);color:#c4c8ff;border-color:var(--info-line)}
+.ask{background:var(--warn-bg);color:#f8d88a;border-color:var(--warn-line)}
+.flag{background:var(--bad-bg);color:#ffb3b3;border-color:var(--bad-line)}
+.note b,.ask b,.flag b{color:var(--ink)}
+ol.req{padding-left:22px} ol.req li{margin:0 0 14px;color:var(--ink2)} ol.req li::marker{color:var(--label);font-family:var(--mono);font-size:12px}
+ol.req .doc{font-weight:600;color:var(--ink)}
+.steps{list-style:none;padding:0;margin:6px 0}
+.steps li{padding:6px 0 6px 26px;position:relative;color:var(--ink2);border-left:1px solid var(--line);margin-left:7px}
+.steps li::before{content:"";position:absolute;left:-6px;top:11px;width:11px;height:11px;border-radius:99px;background:var(--ok);box-shadow:0 0 0 3px var(--ok-bg)}
+.steps li:last-child::before{background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft);animation:pulse 1.2s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 7px rgba(108,99,255,.05)}}
+pre.mail{white-space:pre-wrap;background:var(--bg2);border:1px solid var(--line);padding:14px;border-radius:10px;font-size:12px;font-family:var(--mono);max-height:420px;overflow:auto;color:var(--ink2)}
+.empty{padding:40px;text-align:center;color:var(--muted);border:1px dashed var(--line2);border-radius:12px;background:var(--bg2)}
+.conf{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:0 0 10px;background:var(--bg2)}
+
+/* ---- company header facts ---- */
+.facts{display:flex;flex-wrap:wrap;gap:28px;margin-top:14px}
+.facts div{color:var(--ink);font-size:13px}
+.facts div span{display:block;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:3px;font-weight:600}
+
+/* ---- inputs that take a deck ---- */
+.drop{border:1.5px dashed var(--line2);border-radius:12px;padding:22px;text-align:center;color:var(--muted);cursor:pointer;background:var(--bg2);transition:border-color .15s,background .15s}
+.drop:hover{border-color:#3a4180}
+.drop.over{border-color:var(--accent);background:var(--accent-soft)}
+.sig{font-size:12px;margin:3px 0;color:var(--ink2)}
+.sig b{color:var(--ink);font-weight:600}
+.sig .src{color:var(--faint);font-family:var(--mono);font-size:10.5px}
+
+/* ---- sub tabs (register / inconsistencies / public record / cost) ---- */
+.subtabs{display:flex;gap:2px;border-bottom:1px solid var(--line);margin:16px 0 0;overflow-x:auto}
+.subtabs button{border:none;background:none;border-bottom:2px solid transparent;border-radius:0;padding:9px 12px;color:var(--muted);white-space:nowrap;box-shadow:none;font-size:13px}
+.subtabs button:hover{color:var(--ink);background:none}
+.subtabs button.on{color:var(--ink);border-bottom-color:var(--accent);font-weight:600}
+
+/* ---- boxed panels: the "suggested decision" look ---- */
+.box{position:relative;overflow:hidden;background:radial-gradient(500px 160px at 100% 0%,rgba(108,99,255,.16),transparent 70%),linear-gradient(180deg,#12163a,#0e1230);border:1px solid rgba(108,99,255,.30);border-radius:var(--r);padding:18px 20px;margin-top:16px}
+.box h2{font-size:10.5px;font-weight:650;text-transform:uppercase;letter-spacing:.12em;color:var(--label);margin:0 0 10px}
+
+
+/* company title on a target page (set inline by the page; enlarged here) */
+#main [style*="font-size:20px"]{font-size:28px!important;font-weight:650!important;letter-spacing:-.025em;line-height:1.2}
+@media (min-width:981px){.wrap>aside{position:sticky;top:96px;align-self:start;max-height:calc(100vh - 110px);overflow:auto}}
+/* scrollbars */
+*{scrollbar-width:thin;scrollbar-color:#2a3060 transparent}
 </style>
 </head>
 <body>
 <header>
-  <h1>SecondLook</h1>
+  <div class="brand">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2.5 4 5.6v5.9c0 4.7 3.3 8.7 8 10 4.7-1.3 8-5.3 8-10V5.6L12 2.5Z" stroke="#8b84ff" stroke-width="1.6" fill="rgba(108,99,255,.15)"/><path d="m8.6 12.2 2.3 2.3 4.6-4.8" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <h1>SecondLook</h1>
+  </div>
+  <nav>
+    <a href="#find">Find</a>
+    <button id="go-add">Add company</button>
+  </nav>
   <span class="tag">diligence before the second meeting</span>
-  <div class="pills"><span id="p-cd" class="pill">Crustdata</span><span id="p-llm" class="pill">Claude</span></div>
+  <div class="pills"><span id="p-cd" class="pill">Crustdata</span><span id="p-llm" class="pill">Claude</span>
+      <span id="p-mail" class="pill">Email</span></div>
+  <button class="primary" id="go-find">New search</button>
 </header>
 
 <div class="wrap">
+  <main id="main" class="card"></main>
   <aside>
-    <div class="card">
-      <h2>New dossier</h2>
-      <div class="row"><div><label>Company name</label><input id="f-name" placeholder="Stockarea"></div></div>
-      <div class="row">
-        <div><label>Domain</label><input id="f-domain" placeholder="stockarea.io"></div>
-        <div><label>City (optional)</label><input id="f-city" placeholder="Chennai"></div>
-      </div>
-      <label>Teaser, deck text or capability statement</label>
-      <textarea id="f-teaser" placeholder="Paste the counterparty's material here. Add your own questions at the end; they are checked for false premises."></textarea>
-      <div id="f-note" class="small muted" style="margin-top:6px"></div>
-      <div class="row" style="margin-top:10px">
-        <button id="b-sample">Load sample</button>
-        <button id="b-run" class="primary">Check claims</button>
-      </div>
+    <div class="card nav">
+      <h2 style="display:flex;align-items:center;justify-content:space-between">Pipeline
+        <button class="link small" id="go-flush" title="Clear every target from the pipeline (restorable)">Flush</button></h2>
+      <div id="deals" class="small"><span class="muted">No targets yet</span></div>
     </div>
-    <div class="card" style="margin-top:16px">
-      <h2>Dossiers</h2>
-      <div id="dossiers" class="list small"><span class="muted">None yet</span></div>
+    <div class="card">
+      <h2>Recent searches</h2>
+      <div id="searches" class="small"><span class="muted">None yet</span></div>
     </div>
   </aside>
-
-  <main id="main" class="card"><div class="empty">Paste a teaser and run a check. Every claim comes back with a verdict, the exact record it rests on, and what to ask for when the record can't settle it.</div></main>
 </div>
 
 <script>
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const stoppedErr = credits => Object.assign(new Error("Stopped"), {stopped:true, credits});
 const api = async (path, opt={}) => {
-  const r = await fetch(path, {headers:{"content-type":"application/json"}, ...opt, body: opt.body ? JSON.stringify(opt.body) : undefined});
-  if (!r.ok) throw new Error((await r.text()) || r.statusText);
+  const {job, ...init} = opt, headers = {};
+  if (opt.body && !(opt.body instanceof FormData)) { headers["content-type"] = "application/json"; init.body = JSON.stringify(opt.body); }
+  if (job) { headers["x-job-id"] = job.id; init.signal = job.ctl.signal; }  // lets Stop reach the server
+  init.headers = headers;
+  let r;
+  try { r = await fetch(path, init); }
+  catch(e){ if (e.name === "AbortError") throw stoppedErr(null); throw e; }
+  if (!r.ok) { let t = await r.text(); try { t = JSON.parse(t).detail || t; } catch(e){}
+    if (r.status === 499 || t?.stopped) throw stoppedErr(t?.credits);
+    throw new Error(typeof t === "string" ? t : JSON.stringify(t)); }
   return r.json();
 };
+// ---- Stop: every step that calls Crustdata or a model can be stopped by a person.
+// A request the page waits on carries a job id; Stop tells the server to make no further
+// calls (it answers with the credits spent so far), and the wait is dropped after 3 s regardless.
+const newJob = () => ({id: "j_" + Math.random().toString(36).slice(2, 12), ctl: new AbortController()});
+async function stopJob(job, btn){
+  if (btn) { btn.disabled = true; btn.textContent = "Stopping…"; }
+  setTimeout(() => job.ctl.abort(), 3000);
+  try { await fetch(`/api/jobs/${job.id}/cancel`, {method:"POST"}); } catch(e){}
+}
+function waiting(el, msg, job){
+  el.innerHTML = `<div class="wait"><span class="muted small">${msg}</span><button class="stop small">■ Stop</button></div>`;
+  const b = el.querySelector(".stop"); b.onclick = () => stopJob(job, b);
+}
+const errHtml = e => e.stopped
+  ? `<p class="small muted">Stopped. Nothing more was sent to Crustdata or the model${e.credits != null ? `; ${(+e.credits).toFixed(2)} credits were spent before it stopped` : ""}.</p>`
+  : `<p class="err">${esc(e.message)}</p>`;
+async function stopRun(rid, btn){
+  if (btn) { btn.disabled = true; btn.textContent = "Stopping…"; }
+  try { await api(`/api/runs/${rid}/cancel`, {method:"POST"}); } catch(e){}
+  openDeal(S.dossier.id, S.step);
+}
 const VCLASS = {"verified":"v-ok","independently supported":"v-ok","consistent":"v-warn","partial":"v-warn","self-reported":"v-warn",
   "earliest evidence":"v-warn","contradicted":"v-bad","false premise":"v-bad","cannot verify":"v-na","unsupported premise":"v-na","projection":"v-info"};
+const RED = new Set(["contradicted","false premise"]);
 const chip = v => `<span class="chip ${VCLASS[v]||"v-na"}">${esc(v)}</span>`;
 const fmtDate = s => s ? new Date(s).toLocaleDateString("en-IN",{day:"2-digit",month:"short",year:"numeric"}) : "";
-const state = {samples:[], dossier:null, run:null, tab:"register", open:new Set(), draft:null};
+const STEP_NAMES = {find:"Find", screen:"Screen", reach_out:"Reach out", check:"Check", request:"Request", recheck:"Re-check"};
+const S = {samples:[], dossier:null, step:null, runs:{}, stopped:{}, open:new Set(), sub:"register", search:null, picked:new Set(), drafts:{}};
 
+// ---------------------------------------------------------------- shell
 async function boot(){
   try{ const c = await api("/api/config");
     $("#p-cd").classList.toggle("on", c.crustdata); $("#p-cd").textContent = c.crustdata ? "Crustdata ✓" : "Crustdata: no token";
-    $("#p-llm").classList.toggle("on", c.llm); $("#p-llm").textContent = c.llm ? `Claude ✓` : "Claude off (rules)";
+    $("#p-llm").classList.toggle("on", c.llm); $("#p-llm").textContent = c.llm ? "Claude ✓" : "Claude off (rules)";
+    S.mail = c.mail || {}; S.ocr = c.ocr;
+    $("#p-mail").classList.toggle("on", !!(S.mail.ready && S.mail.real));
+    $("#p-mail").textContent = !S.mail.ready ? "Email: not configured" : S.mail.real ? `Email: ${S.mail.transport} ✓` : "Email: demo mailbox";
   }catch(e){}
-  state.samples = await api("/api/samples").catch(()=>[]);
-  loadDossiers();
-  const m = location.hash.match(/#(d_\w+)/); if (m) openDossier(m[1]);
+  S.samples = await api("/api/samples").catch(()=>[]);
+  await refreshSide();
+  route();
+}
+$("#go-find").onclick = () => { location.hash = "find"; };
+$("#go-add").onclick = () => { location.hash = "add"; };
+$("#go-flush").onclick = () => { location.hash = "flush"; };
+window.addEventListener("hashchange", route);
+
+function route(){
+  const h = location.hash.slice(1);
+  if (h.startsWith("d_")) { const [id, step] = h.split("/"); return openDeal(id, step); }
+  if (h.startsWith("s_")) return openSearch(h);
+  if (h === "add") return viewAdd();
+  if (h === "flush") return viewFlush();
+  return viewFind();
 }
 
-$("#b-sample").onclick = () => {
-  const s = state.samples[0]; if (!s) return;
-  $("#f-name").value = s.name; $("#f-domain").value = s.domain || ""; $("#f-city").value = s.city || ""; $("#f-teaser").value = s.teaser;
-  $("#f-note").textContent = s.note || "";
-};
-
-$("#b-run").onclick = async () => {
-  const body = {name:$("#f-name").value.trim(), domain:$("#f-domain").value.trim()||null, city:$("#f-city").value.trim()||null, teaser:$("#f-teaser").value};
-  if (!body.name || !body.teaser.trim()) { alert("Company name and teaser are required."); return; }
-  $("#b-run").disabled = true;
-  try{ const r = await api("/api/dossiers", {method:"POST", body}); location.hash = r.dossier_id; await openDossier(r.dossier_id, r.run_id); loadDossiers(); }
-  catch(e){ $("#main").innerHTML = `<p class="err">${esc(e.message)}</p>`; }
-  finally{ $("#b-run").disabled = false; }
-};
-
-async function loadDossiers(){
+async function refreshSide(){
   const ds = await api("/api/dossiers").catch(()=>[]);
-  $("#dossiers").innerHTML = ds.length ? ds.map(d => `<a href="#${d.id}" data-id="${d.id}">${esc(d.name)} <span class="muted">· ${d.runs} run${d.runs>1?"s":""} · ${fmtDate(d.created_at)}</span></a>`).join("") : '<span class="muted">None yet</span>';
-  $("#dossiers").querySelectorAll("a").forEach(a => a.onclick = e => { e.preventDefault(); location.hash = a.dataset.id; openDossier(a.dataset.id); });
-}
-
-async function openDossier(id, runId){
-  state.dossier = await api(`/api/dossiers/${id}`);
-  const rid = runId || state.dossier.runs.at(-1)?.id;
-  state.open.clear(); state.draft = null;
-  if (rid) poll(rid);
-}
-
-async function poll(rid){
-  const r = await api(`/api/runs/${rid}`);
-  state.run = r;
-  if (r.status === "running") { renderProgress(r); setTimeout(()=>poll(rid), 1200); return; }
-  if (r.status === "done") {
-    const prev = state.dossier.runs.filter(x => x.status==="done" && x.id!==rid);
-    state.dossier = await api(`/api/dossiers/${state.dossier.id}`);
+  $("#deals").innerHTML = (S.undo ? `<div class="note small" style="margin:0 0 6px">Deleted ${esc(S.undo.name)}. <button class="link small" id="side-undo">Undo</button></div>` : "")
+    + (ds.length ? ds.map(d => `<div class="dealrow"><button class="deal ${S.dossier?.id===d.id?"on":""}" data-id="${d.id}">${esc(d.name)}<span class="st">${esc(STEP_NAMES[d.stage]||d.stage)}</span></button><button class="del" data-del="${d.id}" data-name="${esc(d.name)}" title="Delete ${esc(d.name)} from the pipeline" aria-label="Delete ${esc(d.name)}">×</button></div>`).join("") : '<span class="muted">No targets yet</span>');
+  $("#deals").querySelectorAll(".del").forEach(b => b.onclick = () => deleteTarget(b.dataset.del, b.dataset.name));
+  if ($("#side-undo")) $("#side-undo").onclick = undoDelete;
+  $("#go-flush").style.visibility = ds.length ? "visible" : "hidden";
+  if (!ds.length) {  // offer the last flush back
+    const fp = await api("/api/pipeline/flush").catch(()=>null);
+    if (fp?.restorable) {
+      $("#deals").insertAdjacentHTML("beforeend", `<div style="margin-top:6px"><button class="link small" id="side-restore">Restore ${fp.restorable} flushed target${fp.restorable===1?"":"s"}</button></div>`);
+      $("#side-restore").onclick = restoreFlush;
+    }
   }
-  render();
+  $("#deals").querySelectorAll(".deal").forEach(b => b.onclick = () => { location.hash = b.dataset.id; });
+  const ss = await api("/api/searches").catch(()=>[]);
+  $("#searches").innerHTML = ss.length ? ss.slice(0,6).map(s => `<button class="deal" data-id="${s.id}">${esc(s.thesis)}<span class="st">${(s.credits||0).toFixed(1)} cr</span></button>`).join("") : '<span class="muted">None yet</span>';
+  $("#searches").querySelectorAll(".deal").forEach(b => b.onclick = () => { location.hash = b.dataset.id; });
 }
 
-function renderProgress(r){
-  $("#main").innerHTML = `<h2>Checking ${esc(state.dossier.name)}</h2><ul class="steps">${r.progress.map(s=>`<li>${esc(s)}</li>`).join("")}</ul>`;
+// ---------------------------------------------------------------- delete one target
+async function deleteTarget(id, name){
+  if (!confirm(`Delete “${name}” from the pipeline?
+
+Any run in progress stops. An email already approved still goes out. You can undo.`)) return;
+  const r = await api(`/api/dossiers/${id}/delete`, {method:"POST"});
+  S.undo = {id, name: name + (r.sends_still_completing ? ` (an approved send is still finishing)` : "")};
+  if (S.dossier?.id === id) { location.hash = "find"; } else { await refreshSide(); }
+}
+async function undoDelete(){
+  const u = S.undo; if (!u) return;
+  await api(`/api/dossiers/${u.id}/undelete`, {method:"POST"});
+  S.undo = null; await refreshSide();
 }
 
-function render(){
-  const r = state.run, d = state.dossier;
-  if (r.status === "error") { $("#main").innerHTML = `<h2>${esc(d.name)}</h2><p class="err">Run failed: ${esc(r.error)}</p><button onclick="recheck()">Try again</button>`; return; }
-  if (r.status === "needs_person") return renderPicker(r);
-  const res = r.result, f = res.findings;
-  const counts = {}; f.forEach(x => counts[x.verdict] = (counts[x.verdict]||0)+1);
-  const c = res.company, cost = res.cost;
-  const runs = d.runs.filter(x=>x.status==="done");
+// ---------------------------------------------------------------- flush the pipeline
+async function viewFlush(){
+  S.dossier = null; refreshSide();
+  $("#main").innerHTML = '<p class="muted small">Counting…</p>';
+  const p = await api("/api/pipeline/flush");
+  if (!p.targets && !p.searches) {
+    $("#main").innerHTML = `<h2>Flush the pipeline</h2><div class="empty">The pipeline is already empty.</div>
+      ${p.restorable ? `<p><button id="f-restore">Restore the last flush (${p.restorable} target${p.restorable===1?"":"s"})</button></p>` : ""}`;
+    if ($("#f-restore")) $("#f-restore").onclick = restoreFlush;
+    return;
+  }
+  const pl = (n, w) => `${n} ${w}${n===1?"":/(s|ch|sh)$/.test(w)?"es":"s"}`;
   $("#main").innerHTML = `
-    <div class="co">
-      <div>
-        <div class="name">${esc(c.name)}</div>
-        <div class="muted small">${esc(c.domain||"")} ${c.linkedin?`· <a href="${esc(c.linkedin)}" target="_blank" rel="noopener">profile</a>`:""} · Crustdata id ${c.crustdata_company_id}</div>
-        <div class="facts">
-          <div><span>HQ on record</span>${esc(c.hq||"–")}</div>
-          <div><span>Founded</span>${esc(c.founded||"–")}</div>
-          <div><span>Profiles on record</span>${esc(c.headcount??"–")}</div>
-          <div><span>Snapshot</span>${fmtDate(res.snapshot_at)} · run ${r.seq} of ${d.runs.length}</div>
-        </div>
-      </div>
-      <div class="cost">
-        <div class="small muted">Cost of this dossier</div>
-        <div class="big">${cost.credits.toFixed(2)} credits</div>
-        <div class="small muted">+ ${cost.llm_input_tokens.toLocaleString()} in / ${cost.llm_output_tokens.toLocaleString()} out LLM tokens ($${cost.llm_usd.toFixed(3)})</div>
-        ${cost.total_inr ? `<div class="small">≈ ₹${cost.total_inr.toLocaleString("en-IN")} all-in</div>` : ""}
-      </div>
+    <h2>Flush the pipeline</h2>
+    <p>This clears <b>${pl(p.targets, "target")}</b> from the pipeline, with their screens, checks and drafts.</p>
+    <ul class="small">
+      ${p.running ? `<li><b>${pl(p.running, "run")} in progress</b> will be stopped first, so no more credits are spent on them.</li>` : ""}
+      ${p.drafts ? `<li>${pl(p.drafts, "draft")} awaiting approval will no longer be shown, and can't be approved unless you restore.</li>` : ""}
+      ${p.sending ? `<li>${pl(p.sending, "send")} already approved will still finish (exactly once). Flushing never touches the send journal.</li>` : ""}
+      <li>Nothing is deleted: you can restore the last flush from here or from the sidebar. Credits already spent are not refunded.</li>
+    </ul>
+    <label style="display:flex;gap:8px;align-items:center;color:var(--ink)"><input type="checkbox" id="f-searches" style="width:auto"> Also clear the ${pl(p.searches, "recent search")}</label>
+    <div class="row" style="margin-top:14px;align-items:center"><div></div>
+      <div style="flex:0 0 auto"><button id="f-cancel">Cancel</button> <button class="stop" id="f-go">Flush ${pl(p.targets, "target")}</button></div></div>
+    <div id="f-out"></div>`;
+  $("#f-cancel").onclick = () => { location.hash = "find"; };
+  $("#f-go").onclick = async () => {
+    $("#f-go").disabled = true;
+    try {
+      const r = await api("/api/pipeline/flush", {method:"POST", body:{searches: $("#f-searches").checked}});
+      S.runs = {}; S.stopped = {}; await refreshSide();
+      $("#main").innerHTML = `<h2>Pipeline flushed</h2>
+        <div class="note">Cleared ${pl(r.targets, "target")}${r.searches ? ` and ${pl(r.searches, "search")}` : ""}${r.stopped_runs ? `; stopped ${pl(r.stopped_runs, "run")}` : ""}.
+        ${r.sends_still_completing ? ` ${pl(r.sends_still_completing, "approved send")} will still finish.` : ""}</div>
+        <p><button class="primary" onclick="location.hash='find'">Find new targets</button> <button id="f-restore">Undo: restore them</button></p>`;
+      $("#f-restore").onclick = restoreFlush;
+    } catch(e){ $("#f-out").innerHTML = errHtml(e); $("#f-go").disabled = false; }
+  };
+}
+async function restoreFlush(){
+  const r = await api("/api/pipeline/restore", {method:"POST"});
+  await refreshSide();
+  $("#main").innerHTML = `<h2>Restored</h2><div class="note">${r.targets} target${r.targets===1?"":"s"}${r.searches ? ` and ${r.searches} search${r.searches===1?"":"es"}` : ""} are back in the pipeline.</div>`;
+}
+
+// ---------------------------------------------------------------- 1. FIND
+function viewFind(){
+  S.dossier = null; refreshSide();
+  $("#main").innerHTML = `
+    <h2>1 · Find targets</h2>
+    <p class="muted small">Describe what you're looking for in plain words: sector, place, revenue, size, funding, founding year, "acquirable" or "private". The text is read into Crustdata search parameters, and you can check them before searching.</p>
+    <div class="row">
+      <div style="flex:3"><label>Thesis</label><input id="t-thesis" placeholder="Acquirable logistics companies with $5M+ revenue in MH" value="warehousing and fulfilment operators in TN/KA"></div>
+      <div><label>Min. headcount</label><input id="t-min" type="number" value="10" min="0"></div>
+      <div><label>Results</label><input id="t-lim" type="number" value="12" min="1" max="50"></div>
     </div>
-    <div class="summary">${Object.entries(counts).sort((a,b)=>b[1]-a[1]).map(([v,n])=>`${chip(v)} <span class="small muted" style="margin-right:6px">${n}</span>`).join("")}</div>
-    <div class="tabs">
-      ${tabBtn("register",`Claims register (${f.length})`)}
-      ${tabBtn("ask",`Ask them for this (${res.requests.length})`)}
-      ${tabBtn("incon",`Inconsistencies (${res.inconsistencies.length})`)}
-      ${tabBtn("changes",`Re-check${res.changes.length?` (${res.changes.length} changes)`:""}`)}
-      ${tabBtn("cost","Sources & cost")}
+    <div class="row" style="margin-top:10px;align-items:center"><div class="small muted">“Read thesis” is free (no Crustdata credits). Signals are pulled for the top 6 results (about 2.5 credits each).</div>
+      <div style="flex:0 0 auto"><button id="t-read">Read thesis</button> <button class="primary" id="t-go">Find</button></div></div>
+    <div id="t-interp"></div>
+    <div id="t-out"></div>`;
+  $("#t-read").onclick = async () => {
+    const b = $("#t-read"), job = newJob(); b.disabled = true; waiting($("#t-interp"), "Reading the thesis with the model…", job);
+    try { const it = await api("/api/find/interpret", {method:"POST", job, body:{thesis:$("#t-thesis").value, min_headcount:+$("#t-min").value||null}});
+      $("#t-interp").innerHTML = interpBlock(it, true); }
+    catch(e){ $("#t-interp").innerHTML = errHtml(e); }
+    b.disabled = false;
+  };
+  $("#t-go").onclick = async () => {
+    const b = $("#t-go"), job = newJob(); b.disabled = true; $("#t-interp").innerHTML = "";
+    waiting($("#t-out"), "Reading the thesis, searching and pulling signals… (15–40 s)", job);
+    try {
+      const r = await api("/api/find", {method:"POST", job, body:{thesis:$("#t-thesis").value, min_headcount:+$("#t-min").value||null, limit:+$("#t-lim").value||12, enrich_top:6}});
+      history.replaceState(null, "", "#"+r.id); S.search = r; S.picked = new Set(); renderShortlist(); refreshSide();
+    } catch(e){ $("#t-out").innerHTML = errHtml(e); }
+    b.disabled = false;
+  };
+}
+
+function interpBlock(it, preview){
+  const by = it.parser === "rules" ? "the rule reader" + (it.error ? ` (model unavailable: ${it.error})` : "") : it.parser;
+  return `<div class="box"><h2>${preview ? "How this thesis will be searched" : "How the thesis was searched"}</h2>
+    <p class="small muted">Read by ${esc(by)}${it.seconds?` in ${esc(it.seconds)}s`:""}. The model only fills a fixed set of fields; the Crustdata filters are built and checked in code.</p>
+    <div class="sig"><b>Search text</b> (ranked by what companies say they do): “${esc(it.query || it.params?.what || "")}”</div>
+    <div class="summary">${(it.applied||[]).map(a=>`<span class="chip v-info" title="${esc(a.field)} ${esc(a.op)} ${esc(JSON.stringify(a.value))}">${esc(a.label)}</span>`).join("") || '<span class="small muted">No filters: text search only.</span>'}</div>
+    ${(it.unsupported||[]).length ? `<div class="ask"><b>Not applied</b> (no Crustdata filter for it): ${it.unsupported.map(esc).join(" · ")}</div>` : ""}
+    ${it.params?.revenue_min_usd || it.params?.revenue_max_usd ? `<p class="small muted">Revenue uses Crustdata's estimated range for each company${it.params.inr_per_usd?`; rupee amounts converted at ₹${esc(it.params.inr_per_usd)} per $`:""}.</p>` : ""}
+    <details class="small muted"><summary>Crustdata filters sent</summary><pre class="mail">${esc(JSON.stringify(it.filters, null, 2))}</pre></details></div>`;
+}
+
+async function openSearch(id){
+  if (!S.search || S.search.id !== id) S.search = await api(`/api/searches/${id}`);
+  viewFind(); $("#t-thesis").value = S.search.thesis; S.picked = new Set(); renderShortlist();
+}
+
+function renderShortlist(){
+  const s = S.search;
+  const fmtUsd = n => n ? "$" + (n>=1e9 ? (n/1e9).toFixed(1)+"B" : n>=1e6 ? (n/1e6).toFixed(1)+"M" : (n/1e3).toFixed(0)+"k") : "–";
+  const rev = r => r.revenue_lo_usd || r.revenue_hi_usd ? `${fmtUsd(r.revenue_lo_usd)}–${fmtUsd(r.revenue_hi_usd)}` : "–";
+  $("#t-out").innerHTML = `
+    ${s.interpretation ? interpBlock(s.interpretation) : ""}
+    ${s.signals_error ? `<div class="flag">Signals weren't pulled for this search: ${esc(s.signals_error)}</div>` : ""}
+    <div class="note">${s.rows.length} results · ${(s.cost?.credits??0).toFixed(2)} credits · ${s.mode==="ranked"?"ranked by relevance to the search text":"keyword filters"} · ${fmtDate(s.retrieved_at)}</div>
+    ${s.rows.length ? `<table><thead><tr><th></th><th>Company</th><th>Revenue (est.)</th><th>Profiles</th><th>12m growth</th><th>Funding</th><th>Signals (sourced)</th></tr></thead><tbody>
+    ${s.rows.map(r => `<tr>
+      <td><input type="checkbox" data-id="${r.crustdata_company_id}" ${S.picked.has(r.crustdata_company_id)?"checked":""} style="width:auto"></td>
+      <td><b>${esc(r.name)}</b><div class="small muted">${esc(r.domain||"")}${r.founded?` · est. ${r.founded}`:""}${r.company_type?` · ${esc(r.company_type)}`:""}${r.acquired?' · <span style="color:var(--bad)">acquired</span>':""}</div><div class="small muted">${esc((r.hq||"").slice(0,70))}</div></td>
+      <td>${rev(r)}</td>
+      <td>${r.headcount ?? "–"}</td>
+      <td>${r.growth_12m!=null ? `${r.growth_12m>0?"+":""}${r.growth_12m.toFixed(0)}%` : "–"}</td>
+      <td>${fmtUsd(r.funding_usd)}</td>
+      <td>${r.signals ? r.signals.map(g=>`<div class="sig"><b>${esc(g.label)}:</b> ${esc(g.value)} <span class="src">${esc(g.field)}, ${fmtDate(g.retrieved_at)}</span></div>`).join("") : '<span class="small muted">Not pulled (outside top 6)</span>'}</td>
+    </tr>`).join("")}</tbody></table>
+    <div class="row" style="margin-top:12px;align-items:center"><div class="small muted" id="t-n">${S.picked.size} selected</div>
+      <div style="flex:0 0 auto"><button class="primary" id="t-add" ${S.picked.size?"":"disabled"}>Add to pipeline</button></div></div>`
+    : '<div class="empty">No companies matched. Loosen the location or the minimum headcount.</div>'}`;
+  document.querySelectorAll('#t-out input[type=checkbox]').forEach(cb => cb.onchange = () => {
+    const id = +cb.dataset.id; cb.checked ? S.picked.add(id) : S.picked.delete(id);
+    $("#t-n").textContent = `${S.picked.size} selected`; $("#t-add").disabled = !S.picked.size;
+  });
+  const add = $("#t-add");
+  if (add) add.onclick = async () => {
+    add.disabled = true;
+    const r = await api(`/api/searches/${s.id}/add`, {method:"POST", body:{company_ids:[...S.picked]}});
+    await refreshSide();
+    if (r.dossier_ids.length) location.hash = r.dossier_ids[0] + "/screen";
+  };
+}
+
+// ---------------------------------------------------------------- add directly
+function viewAdd(){
+  S.dossier = null; refreshSide();
+  $("#main").innerHTML = `<h2>Add a company directly</h2>
+    <p class="muted small">Skip FIND when you already know the counterparty. You can screen it, or go straight to checking its deck.</p>
+    <div class="row"><div><label>Company name</label><input id="a-name" placeholder="Stockarea"></div>
+      <div><label>Domain</label><input id="a-domain" placeholder="stockarea.io"></div>
+      <div><label>City (optional)</label><input id="a-city" placeholder="Chennai"></div></div>
+    <div class="row" style="margin-top:12px"><button id="a-sample">Use the Stockarea sample</button><button class="primary" id="a-go">Add to pipeline</button></div>`;
+  $("#a-sample").onclick = () => { const s = S.samples[0]; if (!s) return; $("#a-name").value = s.name; $("#a-domain").value = s.domain; $("#a-city").value = s.city; };
+  $("#a-go").onclick = async () => {
+    const name = $("#a-name").value.trim(); if (!name) return alert("Company name required");
+    const r = await api("/api/dossiers", {method:"POST", body:{name, domain:$("#a-domain").value.trim()||null, city:$("#a-city").value.trim()||null}});
+    await refreshSide(); location.hash = r.dossier_id + "/screen";
+  };
+}
+
+// ---------------------------------------------------------------- deal view
+async function openDeal(id, step){
+  const d = await api(`/api/dossiers/${id}`);
+  const same = S.dossier?.id === id;
+  if (!same) { S.runs = {}; S.stopped = {}; S.open.clear(); S.sub = "register"; }
+  S.dossier = d; S.step = step || (same && S.step) || d.current_step;
+  if (!d.steps.some(s => s.key === S.step)) S.step = d.current_step;
+  refreshSide();
+  // latest run per mode
+  for (const m of ["screen","check"]) {
+    const mine = [...d.runs].reverse().filter(x => x.mode === m);
+    // A stopped or failed run never hides the last real result: it shows as a note above it.
+    const r = mine.find(x => !ENDED_BADLY.has(x.status));
+    const st = ENDED_BADLY.has(mine[0]?.status) ? mine[0] : null;
+    const cached = st && S.stopped[m]?.id === st.id && (S.stopped[m].status === "error" || S.stopped[m].result?.cost);
+    S.stopped[m] = st ? (cached ? S.stopped[m] : await api(`/api/runs/${st.id}`)) : null;
+    if (r && (!S.runs[m] || S.runs[m].id !== r.id || S.runs[m].status === "running")) S.runs[m] = await api(`/api/runs/${r.id}`);
+    if (!r) delete S.runs[m];
+  }
+  renderDeal();
+  for (const m of ["screen","check"]) if (S.runs[m]?.status === "running") pollRun(m, S.runs[m].id);
+}
+
+async function pollRun(mode, rid){
+  const r = await api(`/api/runs/${rid}`);
+  S.runs[mode] = r;
+  if (r.status === "running") { if (stepMode() === mode) renderStep(); setTimeout(() => pollRun(mode, rid), 1300); return; }
+  openDeal(S.dossier.id, S.step);
+}
+const stepMode = () => ({screen:"screen", check:"check", request:"check", recheck:"check"})[S.step];
+
+function renderDeal(){
+  const d = S.dossier;
+  const run = S.runs.check?.result || S.runs.screen?.result;
+  const c = run?.company || {};
+  $("#main").innerHTML = `
+    <div class="row" style="align-items:flex-start">
+      <div style="flex:3"><div style="font-size:20px;font-weight:650">${esc(c.name || d.name)}</div>
+        <div class="small muted">${esc(c.domain || d.domain || "")} ${c.linkedin?`· <a href="${esc(c.linkedin)}" target="_blank" rel="noopener">profile</a>`:""} ${c.crustdata_company_id?`· Crustdata id ${c.crustdata_company_id}`:""}</div>
+        ${run ? `<div class="facts"><div><span>HQ on record</span>${esc(c.hq||"–")}</div><div><span>Founded</span>${esc(c.founded||"–")}</div><div><span>Profiles on record</span>${esc(c.headcount??"–")}</div></div>` : ""}
+      </div>
+      <div style="flex:1;text-align:right" class="small muted">${totalCost()}</div>
     </div>
+    <div class="stepper">${d.steps.map((s,i)=>`<button data-k="${s.key}" class="${s.done?"done":""} ${S.step===s.key?"cur":""}"><span class="n">${s.done?"✓":i+1}</span><span class="lbl">${esc(s.label)}</span><span class="det">${esc(s.detail||"")}</span></button>`).join("")}</div>
     <div class="pane" id="pane"></div>`;
-  document.querySelectorAll(".tabs button").forEach(b => b.onclick = () => { state.tab = b.dataset.tab; render(); });
-  ({register:paneRegister, ask:paneAsk, incon:paneIncon, changes:paneChanges, cost:paneCost})[state.tab]();
+  document.querySelectorAll(".stepper button").forEach(b => b.onclick = () => { S.step = b.dataset.k; history.replaceState(null,"",`#${d.id}/${S.step}`); renderDeal(); });
+  renderStep();
 }
-const tabBtn = (id, label) => `<button data-tab="${id}" class="${state.tab===id?"on":""}">${esc(label)}</button>`;
-
-function paneRegister(){
-  const res = state.run.result, f = res.findings;
-  if (!f.length) { $("#pane").innerHTML = `<div class="empty">No checkable claims found, in the pasted text or on the company's own pages (${res.sources_read.map(esc).join(" · ")}).<br>Paste the teaser or deck text itself: figures, locations, investors, customers, dates.</div>`; return; }
-  const note = res.register_source && res.register_source !== "teaser"
-    ? `<p class="small" style="background:var(--info-bg);color:var(--info);padding:8px 10px;border-radius:7px">The pasted text had no checkable claims, so these are the claims the company makes on its own pages.</p>` : "";
-  $("#pane").innerHTML = note + `<table><thead><tr><th style="width:38%">Claim</th><th>Type</th><th>Verdict</th><th>Why</th></tr></thead><tbody>
-  ${f.map((x,i)=>`
-    <tr class="claim" data-i="${i}"><td>${esc(x.claim.text)}${x.claim.source && x.claim.source!=="deck" ? `<div class="small muted">from ${esc(x.claim.source)}</div>` : ""}</td><td class="type">${esc(x.claim.type.replace("_"," "))}</td><td>${chip(x.verdict)}</td><td>${esc(x.reason)}</td></tr>
-    ${state.open.has(i) ? `<tr class="detail"><td colspan="4">${detail(x)}</td></tr>` : ""}`).join("")}
-  </tbody></table><p class="small muted">Click a row for the exact source. "Contradicted" is only used when a record says otherwise.</p>`;
-  document.querySelectorAll("tr.claim").forEach(tr => tr.onclick = () => { const i=+tr.dataset.i; state.open.has(i)?state.open.delete(i):state.open.add(i); paneRegister(); });
-}
-function detail(x){
-  const ev = x.evidence.map(e => `<div class="ev"><div><b>${esc(e.source)}</b>${e.field?` · <code>${esc(e.field)}</code>`:""} · retrieved ${fmtDate(e.retrieved_at)} ${e.url?`· <a href="${esc(e.url)}" target="_blank" rel="noopener">open</a>`:""}</div><div class="val">${esc(e.value)}</div></div>`).join("");
-  const chk = x.sources_checked.length ? `<div class="small muted" style="margin-top:6px">Checked: ${x.sources_checked.map(esc).join(" · ")}</div>` : "";
-  const ask = x.request && !x.final ? `<div class="ask"><b>To settle it, ask for:</b> ${esc(x.request)}</div>` : (x.request ? `<div class="ask"><b>For the meeting:</b> ${esc(x.request)}</div>` : "");
-  return (ev || '<div class="small muted">No supporting record found.</div>') + chk + ask;
+function totalCost(){
+  const runs = Object.values(S.runs).filter(r => r?.result?.cost);
+  if (!runs.length) return "";
+  return runs.map(r => `${r.mode==="screen"?"Screen":"Check"}: ${r.result.cost.credits.toFixed(2)} credits`).join("<br>");
 }
 
-async function paneAsk(){
-  const res = state.run.result;
-  const out = await api(`/api/outbox?dossier_id=${state.dossier.id}`).catch(()=>[]);
-  $("#pane").innerHTML = `
-    <p class="muted small">Every claim the records couldn't settle becomes one specific document request, taken from a fixed claim-type → document table.</p>
-    <ol class="req">${res.requests.map(q=>`<li><div class="doc">${esc(q.document)}</div><div class="small muted">Re: “${esc(q.claim)}” · ${chip(q.verdict)} ${esc(q.reason)}</div></li>`).join("")}</ol>
-    <div class="card" style="background:var(--bg)">
-      <h2>Send to the counterparty</h2>
-      <p class="small muted">Nothing is sent until a named person approves. Each send carries an idempotency key and is journaled first, so a crash can't send it twice.</p>
-      <div class="row"><div><label>Recipient</label><input id="m-to" placeholder="deals@counterparty.example"></div><div><label>From (your team)</label><input id="m-from" placeholder="Acme Corp Strategy"></div></div>
-      <div style="margin-top:10px"><button id="m-draft">Draft email</button></div>
-      <div id="m-out"></div>
-    </div>
-    ${out.length ? `<h2 style="margin-top:18px">Outbox</h2><table><thead><tr><th>To</th><th>Status</th><th>Approved by</th><th>Deliveries</th><th>Key</th></tr></thead><tbody>
-      ${out.map(o=>`<tr><td>${esc(o.recipient)}</td><td>${chip(o.status==="sent"?"verified":o.status==="approved"?"partial":"cannot verify").replace(/>[^<]+</, `>${esc(o.status.replace("_"," "))}<`)}</td><td>${esc(o.approved_by||"–")}</td><td>${o.deliveries}</td><td class="type">${esc(o.idem_key.slice(0,12))}…</td></tr>`).join("")}</tbody></table>`:""}`;
+function renderStep(){
+  ({find:stepFind, screen:stepScreen, reach_out:stepReach, check:stepCheck, request:stepRequest, recheck:stepRecheck})[S.step]();
+  const m = stepMode(), st = m && S.stopped[m];
+  if (st && S.runs[m]?.status !== "running" && S.step !== "request") {
+    $("#pane").insertAdjacentHTML("afterbegin", st.status === "error" ? failedNote(st, S.runs[m]) : stoppedNote(st, S.runs[m]));
+    // the run writes its final cost once calls already in flight come back
+    if (st.status === "cancelled" && !st.result?.cost && (S.stopTries = (S.stopTries || 0) + 1) < 30) setTimeout(() => openDeal(S.dossier.id, S.step), 2000);
+  }
+}
+const ENDED_BADLY = new Set(["cancelled", "error"]);
+// Older runs stored the raw API error; put it in plain words.
+function plainError(t){
+  t = String(t || "");
+  const m = t.match(/^(\/[\w/]+) -> HTTP (\d+)/);
+  if (m && m[2] === "429") return `Crustdata's rate limit for ${m[1]} was reached. Wait a minute and try again.`;
+  if (m && +m[2] >= 500) return `Crustdata had a server error on ${m[1]} (HTTP ${m[2]}). Try again shortly.`;
+  return t || "unknown error";
+}
+function failedNote(st, shown){
+  const cost = st.result?.cost;
+  const what = st.mode === "screen" ? "screen" : "check";
+  return `<div class="flag"><b>The last ${what} (run ${st.seq ?? ""}) didn't finish:</b> ${esc(plainError(st.error))}
+    ${cost ? `<span class="small">${cost.credits.toFixed(2)} credits were spent before it stopped.</span>` : ""}
+    ${shown?.status === "done" ? `<span class="small">The last finished ${what} is shown below.</span>` : ""}
+    <div style="margin-top:8px"><button class="primary" onclick="retryRun('${what}', this)">Try again</button></div></div>`;
+}
+async function retryRun(what, btn){
+  if (btn) { btn.disabled = true; btn.textContent = "Starting…"; }
+  if (what === "screen") return startScreen();
+  const x = await api(`/api/dossiers/${S.dossier.id}/recheck`, {method:"POST"});
+  S.runs.check = {id:x.run_id, status:"running", progress:[], mode:"check"}; renderStep(); pollRun("check", x.run_id);
+}
+function stoppedNote(st, shown){
+  const cost = st.result?.cost;
+  return `<div class="note">Run ${st.seq ?? ""} was stopped by a person${st.finished_at ? ` on ${fmtDate(st.finished_at)}` : ""}${st.result?.stopped_after ? `, during “${esc(st.result.stopped_after)}”` : ""}.
+    ${cost ? `${cost.credits.toFixed(2)} Crustdata credits were spent, including calls already in flight when it stopped.` : "Waiting for calls already in flight to come back, to count their credits…"}
+    ${shown?.status === "done" ? " The last finished run is shown below." : ""}</div>`;
+}
+
+// ---- step 1 (for a dossier): where it came from
+function stepFind(){
+  const sg = S.dossier.signals;
+  $("#pane").innerHTML = sg ? `<p class="small muted">Found by the thesis “${esc(sg.thesis)}”. Signals as pulled at the time:</p>
+    ${(sg.signals||[]).map(g=>`<div class="sig"><b>${esc(g.label)}:</b> ${esc(g.value)} <span class="src">${esc(g.source)} · ${esc(g.field)} · ${fmtDate(g.retrieved_at)}</span></div>`).join("") || '<p class="muted small">No signals were pulled for this one.</p>'}
+    <p style="margin-top:14px"><button class="primary" onclick="go('screen')">Next: screen its public claims →</button></p>`
+    : `<p class="muted small">Added directly, not from a FIND search.</p><p><button class="primary" onclick="go('screen')">Next: screen its public claims →</button></p>`;
+}
+function go(step){ S.step = step; history.replaceState(null,"",`#${S.dossier.id}/${step}`); renderDeal(); }
+
+// ---- step 2: SCREEN
+function stepScreen(){
+  const r = S.runs.screen;
+  const head = `<p class="small muted">Checks what the company says about itself in public (its website, profile "About" and founders' profiles) against the records, before you reach out. Contradictions here are early red flags.</p>`;
+  if (!r) { $("#pane").innerHTML = head + `<button class="primary" id="sc-go">Screen public claims</button>`; $("#sc-go").onclick = startScreen; return; }
+  if (r.status === "running") return progress(r);
+  if (r.status !== "done") return runProblem(r);
+  const res = r.result;
+  const flags = res.findings.filter(f => RED.has(f.verdict));
+  $("#pane").innerHTML = head + `
+    <div class="row" style="align-items:center"><div class="small muted">Snapshot ${fmtDate(res.snapshot_at)} · read: ${res.sources_read.filter(s=>s!=="Teaser / deck").map(esc).join(" · ")}</div>
+      <div style="flex:0 0 auto"><button onclick="startScreen()">Screen again</button></div></div>
+    <h3>Early red flags</h3>
+    ${flags.length || res.inconsistencies.length ? flags.map(f=>`<div class="flag"><b>${esc(f.verdict)}:</b> “${esc(f.claim.text)}”: ${esc(f.reason)}</div>`).join("") + res.inconsistencies.map(x=>`<div class="flag"><b>inconsistent ${esc(x.metric)}:</b> ${esc(x.summary)}</div>`).join("") : res.findings.length ? `<p class="small">None: none of the ${res.findings.length} public claims is contradicted by the records.</p>`
+      : '<p class="small muted">Nothing contradicted, but also little to test: no checkable figures were found on its public pages. The deck in step 4 will carry the real claims.</p>'}
+    ${confirmFlags(res)}
+    <h3>Public record</h3>${publicBlock(res)}
+    ${registerBlock(r, true)}
+    <p style="margin-top:14px"><button class="primary" onclick="go('reach_out')">Next: reach out for a teaser →</button></p>`;
+  wireRegister(r);
+}
+async function startScreen(){ const x = await api(`/api/dossiers/${S.dossier.id}/screen`, {method:"POST"}); S.runs.screen = {id:x.run_id, status:"running", progress:[]}; renderStep(); pollRun("screen", x.run_id); }
+
+// ---- step 3: REACH OUT
+function stepReach(){
+  const mail = S.dossier.outbox.filter(o => o.kind === "intro");
+  const sent = mail.find(o => o.status === "sent");
+  $("#pane").innerHTML = `<p class="small muted">Draft a short intro asking for their teaser or capability deck. Use an address you were given: SecondLook never looks up personal contact details. Nothing is sent until a named person approves, and it's delivered exactly once.</p>
+    ${sent ? `<div class="note">Sent to ${esc(sent.recipient)} on ${fmtDate(sent.sent_at)}, approved by ${esc(sent.approved_by)}. When their deck arrives, go to <button class="link" onclick="go('check')">Check →</button></div>` : ""}
+    ${mailBanner()}
+    <div class="row"><div><label>To</label><input id="i-to" placeholder="bd@counterparty.example"></div><div><label>From (your team)</label><input id="i-from" placeholder="Acme Corp Strategy"></div></div>
+    <div class="row"><div><label>Purpose</label><input id="i-purpose" value="exploring a warehousing partnership in South India"></div></div>
+    <div class="row"><div><label>Why them (optional, your own words)</label><input id="i-why" placeholder="you run sites across Tamil Nadu and Karnataka"></div></div>
+    <div style="margin-top:10px"><button id="i-draft">Draft intro</button></div>
+    <div id="i-out"></div>
+    ${outboxTable(mail)}`;
+  $("#i-draft").onclick = async () => {
+    try { const row = await api(`/api/dossiers/${S.dossier.id}/intro`, {method:"POST", body:{recipient:$("#i-to").value, sender_org:$("#i-from").value||"our team", purpose:$("#i-purpose").value, why:$("#i-why").value||null}});
+      showDraft(row, "#i-out"); } catch(e){ $("#i-out").innerHTML = `<p class="err">${esc(e.message)}</p>`; }
+  };
+}
+
+// ---- step 4: CHECK
+function stepCheck(){
+  const r = S.runs.check, d = S.dossier;
+  const meta = d.deck_meta;
+  const input = `<div class="box">
+      <h2>${r ? "Replace the deck" : "Their deck arrived: add it"}</h2>
+      <p class="small muted">PDF or PowerPoint deck, a teaser, a capability statement, a JSON request, a link to their page, or pasted text. Everything is read as text and checked claim by claim.</p>
+      <div class="drop" id="k-drop">Drop a file here or click to choose (.pdf, .pptx, .txt, .json)${S.ocr && S.ocr !== "off" ? `<div class="small muted">Scanned or image-only PDF pages are read by OCR (${esc(S.ocr)}), about 6 s a page.</div>` : ""}<input type="file" id="k-file" accept=".pdf,.pptx,.txt,.md,.json,.html" style="display:none"></div>
+      <div class="small" id="k-fname" style="margin-top:6px"></div>
+      <div class="row"><div><label>…or a URL</label><input id="k-url" placeholder="https://counterparty.example/capabilities"></div></div>
+      <label>…or paste text (add your own questions at the end; they're checked for false premises)</label>
+      <textarea id="k-text" placeholder="Paste the teaser here"></textarea>
+      <div class="row" style="margin-top:10px;align-items:center"><span class="small muted" style="flex:0 0 auto">Samples (synthetic Stockarea teaser):</span>
+        <button data-sample="stockarea_teaser.pdf">PDF</button><button data-sample="stockarea_scanned.pdf" title="An image-only PDF: read by OCR">Scanned PDF</button><button data-sample="stockarea_deck.pptx">PPTX</button><button id="k-sample">Text</button>
+        <button class="primary" id="k-go">Check claims</button></div>
+      <div id="k-err"></div></div>`;
+  let body = "";
+  if (r?.status === "running") body = progressHtml(r);
+  else if (r && r.status !== "done") body = `<p class="err">Run ${esc(r.status)}: ${esc(r.error||"")}</p>`;
+  else if (r) {
+    body = `${meta ? `<div class="note">Read <b>${esc(meta.name||meta.kind)}</b> (${esc(meta.kind)}${meta.pages?`, ${meta.pages} ${meta.kind==="pptx"?"slides":"pages"}`:""}, ${meta.chars.toLocaleString()} characters) on ${fmtDate(meta.received_at)}.${(meta.warnings||[]).length?`<br>⚠ ${meta.warnings.map(esc).join("<br>⚠ ")}`:""}${deckReader(r.result?.deck_reader)}</div>` : ""}
+      ${registerBlock(r)}
+      <p style="margin-top:14px"><button class="primary" onclick="go('request')">Next: ask them for documents →</button></p>`;
+  }
+  $("#pane").innerHTML = body + (r?.status === "running" ? "" : input);
+  if (r?.status === "done") wireRegister(r);
+  wireDeckInput();
+}
+// How the deck was read into claims: which model (or the rules), and what the quote check dropped.
+function deckReader(dr){
+  if (!dr) return "";
+  const why = {unquoted:"quote not found in the deck", number_not_in_quote:"figure not in its quote", no_number:"no figure to check", contact_or_empty:"contact details or empty"};
+  const dropped = Object.entries(dr.dropped||{}).filter(([,n])=>n).map(([k,n])=>`${n} ${why[k]||k}`).join(", ");
+  const who = dr.reader === "rules" ? "the rule-based reader" + (dr.error ? ` (model unavailable: ${esc(dr.error)})` : "") : esc(dr.reader);
+  return `<br>Claims read by ${who}${dr.seconds?` in ${dr.seconds}s`:""}: ${dr.claims ?? 0} kept${dropped?`; dropped ${dropped}`:""}${dr.added_by_rules?`; ${dr.added_by_rules} added by the rules`:""}. Every model claim quotes the deck word for word, checked in code.`;
+}
+function wireDeckInput(){
+  const drop = $("#k-drop"); if (!drop) return;
+  const file = $("#k-file"); let picked = null;
+  const setFile = f => { picked = f; $("#k-fname").textContent = f ? `Selected: ${f.name} (${(f.size/1024).toFixed(0)} KB)` : ""; };
+  drop.onclick = () => file.click();
+  file.onchange = () => setFile(file.files[0]);
+  drop.ondragover = e => { e.preventDefault(); drop.classList.add("over"); };
+  drop.ondragleave = () => drop.classList.remove("over");
+  drop.ondrop = e => { e.preventDefault(); drop.classList.remove("over"); setFile(e.dataTransfer.files[0]); };
+  $("#k-sample").onclick = () => { const s = S.samples[0]; if (s) $("#k-text").value = s.teaser; };
+  document.querySelectorAll("[data-sample]").forEach(b => b.onclick = async () => {
+    const name = b.dataset.sample, blob = await (await fetch(`/samples/${name}`)).blob();
+    setFile(new File([blob], name, {type: blob.type}));
+  });
+  $("#k-go").onclick = async () => {
+    const fd = new FormData();
+    if (picked) fd.append("file", picked);
+    if ($("#k-url").value.trim()) fd.append("url", $("#k-url").value.trim());
+    if ($("#k-text").value.trim()) fd.append("text", $("#k-text").value);
+    if (![...fd.keys()].length) { $("#k-err").innerHTML = '<p class="err">Attach a file, give a URL, or paste text.</p>'; return; }
+    $("#k-go").disabled = true;
+    const job = newJob();
+    if ($("#k-url").value.trim()) waiting($("#k-err"), "Fetching the page through Crustdata…", job);
+    else if (picked && /\.pdf$/i.test(picked.name)) waiting($("#k-err"), "Reading the PDF… pages without a text layer are read by OCR (about 6 s a page).", job);
+    else if (picked) waiting($("#k-err"), "Reading the file…", job);
+    try { const x = await api(`/api/dossiers/${S.dossier.id}/deck`, {method:"POST", body:fd, job});
+      S.runs.check = {id:x.run_id, status:"running", progress:[], mode:"check"}; S.sub = "register"; S.open.clear(); renderStep(); pollRun("check", x.run_id);
+    } catch(e){ $("#k-err").innerHTML = errHtml(e); $("#k-go").disabled = false; }
+  };
+}
+
+// ---- step 5: REQUEST
+function stepRequest(){
+  const r = S.runs.check;
+  if (!r || r.status !== "done") { $("#pane").innerHTML = `<div class="empty">Check their deck first (step 4). The request list is built from the claims the records can't settle.</div>`; return; }
+  const res = r.result, mail = S.dossier.outbox.filter(o => o.kind !== "intro");
+  $("#pane").innerHTML = `<p class="small muted">Every claim the records couldn't settle becomes one specific document, taken from a fixed claim-type → document table.</p>
+    <ol class="req">${res.requests.map(q=>`<li><div class="doc">${esc(q.document)}</div><div class="small muted">Re: “${esc(q.claim)}” · ${chip(q.verdict)} ${esc(q.reason)}</div></li>`).join("") || "<li>Nothing to request: every claim was settled.</li>"}</ol>
+    <div class="box"><h2>Send the list</h2>
+      <p class="small muted">Nothing is sent until a named person approves. Each send is journaled first and carries an idempotency key, so a crash can't send it twice.</p>
+      ${mailBanner()}
+      <div class="row"><div><label>To</label><input id="m-to" placeholder="deals@counterparty.example"></div><div><label>From (your team)</label><input id="m-from" placeholder="Acme Corp Strategy"></div></div>
+      <div style="margin-top:10px"><button id="m-draft">Draft email</button></div><div id="m-out"></div></div>
+    ${outboxTable(mail)}`;
   $("#m-draft").onclick = async () => {
-    const to = $("#m-to").value.trim(); if (!to) return alert("Recipient required");
-    $("#m-draft").disabled = true; $("#m-out").innerHTML = '<p class="muted small">Drafting…</p>';
-    try{
-      const row = await api(`/api/runs/${state.run.id}/draft`, {method:"POST", body:{recipient:to, sender_org:$("#m-from").value.trim()||"our team"}});
-      state.draft = row; showDraft(row);
-    }catch(e){ $("#m-out").innerHTML = `<p class="err">${esc(e.message)}</p>`; }
-    $("#m-draft").disabled = false;
-  };
-  if (state.draft) showDraft(state.draft);
-}
-function showDraft(row){
-  $("#m-out").innerHTML = `<p class="small muted" style="margin-top:12px">Subject: <b>${esc(row.subject)}</b> · status ${esc(row.status)}</p><pre class="mail">${esc(row.body)}</pre>
-    ${row.status==="sent" ? `<p class="small">Sent ${fmtDate(row.sent_at)}.</p>` : `
-    <div class="row"><div><label>Approved by (your name)</label><input id="m-appr" placeholder="Priya, Strategy"></div><div style="display:flex;align-items:flex-end"><button class="primary" id="m-send">Approve &amp; send</button></div></div>`}`;
-  const b = $("#m-send"); if (!b) return;
-  b.onclick = async () => {
-    const who = $("#m-appr").value.trim(); if (!who) return alert("A named person must approve.");
-    if (!confirm(`Send this request list to ${row.recipient}? This can't be unsent.`)) return;
-    b.disabled = true;
-    try{ const r = await api(`/api/outbox/${row.idem_key}/approve`, {method:"POST", body:{approver:who}}); state.draft = r; paneAsk(); }
-    catch(e){ alert(e.message); b.disabled = false; }
+    $("#m-out").innerHTML = '<p class="muted small">Drafting…</p>';
+    try { const row = await api(`/api/runs/${r.id}/draft`, {method:"POST", body:{recipient:$("#m-to").value, sender_org:$("#m-from").value||"our team"}}); showDraft(row, "#m-out"); }
+    catch(e){ $("#m-out").innerHTML = `<p class="err">${esc(e.message)}</p>`; }
   };
 }
 
-function paneIncon(){
-  const xs = state.run.result.inconsistencies, src = state.run.result.sources_read;
-  $("#pane").innerHTML = `<p class="small muted">The company's own statements, compared with each other. Read: ${src.map(esc).join(" · ")}</p>` +
-    (xs.length ? xs.map(x => `<div class="conf"><b>${esc(x.metric.replace(/_/g," "))}</b>: ${esc(x.summary)}
-      ${x.values.map(v=>`<div class="ev"><b>${esc(v.source)}</b> ${v.url?`· <a href="${esc(v.url)}" target="_blank" rel="noopener">open</a>`:""}<div class="val">“${esc(v.text)}”</div></div>`).join("")}</div>`).join("")
-     : '<div class="empty">No conflicting figures across the sources read.</div>');
-}
-
-async function paneChanges(){
-  const res = state.run.result, d = state.dossier;
-  const w = d.watch;
+// ---- step 6: RE-CHECK
+function stepRecheck(){
+  const r = S.runs.check, d = S.dossier;
+  if (!r) { $("#pane").innerHTML = `<div class="empty">Re-check compares against the deck check from step 4. Check their deck first.</div>`; return; }
+  if (r.status === "running") return progress(r);
+  const res = r.result || {}, w = d.watch;
+  const checks = d.runs.filter(x => x.mode === "check" && x.status === "done");
   $("#pane").innerHTML = `
-    <div class="row" style="align-items:center"><div class="small muted">The register is a dated snapshot (${fmtDate(res.snapshot_at)}). Re-check runs every claim again and shows what changed, including each leader's own profile.</div>
-      <div style="flex:0 0 auto"><button class="primary" style="white-space:nowrap" onclick="recheck()">Re-check now</button></div></div>
-    <h2 style="margin-top:16px">Changes since the previous snapshot</h2>
-    ${state.run.seq === 1 ? '<p class="muted small">This is the first snapshot.</p>' : res.changes.length ? `<ul>${res.changes.map(c=>`<li>${esc(c.text)}${c.claim?` <span class="small muted">· “${esc(c.claim)}”</span>`:""}</li>`).join("")}</ul>` : '<p class="muted small">Nothing changed.</p>'}
-    <h2 style="margin-top:16px">Leaders on record</h2>
-    <ul>${res.leaders.map(p=>`<li>${esc(p.name)}, ${esc(p.title||"")} <span class="small muted">· ${esc(p.employers.join(", "))}</span></li>`).join("")||'<li class="muted">None on record</li>'}</ul>
-    <div class="card" style="background:var(--bg)">
-      <h2>Watch leaders until meeting 2</h2>
+    <div class="row" style="align-items:center"><div class="small muted">The register is a dated snapshot (${fmtDate(res.snapshot_at)}). Re-check runs every claim again before meeting 2 and shows what changed, including each leader's own profile.</div>
+      <div style="flex:0 0 auto"><button class="primary" id="rc-go">Re-check now</button></div></div>
+    <h3>Changes since the previous check</h3>
+    ${checks.length < 2 ? '<p class="muted small">Only one check so far. Re-check before the second meeting to see what moved.</p>' : (res.changes||[]).length ? `<ul>${res.changes.map(c=>`<li>${esc(c.text)}${c.claim?` <span class="small muted">· “${esc(c.claim)}”</span>`:""}</li>`).join("")}</ul>` : '<p class="muted small">Nothing changed.</p>'}
+    <h3>Leaders on record</h3>
+    <ul>${(res.leaders||[]).map(p=>`<li>${esc(p.name)}, ${esc(p.title||"")} <span class="small muted">· ${esc(p.employers.join(", "))}</span></li>`).join("")||'<li class="muted">None on record</li>'}</ul>
+    <div class="box"><h2>Watch leaders until meeting 2</h2>
       ${w ? `<p class="small">Watch #${w.watch_id} armed ${fmtDate(w.created_at)}. <button id="w-runs">Show runs</button></p><div id="w-out"></div>` : `
-      <p class="small muted">A Crustdata person watch flags a job change by a founder or CXO. Creating it is free; each detected change is billed. Preview shows the exact price first.</p>
-      <button id="w-prev">Preview watch</button><div id="w-out"></div>`}
-    </div>`;
+      <p class="small muted">A Crustdata person watch flags when a founder or CXO changes employer. Creating it is free; each detected change is billed. Preview shows the exact price first.</p>
+      <button id="w-prev">Preview watch</button><div id="w-out"></div>`}</div>`;
+  $("#rc-go").onclick = async () => { const x = await api(`/api/dossiers/${d.id}/recheck`, {method:"POST"}); S.runs.check = {id:x.run_id, status:"running", progress:[], mode:"check"}; renderStep(); pollRun("check", x.run_id); };
   const pv = $("#w-prev");
   if (pv) pv.onclick = async () => {
-    pv.disabled = true; $("#w-out").innerHTML = '<p class="muted small">Previewing…</p>';
+    const job = newJob(); pv.disabled = true; waiting($("#w-out"), "Previewing…", job);
     try{
-      const p = await api(`/api/dossiers/${d.id}/watch/preview`, {method:"POST", body:{refresh_days:3}});
+      const p = await api(`/api/dossiers/${d.id}/watch/preview`, {method:"POST", job, body:{refresh_days:3}});
       if (!p.can_create) { $("#w-out").innerHTML = `<p class="err">Crustdata won't create this watch: ${esc(p.error || "unknown reason")}</p>`; pv.disabled = false; return; }
       const names = (p.sample||[]).map(s => s.record?.basic_profile?.name).filter(Boolean);
-      $("#w-out").innerHTML = `<p class="small" style="margin-top:10px">${p.resolved} leader${p.resolved===1?"":"s"} resolved${names.length?`: ${names.map(esc).join(", ")}`:""}${p.unresolved?.length?` · ${p.unresolved.length} not found`:""}.<br>
+      $("#w-out").innerHTML = `<p class="small" style="margin-top:10px">${p.resolved} leader${p.resolved===1?"":"s"} resolved${names.length?`: ${names.map(esc).join(", ")}`:""}.<br>
         Fires when a leader's current employer changes (a promotion at the same company stays silent). Each detected change costs <b>${esc(p.credits?.per_notification ?? "?")} credits</b> (3-day refresh); the first run is a free baseline.</p>
         <button class="primary" id="w-arm">Arm watch at this price</button>`;
       $("#w-arm").onclick = async () => {
         if (!confirm("This commits the account to per-change charges. Arm the watch?")) return;
-        try{ await api(`/api/dossiers/${d.id}/watch`, {method:"POST", body:{refresh_days:3, preview_token:p.preview_token||null}}); state.dossier = await api(`/api/dossiers/${d.id}`); paneChanges(); }
+        try{ await api(`/api/dossiers/${d.id}/watch`, {method:"POST", body:{refresh_days:3, preview_token:p.preview_token||null}}); openDeal(d.id, "recheck"); }
         catch(e){ $("#w-out").innerHTML += `<p class="err">${esc(e.message)}</p>`; }
       };
-    }catch(e){ $("#w-out").innerHTML = `<p class="err">${esc(e.message)}</p>`; }
+    }catch(e){ $("#w-out").innerHTML = errHtml(e); }
     pv.disabled = false;
   };
   const wr = $("#w-runs");
   if (wr) wr.onclick = async () => { try{ $("#w-out").innerHTML = `<pre class="mail">${esc(JSON.stringify(await api(`/api/dossiers/${d.id}/watch/runs`), null, 2))}</pre>`; }catch(e){ $("#w-out").innerHTML = `<p class="err">${esc(e.message)}</p>`; } };
 }
 
-function paneCost(){
-  const c = state.run.result.cost;
-  $("#pane").innerHTML = `<table><thead><tr><th>Endpoint</th><th>Calls</th><th>Credits (X-Credits-Used)</th></tr></thead><tbody>
-    ${Object.entries(c.by_endpoint).map(([p,v])=>`<tr><td class="type">${esc(p)}</td><td>${v.calls}</td><td>${v.credits}</td></tr>`).join("")}
-    <tr><td><b>Total</b></td><td></td><td><b>${c.credits}</b></td></tr></tbody></table>
-    <p class="small muted">LLM (${esc(state.run.result.llm)}): ${c.llm_input_tokens.toLocaleString()} input + ${c.llm_output_tokens.toLocaleString()} output tokens = $${c.llm_usd}.
-    ${c.credit_usd ? `Credits priced at $${c.credit_usd} each.` : "Set CRUSTDATA_CREDIT_USD (and USD_INR) to show an all-in rupee cost."}</p>`;
+// ---------------------------------------------------------------- shared pieces
+const progressHtml = r => `<div class="row" style="align-items:center"><h3 style="margin:0">Working…</h3>
+    <div style="flex:0 0 auto"><button class="stop" onclick="stopRun('${r.id}', this)">■ Stop</button></div></div>
+  <ul class="steps">${(r.progress||[]).map(s=>`<li>${esc(s)}</li>`).join("") || "<li>Starting</li>"}</ul>
+  <p class="small muted">Stop ends the run before its next Crustdata or model call. A call already sent may still be billed; its answer is thrown away.</p>`;
+function progress(r){ $("#pane").innerHTML = progressHtml(r); }
+function runProblem(r){
+  if (r.status === "needs_person") {
+    const cands = r.result?.candidates || [];
+    $("#pane").innerHTML = `<h3>More than one company matches “${esc(S.dossier.name)}”</h3><p class="muted small">Held for a person. Pick the right one.</p>
+      ${cands.map(c=>`<div class="conf"><b>${esc(c.name)}</b> <span class="muted small">${esc(c.domain||"")} · founded ${esc(c.founded||"?")}</span><div class="small">${esc(c.description)}</div><button style="margin-top:6px" data-id="${c.crustdata_company_id}">This one</button></div>`).join("") || "<p>No match found. Add the domain and try again.</p>"}`;
+    document.querySelectorAll("[data-id]").forEach(b => b.onclick = async () => { const x = await api(`/api/runs/${r.id}/resolve`, {method:"POST", body:{company_id:+b.dataset.id}}); S.runs[r.mode||"check"] = {id:x.run_id, status:"running", progress:[]}; renderStep(); pollRun(r.mode||"check", x.run_id); });
+    return;
+  }
+  $("#pane").innerHTML = `<p class="err">Run failed: ${esc(r.error||r.status)}</p>`;
 }
 
-function renderPicker(r){
-  const cands = r.result?.candidates || [];
-  $("#main").innerHTML = `<h2>More than one company matches “${esc(state.dossier.name)}”</h2>
-    <p class="muted small">Held for a person. Pick the right one, or add the domain or city and run again.</p>
-    ${cands.length ? cands.map(c=>`<div class="conf"><b>${esc(c.name)}</b> <span class="muted small">${esc(c.domain||"")} · founded ${esc(c.founded||"?")}</span><div class="small">${esc(c.description)}</div>
-      <button style="margin-top:6px" data-id="${c.crustdata_company_id}">This one</button></div>`).join("") : '<p>No match found. Check the name or add a domain.</p>'}`;
-  document.querySelectorAll("[data-id]").forEach(b => b.onclick = async () => {
-    const x = await api(`/api/runs/${r.id}/resolve`, {method:"POST", body:{company_id:+b.dataset.id}}); poll(x.run_id);
-  });
+function confirmFlags(res){
+  const fl = res.public?.flags || [];
+  if (!fl.length) return "";
+  return `<h3>Needs confirmation</h3><p class="small muted">Found in news or registry listings. A search snippet is not a registry extract, so these are questions to settle, not verdicts. Each one is on the “ask them for this” list.</p>
+    ${fl.map(f=>`<div class="ask"><b>${esc(f.kind)}:</b> ${esc(f.text)}${f.source?.snippet?`<div class="small" style="margin-top:4px">“${esc(f.source.snippet)}”</div>`:""}${f.source?.url?` <a href="${esc(f.source.url)}" target="_blank" rel="noopener">open source</a>`:""}</div>`).join("")}`;
+}
+function publicBlock(res){
+  const p = res.public;
+  if (!p) return '<p class="small muted">Not collected for this run (it predates the public-record check). Run it again.</p>';
+  const ents = p.registry?.entities || [], prim = p.registry?.primary;
+  const link = (u, t) => u ? `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)}</a>` : esc(t);
+  return `
+    <div class="box"><h2>Registry: legal entities (${ents.length})</h2>
+      ${ents.length ? `<table><thead><tr><th>Legal name</th><th>CIN</th><th>Incorporated</th><th>Registered in</th><th>Status (as listed)</th><th>Role</th><th>Tied by</th></tr></thead><tbody>
+      ${ents.map(e=>`<tr><td>${esc(e.legal_name||"–")}</td><td class="type">${esc(e.cin||"–")}</td><td>${esc(e.incorporated||e.year||"–")}</td><td>${esc(e.registered_state||"–")}</td><td>${esc(e.status||"–")}</td>
+        <td><span class="chip ${(e.role||"").startsWith("operating")?"v-ok":e.role==="related entity"?"v-info":"v-na"}">${esc(e.role||e.link)}</span></td>
+        <td class="small">${esc(e.link)} ${(e.sources||[]).slice(0,2).map(s=>link(s.url, "source")).join(" · ")}</td></tr>`).join("")}</tbody></table>
+      <p class="small muted">The CIN encodes the state and year of registration. Only the operating entity (incorporated when the company says it was founded) is used for the identity and date checks.${prim?"":" None qualified on this run, so those checks used the company profile only."}</p>` : '<p class="small muted">No registry listing found.</p>'}</div>
+    <div class="box"><h2>News (${(p.news||[]).length})</h2>
+      ${newsMeta(p.news_analysis)}
+      ${(p.news||[]).length ? p.news.map(n=>{ const a = n.analysis;
+        const sent = a ? {positive:"v-ok", negative:"v-bad", neutral:"v-na"}[a.sentiment] : "";
+        return `<div class="sig" style="margin:8px 0;${a && !a.about_target?"opacity:.55":""}"><span class="chip ${/^(press|company)/.test(n.kind)?"v-warn":"v-info"}">${esc(n.kind)}</span>
+          ${a ? `<span class="chip v-na">${esc(a.event_type.replace(/_/g," "))}</span> <span class="chip ${sent}">${esc(a.sentiment)}</span>${a.about_target?"":' <span class="chip v-na">not about this company</span>'}` : ""}
+          ${esc(n.date||"undated")} · ${link(n.url, n.title)}${n.publisher?` <span class="src">${esc(n.publisher)}</span>`:""}${n.text_chars?` <span class="src">read full text, ${n.text_chars.toLocaleString()} chars</span>`:""}
+          ${a?.summary ? `<div class="small">${esc(a.summary)}</div>` : (n.snippet?`<div class="small muted">${esc(n.snippet)}</div>`:"")}
+          ${(a?.figures||[]).map(f=>`<div class="small muted">• ${esc(f.metric.replace(/_/g," "))} ${esc(f.number)}: “${esc(f.quote)}”</div>`).join("")}
+          ${(a?.concerns||[]).map(c=>`<div class="small" style="color:var(--bad)">⚠ ${esc(c.issue)}: “${esc(c.quote)}”</div>`).join("")}</div>`; }).join("") : '<p class="small muted">No news found that names the company.</p>'}
+      <p class="small muted">Press releases are written by the company, so their figures count as its own claims; news figures are compared against them.</p></div>
+    <div class="box"><h2>Public documents (${(p.documents||[]).length})</h2>
+      ${(p.documents||[]).length ? p.documents.map(d=>`<div class="sig"><span class="chip ${/^company/.test(d.publisher||"")?"v-warn":"v-info"}">${esc(d.publisher)}</span>${(d.places||[]).length?` <span class="small">📍 ${d.places.map(esc).join(", ")}</span>`:""} ${esc(d.date||"")} ${link(d.url, d.title)}${d.text_chars?` <span class="src">read ${d.text_chars.toLocaleString()} chars</span>`:""}${d.snippet?`<div class="small muted">${esc(d.snippet)}</div>`:""}</div>`).join("") : '<p class="small muted">No public PDFs found about the company.</p>'}</div>
+    <details class="small muted" style="margin-top:8px"><summary>Searches run (${(p.sources_checked||[]).length})</summary>${(p.sources_checked||[]).map(esc).join("<br>")}</details>`;
 }
 
-async function recheck(){
-  const x = await api(`/api/dossiers/${state.dossier.id}/recheck`, {method:"POST"});
-  state.tab = "changes"; state.open.clear(); poll(x.run_id); loadDossiers();
+function newsMeta(m){
+  if (!m) return "";
+  if (m.error) return `<p class="small muted">News analysis didn't run (${esc(m.error)}); a keyword scan was used instead.</p>`;
+  if (!m.model) return "";
+  const u = m.usage || {};
+  return `<p class="small muted">Read by ${esc(m.model)} in ${esc(m.seconds)}s${u.total_tokens?` (${u.total_tokens.toLocaleString()} tokens)`:""}. Every figure and concern below is quoted from the article and the quote was checked in code; the model's reading never sets a verdict.</p>`;
 }
 
-window.addEventListener("hashchange", () => {
-  const m = location.hash.match(/#(d_\w+)/);
-  if (m && m[1] !== state.dossier?.id) openDossier(m[1]);
-});
+function registerBlock(r, compact){
+  const res = r.result, f = res.findings;
+  const counts = {}; f.forEach(x => counts[x.verdict] = (counts[x.verdict]||0)+1);
+  const subs = compact ? [["register",`Claims (${f.length})`],["cost","Sources & cost"]]
+                       : [["register",`Claims register (${f.length})`],["incon",`Inconsistencies (${res.inconsistencies.length})`],
+                          ["public",`Public record${res.public?.flags?.length?` (${res.public.flags.length} to confirm)`:""}`],["cost","Sources & cost"]];
+  if (!subs.some(s => s[0] === S.sub)) S.sub = "register";
+  return `<div class="summary">${Object.entries(counts).sort((a,b)=>b[1]-a[1]).map(([v,n])=>`${chip(v)}<span class="small muted" style="margin-right:6px">${n}</span>`).join("")}</div>
+    <div class="subtabs">${subs.map(([k,l])=>`<button data-sub="${k}" class="${S.sub===k?"on":""}">${esc(l)}</button>`).join("")}</div>
+    <div id="sub"></div>`;
+}
+function wireRegister(r){
+  document.querySelectorAll(".subtabs button").forEach(b => b.onclick = () => { S.sub = b.dataset.sub; document.querySelectorAll(".subtabs button").forEach(x=>x.classList.toggle("on", x===b)); fillSub(r); });
+  fillSub(r);
+}
+function fillSub(r){
+  const res = r.result, el = $("#sub");
+  if (S.sub === "public") { el.innerHTML = confirmFlags(res) + publicBlock(res); return; }
+  if (S.sub === "incon") {
+    el.innerHTML = `<p class="small muted">The company's own statements, compared with each other. Read: ${res.sources_read.map(esc).join(" · ")}</p>` +
+      (res.inconsistencies.length ? res.inconsistencies.map(x => `<div class="conf"><b>${esc(x.metric.replace(/_/g," "))}</b>: ${esc(x.summary)}${x.values.map(v=>`<div class="ev"><b>${esc(v.source)}</b> ${v.url?`· <a href="${esc(v.url)}" target="_blank" rel="noopener">open</a>`:""}<div class="val">“${esc(v.text)}”</div></div>`).join("")}</div>`).join("") : '<div class="empty">No conflicting figures across the sources read.</div>');
+    return;
+  }
+  if (S.sub === "cost") {
+    const c = res.cost;
+    el.innerHTML = `<table><thead><tr><th>Endpoint</th><th>Calls</th><th>Credits (X-Credits-Used)</th></tr></thead><tbody>
+      ${Object.entries(c.by_endpoint).map(([p,v])=>`<tr><td class="type">${esc(p)}</td><td>${v.calls}</td><td>${v.credits}</td></tr>`).join("")}
+      <tr><td><b>Total</b></td><td></td><td><b>${c.credits}</b></td></tr></tbody></table>
+      <p class="small muted">LLM (${esc(res.llm)}): ${c.llm_input_tokens.toLocaleString()} in + ${c.llm_output_tokens.toLocaleString()} out tokens = $${c.llm_usd}. ${c.total_inr?`All-in ≈ ₹${c.total_inr}.`:"Set CRUSTDATA_CREDIT_USD and USD_INR for a rupee figure."}
+      <a href="/api/runs/${r.id}/register" target="_blank">Register as JSON</a></p>`;
+    return;
+  }
+  const f = res.findings;
+  if (!f.length) { el.innerHTML = `<div class="empty">No checkable claims found (read: ${res.sources_read.map(esc).join(" · ")}).</div>`; return; }
+  const note = res.register_source && res.register_source !== "teaser" && r.mode !== "screen" ? `<div class="note">The deck had no checkable claims, so these are the claims the company makes on its own pages.</div>` : "";
+  el.innerHTML = note + `<table><thead><tr><th style="width:38%">Claim</th><th>Type</th><th>Verdict</th><th>Why</th></tr></thead><tbody>
+    ${f.map((x,i)=>`<tr class="claim" data-i="${i}"><td>${esc(x.claim.text)}${x.claim.source && x.claim.source!=="deck" ? `<div class="small muted">from ${esc(x.claim.source)}</div>` : ""}</td><td class="type">${esc(x.claim.type.replace("_"," "))}</td><td>${chip(x.verdict)}</td><td>${esc(x.reason)}</td></tr>
+      ${S.open.has(i) ? `<tr class="detail"><td colspan="4">${detail(x)}</td></tr>` : ""}`).join("")}
+    </tbody></table><p class="small muted">Click a row for the exact source. “Contradicted” is only used when a record says otherwise.</p>`;
+  el.querySelectorAll("tr.claim").forEach(tr => tr.onclick = () => { const i=+tr.dataset.i; S.open.has(i)?S.open.delete(i):S.open.add(i); fillSub(r); });
+}
+function detail(x){
+  const ev = x.evidence.map(e => `<div class="ev"><div><b>${esc(e.source)}</b>${e.field?` · <code>${esc(e.field)}</code>`:""} · retrieved ${fmtDate(e.retrieved_at)} ${e.url?`· <a href="${esc(e.url)}" target="_blank" rel="noopener">open</a>`:""}</div><div class="val">${esc(e.value)}</div></div>`).join("");
+  const chk = x.sources_checked.length ? `<div class="small muted" style="margin-top:6px">Checked: ${x.sources_checked.map(esc).join(" · ")}</div>` : "";
+  const ask = x.request ? `<div class="ask"><b>${x.final?"For the meeting:":"To settle it, ask for:"}</b> ${esc(x.request)}</div>` : "";
+  return (ev || '<div class="small muted">No supporting record found.</div>') + chk + ask;
+}
+
+function mailBanner(){
+  const m = S.mail || {};
+  const what = !m.ready ? `<b>Email isn't configured:</b> ${(m.problems||[]).map(esc).join("; ")}. Approved sends will be held as failed until it is.`
+    : !m.real ? `<b>Demo mailbox:</b> approved emails are written to <code>${esc(m.where||"data/mailbox")}</code> and nothing leaves this machine. Set <code>RESEND_API_KEY</code> or <code>SMTP_HOST</code> plus <code>MAIL_FROM</code> in .env to send real email.`
+    : `<b>Sends via ${esc(m.transport)}</b> from ${esc(m.from)}${m.reply_to?`, replies to ${esc(m.reply_to)}`:""}${(m.bcc||[]).length?`, copy to ${m.bcc.map(esc).join(", ")}`:""}.`;
+  return `<div class="note">${what} <button class="link" onclick="mailTest()">Send a test email</button></div>`;
+}
+async function mailTest(){
+  const to = prompt("Send a test email to (your own address):"); if (!to) return;
+  try { const r = await api("/api/mail/test", {method:"POST", body:{to}});
+    alert(r.result === "failed" ? `Test failed (${r.error_kind}): ${r.error}` : `Test ${r.result} via ${r.transport}.`); }
+  catch(e){ alert(e.message); }
+}
+const OUT_CLASS = {sent:"v-ok", approved:"v-warn", failed:"v-bad", uncertain:"v-bad", awaiting_approval:"v-na"};
+function outboxTable(rows){
+  if (!rows.length) return "";
+  return `<h3>Outbox</h3><table><thead><tr><th>To</th><th>Status</th><th>Approved by</th><th>Via</th><th>Deliveries</th><th>Idempotency key</th></tr></thead><tbody>
+    ${rows.map(o=>`<tr><td>${esc(o.recipient)}</td><td><span class="chip ${OUT_CLASS[o.status]||"v-na"}">${esc(o.status.replace("_"," "))}</span>${o.sent_at?`<div class="small muted">${fmtDate(o.sent_at)}</div>`:""}</td><td>${esc(o.approved_by||"–")}</td><td>${esc(o.transport||"–")}${o.provider_id?`<div class="type small">${esc(String(o.provider_id).slice(0,24))}</div>`:""}</td><td>${o.deliveries}</td><td class="type">${esc(o.idem_key.slice(0,12))}…</td></tr>
+    ${o.last_error && o.status!=="sent" ? `<tr><td colspan="6"><div class="small err">${esc(o.last_error)}</div>${outboxActions(o)}</td></tr>` : (o.status==="uncertain"||o.status==="failed") ? `<tr><td colspan="6">${outboxActions(o)}</td></tr>` : ""}`).join("")}</tbody></table>`;
+}
+function outboxActions(o){
+  if (o.status === "failed") return `<button class="small" onclick="outboxRetry('${o.idem_key}', false)">Retry send</button>`;
+  if (o.status === "uncertain") return `<span class="small">Check your Sent folder for “${esc(o.subject)}”:</span>
+    <button class="small" onclick="outboxRetry('${o.idem_key}', true)">Not there, send it</button>
+    <button class="small" onclick="outboxMarkSent('${o.idem_key}')">It's there, mark sent</button>`;
+  return "";
+}
+async function outboxRetry(key, uncertain){
+  const who = prompt("Approved by (your name):"); if (!who) return;
+  if (uncertain && !confirm("You checked the Sent folder and this email is NOT there? It will be sent now.")) return;
+  try { const r = await api(`/api/outbox/${key}/retry`, {method:"POST", body:{approver:who, confirm_not_sent:uncertain}});
+    if (r.result === "failed") alert(`Still failing: ${r.last_error}`); }
+  catch(e){ alert(e.message); }
+  openDeal(S.dossier.id, S.step);
+}
+async function outboxMarkSent(key){
+  const who = prompt("Confirmed by (your name):"); if (!who) return;
+  try { await api(`/api/outbox/${key}/mark-sent`, {method:"POST", body:{approver:who}}); } catch(e){ alert(e.message); }
+  openDeal(S.dossier.id, S.step);
+}
+function showDraft(row, where){
+  $(where).innerHTML = `<p class="small muted" style="margin-top:12px">Subject: <b>${esc(row.subject)}</b> · ${esc(row.status.replace("_"," "))}</p><pre class="mail">${esc(row.body)}</pre>
+    ${row.status==="sent" ? `<p class="small">Sent ${fmtDate(row.sent_at)}.</p>` : `
+    <div class="row" style="align-items:flex-end"><div><label>Approved by (your name)</label><input id="ap-name" placeholder="Priya, Strategy"></div><div style="flex:0 0 auto"><button class="primary" id="ap-send">Approve &amp; send</button></div></div>`}`;
+  const b = $("#ap-send"); if (!b) return;
+  b.onclick = async () => {
+    const who = $("#ap-name").value.trim(); if (!who) return alert("A named person must approve.");
+    const via = !S.mail?.real ? " (demo mailbox: nothing leaves this machine)" : ` via ${S.mail.transport} from ${S.mail.from}`;
+    if (!confirm(`Send this to ${row.recipient}${via}? It can't be unsent.`)) return;
+    b.disabled = true;
+    try { const r = await api(`/api/outbox/${row.idem_key}/approve`, {method:"POST", body:{approver:who}});
+      if (r.result === "failed") alert(`Not sent: ${r.last_error}`);
+      else if (r.result === "uncertain") alert(r.last_error);
+      openDeal(S.dossier.id, S.step); }
+    catch(e){ alert(e.message); b.disabled = false; }
+  };
+}
+
 boot();
 </script>
 </body>

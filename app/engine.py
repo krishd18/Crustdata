@@ -10,7 +10,7 @@ from datetime import datetime, timezone
 
 import httpx
 
-from . import extract, inconsistency, store
+from . import cancel, extract, inconsistency, store
 from .checkers import Record, check, mentions, norm
 from .crust import Crust, CrustError, now_iso
 from .models import Claim
@@ -23,6 +23,11 @@ COMPANY_FIELDS = [
     "hiring", "funding.investors", "funding.total_investment_usd", "funding.last_round_type",
     "funding.last_fundraise_date", "funding.num_funding_rounds",
 ]
+
+# News-model figure metric -> claim type (only metric + number matter for the comparison).
+METRIC_TYPE = {"employees": "workforce", "warehouses": "footprint", "sites": "footprint", "cities": "footprint",
+               "area_sqft": "footprint", "clients": "customers", "yoy_growth_pct": "growth", "revenue": "growth",
+               "founded_year": "identity", "funding_usd": "investors", "other": "efficacy"}
 
 # Claude Opus 5.5 list prices, USD per million tokens (input, output).
 LLM_PRICE = (4.0, 20.0)
@@ -124,16 +129,22 @@ def leaders_snapshot(company: dict) -> list[dict]:
 
 
 # ---------------------------------------------------------------------------
-def run(run_id: str, token: str):
+def run(run_id: str, token: str, stop=None):
     run_row = store.q("SELECT * FROM runs WHERE id=?", (run_id,), one=True)
+    mode = run_row.get("mode") or "check"
     d = store.q("SELECT * FROM dossiers WHERE id=?", (run_row["dossier_id"],), one=True)
     steps: list[str] = []
 
+    stop = stop or cancel.token(run_id)  # a request's own Stop flag, or the run's
+
     def step(msg: str):
+        cancel.check(stop)  # a person pressed Stop: end at the next stage
         steps.append(msg)
         store.save_progress(run_id, steps)
 
-    crust = Crust(token)
+    crust = Crust(token, cancel=stop)
+    # rate-limit waits show up in the progress list instead of looking like a hang
+    crust.on_wait = lambda msg: store.save_progress(run_id, steps + [msg])
     usage: dict = {}
     try:
         step("Resolving the company")
@@ -156,16 +167,25 @@ def run(run_id: str, token: str):
             f_jobs = pool.submit(crust.jobs, cid, 60)
             f_arch = pool.submit(archive_first, domain)
             f_site = pool.submit(_fetch_site, crust, domain)
-            step("Reading the teaser")
-            f_deck = pool.submit(extract.extract, d["teaser"], company=name, kind="deck", usage=usage)
+            f_pub = pool.submit(_public, crust, name, domain, company, _prior_entities(d["id"]))
+            step("Pulling news, registry listings and public documents")
+            step("Reading the company's public claims" if mode == "screen" else "Reading the deck")
+            # SCREEN reads only the company's public pages; CHECK reads the deck they sent.
+            teaser = "" if mode == "screen" else (d["teaser"] or "")
+            deck_info: dict = {}
+            f_deck = pool.submit(extract.extract, teaser, company=name, kind="deck", usage=usage, stop=stop,
+                                 info=deck_info)
             jobs, jobs_total, jrec = f_jobs.result()
             arch, arch_at = f_arch.result()
             site_pages = f_site.result()
             claims = f_deck.result()
+            pub = f_pub.result()
 
         record = Record(name=name, domain=domain, company=company, retrieved_at=rec.retrieved_at,
                         jobs=jobs, jobs_total=jobs_total, jobs_at=jrec.retrieved_at,
-                        archive_first=arch, archive_at=arch_at, crust=crust)
+                        archive_first=arch, archive_at=arch_at, crust=crust,
+                        registry=(pub.get("registry") or {}).get("primary"),
+                        documents=[x for x in pub.get("documents", []) if x.get("publisher") != "company-published"])
 
         step("Reading the company's own pages")
         own_sources = {"Teaser / deck": (claims, None)}
@@ -181,11 +201,39 @@ def run(run_id: str, token: str):
                                           (full.get("basic_profile") or {}).get("summary")]))
             if summ:
                 texts.append((f"{p['name']} (profile)", summ, p["profile_url"]))
+        # Company-published public material (press releases, its own PDFs) counts as the
+        # company's own statements; news and third-party documents are kept apart so they
+        # are compared with it but never become "the company's claims".
+        third = []
+        analysed_own, analysed_third = {}, {}
+        for n in pub.get("news", []):
+            a = n.get("analysis")
+            if a:  # read by the news model: use its quote-checked figures directly
+                if not a["about_target"]:
+                    continue
+                cl = [Claim(id=f"{n['id']}f{i}", text=f["quote"], type=METRIC_TYPE.get(f["metric"], "efficacy"),
+                            metric=f["metric"], number=f["number"], place=f.get("place"), source="news")
+                      for i, f in enumerate(a["figures"]) if f["number"] is not None]
+                own = a["written_by_company"] or n.get("kind", "").startswith("press release")
+                (analysed_own if own else analysed_third)[f"{'Press release' if own else 'News'}: {n.get('title')}"] = (cl, n.get("url"))
+                continue
+            if n.get("snippet") or n.get("title"):
+                txt = f"{n.get('title') or ''}. {n.get('snippet') or ''}"
+                if n.get("kind", "").startswith("press release"):
+                    texts.append((f"Press release: {n.get('title')}", txt, n.get("url")))
+                else:
+                    third.append((f"News: {n.get('title')}", txt, n.get("url")))
+        for doc in pub.get("documents", []):
+            txt = doc.get("text") or f"{doc.get('title') or ''}. {doc.get('snippet') or ''}"
+            (texts if doc.get("publisher") == "company-published" else third).append((f"Document: {doc.get('title')}", txt, doc.get("url")))
         with ThreadPoolExecutor(4) as pool:  # extract() converts HTML first, then trims
-            got = list(pool.map(lambda t: extract.extract(t[1], company=name, kind="website", usage=usage), texts))
-        for (label, _txt, url), cl in zip(texts, got):
-            own_sources[label] = (cl, url)
-        conflicts = inconsistency.find(own_sources)
+            got = list(pool.map(lambda t: extract.extract(t[1], company=name, kind="website", usage=usage), texts + third))
+        third_sources = {}
+        for i, ((label, _txt, url), cl) in enumerate(zip(texts + third, got)):
+            (own_sources if i < len(texts) else third_sources)[label] = (cl, url)
+        own_sources.update(analysed_own)
+        third_sources.update(analysed_third)
+        conflicts = inconsistency.find({**own_sources, **third_sources})
 
         # No claims in the pasted text? Check what the company says about itself instead.
         register_source = "teaser"
@@ -204,8 +252,8 @@ def run(run_id: str, token: str):
         with ThreadPoolExecutor(6) as pool:
             findings = list(pool.map(lambda c: check(c, record), claims))
 
-        prev = store.q("SELECT result FROM runs WHERE dossier_id=? AND status='done' AND id<>? ORDER BY seq DESC LIMIT 1",
-                       (d["id"], run_id), one=True)
+        prev = store.q("SELECT result FROM runs WHERE dossier_id=? AND status='done' AND id<>? AND COALESCE(mode,'check')=?"
+                       " ORDER BY seq DESC LIMIT 1", (d["id"], run_id, mode), one=True)
         prev = json.loads(prev["result"]) if prev else None
         leaders = leaders_snapshot(company)
         changes = []
@@ -225,26 +273,79 @@ def run(run_id: str, token: str):
             "snapshot_at": now_iso(),
             "findings": [redact(f.to_dict()) for f in findings],
             "inconsistencies": conflicts,
-            "requests": _requests(findings),
+            "requests": _requests(findings) + [
+                {"claim": f["text"], "type": f["kind"], "verdict": "needs confirmation", "document": f["request"], "reason": f["text"]}
+                for f in pub.get("flags", [])],
+            "public": {**{k: v for k, v in pub.items() if k not in ("documents", "news")},
+                       "news": [{k: v for k, v in n.items() if k != "text"} | {"text_chars": len(n.get("text") or "")}
+                                for n in pub.get("news", [])],
+                       "documents": [{k: v for k, v in d.items() if k != "text"} | {"text_chars": len(d.get("text") or "")}
+                                     for d in pub.get("documents", [])]},
             "changes": changes,
             "leaders": leaders,
             "headcount_total": (company.get("headcount") or {}).get("total"),
             "jobs_total": jobs_total,
             "sources_read": [lbl for lbl in own_sources],
             "register_source": register_source,
+            "mode": mode,
             "cost": _cost(crust, usage),
             "llm": "claude" if extract.llm_available() else "rules (no ANTHROPIC_API_KEY)",
+            "deck_reader": deck_info if teaser else None,
         }
-        store.x("UPDATE runs SET status='done', finished_at=?, result=? WHERE id=?",
+        cancel.check(stop)
+        # status guard: a Stop that lands now wins, and the run stays stopped
+        store.x("UPDATE runs SET status='done', finished_at=?, result=? WHERE id=? AND status='running'",
                 (now_iso(), json.dumps(result, default=str), run_id))
-        step("Done")
+        steps.append("Done")
+        store.save_progress(run_id, steps)
+    except cancel.Cancelled:
+        log.info("run %s stopped by a person", run_id)
+        steps.append("Stopped by a person. Nothing more was sent to Crustdata or the model")
+        store.save_progress(run_id, steps)
+        if hasattr(crust, "settle"):
+            crust.settle(60)  # count the calls that were already in flight
+        store.x("UPDATE runs SET status='cancelled', finished_at=COALESCE(finished_at, ?), result=? WHERE id=?",
+                (now_iso(), json.dumps({"cost": _cost(crust, usage), "stopped_after": steps[-2] if len(steps) > 1 else None}),
+                 run_id))
     except NeedsPerson as e:
-        store.x("UPDATE runs SET status='needs_person', result=? WHERE id=?",
+        store.x("UPDATE runs SET status='needs_person', result=? WHERE id=? AND status='running'",
                 (json.dumps({"candidates": e.candidates, "cost": _cost(crust, usage)}), run_id))
-        step("Held for a person: more than one company matches")
+        steps.append("Held for a person: more than one company matches")
+        store.save_progress(run_id, steps)
     except Exception as e:
         log.exception("run failed")
-        store.x("UPDATE runs SET status='error', error=?, finished_at=? WHERE id=?", (str(e), now_iso(), run_id))
+        store.x("UPDATE runs SET status='error', error=?, finished_at=?, result=? WHERE id=? AND status='running'",
+                (e.friendly if isinstance(e, CrustError) else str(e), now_iso(),
+                 json.dumps({"cost": _cost(crust, usage)}), run_id))
+    finally:
+        cancel.done(run_id)
+
+
+def _prior_entities(dossier_id: str) -> list[dict]:
+    """Registry entities found on earlier runs of this dossier (any mode)."""
+    seen, out = set(), []
+    for row in store.q("SELECT result FROM runs WHERE dossier_id=? AND status='done' ORDER BY seq DESC LIMIT 10", (dossier_id,)):
+        try:
+            ents = (((json.loads(row["result"]) or {}).get("public") or {}).get("registry") or {}).get("entities") or []
+        except (TypeError, ValueError):
+            continue
+        for e in ents:
+            k = e.get("cin") or e.get("legal_name")
+            if k and k not in seen:
+                seen.add(k)
+                out.append(e)
+    return out
+
+
+def _public(crust: Crust, name: str, domain: str | None, company: dict, prior: list[dict] | None = None) -> dict:
+    from .public import Public
+
+    try:
+        return Public(crust, name, domain, company, prior_entities=prior).gather()
+    except Exception as e:  # public record is additive; never fail the run over it
+        log.warning("public record failed: %s", e)
+        return {"news": [], "registry": {"entities": [], "primary": None}, "documents": [], "flags": [],
+                "sources_checked": [f"public record failed: {e}"]}
 
 
 def _fetch_site(crust: Crust, domain: str | None) -> list[dict]:
