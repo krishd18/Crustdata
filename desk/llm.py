@@ -70,16 +70,21 @@ def _extract_json(text: str) -> dict[str, Any]:
 class AnthropicLLM:
     """Live model. Imports the SDK lazily so the offline path needs nothing."""
 
+    DEFAULT_MODEL = os.environ.get("DESK_MODEL", "claude-haiku-5-5")
+
     def __init__(
         self,
         api_key: str | None = None,
-        model: str = "claude-sonnet-4-5",
+        model: str | None = None,
         max_retries: int = 1,
     ) -> None:
         self.api_key = api_key or os.environ.get("ANTHROPIC_API_KEY", "")
         if not self.api_key:
             raise LLMError("no model key: set ANTHROPIC_API_KEY")
-        self.model = model
+        # Entailment and premise extraction are small classification jobs run
+        # many times per case, so the cheap model is the right default and the
+        # per-case cost is noticeably lower for it. Override with DESK_MODEL.
+        self.model = model or self.DEFAULT_MODEL
         self.max_retries = max_retries
         self._calls: list[LLMCall] = []
         self._client = None

@@ -122,6 +122,13 @@ def cmd_show(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_doctor(args: argparse.Namespace) -> int:
+    from scripts.doctor import main as doctor_main  # noqa: PLC0415
+
+    sys.argv = ["doctor"] + (["--probe-live"] if args.probe_live else [])
+    return doctor_main()
+
+
 def main() -> int:
     p = argparse.ArgumentParser(prog="cli.py", description=__doc__)
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -146,6 +153,12 @@ def main() -> int:
     show = sub.add_parser("show", help="inspect a case journal")
     show.add_argument("case_id")
     show.set_defaults(func=cmd_show)
+
+    doc = sub.add_parser(
+        "doctor", help="preflight: which keys and endpoints actually work"
+    )
+    doc.add_argument("--probe-live", action="store_true")
+    doc.set_defaults(func=cmd_doctor)
 
     args = p.parse_args()
     return args.func(args)

@@ -194,6 +194,14 @@ lands.
 
 ## Running
 
+**First, at kickoff.** Ten seconds, and it answers the questions that are
+expensive to discover at hour four — which endpoints this plan actually
+allows, whether the model key works, and what a call costs:
+
+```bash
+python3 cli.py doctor              # add --probe-live to test enterprise endpoints
+```
+
 Offline — no keys, no credits, no network. Produces all four verdicts and is
 reproducible, so it is the thing to rehearse the demo against:
 
