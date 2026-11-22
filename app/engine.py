@@ -12,7 +12,7 @@ import httpx
 
 from . import extract, inconsistency, store
 from .checkers import Record, check, mentions, norm
-from .crust import Crust, now_iso
+from .crust import Crust, CrustError, now_iso
 from .models import Claim
 
 log = logging.getLogger("secondlook.engine")
@@ -47,9 +47,18 @@ def redact(o):
     return o
 
 
+def valid_domain(d: str | None) -> str | None:
+    d = (d or "").strip().lower()
+    return d if re.fullmatch(r"[a-z0-9-]+(\.[a-z0-9-]+)+", d) else None
+
+
 def resolve(crust: Crust, name: str, domain: str | None, city: str | None) -> dict:
-    if domain:
-        matches, _ = crust.identify(domain=domain)
+    if valid_domain(domain):
+        try:
+            matches, _ = crust.identify(domain=domain)
+        except CrustError as e:  # a bad domain shouldn't sink the run; fall back to the name
+            log.info("identify by domain failed (%s); trying name", e.status)
+            matches = []
         if matches:
             return matches[0]["company_data"]
     matches, _ = crust.identify(name=name)
@@ -140,7 +149,7 @@ def run(run_id: str, token: str):
         if not company:
             raise RuntimeError(f"No company record for id {cid}")
         name = company["basic_info"]["name"]
-        domain = d["domain"] or company["basic_info"].get("primary_domain")
+        domain = valid_domain(d["domain"]) or company["basic_info"].get("primary_domain")
 
         step("Pulling job posts and the web archive")
         with ThreadPoolExecutor(4) as pool:
@@ -158,11 +167,7 @@ def run(run_id: str, token: str):
                         jobs=jobs, jobs_total=jobs_total, jobs_at=jrec.retrieved_at,
                         archive_first=arch, archive_at=arch_at, crust=crust)
 
-        step(f"Checking {len(claims)} claims")
-        with ThreadPoolExecutor(6) as pool:
-            findings = list(pool.map(lambda c: check(c, record), claims))
-
-        step("Comparing the company's own sources")
+        step("Reading the company's own pages")
         own_sources = {"Teaser / deck": (claims, None)}
         texts = []
         for p in site_pages:
@@ -176,11 +181,28 @@ def run(run_id: str, token: str):
                                           (full.get("basic_profile") or {}).get("summary")]))
             if summ:
                 texts.append((f"{p['name']} (profile)", summ, p["profile_url"]))
-        with ThreadPoolExecutor(4) as pool:
-            got = list(pool.map(lambda t: extract.extract(t[1][:20000], company=name, kind="website", usage=usage), texts))
+        with ThreadPoolExecutor(4) as pool:  # extract() converts HTML first, then trims
+            got = list(pool.map(lambda t: extract.extract(t[1], company=name, kind="website", usage=usage), texts))
         for (label, _txt, url), cl in zip(texts, got):
             own_sources[label] = (cl, url)
         conflicts = inconsistency.find(own_sources)
+
+        # No claims in the pasted text? Check what the company says about itself instead.
+        register_source = "teaser"
+        if not claims:
+            register_source = "company's own pages"
+            seen = set()
+            for label, (cl, _url) in own_sources.items():
+                for c in cl:
+                    k = (c.type, c.metric, c.number, (c.entity or "").lower(), (c.place or "").lower())
+                    if k not in seen and c.type != "premise":
+                        seen.add(k)
+                        c.source = label
+                        claims.append(c)
+
+        step(f"Checking {len(claims)} claims")
+        with ThreadPoolExecutor(6) as pool:
+            findings = list(pool.map(lambda c: check(c, record), claims))
 
         prev = store.q("SELECT result FROM runs WHERE dossier_id=? AND status='done' AND id<>? ORDER BY seq DESC LIMIT 1",
                        (d["id"], run_id), one=True)
@@ -209,6 +231,7 @@ def run(run_id: str, token: str):
             "headcount_total": (company.get("headcount") or {}).get("total"),
             "jobs_total": jobs_total,
             "sources_read": [lbl for lbl in own_sources],
+            "register_source": register_source,
             "cost": _cost(crust, usage),
             "llm": "claude" if extract.llm_available() else "rules (no ANTHROPIC_API_KEY)",
         }
@@ -272,9 +295,14 @@ def _cost(crust: Crust, usage: dict) -> dict:
 def _diff(prev: dict, findings, company: dict, jobs_total, crust: Crust) -> list[dict]:
     out = []
     today = datetime.now(timezone.utc).strftime("%d %b")
-    old = {norm(f["claim"]["text"]): f for f in prev.get("findings", [])}
+    # One sentence can carry several claims ("serve Amazon and Flipkart"), so the key
+    # includes what the claim is about, not just its text.
+    def key(cl: dict) -> str:
+        return "|".join(norm(str(cl.get(k) or "")) for k in ("text", "type", "metric", "entity", "place", "person"))
+
+    old = {key(f["claim"]): f for f in prev.get("findings", [])}
     for f in findings:
-        o = old.get(norm(f.claim.text))
+        o = old.get(key(f.claim.__dict__))
         if not o:
             continue
         if o["verdict"] != f.verdict:

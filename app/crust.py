@@ -145,7 +145,11 @@ class Crust:
         body = {
             "preview": preview,
             "entities": {"professional_network_profile_urls": profile_urls},
-            "track": {"field": "experience.employment_details.current", "type": "changed"},
+            # Docs recipe "Fire on a new employer, not a promotion": the current-employment
+            # array takes `added`, keyed on the employer so a title change stays silent.
+            "track": {"field": "experience.employment_details.current", "type": "added",
+                      "keys": ["crustdata_company_id", "name"]},
+            "fields": ["basic_profile", "experience"],
             "config": {"trigger": {"type": "interval", "every_hours": 24}, "refresh_frequency_days": refresh_days},
             "notifications": [],
         }

@@ -122,11 +122,114 @@ def test_ambiguous_name_is_held_for_a_person():
             city = {1: "Chennai", 2: "Madurai"}[cid]
             return {"locations": {"headquarters": f"{city}, Tamil Nadu"}}, None
 
+    # a non-domain in the domain box ("semiconductor") falls back to the name
+    assert engine.valid_domain("semiconductor") is None and engine.valid_domain("stockarea.io") == "stockarea.io"
+    assert engine.resolve(FakeCrust(), "Sri Murugan Logistics", "semiconductor", "Madurai")["crustdata_company_id"] == 2
+
     import pytest
     with pytest.raises(engine.NeedsPerson) as e:
         engine.resolve(FakeCrust(), "Sri Murugan Logistics", None, None)
     assert len(e.value.candidates) == 2
     assert engine.resolve(FakeCrust(), "Sri Murugan Logistics", None, "Madurai")["crustdata_company_id"] == 2
+
+
+class FakeSearch:
+    """Stands in for Crust.web_search with canned results."""
+    def __init__(self, results):
+        self.results = results
+
+    def web_search(self, q):
+        from app.crust import CallRecord
+        return self.results, CallRecord("/web/search/live", 1, "2026-11-22T00:00:00Z", 1, 200)
+
+
+def leader_rec(results):
+    r = rec()
+    r.company["basic_info"]["professional_network_url"] = "https://www.linkedin.com/company/acme-warehousing"
+    r.company["people"]["founders"][0]["social_handles"] = {
+        "professional_network_identifier": {"profile_url": "https://www.linkedin.com/in/asha-rao"}}
+    r.crust = FakeSearch(results)
+    return r
+
+
+# The three cases below are the live false positives seen on the first real run.
+def test_leaders_own_post_is_self_reported_not_verified():
+    r = leader_rec([{"title": "Acme Warehousing network", "snippet": "Acme Warehousing ships for Amazon, Flipkart",
+                     "url": "https://www.linkedin.com/posts/asha-rao_acme-logistics-activity-71887851"}])
+    f = check(C("customers", entity="Amazon"), r)
+    assert f.verdict == "self-reported"
+
+
+def test_ex_employer_on_a_profile_is_not_a_customer():
+    r = leader_rec([{"title": "Ops Manager", "snippet": "Operations Manager @Acme Warehousing | Ex - Flipkart",
+                     "url": "https://in.linkedin.com/in/someone-916b29288"}])
+    assert check(C("customers", entity="Flipkart"), r).verdict == "cannot verify"
+
+
+def test_unrelated_percentage_on_third_party_social_does_not_support_efficacy():
+    r = leader_rec([{"title": "post", "snippet": "#AcmeWarehousing Acme Warehousing approach drives 40% faster warehouse operations",
+                     "url": "https://www.facebook.com/Other.Logistics/posts/123"}])
+    f = check(C("efficacy", metric="efficacy_pct", number=40, entity="inventory damage"), r)
+    assert f.verdict == "self-reported"
+
+
+def test_co_mention_and_press_release_do_not_verify_a_customer():
+    # live hit 1: both names on a page, no relationship stated
+    r = leader_rec([{"title": "Warehousing guide", "snippet": "An e-commerce giant like Amazon is adding centres. Acme Warehousing is your single partner",
+                     "url": "https://www.google.com/books/x"}])
+    assert check(C("customers", entity="Amazon"), r).verdict == "cannot verify"
+    # live hit 2: the company's own press release on a PR wire
+    r = leader_rec([{"title": "Acme Warehousing signs Flipkart", "snippet": "Acme Warehousing has signed Flipkart as a client",
+                     "url": "https://www.pr.com/press-release/1"}])
+    assert check(C("customers", entity="Flipkart"), r).verdict == "self-reported"
+
+
+def test_names_in_different_snippet_fragments_or_competitor_lists_do_not_verify():
+    # live hit: a scraped startup list; the two names sit in separate "..." fragments
+    r = leader_rec([{"title": "900 logtech startups list", "url": "https://example-docs.com/list",
+                     "snippet": "acme.in Acme Warehousing Early Stage Series A ... an intelligent logistics world such as Sequoia Capital modular software"}])
+    assert check(C("investors", entity="Sequoia Capital"), r).verdict == "cannot verify"
+    # live hit: a directory's competitor page; "customer-centric" is not "customer"
+    r = leader_rec([{"title": "Acme Warehousing competitors", "url": "https://directory.example/acme",
+                     "snippet": "View Acme Warehousing's top competitors like Amazon, Easyship. Amazon strives to be Earth's most customer-centric company"}])
+    assert check(C("customers", entity="Amazon"), r).verdict == "cannot verify"
+    # a real funding report still verifies
+    r = leader_rec([{"title": "Acme Warehousing raises Series A", "url": "https://inc42.com/a",
+                     "snippet": "Acme Warehousing has raised $10 Mn in a round led by Sequoia Capital"}])
+    assert check(C("investors", entity="Sequoia Capital"), r).verdict == "verified"
+
+
+def test_cities_count_merges_aliases():
+    r = rec(jobs=[{"job_details": {}, "location": {"city": c, "raw": c}, "metadata": {}} for c in ("Bangalore", "Bengaluru", "Gurgaon", "Gurugram")])
+    f = check(C("footprint", metric="cities", number=30), r)
+    assert "bangalore" not in f.evidence[0].value and "gurgaon" not in f.evidence[0].value
+
+
+def test_independent_news_still_verifies():
+    r = leader_rec([{"title": "Amazon picks Acme Warehousing", "snippet": "Amazon has signed Acme Warehousing for Chennai",
+                     "url": "https://economictimes.indiatimes.com/x"}])
+    assert check(C("customers", entity="Amazon"), r).verdict == "verified"
+    r = leader_rec([{"title": "Case study", "snippet": "Acme Warehousing cut damage by 40% for a client",
+                     "url": "https://supplychaindigital.com/y"}])
+    assert check(C("efficacy", metric="efficacy_pct", number=40, entity="inventory damage"), r).verdict == "independently supported"
+
+
+def test_website_html_is_read_as_text_without_ui_noise():
+    from app.extract import extract
+    html = ("<html><head><script>var x = a ? b : c; go(dx < 0 ?</script><style>.a{}</style></head><body>"
+            "<nav>Who We Serve Manufacturers Distributors</nav><div><b>5</b><span>cities</span></div>"
+            "<p>We store stock in every tier 1 city and most tier 2 cities across India.</p>"
+            "<p>Our network of 120 warehouses across India serves 500 brands.</p></body></html>")
+    cl = extract(html, company="Acme", kind="website")
+    assert [(c.type, c.metric, c.number) for c in cl] == [("footprint", "warehouses", 120.0)]
+
+
+def test_a_persons_bio_year_is_not_a_founding_claim():
+    # live hit on semilit.in: an advisor's bio was read as "company founded 1981"
+    from app.extract import _extract_rules
+    got = _extract_rules("He has been a faculty member at the Indian Institute of Technology Madras since 1981.", kind="website")
+    assert not [c for c in got if c["type"] in ("identity", "dates")]
+    assert _extract_rules("Acme was founded in 2016 in Pune.")[0]["year"] == 2016
 
 
 def test_rule_extractor_finds_core_claims():

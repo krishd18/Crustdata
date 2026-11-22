@@ -197,7 +197,7 @@ function render(){
           <div><span>HQ on record</span>${esc(c.hq||"–")}</div>
           <div><span>Founded</span>${esc(c.founded||"–")}</div>
           <div><span>Profiles on record</span>${esc(c.headcount??"–")}</div>
-          <div><span>Snapshot</span>${fmtDate(res.snapshot_at)} · run ${r.seq} of ${runs.length}</div>
+          <div><span>Snapshot</span>${fmtDate(res.snapshot_at)} · run ${r.seq} of ${d.runs.length}</div>
         </div>
       </div>
       <div class="cost">
@@ -222,10 +222,13 @@ function render(){
 const tabBtn = (id, label) => `<button data-tab="${id}" class="${state.tab===id?"on":""}">${esc(label)}</button>`;
 
 function paneRegister(){
-  const f = state.run.result.findings;
-  $("#pane").innerHTML = `<table><thead><tr><th style="width:38%">Claim</th><th>Type</th><th>Verdict</th><th>Why</th></tr></thead><tbody>
+  const res = state.run.result, f = res.findings;
+  if (!f.length) { $("#pane").innerHTML = `<div class="empty">No checkable claims found, in the pasted text or on the company's own pages (${res.sources_read.map(esc).join(" · ")}).<br>Paste the teaser or deck text itself: figures, locations, investors, customers, dates.</div>`; return; }
+  const note = res.register_source && res.register_source !== "teaser"
+    ? `<p class="small" style="background:var(--info-bg);color:var(--info);padding:8px 10px;border-radius:7px">The pasted text had no checkable claims, so these are the claims the company makes on its own pages.</p>` : "";
+  $("#pane").innerHTML = note + `<table><thead><tr><th style="width:38%">Claim</th><th>Type</th><th>Verdict</th><th>Why</th></tr></thead><tbody>
   ${f.map((x,i)=>`
-    <tr class="claim" data-i="${i}"><td>${esc(x.claim.text)}</td><td class="type">${esc(x.claim.type.replace("_"," "))}</td><td>${chip(x.verdict)}</td><td>${esc(x.reason)}</td></tr>
+    <tr class="claim" data-i="${i}"><td>${esc(x.claim.text)}${x.claim.source && x.claim.source!=="deck" ? `<div class="small muted">from ${esc(x.claim.source)}</div>` : ""}</td><td class="type">${esc(x.claim.type.replace("_"," "))}</td><td>${chip(x.verdict)}</td><td>${esc(x.reason)}</td></tr>
     ${state.open.has(i) ? `<tr class="detail"><td colspan="4">${detail(x)}</td></tr>` : ""}`).join("")}
   </tbody></table><p class="small muted">Click a row for the exact source. "Contradicted" is only used when a record says otherwise.</p>`;
   document.querySelectorAll("tr.claim").forEach(tr => tr.onclick = () => { const i=+tr.dataset.i; state.open.has(i)?state.open.delete(i):state.open.add(i); paneRegister(); });
@@ -290,7 +293,7 @@ async function paneChanges(){
   const w = d.watch;
   $("#pane").innerHTML = `
     <div class="row" style="align-items:center"><div class="small muted">The register is a dated snapshot (${fmtDate(res.snapshot_at)}). Re-check runs every claim again and shows what changed, including each leader's own profile.</div>
-      <div style="flex:0"><button class="primary" onclick="recheck()">Re-check now</button></div></div>
+      <div style="flex:0 0 auto"><button class="primary" style="white-space:nowrap" onclick="recheck()">Re-check now</button></div></div>
     <h2 style="margin-top:16px">Changes since the previous snapshot</h2>
     ${state.run.seq === 1 ? '<p class="muted small">This is the first snapshot.</p>' : res.changes.length ? `<ul>${res.changes.map(c=>`<li>${esc(c.text)}${c.claim?` <span class="small muted">· “${esc(c.claim)}”</span>`:""}</li>`).join("")}</ul>` : '<p class="muted small">Nothing changed.</p>'}
     <h2 style="margin-top:16px">Leaders on record</h2>
@@ -306,7 +309,11 @@ async function paneChanges(){
     pv.disabled = true; $("#w-out").innerHTML = '<p class="muted small">Previewing…</p>';
     try{
       const p = await api(`/api/dossiers/${d.id}/watch/preview`, {method:"POST", body:{refresh_days:3}});
-      $("#w-out").innerHTML = `<pre class="mail">${esc(JSON.stringify(p, null, 2))}</pre><button class="primary" id="w-arm">Arm watch at this price</button>`;
+      if (!p.can_create) { $("#w-out").innerHTML = `<p class="err">Crustdata won't create this watch: ${esc(p.error || "unknown reason")}</p>`; pv.disabled = false; return; }
+      const names = (p.sample||[]).map(s => s.record?.basic_profile?.name).filter(Boolean);
+      $("#w-out").innerHTML = `<p class="small" style="margin-top:10px">${p.resolved} leader${p.resolved===1?"":"s"} resolved${names.length?`: ${names.map(esc).join(", ")}`:""}${p.unresolved?.length?` · ${p.unresolved.length} not found`:""}.<br>
+        Fires when a leader's current employer changes (a promotion at the same company stays silent). Each detected change costs <b>${esc(p.credits?.per_notification ?? "?")} credits</b> (3-day refresh); the first run is a free baseline.</p>
+        <button class="primary" id="w-arm">Arm watch at this price</button>`;
       $("#w-arm").onclick = async () => {
         if (!confirm("This commits the account to per-change charges. Arm the watch?")) return;
         try{ await api(`/api/dossiers/${d.id}/watch`, {method:"POST", body:{refresh_days:3, preview_token:p.preview_token||null}}); state.dossier = await api(`/api/dossiers/${d.id}`); paneChanges(); }

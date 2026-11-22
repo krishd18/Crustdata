@@ -30,6 +30,8 @@ CITY_STATE = {
     "gurgaon": "haryana", "sonipat": "haryana", "noida": "uttar pradesh", "lucknow": "uttar pradesh",
     "kolkata": "west bengal", "ahmedabad": "gujarat", "kochi": "kerala", "jaipur": "rajasthan",
 }
+CANON = {"bangalore": "bengaluru", "gurgaon": "gurugram", "dodda ballapur": "doddaballapura",
+         "nelmangala": "nelamangala", "new delhi": "delhi", "bombay": "mumbai", "madras": "chennai"}
 ALIASES = {"bangalore": "bengaluru", "bengaluru": "bangalore", "gurgaon": "gurugram", "gurugram": "gurgaon",
            "tn": "tamil nadu", "ka": "karnataka", "mh": "maharashtra"}
 
@@ -208,7 +210,7 @@ def check_footprint(c: Claim, r: Record) -> Finding:
         cities = {norm(j.get("location", {}).get("city")) for j in r.jobs if j.get("location", {}).get("city")}
         addrs = r.g("locations.all_office_addresses") or []
         cities |= {norm(k) for k in CITY_STATE if any(mentions(a, k) for a in addrs)}
-        cities.discard("")
+        cities = {CANON.get(x, x) for x in cities} - {""}
         ev = [r.ev("locations.all_office_addresses", f"{len(cities)} distinct cities: " + ", ".join(sorted(cities)[:12]))]
         if n is None:
             return _pending(c, "cannot verify", "No count to compare.", ev)
@@ -239,15 +241,99 @@ def check_footprint(c: Claim, r: Record) -> Finding:
     return _pending(c, "cannot verify", f"No addresses or job posts on record{where}.", ev, checked)
 
 
-def _web_corroboration(r: Record, query: str, a: str, b: str):
-    """Return (independent_hits, self_hits, retrieved_at). Both names must appear."""
+SOCIAL = ("linkedin.com", "facebook.com", "x.com", "twitter.com", "instagram.com", "youtube.com", "medium.com")
+# Paid/self-serve press-release wires: the company wrote it.
+PR_WIRES = ("pr.com", "prlog.org", "prnewswire.com", "businesswire.com", "einpresswire.com", "openpr.com",
+            "globenewswire.com", "newswire.com", "prfree.org", "pressreleasepoint.com")
+# Pages that are not anyone's statement: search/app stores, contact-data directories
+# (their "competitors like X" pages co-mention everyone), and document-dump sites.
+SKIP_HOSTS = ("google.com", "bing.com", "play.google.com", "apps.apple.com", "zoominfo.com", "tracxn.com",
+              "rocketreach.co", "signalhire.com", "contactout.com", "apollo.io", "lusha.com", "owler.com",
+              "craft.co", "leadiq.com", "pdfcoffee.com", "scribd.com", "dokumen.pub", "slideshare.net")
+# Words that make a co-mention a relationship ("Amazon signed Acme"), not two names on one page.
+_W = r"(?<![\w-])"
+RELATION = _W + (r"(clients?|customers?|partner(?:ed|s|ship)?|serv(?:es|ed|ing)|work(?:s|ed|ing)? with|signed|"
+                 r"onboard\w*|chose|selected|contract(?:s|ed)?|vendor|supplier|fulfil\w*\s+for|warehous\w*\s+for)(?![\w-])")
+INVESTED = _W + (r"(backed|invest(?:s|ed|ment|or|ors)|funding|funded|raise[sd]?|led by|participation from|"
+                 r"portfolio|seed round|series [a-e]\b)(?![\w-])")
+NEGATE = r"competitor|rival|alternative|vs\.?|versus|similar companies|companies like"
+
+
+def _fragment_says(blob: str, a: str, b: str, rel: str | None) -> bool:
+    """True if one sentence/fragment names both a and b (and states rel, if given).
+
+    Search snippets stitch unrelated passages together with '...', so the
+    names must co-occur inside a single fragment, never across one.
+    """
+    for frag in re.split(r"\.\.\.|…|(?<=[.!?])\s+", blob):
+        if not (mentions(frag, a) and mentions(frag, b)):
+            continue
+        if re.search(NEGATE, frag, re.I):
+            continue
+        if rel is None or re.search(rel, frag, re.I):
+            return True
+    return False
+
+
+def _slug(url: str | None, kind: str) -> str | None:
+    m = re.search(rf"linkedin\.com/{kind}/([^/?#_]+)", url or "")
+    return m.group(1).lower() if m else None
+
+
+def classify(r: Record, url: str | None) -> str:
+    """Who published this page, relative to the target?
+
+    own          the target's website or company page
+    self         a post by one of the target's own leaders
+    skip         weak signal: a personal profile (lists employers, not customers)
+                 or someone else's social post
+    independent  any other site (news, customer's site, case study, registry)
+    """
+    h = host(url)
+    own = (r.domain or "").lower()
+    on = lambda hosts: any(h == s or h.endswith("." + s) for s in hosts)  # noqa: E731
+    if own and (h == own or h.endswith("." + own)):
+        return "own"
+    if on(PR_WIRES):
+        return "self"
+    if on(SKIP_HOSTS):
+        return "skip"
+    if any(h == s or h.endswith("." + s) for s in SOCIAL):
+        company_slug = _slug(r.g("basic_info.professional_network_url"), "company")
+        if company_slug and _slug(url, "company") == company_slug:
+            return "own"
+        if "/in/" in (url or ""):
+            return "skip"
+        leader_slugs = {_slug(((p.get("social_handles") or {}).get("professional_network_identifier") or {}).get("profile_url"), "in")
+                        for p in r.people}
+        post = re.search(r"linkedin\.com/posts/([^/?#]+?)_", url or "")
+        if post and post.group(1).lower() in leader_slugs - {None}:
+            return "self"
+        return "skip"
+    return "independent"
+
+
+def _web_corroboration(r: Record, query: str, a: str, b: str, relation: str | None = None):
+    """Return (independent_hits, self_hits, retrieved_at, n_results).
+
+    Both names must appear; for a third-party page, one fragment must also
+    state the relationship (a co-mention alone proves nothing).
+    """
     res, at = r.search(query)
-    own = norm(r.domain or "")
     ind, own_hits = [], []
     for x in res:
-        blob = f"{x.get('title', '')} {x.get('snippet', '')}"
-        if mentions(blob, a) and mentions(blob, b):
-            (own_hits if own and own in norm(host(x.get("url"))) else ind).append(x)
+        blob = f"{x.get('title', '')}. {x.get('snippet', '')}"
+        if not (mentions(blob, a) and mentions(blob, b)):
+            continue
+        related = _fragment_says(blob, a, b, relation)
+        if re.search(rf"\bex\s*[-–]?\s*{re.escape(b)}", blob, re.I):  # "Ex-Flipkart" is a past employer, not a client
+            continue
+        kind = classify(r, x.get("url"))
+        if kind == "independent":
+            if related:  # a third party must say how they're related
+                ind.append(x)
+        elif kind in ("own", "self"):
+            own_hits.append(x)
     return ind, own_hits, at, len(res)
 
 
@@ -256,14 +342,15 @@ def check_investors(c: Claim, r: Record) -> Finding:
     hit = [i for i in inv if mentions(i, c.entity) or mentions(c.entity, i)]
     if hit:
         return Finding(c, "verified", f"{hit[0]} is listed as an investor.", [r.ev("funding.investors")])
-    news = [n for n in (r.g("news") or []) if mentions(n.get("article_title"), c.entity)]
+    news = [n for n in (r.g("news") or []) if mentions(n.get("article_title"), c.entity)
+            and classify(r, n.get("article_url")) == "independent"]
     if news:
         n = news[0]
         return Finding(c, "verified", "A news item names this investor.",
                        [Evidence(n.get("article_publisher_name") or ENRICH, "news.article_title", n["article_title"],
                                  r.retrieved_at, n.get("article_url"))])
     q = f'"{r.name}" "{c.entity}" funding'
-    ind, _own, at, k = _web_corroboration(r, q, r.name, c.entity)
+    ind, _own, at, k = _web_corroboration(r, q, r.name, c.entity, relation=INVESTED)
     if ind:
         x = ind[0]
         return Finding(c, "verified", f"Independent source links {r.name} and {c.entity}.",
@@ -311,24 +398,27 @@ def check_people(c: Claim, r: Record) -> Finding:
 
 
 def check_customers(c: Claim, r: Record) -> Finding:
-    news = [n for n in (r.g("news") or []) if mentions(n.get("article_title"), c.entity)]
+    news = [n for n in (r.g("news") or []) if mentions(n.get("article_title"), c.entity)
+            and re.search(RELATION, n.get("article_title") or "", re.I)
+            and classify(r, n.get("article_url")) == "independent"]
     if news:
         n = news[0]
         return Finding(c, "verified", "A news item links the two companies.",
                        [Evidence(n.get("article_publisher_name") or ENRICH, "news.article_title", n["article_title"],
                                  r.retrieved_at, n.get("article_url"))])
     q = f'"{r.name}" "{c.entity}"'
-    ind, own, at, k = _web_corroboration(r, q, r.name, c.entity)
+    ind, own, at, k = _web_corroboration(r, q, r.name, c.entity, relation=RELATION)
     if ind:
         x = ind[0]
         return Finding(c, "verified", f"{host(x['url'])} links {r.name} and {c.entity}.",
                        [Evidence(host(x["url"]), None, x.get("snippet") or x.get("title"), at, x["url"])])
     if own:
         x = own[0]
-        return _pending(c, "self-reported", f"Only {r.name}'s own pages name {c.entity}.",
-                        [Evidence(host(x["url"]), None, x.get("snippet") or x.get("title"), at, x["url"])])
-    return _pending(c, "cannot verify", f"No news or web source links {r.name} and {c.entity}.",
-                    checked=[f"{ENRICH} news", f"{SEARCH} '{q}' ({k} results)"])
+        return _pending(c, "self-reported", f"Only {r.name}'s own pages or its leaders' posts name {c.entity}.",
+                        [Evidence(host(x["url"]), None, x.get("snippet") or x.get("title"), at, x["url"])],
+                        checked=[f"{ENRICH} news", f"{SEARCH} '{q}' ({k} results, none independent)"])
+    return _pending(c, "cannot verify", f"No news or independent source describes {c.entity} as a client of {r.name}.",
+                    checked=[f"{ENRICH} news", f"{SEARCH} '{q}' ({k} results; bare co-mentions, profiles and third-party social posts ignored)"])
 
 
 def check_dates(c: Claim, r: Record) -> Finding:
@@ -361,16 +451,30 @@ def check_efficacy(c: Claim, r: Record) -> Finding:
     num = _fmt(c.number) if c.number is not None else ""
     q = f'"{r.name}" {num}%' if num else f'"{r.name}" {c.entity or ""}'
     res, at = r.search(q)
-    own = norm(r.domain or "")
+    # The page must name the company, the same figure AND what it measures
+    # ("damage"), so an unrelated "40% faster" elsewhere does not count.
+    subject = [w for w in norm(c.entity or c.text).split() if len(w) >= 4 and w not in _STOP]
     for x in res:
-        blob = f"{x.get('title', '')} {x.get('snippet', '')}"
-        if own and own in norm(host(x.get("url"))):
+        blob = f"{x.get('title', '')}. {x.get('snippet', '')}"
+        if classify(r, x.get("url")) != "independent":
             continue
-        if mentions(blob, r.name) and (not num or f"{num}%" in blob.replace(" %", "%")):
-            return Finding(c, "independently supported", f"{host(x['url'])} repeats the figure.",
-                           [Evidence(host(x["url"]), None, x.get("snippet") or x.get("title"), at, x["url"])])
+        # name, figure and subject must sit in the same fragment of the snippet
+        ok = False
+        for frag in re.split(r"\.\.\.|…|(?<=[.!?])\s+", blob):
+            if (mentions(frag, r.name) and (not num or f"{num}%" in frag.replace(" %", "%"))
+                    and (not subject or any(mentions(frag, w) for w in subject))):
+                ok = True
+                break
+        if not ok:
+            continue
+        return Finding(c, "independently supported", f"{host(x['url'])} repeats the figure.",
+                       [Evidence(host(x["url"]), None, x.get("snippet") or x.get("title"), at, x["url"])])
     return _pending(c, "self-reported", "Only the company states this figure; no independent source found.",
-                    checked=[f"{SEARCH} '{q}' ({len(res)} results)"])
+                    checked=[f"{SEARCH} '{q}' ({len(res)} results; social posts and the company's own pages don't count)"])
+
+
+_STOP = {"cuts", "reduces", "lowers", "improves", "increases", "boosts", "saves", "with", "from", "that", "this",
+         "your", "their", "inventory", "costs", "cost", "time", "rate", "rates", "percent"}
 
 
 def check_forward(c: Claim, r: Record) -> Finding:
@@ -408,7 +512,8 @@ def check_premise(c: Claim, r: Record) -> Finding:
         ev.append(Evidence(ENRICH, "headcount.by_region_absolute", _short([f"{k}: {v}" for k, v in region_hits.items()]), r.retrieved_at))
     if recent_jobs:
         return Finding(c, "false premise",
-                       f"{len(recent_jobs)} job posts in {place} in the last 120 days; the site looks active.", ev,
+                       f"{len(recent_jobs)} job post{'s' if len(recent_jobs) != 1 else ''} in {place} in the last 120 days"
+                       f" (latest {recent_jobs[0][0]:%d %b %Y}); the company is still active there.", ev,
                        request=request_for(c)[0])
     if addrs or region_hits:
         return _pending(c, "unsupported premise", f"{place} is still on record and nothing shows a closure.", ev)

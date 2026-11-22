@@ -81,7 +81,9 @@ def llm_available() -> bool:
 
 
 def extract(text: str, *, company: str, kind: str = "deck", usage: dict | None = None) -> list[Claim]:
-    text = (text or "").strip()
+    from .htmltext import to_text
+
+    text = to_text(text or "").strip()
     if not text:
         return []
     raw = None
@@ -91,11 +93,13 @@ def extract(text: str, *, company: str, kind: str = "deck", usage: dict | None =
         except Exception as e:  # never let the LLM take the pipeline down
             log.warning("LLM extraction failed, falling back to rules: %s", e)
     if raw is None:
-        raw = _extract_rules(text)
+        raw = _extract_rules(text, kind=kind)
     claims = []
     for i, d in enumerate(raw):
         d = {**d, "id": f"{kind[:1]}{i + 1}", "source": kind}
         if d.get("type") not in CLAIM_TYPES:
+            continue
+        if d["type"] == "premise" and kind != "deck":  # only the analyst's own questions carry premises
             continue
         claims.append(Claim.from_dict(d))
     return claims
@@ -133,6 +137,11 @@ STATE_ABBR = {
 
 NUM = r"(\d[\d,]*(?:\.\d+)?)"
 
+GENERIC_SEGMENTS = {
+    "manufacturers", "distributors", "importers", "exporters", "brands", "retailers", "sellers", "d2c", "smes",
+    "enterprises", "startups", "businesses", "customers", "clients", "e-commerce", "ecommerce", "fmcg", "b2b", "b2c",
+}
+
 
 def _n(s: str) -> float:
     return float(s.replace(",", ""))
@@ -151,7 +160,7 @@ def _sentences(text: str) -> list[str]:
     return [p.strip(" -*\t") for p in parts if p and p.strip(" -*\t")]
 
 
-def _extract_rules(text: str) -> list[dict]:
+def _extract_rules(text: str, kind: str = "deck") -> list[dict]:
     out: list[dict] = []
 
     def add(span, type_, **kw):
@@ -162,7 +171,13 @@ def _extract_rules(text: str) -> list[dict]:
 
     for s in _sentences(text):
         low = s.lower()
+        if len(s) > 400:  # not a sentence (minified text, data blobs)
+            continue
+        if kind != "deck" and len(s.split()) < 5:  # UI labels and mock-up numbers ("5 cities"), not statements
+            continue
         if s.endswith("?"):
+            if kind != "deck":
+                continue
             m = re.search(r"(clos\w*|shut\w*|exit\w*|wound down|lost)\s+(?:down\s+)?(?:their|the|its)?\s*([A-Z][\w]+)?", s)
             place = m.group(2) if m and m.group(2) else None
             if not place:
@@ -178,14 +193,16 @@ def _extract_rules(text: str) -> list[dict]:
             add(s, "workforce", metric="employees", number=_n(m.group(1)))
         if m := re.search(r"([+-]?\d+(?:\.\d+)?)\s*%\s*(?:yoy|year[- ]on[- ]year|y-o-y|annual growth|growth)", low):
             add(s, "growth", metric="yoy_growth_pct", number=float(m.group(1)))
-        if m := re.search(NUM + r"\s+(warehouses?|facilities|fulfil?ment cent(?:er|re)s?|hubs?|sites|locations|offices)(?:\s+(?:in|across)\s+([A-Za-z][A-Za-z ]+?))?(?:[,.;]|$|\s+and\b)", s, re.I):
+        if m := re.search(NUM + r"\s+(?i:(warehouses?|facilities|fulfil?ment cent(?:er|re)s?|hubs?|sites|locations|offices))"
+                          r"(?:\s+(?i:in|across)\s+([A-Z][A-Za-z]+(?:\s+[A-Z][A-Za-z]+)*))?\b", s):
             metric = "warehouses" if m.group(2).lower().startswith(("warehouse", "fulfil", "facilit", "hub")) else "sites"
             add(s, "footprint", metric=metric, number=_n(m.group(1)), place=_place(m.group(3)))
         if m := re.search(r"(?:cities)\b", low):
-            if c := re.search(NUM + r"\+?\s+cities", low):
+            if c := re.search(r"(?<!tier )(?<!tier-)" + NUM + r"\+?\s+cities", low):
                 add(s, "footprint", metric="cities", number=_n(c.group(1)))
-        if m := re.search(r"(?:est\.?|established|founded|incorporated|since)\s*(?:in\s*)?((?:19|20)\d\d)", low):
-            if not re.search(r"live|operat|launch", low):
+        about_person = re.search(r"\b(he|she|his|her|him)\b", low)  # a bio line, not a company fact
+        if m := re.search(r"\b(?:est\.?|established|founded|incorporated)\s*(?:in\s*)?((?:19|20)\d\d)", low):
+            if not re.search(r"live|operat|launch", low) and not about_person:
                 add(s, "identity", metric="founded_year", number=float(m.group(1)), year=int(m.group(1)))
         if m := re.search(r"([A-Z][a-z]+)[- ]registered|headquartered in ([A-Z][a-z]+)|based (?:out of|in) ([A-Z][a-z]+)|HQ(?: in|:)? ([A-Z][a-z]+)", s):
             add(s, "identity", place=next(g for g in m.groups() if g))
@@ -197,8 +214,10 @@ def _extract_rules(text: str) -> list[dict]:
             add(s, "people", entity=next(g for g in m.groups() if g))
         if m := re.search(r"(?i:we serve|serving|serves|clients include|customers include|trusted by|work(?:ing)? with|partners? to)\s+([A-Z][\w&.\-]+(?:(?:,\s*|\s+and\s+)[A-Z][\w&.\-]+)*)", s):
             for name in re.split(r",\s*|\s+and\s+", m.group(1)):
-                add(s, "customers", entity=name.strip(" .,;"))
-        if m := re.search(r"(?:live|operating|operational|launched|in (?:operation|production)|running) since ((?:19|20)\d\d)", low):
+                name = name.strip(" .,;")
+                if name.lower() not in GENERIC_SEGMENTS:  # "Who We Serve: Manufacturers" is a segment, not a client
+                    add(s, "customers", entity=name)
+        if (m := re.search(r"(?:live|operating|operational|launched|in (?:operation|production)|running) since ((?:19|20)\d\d)", low)) and not about_person:
             add(s, "dates", year=int(m.group(1)), number=float(m.group(1)))
         if m := re.search(r"(cuts?|reduces?|lowers?|improves?|increases?|boosts?|saves?)\s+([\w\s-]{2,40}?)\s+(?:by\s+)?(?:up to\s+)?(\d+(?:\.\d+)?)\s*%", low):
             add(s, "efficacy", metric="efficacy_pct", number=float(m.group(3)), entity=m.group(2).strip())

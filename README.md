@@ -21,7 +21,7 @@ Tests: `.venv\Scripts\python -m pytest -q` (offline), and the kill test: `.venv\
 
 1. **Resolve the company.** Uses the domain if given (`/company/identify`). Name-only lookups that match several companies are narrowed by city; if the result is still ambiguous, the run is held until a person picks the right company.
 2. **Pull records once per run.** These are the company profile (`/company/enrich`: basic info, HQ and every office address, headcount and growth, founders/CXOs with work history, funding, news), recent job posts (`/job/search`), the homepage and about page (`/web/enrich/live`), and the domain's first Internet Archive snapshot.
-3. **Extract claims.** Claude reads the teaser into typed claims using a fixed schema. Without an Anthropic key, a rule-based extractor is used instead.
+3. **Extract claims.** Claude reads the teaser into typed claims using a fixed schema. Without an Anthropic key, a rule-based extractor is used instead. If the pasted text contains no checkable claims, the claims the company makes on its own website and profile are checked instead.
 4. **Check each claim with deterministic code.** The LLM never decides a verdict.
 5. **Build the sourced claims register.** Each row has the verdict, a one-line reason, the API field or URL, the exact value or passage, and the retrieval date.
 
