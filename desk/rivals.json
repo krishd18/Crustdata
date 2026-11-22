@@ -1,0 +1,232 @@
+{
+  "_README": [
+    "This file is an INDEX OF NAMES, not a source of facts.",
+    "",
+    "The brief forbids facts from model memory. So nothing in here may ever be",
+    "cited in an answer. Its only job is to widen a search ('also look for the",
+    "former name') and to raise ambiguity ('this string could mean two",
+    "companies'), both of which are safe: the worst case is a wasted query.",
+    "",
+    "Every relationship below is marked unverified. A relationship becomes",
+    "citable only after the resolver confirms it against a live source and",
+    "attaches a passage and a date. Treat 'acquired_brands' and 'parent_group'",
+    "as leads to check, never as answers."
+  ],
+  "rivals": [
+    {
+      "key": "delhivery",
+      "display_name": "Delhivery",
+      "domain": "delhivery.com",
+      "aliases": ["Delhivery Limited", "Delhivery Ltd"],
+      "former_names": [],
+      "acquired_brands": ["Spoton Logistics"],
+      "confusable_with": [],
+      "verified": false
+    },
+    {
+      "key": "blue_dart",
+      "display_name": "Blue Dart Express",
+      "domain": "bluedart.com",
+      "aliases": ["Blue Dart", "Blue Dart Express Limited"],
+      "former_names": [],
+      "parent_group": "DHL Group",
+      "acquired_brands": [],
+      "confusable_with": ["Blue Dart Aviation", "DHL Express India"],
+      "note_unverified": "Blue Dart Aviation is a separate entity from Blue Dart Express; a question naming only 'Blue Dart' may mean either.",
+      "verified": false
+    },
+    {
+      "key": "tci",
+      "display_name": "Transport Corporation of India",
+      "domain": "tcil.com",
+      "aliases": ["TCI", "TCIL", "Transport Corporation of India Limited"],
+      "former_names": [],
+      "confusable_with": ["TCI Express", "TCI Developers", "TCS"],
+      "note_unverified": "TCI Express is understood to be a separate listed entity demerged from TCI. 'TCI' alone is ambiguous and must not be resolved silently.",
+      "verified": false
+    },
+    {
+      "key": "mahindra_logistics",
+      "display_name": "Mahindra Logistics",
+      "domain": "mahindralogistics.com",
+      "aliases": ["Mahindra Logistics Limited", "MLL"],
+      "former_names": [],
+      "parent_group": "Mahindra Group",
+      "acquired_brands": ["Rivigo"],
+      "confusable_with": [
+        "Mahindra Group",
+        "Mahindra & Mahindra",
+        "Mahindra Lifespace",
+        "Mahindra Accelo"
+      ],
+      "note_unverified": "The group-versus-arm case. A question about 'Mahindra' is a question about which Mahindra entity, and answering it from group-level data is the trap.",
+      "verified": false
+    },
+    {
+      "key": "allcargo",
+      "display_name": "Allcargo Logistics",
+      "domain": "allcargologistics.com",
+      "aliases": ["Allcargo", "Allcargo Logistics Limited"],
+      "former_names": [],
+      "confusable_with": [
+        "Allcargo Gati",
+        "Allcargo Terminals",
+        "Allcargo Supply Chain",
+        "ECU Worldwide"
+      ],
+      "note_unverified": "The Allcargo group is understood to have demerged into several listed entities. Which one a question means is rarely stated.",
+      "verified": false
+    },
+    {
+      "key": "gati",
+      "display_name": "Gati",
+      "domain": "gati.com",
+      "aliases": ["Gati Limited", "Gati-KWE", "Gati Kintetsu Express"],
+      "former_names": [],
+      "parent_group": "Allcargo",
+      "confusable_with": ["Allcargo Gati", "Gati Kausar"],
+      "note_unverified": "A rebrand case: jobs and news may appear under Gati, Gati-KWE or Allcargo Gati.",
+      "verified": false
+    },
+    {
+      "key": "rivigo",
+      "display_name": "Rivigo",
+      "domain": "rivigo.com",
+      "aliases": ["Rivigo Services"],
+      "former_names": [],
+      "acquired_by_unverified": "Mahindra Logistics",
+      "confusable_with": ["Mahindra Logistics"],
+      "note_unverified": "The acquired-brand case: listings may still appear under the old name after an acquisition. Verify the current owner before answering anything about Rivigo as an independent company.",
+      "verified": false
+    },
+    {
+      "key": "spoton",
+      "display_name": "Spoton Logistics",
+      "domain": "spoton.co.in",
+      "aliases": ["Spoton"],
+      "acquired_by_unverified": "Delhivery",
+      "confusable_with": ["Delhivery"],
+      "note_unverified": "Second acquired-brand case. Same handling as Rivigo.",
+      "verified": false
+    },
+    {
+      "key": "safexpress",
+      "display_name": "Safexpress",
+      "domain": "safexpress.com",
+      "aliases": ["Safexpress Private Limited"],
+      "verified": false
+    },
+    {
+      "key": "vrl",
+      "display_name": "VRL Logistics",
+      "domain": "vrlgroup.in",
+      "aliases": ["VRL", "VRL Logistics Limited", "Vijayanand Roadlines"],
+      "confusable_with": ["VRL Group", "VRL Media"],
+      "verified": false
+    },
+    {
+      "key": "concor",
+      "display_name": "Container Corporation of India",
+      "domain": "concorindia.co.in",
+      "aliases": ["CONCOR", "Concor"],
+      "verified": false
+    },
+    {
+      "key": "dtdc",
+      "display_name": "DTDC Express",
+      "domain": "dtdc.in",
+      "aliases": ["DTDC", "DTDC Express Limited"],
+      "verified": false
+    },
+    {
+      "key": "ecom_express",
+      "display_name": "Ecom Express",
+      "domain": "ecomexpress.in",
+      "aliases": ["Ecom Express Limited", "EcomExpress"],
+      "verified": false
+    },
+    {
+      "key": "xpressbees",
+      "display_name": "Xpressbees",
+      "domain": "xpressbees.com",
+      "aliases": ["XpressBees", "Busybees Logistics Solutions"],
+      "note_unverified": "Operating brand and registered legal name are understood to differ; a registry lookup on the brand may return nothing.",
+      "verified": false
+    },
+    {
+      "key": "shadowfax",
+      "display_name": "Shadowfax",
+      "domain": "shadowfax.in",
+      "aliases": ["Shadowfax Technologies"],
+      "verified": false
+    },
+    {
+      "key": "snowman",
+      "display_name": "Snowman Logistics",
+      "domain": "snowman.in",
+      "aliases": ["Snowman Logistics Limited"],
+      "segment_hint": "cold chain",
+      "verified": false
+    },
+    {
+      "key": "gateway_distriparks",
+      "display_name": "Gateway Distriparks",
+      "domain": "gateway-distriparks.com",
+      "aliases": ["Gateway Distriparks Limited", "GDL"],
+      "verified": false
+    },
+    {
+      "key": "tvs_scs",
+      "display_name": "TVS Supply Chain Solutions",
+      "domain": "tvsscs.com",
+      "aliases": ["TVS SCS", "TVS Logistics"],
+      "former_names": ["TVS Logistics Services"],
+      "confusable_with": ["TVS Motor", "TVS Group", "TVS Electronics"],
+      "note_unverified": "Both a rebrand case and a group-versus-arm case.",
+      "verified": false
+    },
+    {
+      "key": "om_logistics",
+      "display_name": "Om Logistics",
+      "domain": "omlogistics.co.in",
+      "aliases": ["Om Logistics Limited"],
+      "verified": false
+    },
+    {
+      "key": "sical",
+      "display_name": "Sical Logistics",
+      "domain": "sical.in",
+      "aliases": ["Sical", "Sical Logistics Limited"],
+      "verified": false
+    },
+    {
+      "key": "stellar_value_chain",
+      "display_name": "Stellar Value Chain Solutions",
+      "domain": "stellarvaluechain.com",
+      "aliases": ["Stellar Value Chain"],
+      "verified": false
+    },
+    {
+      "key": "leap_india",
+      "display_name": "LEAP India",
+      "domain": "leapindia.net",
+      "aliases": ["LEAP India Private Limited"],
+      "verified": false
+    },
+    {
+      "key": "holisol",
+      "display_name": "Holisol Logistics",
+      "domain": "holisollogistics.com",
+      "aliases": ["Holisol"],
+      "verified": false
+    },
+    {
+      "key": "future_supply_chain",
+      "display_name": "Future Supply Chain Solutions",
+      "domain": "futuresupplychains.com",
+      "aliases": ["FSC", "Future Supply Chain"],
+      "confusable_with": ["Future Group", "Future Retail"],
+      "verified": false
+    }
+  ]
+}
