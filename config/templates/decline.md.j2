@@ -1,6 +1,6 @@
 Subject: Thank you — {{ company.name }}
 
-Dear {{ recipient.name | default("team") }},
+Dear {{ recipient.name or "team" }},
 
 Thank you for your time and materials. We will not be taking this forward at present. {{ optional_reason | default("") }}
 

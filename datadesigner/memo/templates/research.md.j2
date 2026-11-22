@@ -1,0 +1,44 @@
+# RESEARCH MEMO · {{ memo_id }}
+**{{ title }}** · as of {{ as_of }} · R3 · status **{{ a.status }}** · confidence **{{ a.confidence }}**{% if windows %} · window {% for w in windows %}{{ w.start }} → {{ w.end }}{% endfor %}{% endif %}
+
+## 1 · Answer
+{{ a.answer }}
+{% for c in a.caveats %}
+> {{ c }}{% endfor %}
+
+## 2 · How the question was read
+| Phrase | Intent | Parameter | Role | Origin |
+|---|---|---|---|---|
+{% for r in card.rows %}{% for p in r.parameters %}| {{ r.phrase }} | {{ r.intent }} | {{ p.name }}{% if p.field %} `{{ p.field }} {{ p.operator or '' }} {{ p.value if p.value is not none else '' }}`{% elif p.value is not none %} {{ p.value }}{% endif %} | {{ p.role }} | {{ p.origin }} |
+{% endfor %}{% endfor %}
+## 3 · Results
+{% if a.family == "FIND_LIST" %}| # | Company | HQ | Founded | Staff before → now | Growth | B2B evidence | Founders → before |
+|---|---|---|---|---|---|---|---|
+{% for r in a.rows %}| {{ loop.index }} | {{ r.entity.name }} | {{ r.entity.hq or '—' }} | {{ r.attributes.founded.value }} {{ r.attributes.founded.badge }} {{ r.attributes.founded.code }} | {{ r.attributes.headcount.before }} → {{ r.attributes.headcount.now }} | +{{ r.attributes.headcount.growth_pct }}% {{ r.criteria.growth.badge }} {{ r.criteria.growth.code }} | {{ r.criteria.b2b.badge if r.criteria.b2b else '' }} "{{ (r.criteria.b2b.passage or '')[:90] if r.criteria.b2b else '' }}" | {% for f in r.attributes.founders.value %}{{ f.name }} {{ f.badge }}{% for p in f.prior_roles %} · {{ p.text }} {{ p.badge }} {{ p.code }}{% endfor %}{% if not loop.last %}; {% endif %}{% else %}⚪ N1 missing: founder record{% endfor %} |
+{% endfor %}{% else %}| # | Company | Deduped postings | Raw | Share of its postings | Sector evidence | Top themes |
+|---|---|---|---|---|---|---|
+{% for r in a.rows %}| {{ loop.index }} | {{ r.entity.name }} | {{ r.postings_deduped }} | {{ r.postings_raw }} | {{ r.share }}% | {{ r.sector.badge }} "{{ (r.sector.passage or r.sector.label)[:80] }}" | {% for t in r.themes[:3] %}{{ t.label }} ({{ t.n }}){% if not loop.last %} · {% endif %}{% endfor %} |
+{% endfor %}{% endif %}
+{% if a.inferences %}## 4 · What the hiring suggests
+{% for i in a.inferences %}- **{{ i.company }}** — {{ i.statement }} *{{ i.label }}.*
+{% endfor %}{% endif %}
+## 5 · Near-misses (never padded in)
+{% for n in a.excluded_near_misses %}- {{ n.name }} — {{ n.criterion }}: {{ n.reason }}
+{% else %}- none
+{% endfor %}
+## 6 · Premise checks
+{% for p in a.premise_checks %}- "{{ p.premise }}" → {{ p.badge }} {{ p.cls }} {{ p.code }}{% if p.missing %} · missing: {{ p.missing }}{% endif %}
+{% else %}- no premises in the question
+{% endfor %}
+## 7 · Method, R3, sources, cost
+- R3: Q1 {{ a.r3.Q1 }} · Q2a {{ a.r3.Q2a }} · Q2b {{ a.r3.Q2b }} · Q3 {{ a.r3.q3_text }} · Q4 {{ a.r3.Q4 }} · Q5 {{ a.r3.Q5 }}
+- Requests (keys redacted): {% for r in a.method.requests %}`{{ r.endpoint }}`{% if not loop.last %} · {% endif %}{% endfor %}
+- Sources: {{ a.evidence|length }} quote-locked facts (Crustdata T2 unless marked); record dates in the appendix.
+- Cost: {{ cost.credits }} Crustdata credits · {{ cost.llm_tokens_in }}+{{ cost.llm_tokens_out }} Claude tokens · ₹{{ cost.inr }}
+- Config {{ config_version }} · rubric {{ rubric_version }}
+
+### Appendix · evidence
+| ID | Source | Field / passage | Value | Record date | Tier |
+|---|---|---|---|---|---|
+{% for e in a.evidence[:60] %}| {{ e.evidence_id }} | {{ e.source }} | `{{ (e.passage_or_field or '')[:70] }}` | {{ (e.value|string)[:40] }} | {{ e.record_date or '—' }} | {{ e.tier }} |
+{% endfor %}

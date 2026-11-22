@@ -1,0 +1,8 @@
+{
+ "cache_read_tokens": 0,
+ "model": "claude-sonnet-5",
+ "output_json": "{\"label\":\"not_fintech\",\"confidence\":\"high\",\"passage\":\"IDFC FIRST Bank is building a world-class Bank in India, founded on the principles of Ethical, Digital and Social Good Banking. It is one of India\u2019s fast-growing private banks, combining modern banking with fintech-grade technology.\",\"source\":\"crustdata.company_enrich.basic_info.description\"}",
+ "request_id": "req_011ChHyWhzHyyY7gRufpXyEi",
+ "tokens_in": 1533,
+ "tokens_out": 125
+}

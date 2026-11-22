@@ -1,0 +1,8 @@
+{
+ "cache_read_tokens": 0,
+ "model": "claude-sonnet-5",
+ "output_json": "{\"label\":\"not_fintech\",\"confidence\":\"high\",\"passage\":\"Our new technology and operations hub in Hyderabad, CIBC India, marks a significant step in our global innovation journey.\",\"source\":\"crustdata\"}",
+ "request_id": "req_011ChHyWoPEQxbaipngwEQ95",
+ "tokens_in": 1391,
+ "tokens_out": 72
+}

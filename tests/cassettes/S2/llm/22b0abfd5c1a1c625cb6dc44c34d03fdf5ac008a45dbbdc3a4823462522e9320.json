@@ -1,0 +1,8 @@
+{
+ "cache_read_tokens": 0,
+ "model": "claude-sonnet-5",
+ "output_json": "{\"label\":\"not_fintech\",\"confidence\":\"high\",\"passage\":\"Maveric Systems is a banking-exclusive technology specialist with over 25 years of domain depth, partnering with global financial institutions to engineer trust in AI-first banking.\",\"source\":\"crustdata.company_enrich.basic_info.description\"}",
+ "request_id": "req_011ChHyYDzMKixVgdtmJ5peS",
+ "tokens_in": 1112,
+ "tokens_out": 103
+}

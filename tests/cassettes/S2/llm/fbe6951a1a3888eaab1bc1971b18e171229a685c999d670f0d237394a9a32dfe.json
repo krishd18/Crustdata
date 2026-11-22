@@ -1,0 +1,8 @@
+{
+ "cache_read_tokens": 0,
+ "model": "claude-sonnet-5",
+ "output_json": "{\"label\":\"fintech\",\"confidence\":\"high\",\"passage\":\"PhonePe Limited (Formerly PhonePe Private Limited) is a technology company that builds digital platforms for Payments, Digital Distribution Services and Financial Services.\",\"source\":\"crustdata.company_enrich.basic_info.description\"}",
+ "request_id": "req_011ChHyWNvpU5L6g3693w7kC",
+ "tokens_in": 1154,
+ "tokens_out": 102
+}

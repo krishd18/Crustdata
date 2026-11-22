@@ -1,0 +1,51 @@
+# COMPANY IM · {{ memo_id }} · {{ company.name }}
+CIN {{ company.cin or '—' }} · {{ profile }} · rubric {{ d.rubric_id }} {{ d.version }} (sha {{ d.sha256[:8] }}) · as of {{ as_of }} · **{{ status }}**
+
+## 1 · Gates
+{% for g in d.gates %}{{ '✅' if g.passed else '⛔' }} {{ g.id }} {{ g.detail }}{% if not loop.last %} · {% endif %}{% endfor %}
+
+## 2 · Scorecard (R2, {{ profile }} profile)
+| Criterion | Value | Points floor / ceiling | Weight | Floor | Ceiling |
+|---|---|---|---|---|---|
+{% for c in d.criteria if c.weight %}| {{ c.id }} {{ names[c.id] }} | {{ c.value }} | {{ c.points_floor }} / {{ c.points_ceiling }} | {{ c.weight }} | {{ '%.2f'|format(c.floor) }} | {{ '%.2f'|format(c.ceiling) }} |
+{% endfor %}| **Total** | coverage {{ d.coverage }}% | | 100 | **{{ '%.2f'|format(d.floor) }}** | **{{ '%.2f'|format(d.ceiling) }}** |
+
+## 3 · Result
+Score {{ '%.2f'|format(d.floor) }}–{{ '%.2f'|format(d.ceiling) }} · {{ d.rule_applied }} → **{{ d.label }}**
+{% for r in d.requirements %}- Requirement {{ r.name }} ≥ {{ r.min }}: **{{ r.status }}** ({{ r.value }})
+{% endfor %}
+## 4 · Suggested decision: **{{ d.label }}**
+Leadership: **{{ people.verdict }}** ({{ people.composite }}/4){% if people.gaps %} — gap: {{ people.gaps|join(', ') }}{% endif %}.
+Regions: {% for r in market.regions if r.fp01 == 'Yes' %}{{ r.state }} ({{ r.zone }}){% if not loop.last %}, {% endif %}{% endfor %}; target share {{ market.rg02 }}% · network fit {{ market.rg03 }}% · RG-C {{ market.rg_c }}.
+Financial health: grade **{{ fin.grade }}** (pillar mean {{ fin.pillar_mean }}).
+
+**Conditions (by points each adds)**
+{% for c in d.conditions %}{{ loop.index }}. {{ c.ask }}{% if c.adds %} → +{{ '%.2f'|format(c.adds) }}{% endif %}{% if c.closes %} · closes {{ c.closes }}{% endif %}
+{% endfor %}
+{% if d.what_would_change %}**Would be {{ d.what_would_change.label }} if:** {{ d.what_would_change.asks|join(' + ') }} → floor {{ '%.2f'|format(d.what_would_change.floor) }}.{% endif %}
+
+*Suggestion only. Decision by: {{ decider }}.*
+
+## 5 · Your decision
+{% if decision %}Final: **{{ decision.final }}** by {{ decision.decided_by }}{% if decision.reason %} — reason: {{ decision.reason }}{% endif %}{% else %}Awaiting decision (accept, or override with a reason).{% endif %}
+
+## 6 · Deck fact-check (slide by slide)
+| Slide | Claim | Crit. | Class | Code | Evidence / missing |
+|---|---|---|---|---|---|
+{% for c in claims %}{% set v = vmap[c.claim_id] %}| {{ c.slide }} | {{ c.text }} | {{ '✓' if c.critical else '—' }} | {{ v.badge }} {{ v.cls }} | {{ v.code }} | {{ v.evidence_ids|join(', ') or ('missing: ' ~ v.missing if v.missing else '') }} |
+{% endfor %}Counts: {% for k, n in counts.items() %}{{ k }} {{ n }}{% if not loop.last %} · {% endif %}{% endfor %}
+
+## 7 · Leadership fit
+{% for k, x in people.lf.items() %}{{ k }} {{ x.value }} → {{ x.points }}{% if not loop.last %} · {% endif %}{% endfor %} → LF-C {{ people.composite }} **{{ people.verdict }}**
+
+## 8 · Financials
+{% for m in fin.metrics %}{{ m.id }} {{ m.value }} → {{ m.points }}{% if not loop.last %} · {% endif %}{% endfor %}
+Pillars: {% for k, v in fin.pillars.items() %}{{ k }} {{ v }}{% if not loop.last %} · {% endif %}{% endfor %}
+
+## 9 · Risks & mitigants
+{% for c in d.conditions if c.mitigation %}- {{ c.criterion }}: {{ c.ask }}
+{% else %}- no criterion at ≤ 1 point
+{% endfor %}
+## 10 · Sources & cost
+{% for e in evidence[:40] %}- {{ e.evidence_id }} · {{ e.source }} · "{{ (e.passage_or_field or '')[:80] }}" · {{ e.record_date or '—' }} · {{ e.tier }}{% if e.media_tier %} (media {{ e.media_tier }}){% endif %}
+{% endfor %}- Cost: {{ cost.credits }} credits · ₹{{ cost.inr }}

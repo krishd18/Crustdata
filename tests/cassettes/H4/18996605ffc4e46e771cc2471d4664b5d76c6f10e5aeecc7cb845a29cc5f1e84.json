@@ -1,0 +1,21 @@
+{
+ "body": {
+  "suggestions": [
+   {
+    "value": "Wealth Management"
+   }
+  ]
+ },
+ "endpoint": "company_autocomplete",
+ "headers": {
+  "content-type": "application/json",
+  "x-credits-used": "0"
+ },
+ "request_body": {
+  "field": "taxonomy.categories",
+  "limit": 50,
+  "query": "wealth"
+ },
+ "status": 200,
+ "url": "https://api.crustdata.com/company/search/autocomplete"
+}

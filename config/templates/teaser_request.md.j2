@@ -1,6 +1,6 @@
 Subject: Exploring a strategic conversation — {{ client.name }} × {{ company.name }}
 
-Dear {{ recipient.name | default("team") }},
+Dear {{ recipient.name or "team" }},
 
 {{ client.name }} runs third-party logistics across {{ client.regions | join(", ") }} and is looking to deepen its network in {{ mandate.region }}. {{ fact("operations_summary") }}
 

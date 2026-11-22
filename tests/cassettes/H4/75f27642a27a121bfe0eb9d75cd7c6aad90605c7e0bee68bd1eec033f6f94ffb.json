@@ -1,0 +1,48 @@
+{
+ "body": {
+  "suggestions": [
+   {
+    "value": "Insurance"
+   },
+   {
+    "value": "Health Insurance"
+   },
+   {
+    "value": "Life Insurance"
+   },
+   {
+    "value": "Auto Insurance"
+   },
+   {
+    "value": "Commercial Insurance"
+   },
+   {
+    "value": "Property Insurance"
+   },
+   {
+    "value": "InsurTech"
+   },
+   {
+    "value": "Insurance Agencies & Brokerages"
+   },
+   {
+    "value": "Insurance Carriers"
+   },
+   {
+    "value": "Insurance Agencies & Brokerage"
+   }
+  ]
+ },
+ "endpoint": "company_autocomplete",
+ "headers": {
+  "content-type": "application/json",
+  "x-credits-used": "0"
+ },
+ "request_body": {
+  "field": "taxonomy.categories",
+  "limit": 50,
+  "query": "insur"
+ },
+ "status": 200,
+ "url": "https://api.crustdata.com/company/search/autocomplete"
+}

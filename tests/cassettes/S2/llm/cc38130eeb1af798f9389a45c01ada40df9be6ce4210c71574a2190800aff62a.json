@@ -1,0 +1,8 @@
+{
+ "cache_read_tokens": 0,
+ "model": "claude-sonnet-5",
+ "output_json": "{\"label\":\"not_fintech\",\"confidence\":\"high\",\"passage\":\"LPL Financial is proud to open our Global Capability Center in Hyderabad with a team of ambitious, forward-thinking professionals who are ready to shape the future of financial services.\",\"source\":\"crustdata\"}",
+ "request_id": "req_011ChHyXhFAm1kgzLp7d9Hdn",
+ "tokens_in": 1103,
+ "tokens_out": 91
+}

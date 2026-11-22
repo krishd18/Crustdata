@@ -1,0 +1,8 @@
+{
+ "cache_read_tokens": 0,
+ "model": "claude-sonnet-5",
+ "output_json": "{\"label\":\"not_fintech\",\"confidence\":\"high\",\"passage\":\"one of the fastest growing and most diversified NBFCs in India\",\"source\":\"crustdata\"}",
+ "request_id": "req_011ChHyWHQSGNFPGy895WgAT",
+ "tokens_in": 1091,
+ "tokens_out": 53
+}

@@ -1,0 +1,8 @@
+{
+ "cache_read_tokens": 0,
+ "model": "claude-sonnet-5",
+ "output_json": "{\"label\":\"fintech\",\"confidence\":\"medium\",\"passage\":\"Our mission is to empower financial freedom for all.Based out of the Embassy TechVillage in Bangalore, Empower India serves our customers around the clock by providing reliable technology support\",\"source\":\"crustdata.company_enrich.basic_info.description\"}",
+ "request_id": "req_011ChHyXcnXuvdxxJN3aX3SM",
+ "tokens_in": 906,
+ "tokens_out": 104
+}

@@ -1,0 +1,130 @@
+{
+ "claude": {
+  "available": [
+   "claude-fable-5-2",
+   "claude-haiku-5-5",
+   "claude-sonnet-5-5",
+   "claude-opus-5-5",
+   "claude-fable-5-1",
+   "claude-opus-5",
+   "claude-sonnet-5",
+   "claude-fable-5",
+   "claude-opus-4-8",
+   "claude-opus-4-7",
+   "claude-sonnet-4-6",
+   "claude-opus-4-6",
+   "claude-opus-4-5-20251101",
+   "claude-haiku-4-5-20251001"
+  ],
+  "roles": {
+   "adversarial": {
+    "accepted": [
+     "output_config.format",
+     "effort"
+    ],
+    "model": "claude-sonnet-5"
+   },
+   "classify": {
+    "accepted": [
+     "output_config.format",
+     "effort"
+    ],
+    "model": "claude-sonnet-5"
+   },
+   "judge": {
+    "accepted": [
+     "output_config.format",
+     "effort"
+    ],
+    "model": "claude-sonnet-5"
+   },
+   "reason": {
+    "accepted": [
+     "output_config.format",
+     "effort"
+    ],
+    "model": "claude-sonnet-5"
+   }
+  }
+ },
+ "crustdata": {
+  "api_version": "2025-11-01",
+  "endpoints": {
+   "/agent/query": {
+    "base_credits": 0.012,
+    "rpm": 100,
+    "status": "enabled"
+   },
+   "/company/enrich": {
+    "base_credits": 2.0,
+    "rpm": 5,
+    "status": "enabled"
+   },
+   "/company/identify": {
+    "base_credits": 0.2,
+    "rpm": 5,
+    "status": "enabled"
+   },
+   "/company/search": {
+    "base_credits": 0.03,
+    "rpm": 5,
+    "status": "enabled"
+   },
+   "/company/search/autocomplete": {
+    "base_credits": null,
+    "rpm": 300,
+    "status": "enabled"
+   },
+   "/job/search": {
+    "base_credits": 0.03,
+    "rpm": 5,
+    "status": "enabled"
+   },
+   "/person/enrich": {
+    "base_credits": 1.0,
+    "rpm": 5,
+    "status": "enabled"
+   },
+   "/person/identify": {
+    "base_credits": 1.0,
+    "rpm": 5,
+    "status": "enabled"
+   },
+   "/person/search": {
+    "base_credits": 0.03,
+    "rpm": 5,
+    "status": "enabled"
+   },
+   "/person/search/autocomplete": {
+    "base_credits": null,
+    "rpm": 300,
+    "status": "enabled"
+   },
+   "/social_post/search": {
+    "base_credits": 0.5,
+    "rpm": 100,
+    "status": "enabled"
+   },
+   "/web/enrich/live": {
+    "base_credits": 1.0,
+    "rpm": 10,
+    "status": "enabled"
+   },
+   "/web/search/live": {
+    "base_credits": 1.0,
+    "rpm": 10,
+    "status": "enabled"
+   }
+  },
+  "industries_software": [
+   "Software Development",
+   "IT System Custom Software Development",
+   "Mobile Computing Software Products",
+   "Embedded Software Products",
+   "Desktop Computing Software Products",
+   "Data Security Software Products",
+   "Computer Software"
+  ],
+  "token_limit_rpm": 100
+ }
+}

@@ -1,8 +1,0 @@
-{
- "cache_read_tokens": 0,
- "model": "claude-sonnet-5",
- "output_json": "{\"label\":\"not_fintech\",\"confidence\":\"high\",\"passage\":\"a global intelligence partner to enterprises across healthcare, banking and financial services, communications, media, technology, retail, and utilities\",\"source\":\"crustdata\"}",
- "request_id": "req_011ChHxkPiU5EvWD4YRwmPBR",
- "tokens_in": 1206,
- "tokens_out": 74
-}

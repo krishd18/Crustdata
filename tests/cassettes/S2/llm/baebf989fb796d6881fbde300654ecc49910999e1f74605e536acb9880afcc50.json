@@ -1,8 +1,0 @@
-{
- "cache_read_tokens": 0,
- "model": "claude-sonnet-5",
- "output_json": "{\"label\":\"fintech\",\"confidence\":\"high\",\"passage\":\"We\u2019re building every product from scratch to be fast, transparent, and feel good\",\"source\":\"crustdata\"}",
- "request_id": "req_011ChHxkx2RF2jUPafEBCA6Y",
- "tokens_in": 1201,
- "tokens_out": 54
-}

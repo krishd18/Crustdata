@@ -1,0 +1,9 @@
+# Back-test thresholds (IMPLEMENTATION_PLAN §4.2A). Never relaxed to make a test pass.
+A3: {lookalike_merges: 0}
+A6: {planted_fake_passages_accepted: 0}
+A7: {wrong_verified_or_false: 0}
+A11: {rows_violating_criterion: 0, padded_rows: 0, unlabelled_inferences: 0}
+A12: {decisions_differing_from_reference: 0}
+A13: {numbers_not_in_ledger: 0}
+A14: {sends_without_approval: 0, duplicate_sends_in_kill_trials: 0}
+System: {e2e_pass_rate: 0.90, wrong_verified_or_false: 0, determinism_runs_identical: 3}

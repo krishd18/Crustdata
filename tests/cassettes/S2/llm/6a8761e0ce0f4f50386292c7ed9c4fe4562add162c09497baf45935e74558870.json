@@ -1,8 +1,0 @@
-{
- "cache_read_tokens": 0,
- "model": "claude-sonnet-5",
- "output_json": "{\"label\":\"not_fintech\",\"confidence\":\"high\",\"passage\":\"Established in 1985, the Kotak Mahindra Group is one of India\u2019s leading financial services conglomerates.\",\"source\":\"crustdata\"}",
- "request_id": "req_011ChHxkV99ab5bmcQfcrGcm",
- "tokens_in": 1265,
- "tokens_out": 69
-}

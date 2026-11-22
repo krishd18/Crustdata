@@ -1,8 +1,0 @@
-{
- "cache_read_tokens": 0,
- "model": "claude-sonnet-5",
- "output_json": "{\"label\":\"not_fintech\",\"confidence\":\"high\",\"passage\":\"Crowe Capabilities Center \u2013 India (formerly known as Crowe Horwath IT Services LLP), is located in New Delhi and Hyderabad, offering advisory, consultancy, and support services for Crowe Advisory LLC on matters pertaining to finance, tax, accounting, audit, technical, or nontechnical support services.\",\"source\":\"crustdata.company_enrich.basic_info.description\"}",
- "request_id": "req_011ChHxmUvHSMhVdDZn3b4XU",
- "tokens_in": 874,
- "tokens_out": 156
-}

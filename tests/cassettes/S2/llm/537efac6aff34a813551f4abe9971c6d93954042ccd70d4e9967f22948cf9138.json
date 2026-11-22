@@ -1,8 +1,0 @@
-{
- "cache_read_tokens": 0,
- "model": "claude-sonnet-5",
- "output_json": "{\"label\":\"not_fintech\",\"confidence\":\"high\",\"passage\":\"Founded in 1987 as India\u2019s first credit rating agency, our expertise today extends across businesses: Crisil Ratings, Crisil Intelligence, Crisil Coalition Greenwich and Crisil Integral IQ.\",\"source\":\"crustdata\"}",
- "request_id": "req_011ChHxn9aEApXUkr6h56JTu",
- "tokens_in": 1124,
- "tokens_out": 109
-}

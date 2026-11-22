@@ -1,8 +1,0 @@
-{
- "cache_read_tokens": 0,
- "model": "claude-sonnet-5",
- "output_json": "{\"label\":\"not_fintech\",\"confidence\":\"high\",\"passage\":\"Infosys is a global leader in next-generation digital services and consulting.\",\"source\":\"crustdata.company_enrich.basic_info.description\"}",
- "request_id": "req_011ChHxjajxjKSSEb3TxuKKm",
- "tokens_in": 1112,
- "tokens_out": 68
-}

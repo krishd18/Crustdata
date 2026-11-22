@@ -1,0 +1,510 @@
+{
+ "body": {
+  "aggregations": [
+   {
+    "buckets": [
+     {
+      "count": 138,
+      "key": 1097923,
+      "metadata": {
+       "company_name": "Societe Generale Global Solution Centre",
+       "company_website_domain": "societegenerale.in",
+       "linkedin_id": "9371944"
+      }
+     },
+     {
+      "count": 81,
+      "key": 519,
+      "metadata": {
+       "company_name": "Bajaj Finserv",
+       "company_website_domain": "bajajfinserv.in",
+       "linkedin_id": "1092003"
+      }
+     },
+     {
+      "count": 30,
+      "key": 5729,
+      "metadata": {
+       "company_name": "PhonePe",
+       "company_website_domain": "phonepe.com",
+       "linkedin_id": "10479149"
+      }
+     },
+     {
+      "count": 24,
+      "key": 17073090,
+      "metadata": {
+       "company_name": "Vanguard India",
+       "company_website_domain": "vanguard.in",
+       "linkedin_id": "108291840"
+      }
+     },
+     {
+      "count": 15,
+      "key": 715535,
+      "metadata": {
+       "company_name": "IDFC FIRST Bank",
+       "company_website_domain": "idfcfirst.bank.in",
+       "linkedin_id": "21175"
+      }
+     },
+     {
+      "count": 10,
+      "key": 2658,
+      "metadata": {
+       "company_name": "Kotak Mahindra Bank",
+       "company_website_domain": "kotak.bank.in",
+       "linkedin_id": "5632"
+      }
+     },
+     {
+      "count": 10,
+      "key": 28775005,
+      "metadata": {
+       "company_name": "CIBC India",
+       "company_website_domain": "talent500.com",
+       "linkedin_id": "111524963"
+      }
+     },
+     {
+      "count": 9,
+      "key": 32490825,
+      "metadata": {
+       "company_name": "PFI Innovation Centre India",
+       "company_website_domain": "pfi.com",
+       "linkedin_id": "112363992"
+      }
+     },
+     {
+      "count": 8,
+      "key": 7554,
+      "metadata": {
+       "company_name": "slice",
+       "company_website_domain": "slice.bank.in",
+       "linkedin_id": "30246063"
+      }
+     },
+     {
+      "count": 8,
+      "key": 920699,
+      "metadata": {
+       "company_name": "D. E. Shaw India Private Limited",
+       "company_website_domain": "deshawindia.com",
+       "linkedin_id": "2408262"
+      }
+     },
+     {
+      "count": 7,
+      "key": 6270709,
+      "metadata": {
+       "company_name": "Empower India",
+       "company_website_domain": "empower.com",
+       "linkedin_id": "13605589"
+      }
+     },
+     {
+      "count": 7,
+      "key": 26086772,
+      "metadata": {
+       "company_name": "LPL Financial Global Capability Center",
+       "company_website_domain": "lplfinancial.in",
+       "linkedin_id": "110269034"
+      }
+     },
+     {
+      "count": 6,
+      "key": 6063938,
+      "metadata": {
+       "company_name": "Crowe Capabilities Center – India",
+       "company_website_domain": "crowe.com",
+       "linkedin_id": "29065298"
+      }
+     },
+     {
+      "count": 5,
+      "key": 1041959,
+      "metadata": {
+       "company_name": "super.money",
+       "company_website_domain": "super.money",
+       "linkedin_id": "99154856"
+      }
+     },
+     {
+      "count": 5,
+      "key": 1510820,
+      "metadata": {
+       "company_name": "AXA Global Business Services (AXA GBS)",
+       "company_website_domain": "axagbs.com",
+       "linkedin_id": "104751225"
+      }
+     },
+     {
+      "count": 5,
+      "key": 6039298,
+      "metadata": {
+       "company_name": "Kodo",
+       "company_website_domain": "kodo.com",
+       "linkedin_id": "28718046"
+      }
+     },
+     {
+      "count": 4,
+      "key": 1073,
+      "metadata": {
+       "company_name": "Crisil",
+       "company_website_domain": "crisil.com",
+       "linkedin_id": "163261"
+      }
+     },
+     {
+      "count": 4,
+      "key": 8972,
+      "metadata": {
+       "company_name": "Snapmint",
+       "company_website_domain": "snapmint.com",
+       "linkedin_id": "33237670"
+      }
+     },
+     {
+      "count": 4,
+      "key": 6256905,
+      "metadata": {
+       "company_name": "First Citizens India",
+       "company_website_domain": "firstcitizensindia.com",
+       "linkedin_id": "96648196"
+      }
+     },
+     {
+      "count": 4,
+      "key": 17454139,
+      "metadata": {
+       "company_name": "Tradl AI",
+       "company_website_domain": "tradl.in",
+       "linkedin_id": "109979294"
+      }
+     },
+     {
+      "count": 4,
+      "key": 32596696,
+      "metadata": {
+       "company_name": "Charles Schwab India",
+       "company_website_domain": "schwabjobs.com",
+       "linkedin_id": "116454037"
+      }
+     },
+     {
+      "count": 3,
+      "key": 8574,
+      "metadata": {
+       "company_name": "Paisabazaar",
+       "company_website_domain": "paisabazaar.com",
+       "linkedin_id": "13179651"
+      }
+     },
+     {
+      "count": 3,
+      "key": 11191,
+      "metadata": {
+       "company_name": "SBI Card",
+       "company_website_domain": "sbicard.com",
+       "linkedin_id": "2713078"
+      }
+     },
+     {
+      "count": 3,
+      "key": 17840,
+      "metadata": {
+       "company_name": "SHRIRAM GENERAL INSURANCE CO. LTD.",
+       "company_website_domain": "shriramgi.com",
+       "linkedin_id": "555501"
+      }
+     },
+     {
+      "count": 3,
+      "key": 622954,
+      "metadata": {
+       "company_name": "WeRize",
+       "company_website_domain": "werize.com",
+       "linkedin_id": "14560906"
+      }
+     },
+     {
+      "count": 3,
+      "key": 681942,
+      "metadata": {
+       "company_name": "Blackhawk Network India",
+       "company_website_domain": "blackhawknetwork.com",
+       "linkedin_id": "31213370"
+      }
+     },
+     {
+      "count": 3,
+      "key": 1139724,
+      "metadata": {
+       "company_name": "FatakPay",
+       "company_website_domain": "fatakpay.com",
+       "linkedin_id": "77054460"
+      }
+     },
+     {
+      "count": 3,
+      "key": 2072534,
+      "metadata": {
+       "company_name": "PlusWealth Group",
+       "company_website_domain": "pluswealth.com",
+       "linkedin_id": "74464507"
+      }
+     },
+     {
+      "count": 2,
+      "key": 1914,
+      "metadata": {
+       "company_name": "HDFC Bank",
+       "company_website_domain": "hdfc.bank.in",
+       "linkedin_id": "164151"
+      }
+     },
+     {
+      "count": 2,
+      "key": 2186,
+      "metadata": {
+       "company_name": "IndusInd Bank",
+       "company_website_domain": "indusind.bank.in",
+       "linkedin_id": "30265"
+      }
+     },
+     {
+      "count": 2,
+      "key": 5708,
+      "metadata": {
+       "company_name": "Navi",
+       "company_website_domain": "navi.com",
+       "linkedin_id": "40662386"
+      }
+     },
+     {
+      "count": 2,
+      "key": 5726,
+      "metadata": {
+       "company_name": "CRED",
+       "company_website_domain": "cred.club",
+       "linkedin_id": "14485479"
+      }
+     },
+     {
+      "count": 2,
+      "key": 5778,
+      "metadata": {
+       "company_name": "Rupeek",
+       "company_website_domain": "rupeek.com",
+       "linkedin_id": "10045372"
+      }
+     },
+     {
+      "count": 2,
+      "key": 5789,
+      "metadata": {
+       "company_name": "CoinDCX",
+       "company_website_domain": "coindcx.com",
+       "linkedin_id": "28154426"
+      }
+     },
+     {
+      "count": 2,
+      "key": 5852,
+      "metadata": {
+       "company_name": "Kissht",
+       "company_website_domain": "kissht.com",
+       "linkedin_id": "13216565"
+      }
+     },
+     {
+      "count": 2,
+      "key": 5895,
+      "metadata": {
+       "company_name": "KrazyBee Services Limited",
+       "company_website_domain": "",
+       "linkedin_id": "80858895"
+      }
+     },
+     {
+      "count": 2,
+      "key": 6228,
+      "metadata": {
+       "company_name": "Northern Arc Capital",
+       "company_website_domain": "northernarc.com",
+       "linkedin_id": "18491847"
+      }
+     },
+     {
+      "count": 2,
+      "key": 6597,
+      "metadata": {
+       "company_name": "Ujjivan Small Finance Bank",
+       "company_website_domain": "ujjivansfb.bank.in",
+       "linkedin_id": "735470"
+      }
+     },
+     {
+      "count": 2,
+      "key": 7095,
+      "metadata": {
+       "company_name": "Digit Insurance",
+       "company_website_domain": "godigit.com",
+       "linkedin_id": "18073064"
+      }
+     },
+     {
+      "count": 2,
+      "key": 12469,
+      "metadata": {
+       "company_name": "Mintoak",
+       "company_website_domain": "mintoak.com",
+       "linkedin_id": "64700882"
+      }
+     },
+     {
+      "count": 2,
+      "key": 13185,
+      "metadata": {
+       "company_name": "Prudent Corporate Advisory Services Ltd.",
+       "company_website_domain": "prudentcorporate.com",
+       "linkedin_id": "1390368"
+      }
+     },
+     {
+      "count": 2,
+      "key": 21121,
+      "metadata": {
+       "company_name": "LoansJagat",
+       "company_website_domain": "loansjagat.com",
+       "linkedin_id": "14558391"
+      }
+     },
+     {
+      "count": 2,
+      "key": 609790,
+      "metadata": {
+       "company_name": "Grip Invest",
+       "company_website_domain": "gripinvest.in",
+       "linkedin_id": "31561140"
+      }
+     },
+     {
+      "count": 2,
+      "key": 611332,
+      "metadata": {
+       "company_name": "Credila Financial Services Limited",
+       "company_website_domain": "credila.com",
+       "linkedin_id": "105468288"
+      }
+     },
+     {
+      "count": 2,
+      "key": 632490,
+      "metadata": {
+       "company_name": "Tracxn",
+       "company_website_domain": "tracxn.com",
+       "linkedin_id": "3366835"
+      }
+     },
+     {
+      "count": 2,
+      "key": 686137,
+      "metadata": {
+       "company_name": "Angel One",
+       "company_website_domain": "angelone.in",
+       "linkedin_id": "62215"
+      }
+     },
+     {
+      "count": 2,
+      "key": 915584,
+      "metadata": {
+       "company_name": "Apex Group Ltd (India Branch)",
+       "company_website_domain": "apexgroup.com",
+       "linkedin_id": "26588172"
+      }
+     },
+     {
+      "count": 2,
+      "key": 1005527,
+      "metadata": {
+       "company_name": "Scapia",
+       "company_website_domain": "scapia.cards",
+       "linkedin_id": "95053677"
+      }
+     },
+     {
+      "count": 2,
+      "key": 1265061,
+      "metadata": {
+       "company_name": "Treelife",
+       "company_website_domain": "treelife.in",
+       "linkedin_id": "9212427"
+      }
+     },
+     {
+      "count": 2,
+      "key": 1313462,
+      "metadata": {
+       "company_name": "InCred Financial Services",
+       "company_website_domain": "incred.com",
+       "linkedin_id": "13183871"
+      }
+     }
+    ],
+    "field": "company.basic_info.company_id",
+    "type": "group_by"
+   }
+  ],
+  "job_listings": [],
+  "next_cursor": null,
+  "total_count": 508
+ },
+ "endpoint": "job_search",
+ "headers": {
+  "content-type": "application/json",
+  "x-credits-used": "0"
+ },
+ "request_body": {
+  "aggregations": [
+   {
+    "agg": "count",
+    "field": "company.basic_info.company_id",
+    "size": 50,
+    "type": "group_by"
+   }
+  ],
+  "filters": {
+   "conditions": [
+    {
+     "field": "company.locations.country",
+     "type": "=",
+     "value": "IND"
+    },
+    {
+     "field": "company.basic_info.industries",
+     "type": "in",
+     "value": [
+      "Financial Services"
+     ]
+    },
+    {
+     "field": "metadata.date_added",
+     "type": "=>",
+     "value": "2026-10-01"
+    },
+    {
+     "field": "job_details.category",
+     "type": "=",
+     "value": "Engineering"
+    }
+   ],
+   "op": "and"
+  },
+  "limit": 0
+ },
+ "status": 200,
+ "url": "https://api.crustdata.com/job/search"
+}

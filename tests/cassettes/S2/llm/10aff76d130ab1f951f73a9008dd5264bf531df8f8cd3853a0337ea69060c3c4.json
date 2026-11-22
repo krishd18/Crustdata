@@ -1,0 +1,8 @@
+{
+ "cache_read_tokens": 0,
+ "model": "claude-sonnet-5",
+ "output_json": "{\"label\":\"not_fintech\",\"confidence\":\"high\",\"passage\":\"a 100% owned subsidiary of Societe Generale has over 11000 employees across its Bangalore and Chennai facilities in India. The subsidiary is focused on Application Development and Maintenance, Infrastructure Management, Business Process Management and Knowledge Process Management\",\"source\":\"crustdata\"}",
+ "request_id": "req_011ChHyWBH5jksazMk4ieqjD",
+ "tokens_in": 1421,
+ "tokens_out": 123
+}

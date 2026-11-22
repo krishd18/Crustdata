@@ -1,0 +1,8 @@
+{
+ "cache_read_tokens": 0,
+ "model": "claude-sonnet-5",
+ "output_json": "{\"label\":\"not_fintech\",\"confidence\":\"high\",\"passage\":\"you\u2019ll be part of Prudential Financial, Inc. (PFI) a Fortune 500 company with a 150 year history.\",\"source\":\"crustdata\"}",
+ "request_id": "req_011ChHyXHn3Lrn34DZG7DNe6",
+ "tokens_in": 1401,
+ "tokens_out": 74
+}

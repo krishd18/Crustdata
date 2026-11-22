@@ -1,0 +1,8 @@
+{
+ "cache_read_tokens": 0,
+ "model": "claude-sonnet-5",
+ "output_json": "{\"label\":\"not_fintech\",\"confidence\":\"high\",\"passage\":\"Crisil is a global, insights-driven analytics company. Our extraordinary domain expertise and analytical rigour help clients make mission-critical decisions with confidence.\",\"source\":\"crustdata.company_enrich.basic_info.description\"}",
+ "request_id": "req_011ChHyYcH4Bmh6wV4SEavjb",
+ "tokens_in": 1180,
+ "tokens_out": 100
+}

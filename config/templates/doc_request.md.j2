@@ -1,6 +1,6 @@
 Subject: Documents to complete our review — {{ company.name }}
 
-Dear {{ recipient.name | default("team") }},
+Dear {{ recipient.name or "team" }},
 
 Thank you for sharing your materials. To complete our review, could you please share:
 {% for ask in asks %}- {{ ask.document }} — to confirm: "{{ ask.claim_text }}"

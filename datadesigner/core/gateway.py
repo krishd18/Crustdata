@@ -128,7 +128,7 @@ class Gateway:
         key = request_key(method, path, body)
         cache_key = f"{source}:{key}"
         self.budget.check(est_credits, critical)
-        if ttl_s and self.mode != "replay":
+        if ttl_s and self.mode == "live":
             hit = self.stores.cache_get(cache_key)
             if hit is not None:
                 self.stores.add_cost(self.run_id, endpoint, 0.0, "cache", cached=True)

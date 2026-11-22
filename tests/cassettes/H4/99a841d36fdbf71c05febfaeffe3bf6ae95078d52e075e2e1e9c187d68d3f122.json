@@ -1,0 +1,27 @@
+{
+ "body": {
+  "suggestions": [
+   {
+    "value": "Payments"
+   },
+   {
+    "value": "Bookkeeping and Payroll"
+   },
+   {
+    "value": "Mobile Payments"
+   }
+  ]
+ },
+ "endpoint": "company_autocomplete",
+ "headers": {
+  "content-type": "application/json",
+  "x-credits-used": "0"
+ },
+ "request_body": {
+  "field": "taxonomy.categories",
+  "limit": 50,
+  "query": "pay"
+ },
+ "status": 200,
+ "url": "https://api.crustdata.com/company/search/autocomplete"
+}

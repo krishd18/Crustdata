@@ -1,8 +1,0 @@
-{
- "cache_read_tokens": 0,
- "model": "claude-sonnet-5",
- "output_json": "{\"label\":\"not_fintech\",\"confidence\":\"medium\",\"passage\":\"D. E. Shaw India (D. E. Shaw India) is a part of the D. E. Shaw group, a global investment and technology development firm.\",\"source\":\"crustdata.company_enrich.basic_info.description\"}",
- "request_id": "req_011ChHxkotWzwdqMZ3ez5Nss",
- "tokens_in": 1288,
- "tokens_out": 93
-}

@@ -1,8 +1,0 @@
-{
- "cache_read_tokens": 0,
- "model": "claude-sonnet-5",
- "output_json": "{\"label\":\"fintech\",\"confidence\":\"high\",\"passage\":\"super.money isn\u2019t just another UPI app : it\u2019s your daily money hack. Whether you\u2019re booking a flight, grabbing coffee, or splitting bills with friends, you get rewarded every time you spend. Think instant cashback, flight rewards, and credit that actually works for you.\",\"source\":\"crustdata\"}",
- "request_id": "req_011ChHxmvnmgBMFa3JUkx3hR",
- "tokens_in": 1004,
- "tokens_out": 121
-}

@@ -1,0 +1,8 @@
+{
+ "cache_read_tokens": 0,
+ "model": "claude-sonnet-5",
+ "output_json": "{\"label\":\"fintech\",\"confidence\":\"high\",\"passage\":\"Our cornerstone products and services: slice savings account, slice UPI credit card, slice UPI, slice UPI ATMs, slice fixed deposits, slice borrow, and UPI-powered bank branch are designed to be simple, rewarding, and completely in your control.\",\"source\":\"crustdata\"}",
+ "request_id": "req_011ChHyXUYwB2RQWfwu3prUE",
+ "tokens_in": 1257,
+ "tokens_out": 119
+}

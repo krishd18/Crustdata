@@ -1,8 +1,0 @@
-{
- "cache_read_tokens": 0,
- "model": "claude-sonnet-5",
- "output_json": "{\"label\":\"fintech\",\"confidence\":\"high\",\"passage\":\"{\\\"industry\\\": \\\"Technology, Information and Internet\\\", \\\"categories\\\": [\\\"Billing\\\", \\\"Consumer Lending\\\", \\\"Credit\\\", \\\"E-Commerce\\\", \\\"FinTech\\\", \\\"Financial Services\\\", \\\"Information Technology\\\", \\\"Mobile\\\", \\\"Payments\\\", \\\"Point of Sale\\\", \\\"Prepaid Cards\\\", \\\"Software\\\"]}\",\"source\":\"crustdata.taxonomy\"}",
- "request_id": "req_011ChHxmKNoJ8T67Jayy9ZEz",
- "tokens_in": 939,
- "tokens_out": 171
-}

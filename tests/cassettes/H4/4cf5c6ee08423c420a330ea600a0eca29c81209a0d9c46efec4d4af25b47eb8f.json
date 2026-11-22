@@ -1,0 +1,708 @@
+{
+ "body": {
+  "aggregations": [
+   {
+    "buckets": [
+     {
+      "count": 967,
+      "key": 2199,
+      "metadata": {
+       "company_name": "Infosys",
+       "company_website_domain": "infosys.com",
+       "linkedin_id": "1283"
+      }
+     },
+     {
+      "count": 138,
+      "key": 1097923,
+      "metadata": {
+       "company_name": "Societe Generale Global Solution Centre",
+       "company_website_domain": "societegenerale.in",
+       "linkedin_id": "9371944"
+      }
+     },
+     {
+      "count": 81,
+      "key": 519,
+      "metadata": {
+       "company_name": "Bajaj Finserv",
+       "company_website_domain": "bajajfinserv.in",
+       "linkedin_id": "1092003"
+      }
+     },
+     {
+      "count": 30,
+      "key": 5729,
+      "metadata": {
+       "company_name": "PhonePe",
+       "company_website_domain": "phonepe.com",
+       "linkedin_id": "10479149"
+      }
+     },
+     {
+      "count": 20,
+      "key": 1937,
+      "metadata": {
+       "company_name": "Hexaware Technologies",
+       "company_website_domain": "hexaware.com",
+       "linkedin_id": "164182"
+      }
+     },
+     {
+      "count": 15,
+      "key": 715535,
+      "metadata": {
+       "company_name": "IDFC FIRST Bank",
+       "company_website_domain": "idfcfirst.bank.in",
+       "linkedin_id": "21175"
+      }
+     },
+     {
+      "count": 10,
+      "key": 2658,
+      "metadata": {
+       "company_name": "Kotak Mahindra Bank",
+       "company_website_domain": "kotak.bank.in",
+       "linkedin_id": "5632"
+      }
+     },
+     {
+      "count": 10,
+      "key": 10068,
+      "metadata": {
+       "company_name": "Firstsource",
+       "company_website_domain": "firstsource.com",
+       "linkedin_id": "243914"
+      }
+     },
+     {
+      "count": 10,
+      "key": 897127,
+      "metadata": {
+       "company_name": "Razorpay",
+       "company_website_domain": "razorpay.com",
+       "linkedin_id": "3788927"
+      }
+     },
+     {
+      "count": 8,
+      "key": 7554,
+      "metadata": {
+       "company_name": "slice",
+       "company_website_domain": "slice.bank.in",
+       "linkedin_id": "30246063"
+      }
+     },
+     {
+      "count": 7,
+      "key": 7196,
+      "metadata": {
+       "company_name": "Pine Labs",
+       "company_website_domain": "pinelabs.com",
+       "linkedin_id": "554421"
+      }
+     },
+     {
+      "count": 5,
+      "key": 13460,
+      "metadata": {
+       "company_name": "Maveric Systems Limited",
+       "company_website_domain": "maveric-systems.com",
+       "linkedin_id": "207140"
+      }
+     },
+     {
+      "count": 5,
+      "key": 1510820,
+      "metadata": {
+       "company_name": "AXA Global Business Services (AXA GBS)",
+       "company_website_domain": "axagbs.com",
+       "linkedin_id": "104751225"
+      }
+     },
+     {
+      "count": 4,
+      "key": 1073,
+      "metadata": {
+       "company_name": "Crisil",
+       "company_website_domain": "crisil.com",
+       "linkedin_id": "163261"
+      }
+     },
+     {
+      "count": 4,
+      "key": 9413,
+      "metadata": {
+       "company_name": "EdgeVerve",
+       "company_website_domain": "edgeverve.com",
+       "linkedin_id": "3790570"
+      }
+     },
+     {
+      "count": 4,
+      "key": 17303,
+      "metadata": {
+       "company_name": "KPMG India",
+       "company_website_domain": "social.kpmg",
+       "linkedin_id": "2525298"
+      }
+     },
+     {
+      "count": 3,
+      "key": 8574,
+      "metadata": {
+       "company_name": "Paisabazaar",
+       "company_website_domain": "paisabazaar.com",
+       "linkedin_id": "13179651"
+      }
+     },
+     {
+      "count": 3,
+      "key": 11191,
+      "metadata": {
+       "company_name": "SBI Card",
+       "company_website_domain": "sbicard.com",
+       "linkedin_id": "2713078"
+      }
+     },
+     {
+      "count": 3,
+      "key": 17840,
+      "metadata": {
+       "company_name": "SHRIRAM GENERAL INSURANCE CO. LTD.",
+       "company_website_domain": "shriramgi.com",
+       "linkedin_id": "555501"
+      }
+     },
+     {
+      "count": 2,
+      "key": 414,
+      "metadata": {
+       "company_name": "Asian Paints",
+       "company_website_domain": "asianpaints.com",
+       "linkedin_id": "7185"
+      }
+     },
+     {
+      "count": 2,
+      "key": 736,
+      "metadata": {
+       "company_name": "Blue Dart",
+       "company_website_domain": "bluedart.com",
+       "linkedin_id": "98212"
+      }
+     },
+     {
+      "count": 2,
+      "key": 1914,
+      "metadata": {
+       "company_name": "HDFC Bank",
+       "company_website_domain": "hdfc.bank.in",
+       "linkedin_id": "164151"
+      }
+     },
+     {
+      "count": 2,
+      "key": 2186,
+      "metadata": {
+       "company_name": "IndusInd Bank",
+       "company_website_domain": "indusind.bank.in",
+       "linkedin_id": "30265"
+      }
+     },
+     {
+      "count": 2,
+      "key": 2237,
+      "metadata": {
+       "company_name": "Intellect Design Arena Ltd",
+       "company_website_domain": "intellectdesign.com",
+       "linkedin_id": "5387560"
+      }
+     },
+     {
+      "count": 2,
+      "key": 3330,
+      "metadata": {
+       "company_name": "Newgen Software",
+       "company_website_domain": "newgensoft.com",
+       "linkedin_id": "11980"
+      }
+     },
+     {
+      "count": 2,
+      "key": 5708,
+      "metadata": {
+       "company_name": "Navi",
+       "company_website_domain": "navi.com",
+       "linkedin_id": "40662386"
+      }
+     },
+     {
+      "count": 2,
+      "key": 5738,
+      "metadata": {
+       "company_name": "MakeMyTrip",
+       "company_website_domain": "makemytrip.com",
+       "linkedin_id": "35113"
+      }
+     },
+     {
+      "count": 2,
+      "key": 5852,
+      "metadata": {
+       "company_name": "Kissht",
+       "company_website_domain": "kissht.com",
+       "linkedin_id": "13216565"
+      }
+     },
+     {
+      "count": 2,
+      "key": 6597,
+      "metadata": {
+       "company_name": "Ujjivan Small Finance Bank",
+       "company_website_domain": "ujjivansfb.bank.in",
+       "linkedin_id": "735470"
+      }
+     },
+     {
+      "count": 2,
+      "key": 7095,
+      "metadata": {
+       "company_name": "Digit Insurance",
+       "company_website_domain": "godigit.com",
+       "linkedin_id": "18073064"
+      }
+     },
+     {
+      "count": 2,
+      "key": 686137,
+      "metadata": {
+       "company_name": "Angel One",
+       "company_website_domain": "angelone.in",
+       "linkedin_id": "62215"
+      }
+     },
+     {
+      "count": 2,
+      "key": 1313462,
+      "metadata": {
+       "company_name": "InCred Financial Services",
+       "company_website_domain": "incred.com",
+       "linkedin_id": "13183871"
+      }
+     },
+     {
+      "count": 1,
+      "key": 455,
+      "metadata": {
+       "company_name": "AU SMALL FINANCE BANK",
+       "company_website_domain": "au.bank.in",
+       "linkedin_id": "9311835"
+      }
+     },
+     {
+      "count": 1,
+      "key": 696,
+      "metadata": {
+       "company_name": "Biocon",
+       "company_website_domain": "biocon.com",
+       "linkedin_id": "162713"
+      }
+     },
+     {
+      "count": 1,
+      "key": 5741,
+      "metadata": {
+       "company_name": "Policybazaar.com",
+       "company_website_domain": "policybazaar.com",
+       "linkedin_id": "303524"
+      }
+     },
+     {
+      "count": 1,
+      "key": 5894,
+      "metadata": {
+       "company_name": "Groww",
+       "company_website_domain": "groww.in",
+       "linkedin_id": "10813156"
+      }
+     },
+     {
+      "count": 1,
+      "key": 11919,
+      "metadata": {
+       "company_name": "Axis Max Life Insurance Limited",
+       "company_website_domain": "axismaxlife.com",
+       "linkedin_id": "164878"
+      }
+     },
+     {
+      "count": 1,
+      "key": 18650,
+      "metadata": {
+       "company_name": "Bajaj Capital Ltd",
+       "company_website_domain": "bajajcapital.com",
+       "linkedin_id": "43878"
+      }
+     },
+     {
+      "count": 1,
+      "key": 609249,
+      "metadata": {
+       "company_name": "Piramal Finance",
+       "company_website_domain": "piramalfinance.com",
+       "linkedin_id": "13398258"
+      }
+     },
+     {
+      "count": 1,
+      "key": 1132539,
+      "metadata": {
+       "company_name": "Generali Central Life Insurance",
+       "company_website_domain": "generalicentrallife.com",
+       "linkedin_id": "10194832"
+      }
+     },
+     {
+      "count": 1,
+      "key": 1158185,
+      "metadata": {
+       "company_name": "First American (India)",
+       "company_website_domain": "firstam.co.in",
+       "linkedin_id": "8070735"
+      }
+     }
+    ],
+    "field": "company.basic_info.company_id",
+    "type": "group_by"
+   }
+  ],
+  "job_listings": [],
+  "next_cursor": null,
+  "total_count": 1362
+ },
+ "endpoint": "job_search",
+ "headers": {
+  "content-type": "application/json",
+  "x-credits-used": "0"
+ },
+ "request_body": {
+  "aggregations": [
+   {
+    "agg": "count",
+    "field": "company.basic_info.company_id",
+    "size": 50,
+    "type": "group_by"
+   }
+  ],
+  "filters": {
+   "conditions": [
+    {
+     "field": "company.basic_info.company_id",
+     "type": "in",
+     "value": [
+      7417,
+      2199,
+      1914,
+      2041,
+      4316,
+      6035783,
+      8264,
+      519,
+      6440491,
+      609198,
+      2658,
+      2186,
+      715535,
+      52893,
+      956,
+      5648,
+      307,
+      555,
+      1937,
+      4518,
+      455,
+      6037423,
+      25,
+      2043,
+      11919,
+      5716,
+      17303,
+      414,
+      398,
+      3699,
+      6783,
+      1088416,
+      1113054,
+      552,
+      7342,
+      10068,
+      822,
+      11191,
+      770,
+      1131896,
+      515,
+      667,
+      5287,
+      13676,
+      5729,
+      1035341,
+      6149,
+      6306678,
+      730113,
+      686275,
+      6597,
+      556,
+      1067416,
+      2130,
+      6092968,
+      3990,
+      686464,
+      6062190,
+      5725,
+      2460086,
+      3153,
+      5741,
+      98,
+      6216,
+      1035345,
+      11808,
+      609249,
+      12931,
+      19287,
+      1468,
+      10844,
+      11233,
+      609227,
+      6723,
+      3207,
+      232,
+      1912,
+      614751,
+      696,
+      686137,
+      868,
+      5110,
+      736,
+      1125,
+      48,
+      787,
+      1131733,
+      9154,
+      6219,
+      1132184,
+      11352,
+      6067939,
+      1386808,
+      6066345,
+      6055849,
+      712083,
+      5986,
+      620325,
+      20931,
+      1097923,
+      4543960,
+      2237,
+      3326,
+      1501236,
+      5691,
+      29631641,
+      7018,
+      2265,
+      10420,
+      2018752,
+      2124,
+      1951292,
+      5738,
+      3701,
+      1132680,
+      558,
+      1131730,
+      14199,
+      3480,
+      1073,
+      5264,
+      9092,
+      4663,
+      6450,
+      1032650,
+      965,
+      1132649,
+      1133975,
+      2068357,
+      52495,
+      4514,
+      832,
+      10949,
+      7196,
+      1131898,
+      7101,
+      613157,
+      2044,
+      1132829,
+      1132288,
+      18650,
+      17049,
+      621121,
+      917010,
+      12936,
+      11929,
+      713684,
+      1132677,
+      1132181,
+      17635,
+      3330,
+      1283500,
+      6066378,
+      3229332,
+      17,
+      6982,
+      2525,
+      5864,
+      1133937,
+      11316,
+      11108,
+      1131881,
+      925802,
+      7670,
+      18768,
+      6258943,
+      712433,
+      15267,
+      9950,
+      5782,
+      17840,
+      4297,
+      10426,
+      1158185,
+      892870,
+      4856,
+      1304,
+      618825,
+      1132527,
+      6753,
+      6198877,
+      5728,
+      12571,
+      6156263,
+      8574,
+      618470,
+      2408,
+      897127,
+      1132229,
+      53306,
+      609293,
+      20399,
+      6354,
+      613237,
+      1132967,
+      1132902,
+      1152120,
+      2518,
+      1132186,
+      2769,
+      1050429,
+      1286750,
+      8900899,
+      7793,
+      2097252,
+      1286928,
+      1287022,
+      3705718,
+      1078817,
+      25873,
+      1132539,
+      14198,
+      5708,
+      16675471,
+      13863,
+      6405743,
+      1248959,
+      1132568,
+      714863,
+      6678,
+      12070,
+      614069,
+      6823,
+      7228,
+      1287833,
+      5894,
+      7095,
+      1383066,
+      6771,
+      1132721,
+      4019,
+      6150863,
+      1286890,
+      7015,
+      12274,
+      1131731,
+      27056,
+      9413,
+      1132230,
+      1132185,
+      9431,
+      1044814,
+      3416,
+      1134400,
+      11753,
+      139,
+      7275,
+      7917,
+      18657,
+      827,
+      1109503,
+      1227772,
+      13460,
+      23045,
+      621828,
+      6570445,
+      19537,
+      11978,
+      1933320,
+      5912,
+      1287469,
+      1217563,
+      5873,
+      7031,
+      1132326,
+      1034629,
+      1132380,
+      10941,
+      5905,
+      9653,
+      609323,
+      7554,
+      1313462,
+      5903,
+      5852,
+      1041738,
+      1065,
+      1135116,
+      6424,
+      1132080,
+      1510820,
+      686499,
+      653854,
+      1287582,
+      13626
+     ]
+    },
+    {
+     "field": "metadata.date_added",
+     "type": "=>",
+     "value": "2026-10-01"
+    },
+    {
+     "field": "job_details.category",
+     "type": "=",
+     "value": "Engineering"
+    }
+   ],
+   "op": "and"
+  },
+  "limit": 0
+ },
+ "status": 200,
+ "url": "https://api.crustdata.com/job/search"
+}

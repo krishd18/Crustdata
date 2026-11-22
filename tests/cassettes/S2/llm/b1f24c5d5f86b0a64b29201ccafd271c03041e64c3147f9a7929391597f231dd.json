@@ -1,0 +1,8 @@
+{
+ "cache_read_tokens": 0,
+ "model": "claude-sonnet-5",
+ "output_json": "{\"label\":\"not_fintech\",\"confidence\":\"high\",\"passage\":\"support AXA entities in their core insurance operations, support functions, and digitization processes\",\"source\":\"crustdata\"}",
+ "request_id": "req_011ChHyY2aGf1eG3nnvzYoKK",
+ "tokens_in": 1171,
+ "tokens_out": 58
+}

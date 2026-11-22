@@ -1,0 +1,8 @@
+{
+ "cache_read_tokens": 0,
+ "model": "claude-sonnet-5",
+ "output_json": "{\"label\":\"fintech\",\"confidence\":\"high\",\"passage\":\"single platform to streamline all investment and purchase decisions, automate repetitive tasks and simplify payments. From corporate cards with smart controls to accounts payable and AI native treasury\",\"source\":\"crustdata.company_enrich.basic_info.description\"}",
+ "request_id": "req_011ChHyY7YArtRTnr8KrUkSU",
+ "tokens_in": 1235,
+ "tokens_out": 102
+}

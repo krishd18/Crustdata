@@ -1,8 +1,0 @@
-{
- "cache_read_tokens": 0,
- "model": "claude-sonnet-5",
- "output_json": "{\"label\":\"not_fintech\",\"confidence\":\"high\",\"passage\":\"CIBC is a leading North American bank with over 150 years of history\",\"source\":\"crustdata\"}",
- "request_id": "req_011ChHxkLC8co2wQkVDr5RVA",
- "tokens_in": 1335,
- "tokens_out": 53
-}

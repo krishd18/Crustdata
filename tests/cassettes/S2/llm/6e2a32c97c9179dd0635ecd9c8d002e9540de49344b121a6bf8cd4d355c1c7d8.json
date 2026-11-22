@@ -1,0 +1,8 @@
+{
+ "cache_read_tokens": 0,
+ "model": "claude-sonnet-5",
+ "output_json": "{\"label\":\"fintech\",\"confidence\":\"high\",\"passage\":\"Razorpay is India\u2019s first full-stack financial solutions company. We are on a mission to enhance the payment experience of over 300 million end consumers.\",\"source\":\"crustdata\"}",
+ "request_id": "req_011ChHyXAyWMQkBzR2ejim8B",
+ "tokens_in": 1560,
+ "tokens_out": 78
+}

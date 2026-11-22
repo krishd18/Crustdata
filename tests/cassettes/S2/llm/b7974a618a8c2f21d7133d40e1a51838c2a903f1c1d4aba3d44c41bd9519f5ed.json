@@ -1,0 +1,8 @@
+{
+ "cache_read_tokens": 0,
+ "model": "claude-sonnet-5",
+ "output_json": "{\"label\":\"fintech\",\"confidence\":\"high\",\"passage\":\"Enriching commerce across the globe, the Pine Labs platform powers multichannel businesses offline, in-store and beyond.\",\"source\":\"crustdata.company_enrich.basic_info.description\"}",
+ "request_id": "req_011ChHyXo3ffBKF82KCsYyNL",
+ "tokens_in": 995,
+ "tokens_out": 85
+}

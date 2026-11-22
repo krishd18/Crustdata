@@ -1,8 +1,0 @@
-{
- "cache_read_tokens": 0,
- "model": "claude-sonnet-5",
- "output_json": "{\"label\":\"not_fintech\",\"confidence\":\"high\",\"passage\":\"Societe Generale is one of the leading European financial services groups.\",\"source\":\"crustdata\"}",
- "request_id": "req_011ChHxjhM6BCxjpx3Gx5Q2J",
- "tokens_in": 1365,
- "tokens_out": 52
-}
