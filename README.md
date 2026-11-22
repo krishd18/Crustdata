@@ -19,7 +19,7 @@
 - 7 verdict classes with deterministic rules R-01…R-21 and the FALSE safety rules; quote lock on every fact; R1/R2/R3 + Inference Strength from `config/`.
 - Exactly-once mail: approve → intent → Sent-folder pre-check → send (deterministic Message-ID) → reconcile; **50/50 kill trials** exactly once (Mailpit).
 - Console (FastAPI, `theme.css` = prototype styles): Ask, Runs, memo view, decision accept/override, Ask-the-analyst (Claude, cites evidence ids), Approvals (TEST MODE banner, approve/reject/edit), Audit (hash-chain verify), Setup. The full designed prototype is at `/prototype`.
-- 40 tests (unit, contract for all 15 agents, e2e) green in replay; `vouch/core` coverage 84%.
+- 40 tests (unit, contract for all 15 agents, e2e) green in replay; `datadesigner/core` coverage 84%.
 
 ## What comes next
 Port every prototype screen to server-rendered partials (Company IM tabs, evidence drawer) · ACQUIRE Step 1 people/jobs-in-state streams (G, C) and Step 2 screening · licensed registry APIs replacing operator extracts · watchers for re-check (A15 diff exists) · fault proxy for 529/timeout drills · core coverage to 90% · V3 adversarial generator + V8 memo judge.
