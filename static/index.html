@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SecondLook</title>
+<style>
+:root{
+  --bg:#f6f5f2; --panel:#ffffff; --ink:#1c1b19; --muted:#6b6862; --line:#e4e1da; --soft:#efede8;
+  --accent:#2f4fd8; --accent-ink:#fff;
+  --ok:#1f7a4d; --ok-bg:#e3f3ea; --warn:#8a5a00; --warn-bg:#fbf0d9; --bad:#b42318; --bad-bg:#fdecea;
+  --na:#55524c; --na-bg:#ecebe7; --info:#2846b8; --info-bg:#e6ebfb;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root{
+  --bg:#141413; --panel:#1d1c1a; --ink:#ecebe7; --muted:#a19d95; --line:#33312d; --soft:#262522;
+  --accent:#7d93ff; --accent-ink:#0d1020;
+  --ok:#6fd3a0; --ok-bg:#16342a; --warn:#f0c062; --warn-bg:#3a2e12; --bad:#ff8a80; --bad-bg:#3d1a17;
+  --na:#c8c4bb; --na-bg:#2c2b28; --info:#9fb0ff; --info-bg:#1e2547;
+}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{display:flex;align-items:center;gap:16px;padding:14px 24px;border-bottom:1px solid var(--line);background:var(--panel)}
+header h1{font-size:18px;margin:0;letter-spacing:-.01em}
+header .tag{color:var(--muted)}
+header .pills{margin-left:auto;display:flex;gap:8px}
+.pill{font-size:12px;padding:2px 8px;border-radius:99px;background:var(--soft);color:var(--muted)}
+.pill.on{background:var(--ok-bg);color:var(--ok)}
+.wrap{display:grid;grid-template-columns:360px 1fr;gap:20px;padding:20px 24px;max-width:1500px;margin:0 auto}
+@media (max-width:900px){.wrap{grid-template-columns:1fr;padding:16px}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px}
+label{display:block;font-size:12px;color:var(--muted);margin:10px 0 4px}
+input,textarea{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:7px;background:var(--bg);color:var(--ink);font:inherit}
+textarea{min-height:260px;font-family:var(--mono);font-size:12.5px;resize:vertical}
+.row{display:flex;gap:8px}
+.row>*{flex:1}
+button{font:inherit;border:1px solid var(--line);background:var(--soft);color:var(--ink);padding:7px 12px;border-radius:7px;cursor:pointer}
+button.primary{background:var(--accent);color:var(--accent-ink);border-color:transparent;font-weight:600}
+button:disabled{opacity:.5;cursor:default}
+.muted{color:var(--muted)}
+.small{font-size:12px}
+.list a{display:block;padding:6px 0;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+.list a:hover{color:var(--accent)}
+h2{font-size:15px;margin:0 0 8px}
+.co{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start}
+.co .name{font-size:20px;font-weight:650}
+.facts{display:flex;flex-wrap:wrap;gap:18px;margin-top:6px}
+.facts div span{display:block;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.cost{margin-left:auto;text-align:right;min-width:200px}
+.cost .big{font-size:20px;font-weight:650}
+.summary{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 4px}
+.chip{display:inline-block;font-size:12px;font-weight:600;padding:2px 8px;border-radius:99px;white-space:nowrap}
+.v-ok{background:var(--ok-bg);color:var(--ok)} .v-warn{background:var(--warn-bg);color:var(--warn)}
+.v-bad{background:var(--bad-bg);color:var(--bad)} .v-na{background:var(--na-bg);color:var(--na)} .v-info{background:var(--info-bg);color:var(--info)}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin:16px 0 0;overflow-x:auto}
+.tabs button{border:none;background:none;border-bottom:2px solid transparent;border-radius:0;padding:9px 12px;color:var(--muted);white-space:nowrap}
+.tabs button.on{color:var(--ink);border-bottom-color:var(--accent);font-weight:600}
+.pane{padding-top:14px}
+table{width:100%;border-collapse:collapse}
+th{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);text-align:left;padding:6px 8px;border-bottom:1px solid var(--line)}
+td{padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+tr.claim{cursor:pointer} tr.claim:hover td{background:var(--soft)}
+tr.detail td{background:var(--soft);padding:12px 16px}
+.type{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.ev{border-left:3px solid var(--line);padding:4px 10px;margin:6px 0;font-size:13px}
+.ev code{font-family:var(--mono);font-size:12px;background:var(--panel);padding:1px 5px;border-radius:4px}
+.ev .val{font-family:var(--mono);font-size:12px;white-space:pre-wrap;word-break:break-word}
+.ask{background:var(--warn-bg);color:var(--warn);border-radius:7px;padding:8px 10px;margin-top:8px;font-size:13px}
+ol.req li{margin:0 0 12px}
+ol.req .doc{font-weight:600}
+.steps{list-style:none;padding:0;margin:0}
+.steps li{padding:4px 0}
+.steps li::before{content:"✓ ";color:var(--ok)}
+.steps li:last-child::before{content:"… ";color:var(--accent)}
+.steps.done li:last-child::before{content:"✓ ";color:var(--ok)}
+pre.mail{white-space:pre-wrap;background:var(--bg);border:1px solid var(--line);padding:12px;border-radius:8px;font-size:12.5px;font-family:var(--mono)}
+.empty{padding:40px;text-align:center;color:var(--muted)}
+.conf{border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin:0 0 10px}
+.err{color:var(--bad)}
+a{color:var(--accent)}
+</style>
+</head>
+<body>
+<header>
+  <h1>SecondLook</h1>
+  <span class="tag">diligence before the second meeting</span>
+  <div class="pills"><span id="p-cd" class="pill">Crustdata</span><span id="p-llm" class="pill">Claude</span></div>
+</header>
+
+<div class="wrap">
+  <aside>
+    <div class="card">
+      <h2>New dossier</h2>
+      <div class="row"><div><label>Company name</label><input id="f-name" placeholder="Stockarea"></div></div>
+      <div class="row">
+        <div><label>Domain</label><input id="f-domain" placeholder="stockarea.io"></div>
+        <div><label>City (optional)</label><input id="f-city" placeholder="Chennai"></div>
+      </div>
+      <label>Teaser, deck text or capability statement</label>
+      <textarea id="f-teaser" placeholder="Paste the counterparty's material here. Add your own questions at the end; they are checked for false premises."></textarea>
+      <div id="f-note" class="small muted" style="margin-top:6px"></div>
+      <div class="row" style="margin-top:10px">
+        <button id="b-sample">Load sample</button>
+        <button id="b-run" class="primary">Check claims</button>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h2>Dossiers</h2>
+      <div id="dossiers" class="list small"><span class="muted">None yet</span></div>
+    </div>
+  </aside>
+
+  <main id="main" class="card"><div class="empty">Paste a teaser and run a check. Every claim comes back with a verdict, the exact record it rests on, and what to ask for when the record can't settle it.</div></main>
+</div>
+
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const api = async (path, opt={}) => {
+  const r = await fetch(path, {headers:{"content-type":"application/json"}, ...opt, body: opt.body ? JSON.stringify(opt.body) : undefined});
+  if (!r.ok) throw new Error((await r.text()) || r.statusText);
+  return r.json();
+};
+const VCLASS = {"verified":"v-ok","independently supported":"v-ok","consistent":"v-warn","partial":"v-warn","self-reported":"v-warn",
+  "earliest evidence":"v-warn","contradicted":"v-bad","false premise":"v-bad","cannot verify":"v-na","unsupported premise":"v-na","projection":"v-info"};
+const chip = v => `<span class="chip ${VCLASS[v]||"v-na"}">${esc(v)}</span>`;
+const fmtDate = s => s ? new Date(s).toLocaleDateString("en-IN",{day:"2-digit",month:"short",year:"numeric"}) : "";
+const state = {samples:[], dossier:null, run:null, tab:"register", open:new Set(), draft:null};
+
+async function boot(){
+  try{ const c = await api("/api/config");
+    $("#p-cd").classList.toggle("on", c.crustdata); $("#p-cd").textContent = c.crustdata ? "Crustdata ✓" : "Crustdata: no token";
+    $("#p-llm").classList.toggle("on", c.llm); $("#p-llm").textContent = c.llm ? `Claude ✓` : "Claude off (rules)";
+  }catch(e){}
+  state.samples = await api("/api/samples").catch(()=>[]);
+  loadDossiers();
+  const m = location.hash.match(/#(d_\w+)/); if (m) openDossier(m[1]);
+}
+
+$("#b-sample").onclick = () => {
+  const s = state.samples[0]; if (!s) return;
+  $("#f-name").value = s.name; $("#f-domain").value = s.domain || ""; $("#f-city").value = s.city || ""; $("#f-teaser").value = s.teaser;
+  $("#f-note").textContent = s.note || "";
+};
+
+$("#b-run").onclick = async () => {
+  const body = {name:$("#f-name").value.trim(), domain:$("#f-domain").value.trim()||null, city:$("#f-city").value.trim()||null, teaser:$("#f-teaser").value};
+  if (!body.name || !body.teaser.trim()) { alert("Company name and teaser are required."); return; }
+  $("#b-run").disabled = true;
+  try{ const r = await api("/api/dossiers", {method:"POST", body}); location.hash = r.dossier_id; await openDossier(r.dossier_id, r.run_id); loadDossiers(); }
+  catch(e){ $("#main").innerHTML = `<p class="err">${esc(e.message)}</p>`; }
+  finally{ $("#b-run").disabled = false; }
+};
+
+async function loadDossiers(){
+  const ds = await api("/api/dossiers").catch(()=>[]);
+  $("#dossiers").innerHTML = ds.length ? ds.map(d => `<a href="#${d.id}" data-id="${d.id}">${esc(d.name)} <span class="muted">· ${d.runs} run${d.runs>1?"s":""} · ${fmtDate(d.created_at)}</span></a>`).join("") : '<span class="muted">None yet</span>';
+  $("#dossiers").querySelectorAll("a").forEach(a => a.onclick = e => { e.preventDefault(); location.hash = a.dataset.id; openDossier(a.dataset.id); });
+}
+
+async function openDossier(id, runId){
+  state.dossier = await api(`/api/dossiers/${id}`);
+  const rid = runId || state.dossier.runs.at(-1)?.id;
+  state.open.clear(); state.draft = null;
+  if (rid) poll(rid);
+}
+
+async function poll(rid){
+  const r = await api(`/api/runs/${rid}`);
+  state.run = r;
+  if (r.status === "running") { renderProgress(r); setTimeout(()=>poll(rid), 1200); return; }
+  if (r.status === "done") {
+    const prev = state.dossier.runs.filter(x => x.status==="done" && x.id!==rid);
+    state.dossier = await api(`/api/dossiers/${state.dossier.id}`);
+  }
+  render();
+}
+
+function renderProgress(r){
+  $("#main").innerHTML = `<h2>Checking ${esc(state.dossier.name)}</h2><ul class="steps">${r.progress.map(s=>`<li>${esc(s)}</li>`).join("")}</ul>`;
+}
+
+function render(){
+  const r = state.run, d = state.dossier;
+  if (r.status === "error") { $("#main").innerHTML = `<h2>${esc(d.name)}</h2><p class="err">Run failed: ${esc(r.error)}</p><button onclick="recheck()">Try again</button>`; return; }
+  if (r.status === "needs_person") return renderPicker(r);
+  const res = r.result, f = res.findings;
+  const counts = {}; f.forEach(x => counts[x.verdict] = (counts[x.verdict]||0)+1);
+  const c = res.company, cost = res.cost;
+  const runs = d.runs.filter(x=>x.status==="done");
+  $("#main").innerHTML = `
+    <div class="co">
+      <div>
+        <div class="name">${esc(c.name)}</div>
+        <div class="muted small">${esc(c.domain||"")} ${c.linkedin?`· <a href="${esc(c.linkedin)}" target="_blank" rel="noopener">profile</a>`:""} · Crustdata id ${c.crustdata_company_id}</div>
+        <div class="facts">
+          <div><span>HQ on record</span>${esc(c.hq||"–")}</div>
+          <div><span>Founded</span>${esc(c.founded||"–")}</div>
+          <div><span>Profiles on record</span>${esc(c.headcount??"–")}</div>
+          <div><span>Snapshot</span>${fmtDate(res.snapshot_at)} · run ${r.seq} of ${runs.length}</div>
+        </div>
+      </div>
+      <div class="cost">
+        <div class="small muted">Cost of this dossier</div>
+        <div class="big">${cost.credits.toFixed(2)} credits</div>
+        <div class="small muted">+ ${cost.llm_input_tokens.toLocaleString()} in / ${cost.llm_output_tokens.toLocaleString()} out LLM tokens ($${cost.llm_usd.toFixed(3)})</div>
+        ${cost.total_inr ? `<div class="small">≈ ₹${cost.total_inr.toLocaleString("en-IN")} all-in</div>` : ""}
+      </div>
+    </div>
+    <div class="summary">${Object.entries(counts).sort((a,b)=>b[1]-a[1]).map(([v,n])=>`${chip(v)} <span class="small muted" style="margin-right:6px">${n}</span>`).join("")}</div>
+    <div class="tabs">
+      ${tabBtn("register",`Claims register (${f.length})`)}
+      ${tabBtn("ask",`Ask them for this (${res.requests.length})`)}
+      ${tabBtn("incon",`Inconsistencies (${res.inconsistencies.length})`)}
+      ${tabBtn("changes",`Re-check${res.changes.length?` (${res.changes.length} changes)`:""}`)}
+      ${tabBtn("cost","Sources & cost")}
+    </div>
+    <div class="pane" id="pane"></div>`;
+  document.querySelectorAll(".tabs button").forEach(b => b.onclick = () => { state.tab = b.dataset.tab; render(); });
+  ({register:paneRegister, ask:paneAsk, incon:paneIncon, changes:paneChanges, cost:paneCost})[state.tab]();
+}
+const tabBtn = (id, label) => `<button data-tab="${id}" class="${state.tab===id?"on":""}">${esc(label)}</button>`;
+
+function paneRegister(){
+  const f = state.run.result.findings;
+  $("#pane").innerHTML = `<table><thead><tr><th style="width:38%">Claim</th><th>Type</th><th>Verdict</th><th>Why</th></tr></thead><tbody>
+  ${f.map((x,i)=>`
+    <tr class="claim" data-i="${i}"><td>${esc(x.claim.text)}</td><td class="type">${esc(x.claim.type.replace("_"," "))}</td><td>${chip(x.verdict)}</td><td>${esc(x.reason)}</td></tr>
+    ${state.open.has(i) ? `<tr class="detail"><td colspan="4">${detail(x)}</td></tr>` : ""}`).join("")}
+  </tbody></table><p class="small muted">Click a row for the exact source. "Contradicted" is only used when a record says otherwise.</p>`;
+  document.querySelectorAll("tr.claim").forEach(tr => tr.onclick = () => { const i=+tr.dataset.i; state.open.has(i)?state.open.delete(i):state.open.add(i); paneRegister(); });
+}
+function detail(x){
+  const ev = x.evidence.map(e => `<div class="ev"><div><b>${esc(e.source)}</b>${e.field?` · <code>${esc(e.field)}</code>`:""} · retrieved ${fmtDate(e.retrieved_at)} ${e.url?`· <a href="${esc(e.url)}" target="_blank" rel="noopener">open</a>`:""}</div><div class="val">${esc(e.value)}</div></div>`).join("");
+  const chk = x.sources_checked.length ? `<div class="small muted" style="margin-top:6px">Checked: ${x.sources_checked.map(esc).join(" · ")}</div>` : "";
+  const ask = x.request && !x.final ? `<div class="ask"><b>To settle it, ask for:</b> ${esc(x.request)}</div>` : (x.request ? `<div class="ask"><b>For the meeting:</b> ${esc(x.request)}</div>` : "");
+  return (ev || '<div class="small muted">No supporting record found.</div>') + chk + ask;
+}
+
+async function paneAsk(){
+  const res = state.run.result;
+  const out = await api(`/api/outbox?dossier_id=${state.dossier.id}`).catch(()=>[]);
+  $("#pane").innerHTML = `
+    <p class="muted small">Every claim the records couldn't settle becomes one specific document request, taken from a fixed claim-type → document table.</p>
+    <ol class="req">${res.requests.map(q=>`<li><div class="doc">${esc(q.document)}</div><div class="small muted">Re: “${esc(q.claim)}” · ${chip(q.verdict)} ${esc(q.reason)}</div></li>`).join("")}</ol>
+    <div class="card" style="background:var(--bg)">
+      <h2>Send to the counterparty</h2>
+      <p class="small muted">Nothing is sent until a named person approves. Each send carries an idempotency key and is journaled first, so a crash can't send it twice.</p>
+      <div class="row"><div><label>Recipient</label><input id="m-to" placeholder="deals@counterparty.example"></div><div><label>From (your team)</label><input id="m-from" placeholder="Acme Corp Strategy"></div></div>
+      <div style="margin-top:10px"><button id="m-draft">Draft email</button></div>
+      <div id="m-out"></div>
+    </div>
+    ${out.length ? `<h2 style="margin-top:18px">Outbox</h2><table><thead><tr><th>To</th><th>Status</th><th>Approved by</th><th>Deliveries</th><th>Key</th></tr></thead><tbody>
+      ${out.map(o=>`<tr><td>${esc(o.recipient)}</td><td>${chip(o.status==="sent"?"verified":o.status==="approved"?"partial":"cannot verify").replace(/>[^<]+</, `>${esc(o.status.replace("_"," "))}<`)}</td><td>${esc(o.approved_by||"–")}</td><td>${o.deliveries}</td><td class="type">${esc(o.idem_key.slice(0,12))}…</td></tr>`).join("")}</tbody></table>`:""}`;
+  $("#m-draft").onclick = async () => {
+    const to = $("#m-to").value.trim(); if (!to) return alert("Recipient required");
+    $("#m-draft").disabled = true; $("#m-out").innerHTML = '<p class="muted small">Drafting…</p>';
+    try{
+      const row = await api(`/api/runs/${state.run.id}/draft`, {method:"POST", body:{recipient:to, sender_org:$("#m-from").value.trim()||"our team"}});
+      state.draft = row; showDraft(row);
+    }catch(e){ $("#m-out").innerHTML = `<p class="err">${esc(e.message)}</p>`; }
+    $("#m-draft").disabled = false;
+  };
+  if (state.draft) showDraft(state.draft);
+}
+function showDraft(row){
+  $("#m-out").innerHTML = `<p class="small muted" style="margin-top:12px">Subject: <b>${esc(row.subject)}</b> · status ${esc(row.status)}</p><pre class="mail">${esc(row.body)}</pre>
+    ${row.status==="sent" ? `<p class="small">Sent ${fmtDate(row.sent_at)}.</p>` : `
+    <div class="row"><div><label>Approved by (your name)</label><input id="m-appr" placeholder="Priya, Strategy"></div><div style="display:flex;align-items:flex-end"><button class="primary" id="m-send">Approve &amp; send</button></div></div>`}`;
+  const b = $("#m-send"); if (!b) return;
+  b.onclick = async () => {
+    const who = $("#m-appr").value.trim(); if (!who) return alert("A named person must approve.");
+    if (!confirm(`Send this request list to ${row.recipient}? This can't be unsent.`)) return;
+    b.disabled = true;
+    try{ const r = await api(`/api/outbox/${row.idem_key}/approve`, {method:"POST", body:{approver:who}}); state.draft = r; paneAsk(); }
+    catch(e){ alert(e.message); b.disabled = false; }
+  };
+}
+
+function paneIncon(){
+  const xs = state.run.result.inconsistencies, src = state.run.result.sources_read;
+  $("#pane").innerHTML = `<p class="small muted">The company's own statements, compared with each other. Read: ${src.map(esc).join(" · ")}</p>` +
+    (xs.length ? xs.map(x => `<div class="conf"><b>${esc(x.metric.replace(/_/g," "))}</b>: ${esc(x.summary)}
+      ${x.values.map(v=>`<div class="ev"><b>${esc(v.source)}</b> ${v.url?`· <a href="${esc(v.url)}" target="_blank" rel="noopener">open</a>`:""}<div class="val">“${esc(v.text)}”</div></div>`).join("")}</div>`).join("")
+     : '<div class="empty">No conflicting figures across the sources read.</div>');
+}
+
+async function paneChanges(){
+  const res = state.run.result, d = state.dossier;
+  const w = d.watch;
+  $("#pane").innerHTML = `
+    <div class="row" style="align-items:center"><div class="small muted">The register is a dated snapshot (${fmtDate(res.snapshot_at)}). Re-check runs every claim again and shows what changed, including each leader's own profile.</div>
+      <div style="flex:0"><button class="primary" onclick="recheck()">Re-check now</button></div></div>
+    <h2 style="margin-top:16px">Changes since the previous snapshot</h2>
+    ${state.run.seq === 1 ? '<p class="muted small">This is the first snapshot.</p>' : res.changes.length ? `<ul>${res.changes.map(c=>`<li>${esc(c.text)}${c.claim?` <span class="small muted">· “${esc(c.claim)}”</span>`:""}</li>`).join("")}</ul>` : '<p class="muted small">Nothing changed.</p>'}
+    <h2 style="margin-top:16px">Leaders on record</h2>
+    <ul>${res.leaders.map(p=>`<li>${esc(p.name)}, ${esc(p.title||"")} <span class="small muted">· ${esc(p.employers.join(", "))}</span></li>`).join("")||'<li class="muted">None on record</li>'}</ul>
+    <div class="card" style="background:var(--bg)">
+      <h2>Watch leaders until meeting 2</h2>
+      ${w ? `<p class="small">Watch #${w.watch_id} armed ${fmtDate(w.created_at)}. <button id="w-runs">Show runs</button></p><div id="w-out"></div>` : `
+      <p class="small muted">A Crustdata person watch flags a job change by a founder or CXO. Creating it is free; each detected change is billed. Preview shows the exact price first.</p>
+      <button id="w-prev">Preview watch</button><div id="w-out"></div>`}
+    </div>`;
+  const pv = $("#w-prev");
+  if (pv) pv.onclick = async () => {
+    pv.disabled = true; $("#w-out").innerHTML = '<p class="muted small">Previewing…</p>';
+    try{
+      const p = await api(`/api/dossiers/${d.id}/watch/preview`, {method:"POST", body:{refresh_days:3}});
+      $("#w-out").innerHTML = `<pre class="mail">${esc(JSON.stringify(p, null, 2))}</pre><button class="primary" id="w-arm">Arm watch at this price</button>`;
+      $("#w-arm").onclick = async () => {
+        if (!confirm("This commits the account to per-change charges. Arm the watch?")) return;
+        try{ await api(`/api/dossiers/${d.id}/watch`, {method:"POST", body:{refresh_days:3, preview_token:p.preview_token||null}}); state.dossier = await api(`/api/dossiers/${d.id}`); paneChanges(); }
+        catch(e){ $("#w-out").innerHTML += `<p class="err">${esc(e.message)}</p>`; }
+      };
+    }catch(e){ $("#w-out").innerHTML = `<p class="err">${esc(e.message)}</p>`; }
+    pv.disabled = false;
+  };
+  const wr = $("#w-runs");
+  if (wr) wr.onclick = async () => { try{ $("#w-out").innerHTML = `<pre class="mail">${esc(JSON.stringify(await api(`/api/dossiers/${d.id}/watch/runs`), null, 2))}</pre>`; }catch(e){ $("#w-out").innerHTML = `<p class="err">${esc(e.message)}</p>`; } };
+}
+
+function paneCost(){
+  const c = state.run.result.cost;
+  $("#pane").innerHTML = `<table><thead><tr><th>Endpoint</th><th>Calls</th><th>Credits (X-Credits-Used)</th></tr></thead><tbody>
+    ${Object.entries(c.by_endpoint).map(([p,v])=>`<tr><td class="type">${esc(p)}</td><td>${v.calls}</td><td>${v.credits}</td></tr>`).join("")}
+    <tr><td><b>Total</b></td><td></td><td><b>${c.credits}</b></td></tr></tbody></table>
+    <p class="small muted">LLM (${esc(state.run.result.llm)}): ${c.llm_input_tokens.toLocaleString()} input + ${c.llm_output_tokens.toLocaleString()} output tokens = $${c.llm_usd}.
+    ${c.credit_usd ? `Credits priced at $${c.credit_usd} each.` : "Set CRUSTDATA_CREDIT_USD (and USD_INR) to show an all-in rupee cost."}</p>`;
+}
+
+function renderPicker(r){
+  const cands = r.result?.candidates || [];
+  $("#main").innerHTML = `<h2>More than one company matches “${esc(state.dossier.name)}”</h2>
+    <p class="muted small">Held for a person. Pick the right one, or add the domain or city and run again.</p>
+    ${cands.length ? cands.map(c=>`<div class="conf"><b>${esc(c.name)}</b> <span class="muted small">${esc(c.domain||"")} · founded ${esc(c.founded||"?")}</span><div class="small">${esc(c.description)}</div>
+      <button style="margin-top:6px" data-id="${c.crustdata_company_id}">This one</button></div>`).join("") : '<p>No match found. Check the name or add a domain.</p>'}`;
+  document.querySelectorAll("[data-id]").forEach(b => b.onclick = async () => {
+    const x = await api(`/api/runs/${r.id}/resolve`, {method:"POST", body:{company_id:+b.dataset.id}}); poll(x.run_id);
+  });
+}
+
+async function recheck(){
+  const x = await api(`/api/dossiers/${state.dossier.id}/recheck`, {method:"POST"});
+  state.tab = "changes"; state.open.clear(); poll(x.run_id); loadDossiers();
+}
+
+window.addEventListener("hashchange", () => {
+  const m = location.hash.match(/#(d_\w+)/);
+  if (m && m[1] !== state.dossier?.id) openDossier(m[1]);
+});
+boot();
+</script>
+</body>
+</html>
