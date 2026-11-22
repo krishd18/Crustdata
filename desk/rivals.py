@@ -79,9 +79,20 @@ class Match:
 
 
 class RivalRegistry:
+    # Leading words too generic to identify a company on their own.
+    _GENERIC_HEAD = {
+        "container", "transport", "future", "gateway", "stellar", "om", "leap",
+    }
+
     def __init__(self, rivals: list[Rival]) -> None:
         self.rivals = rivals
         self._by_norm: dict[str, list[tuple[Rival, str, str]]] = {}
+        # Bare words that identify a *family* of entities rather than one
+        # company. "Mahindra" is the group, the logistics arm and several
+        # unrelated businesses, so seeing it alone is grounds to ask which,
+        # never grounds to pick. Only rivals that actually have something to
+        # be confused with contribute a token here.
+        self._ambiguous_head: dict[str, list[Rival]] = {}
         for r in rivals:
             self._index(r, r.display_name, "exact")
             for a in r.aliases:
@@ -92,6 +103,11 @@ class RivalRegistry:
                 self._index(r, b, "acquired_brand")
             if r.domain:
                 self._index(r, r.domain, "alias")
+
+            if r.confusable_with or r.parent_group:
+                head = _norm(r.display_name).split(" ")[0] if r.display_name else ""
+                if len(head) >= 4 and head not in self._GENERIC_HEAD:
+                    self._ambiguous_head.setdefault(head, []).append(r)
 
     def _index(self, rival: Rival, name: str, how: str) -> None:
         self._by_norm.setdefault(_norm(name), []).append((rival, name, how))
@@ -218,6 +234,28 @@ class RivalRegistry:
                             how=how,
                             caution=self._caution(rival, how),
                         )
+
+        # A bare family word with no full name alongside it. "How many people
+        # does Mahindra employ in logistics?" names no company: it names a
+        # group that contains several, and answering it picks one on the
+        # asker's behalf.
+        for head, rivals in self._ambiguous_head.items():
+            if not re.search(rf"\b{re.escape(head)}\b", q):
+                continue
+            if any(head in _norm(m.matched_on).split(" ")
+                   and len(_norm(m.matched_on).split(" ")) > 1
+                   for m in found.values()):
+                continue  # the fuller name is present; it wins
+            for rival in rivals:
+                found.setdefault(
+                    rival.key,
+                    Match(
+                        rival=rival,
+                        matched_on=head,
+                        how="partial",
+                        caution=self._caution(rival, "partial"),
+                    ),
+                )
         return list(found.values())
 
     def to_dict(self) -> dict[str, Any]:

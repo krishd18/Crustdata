@@ -136,6 +136,27 @@ per-case rupee figure is therefore measured, and can be reconciled against
 Set `DESK_INR_PER_CREDIT` from the real plan. It defaults to zero on purpose: a
 fabricated cost is worse than an absent one.
 
+## How a question is processed
+
+    plan → resolve the company → check the premise → gather evidence → decide
+
+The order is load-bearing. Each stage makes the next one meaningless if it
+fails, so each one can end the question on its own:
+
+1. **Which company?** An ambiguous name stops here, before any paid call.
+   Researching the wrong entity thoroughly is worse than not researching.
+2. **What does the question assume?** "Why did X exit Kolkata" does not ask
+   whether the exit happened; it assumes it. An unsupported assumption ends
+   the question and nothing downstream runs.
+3. **Does the evidence clear the bar?** Each candidate passage is checked in
+   isolation — the claim and the span alone, no surrounding page — and
+   discarded if it does not state the claim. Independence is counted by
+   registrable domain, so three syndications of one story are one source.
+4. **Only now, answer.**
+
+Every stage runs through the journal, so a kill resumes from the last
+completed stage rather than from the top.
+
 ## Layout
 
 ```
@@ -145,30 +166,97 @@ desk/
   journal.py     append-only case journal; exactly-once across restarts
   ledger.py      cost per call, rebuilt from the journal after a crash
   crustdata.py   API client: search, fetch, company, jobs, people
+  llm.py         model access behind an interface, plus an offline stand-in
+  dating.py      give a fact a date, and say what kind of date it is
+  resolve.py     one entity, or ambiguous_entity with candidates
+  premise.py     what the question assumes, checked before answering
+  entail.py      does this passage, read alone, state this claim?
+  evidence.py    search → fetch → passage → date → Evidence
+  verdict.py     apply the evidence bar, pick one of four verdicts
+  memo.py        render the case as the memo the client receives
+  approval.py    the gate before anything leaves the building
+  desk.py        the orchestrator
   rivals.py      name index for rebrands, group-vs-arm and acquired brands
   rivals.json    seed names — an index, never a source of facts
+  fixtures.py    offline stand-in for the API, so the demo needs no credits
+cli.py           ask / demo / show
 tests/
-  test_core.py   including the kill-and-restart behaviour
+  test_core.py       journal, ledger, registry, kill-and-restart
+  test_pipeline.py   all four verdicts, the bar, dating, approval
+scripts/
+  kill_demo.py       prove exactly-once against a real SIGKILL
 ```
 
-`config.py` and `models.py` exist as separate, small files for a reason: the
+`config.py` and `models.py` are separate, small files for a reason: the
 organisers change one requirement for every team at hour three, usually a new
 output field or a lower cost limit. Those two files are where such a change
 lands.
 
 ## Running
 
+Offline — no keys, no credits, no network. Produces all four verdicts and is
+reproducible, so it is the thing to rehearse the demo against:
+
 ```bash
-export CRUSTDATA_API_KEY=...
-python3 tests/test_core.py
+python3 cli.py demo
 ```
 
-## Still to build
+Live:
 
-- Entity resolver that turns a registry match into a resolved entity or an
-  `ambiguous_entity` verdict
-- Premise checker, run before any answer is composed
-- Evidence gatherer: search → fetch → extract the passage and its date
-- Entailment check: does this passage, read alone, state the claim?
-- Verdict composer and the memo renderer
-- Approval gate and send
+```bash
+export CRUSTDATA_API_KEY=...
+export ANTHROPIC_API_KEY=...
+export DESK_INR_PER_CREDIT=...        # from the real plan
+python3 cli.py ask --requester ops@client.in \
+  --question "Did Delhivery start hiring in Guwahati since September 2026?"
+```
+
+Re-running the same request resumes the same case: the case id is a hash of
+the requester and the questions, so a killed run is continued rather than
+restarted.
+
+Inspect any case, including one that halted:
+
+```bash
+python3 cli.py show <case_id>
+```
+
+Tests:
+
+```bash
+python3 tests/test_core.py && python3 tests/test_pipeline.py
+```
+
+Prove exactly-once against a real kill:
+
+```bash
+python3 scripts/kill_demo.py c1    # kill -9 it partway
+python3 scripts/kill_demo.py c1    # finished steps are skipped
+```
+
+## Tuning the evidence bar
+
+The bar is the most consequential number in the system, and it moves without
+a code change:
+
+| Variable | Default | What it does |
+| --- | --- | --- |
+| `DESK_MIN_WEB_SOURCES` | 2 | Independent publishers needed to answer |
+| `DESK_MIN_ENTAILMENT` | 0.75 | Below this, a passage is discarded |
+| `DESK_MAX_RECORD_AGE_DAYS` | 30 | When an indexed record stops counting alone |
+| `DESK_MAX_CREDITS_PER_CASE` | 120 | Cost ceiling |
+| `DESK_MAX_WALL_SECONDS` | 180 | Time ceiling |
+
+Set too high and easy cases fail; too low and the hard cases produce confident
+nonsense. `test_pipeline.py` pins both directions.
+
+## Known gaps
+
+- `enrich_company` and `search_people` are wired but not yet used by any
+  question type; leadership-change questions currently route through web
+  evidence rather than person records.
+- Watchers are not implemented. A 3-day watcher cannot demonstrate anything
+  inside a seven-hour build, so the weekly-brief cadence is described rather
+  than run.
+- The send writes the memo to disk. Swap `_send` in `desk.py` for the real
+  transport; it is already journalled as irreversible.
